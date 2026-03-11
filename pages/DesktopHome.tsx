@@ -147,62 +147,112 @@ export const Home: React.FC = () => {
       <SectionObserver />
 
 
-{/* ====================== HERO SECTION ====================== */}
-<section className="relative w-full h-screen min-h-[700px] bg-white flex flex-col justify-end overflow-hidden font-sans border-gray-100">
+{/* ====================== THE NEW ASYMMETRICAL SaaS HERO ====================== */}
+<section className="relative w-full pt-32 lg:pt-40 pb-20 lg:pb-32 bg-[#FAFAFA] overflow-hidden font-sans border-b border-gray-100">
   
-  {/* 1. Full-Bleed Background Video with Refined Light Overlay */}
-  <div className="absolute inset-0 w-full h-full z-0 bg-gray-50">
-    <video 
-      autoPlay 
-      loop 
-      muted 
-      playsInline
-      className="w-full h-full object-cover"
-      poster="" 
-    >
-      {/* Insert your actual background video source here */}
-      {/* <source src="/your-cinematic-site-flyover.mp4" type="video/mp4" /> */}
-    </video>
-    
-    {/* Premium Light Gradient Overlay - Seamless transition to pure white at the bottom */}
-    <div className="absolute inset-x-0 bottom-0 h-[65%] bg-gradient-to-t from-white via-white/70 to-transparent pointer-events-none"></div>
-  </div>
+  {/* Premium Dot Pattern Background */}
+  <div className="absolute inset-0 opacity-[0.4] pointer-events-none z-0" 
+        style={{ 
+          backgroundImage: "radial-gradient(#d1d5db 1px, transparent 1px)", 
+          backgroundSize: "32px 32px",
+          maskImage: "linear-gradient(to bottom right, black 20%, transparent 80%)",
+          WebkitMaskImage: "linear-gradient(to bottom right, black 20%, transparent 80%)"
+        }} 
+  />
 
-  {/* 2. Bottom-Anchored Content Wrapper */}
-  <div className="w-full max-w-[1500px] mx-auto px-6 md:px-10 pb-12 md:pb-16 relative z-10">
-    
-    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10">
+  <div className="max-w-[1450px] mx-auto px-6 lg:px-12 relative z-10">
+    <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
       
-      {/* LEFT SIDE: Copy */}
-      <div className="max-w-4xl">
-        {/* Title - Perfectly aligned inline highlight with premium padding and border-radius */}
-        <h1 className="text-[clamp(44px,5.5vw,76px)] font-black tracking-tight text-[#0A0A0A] mb-5 leading-[1.1] flex flex-wrap items-center gap-x-3 gap-y-2 animate-in fade-in slide-in-from-bottom-6 duration-1000">
-          <span>Your site,</span>
-          <span className="inline-flex items-center justify-center px-4 py-1.5 bg-[#FFF200] rounded-[14px] text-black shadow-sm ring-1 ring-black/5">
-            in sight.
+      {/* LEFT SIDE: Typography & Conversion */}
+      <div className="lg:col-span-5 flex flex-col justify-center animate-in fade-in slide-in-from-bottom-8 duration-1000">
+        
+        {/* Sleek Eyebrow Tag */}
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-gray-200 bg-white text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 mb-6 shadow-sm w-fit">
+          <Sparkles size={12} className="text-[#FFF200] fill-[#FFF200]" /> 
+          Next-Gen Reality Capture
+        </div>
+
+        {/* Left-Aligned Headline with Tighter Highlight */}
+        <h1 className="text-[clamp(50px,6vw,90px)] font-black tracking-tighter text-[#0A0A0A] leading-[1.05] mb-6">
+          Your site, <br/>
+          <span className="relative inline-block mt-2">
+            <span className="absolute inset-y-1 md:inset-y-2 -inset-x-3 bg-[#FFF200] rounded-xl md:rounded-2xl shadow-sm transform -rotate-1"></span>
+            <span className="relative px-2 text-black">in sight.</span>
           </span>
         </h1>
         
-        {/* Subtitle - Deeper contrast, tighter tracking for a high-end editorial feel */}
-        <p className="text-[19px] md:text-[21px] text-gray-800 font-medium leading-relaxed max-w-2xl tracking-tight animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
-          Know exactly what's happening on your site with AI-powered reality capture.
+        <p className="text-lg lg:text-[22px] text-gray-600 font-medium leading-relaxed mb-10 max-w-lg">
+          Stop managing by assumption. Know exactly what's happening with AI-powered data extraction and absolute visual certainty.
         </p>
+        
+        {/* Action Row */}
+        <div className="flex flex-col sm:flex-row items-center gap-4 mb-10">
+          <button className="group flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-full bg-[#0A0A0A] text-white font-bold text-[15px] transition-all hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(0,0,0,0.15)] ring-1 ring-black/5">
+            Book a demo
+            <ArrowRight size={16} strokeWidth={3} className="transition-transform duration-300 group-hover:translate-x-1" />
+          </button>
+          <button className="flex items-center justify-center w-full sm:w-auto px-8 py-4 rounded-full bg-white border border-gray-200 text-[#0A0A0A] font-bold text-[15px] transition-all hover:-translate-y-1 hover:bg-gray-50 hover:border-gray-300 hover:shadow-sm">
+            Explore platform
+          </button>
+        </div>
+
+        {/* Mini Trust Indicators integrated into Hero */}
+        <div className="flex items-center gap-4 border-t border-gray-200 pt-6">
+          <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Trusted by</span>
+          <div className="flex items-center gap-6 opacity-50 grayscale">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/L%26T.png/640px-L%26T.png" alt="L&T" className="h-5 object-contain" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Tata_logo.svg/1200px-Tata_logo.svg.png" alt="Tata" className="h-4 object-contain" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/640px-Amazon_logo.svg.png" alt="Amazon" className="h-5 object-contain mt-1" />
+          </div>
+        </div>
+
       </div>
 
-      {/* RIGHT SIDE: Call to Action Buttons */}
-      <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0 animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-300">
+      {/* RIGHT SIDE: The Layered Intelligence Composition */}
+      <div className="lg:col-span-7 relative mt-10 lg:mt-0 animate-in fade-in zoom-in-95 duration-1000 delay-300">
         
-        {/* Primary CTA - Deep black, diffused shadow, hover lift, embedded icon */}
-        <button className="group flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-4 rounded-full bg-[#0A0A0A] text-white font-bold text-[15px] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(0,0,0,0.15)] ring-1 ring-black/5">
-          Book a demo
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </button>
-        
-        {/* Secondary CTA - Glassmorphism base, crisp border, subtle hover state */}
-        <button className="flex items-center justify-center w-full sm:w-auto px-8 py-4 rounded-full bg-white/70 backdrop-blur-md border border-gray-200/80 text-gray-900 font-bold text-[15px] transition-all duration-300 hover:bg-white hover:border-gray-300 hover:shadow-sm">
-          Explore platform
-        </button>
-        
+        {/* Abstract Background Glow for Depth */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#FFF200]/20 blur-[100px] rounded-full z-0 pointer-events-none"></div>
+
+        {/* Main Video Container */}
+        <div className="relative z-10 w-full aspect-[4/3] lg:aspect-[16/11] bg-[#0A0A0A] rounded-[32px] lg:rounded-[40px] shadow-[0_40px_100px_rgba(0,0,0,0.15)] border border-gray-200/50 overflow-hidden ml-auto lg:w-[110%] group">
+          <video 
+            autoPlay loop muted playsInline
+            className="w-full h-full object-cover scale-[1.02] transition-transform duration-1000 group-hover:scale-100 opacity-90" 
+            poster="https://i.ibb.co/bMN7Kzv0/Website-Visuals-Presentation-7.png" 
+          >
+            {/* <source src="/your-video.mp4" type="video/mp4" /> */}
+          </video>
+          <div className="absolute inset-0 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.15)] rounded-[32px] lg:rounded-[40px] pointer-events-none"></div>
+        </div>
+
+        {/* FLOATING UI WIDGET 1: Top Left (Shows AI is active) */}
+        <div className="absolute -left-4 md:-left-8 top-10 z-20 bg-white/90 backdrop-blur-xl border border-white p-4 rounded-2xl shadow-2xl flex items-center gap-4 animate-in fade-in slide-in-from-left-8 duration-1000 delay-700 hover:-translate-y-1 transition-transform cursor-default">
+          <div className="w-10 h-10 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center">
+            <Scan size={18} className="text-blue-600" />
+          </div>
+          <div>
+            <div className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-0.5">Live Processing</div>
+            <div className="text-sm font-black text-black flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
+              Extracting BIM overlay
+            </div>
+          </div>
+        </div>
+
+        {/* FLOATING UI WIDGET 2: Bottom Right (Shows Business Value) */}
+        <div className="absolute -right-4 md:right-8 bottom-10 z-20 bg-[#0A0A0A] border border-gray-800 p-4 lg:p-5 rounded-2xl shadow-[0_30px_60px_rgba(0,0,0,0.4)] flex flex-col gap-2 animate-in fade-in slide-in-from-right-8 duration-1000 delay-1000 hover:-translate-y-1 transition-transform cursor-default">
+          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#FFF200]">
+            <AlertTriangle size={12} /> Auto-Alert
+          </div>
+          <div className="text-white font-bold text-sm">
+            Slab 4 structural variance: <span className="text-red-400">42mm</span>
+          </div>
+          <div className="text-xs font-medium text-gray-400 border-t border-gray-800 pt-2 mt-1">
+            Immediate review suggested.
+          </div>
+        </div>
+
       </div>
 
     </div>
