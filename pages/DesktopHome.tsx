@@ -275,11 +275,11 @@ export const Home: React.FC = () => {
               
               <h2 className="text-[clamp(44px,5.5vw,72px)] font-black tracking-tighter leading-[1.05] text-black">
                 Eliminate doubt. <br />
-                Operate with <br className="hidden lg:block"/>
-                <span className="relative inline-block whitespace-nowrap mt-2">
-                  <span className="absolute inset-y-1 -inset-x-3 bg-[#FFF200] rounded-xl transform -rotate-1 shadow-sm"></span>
-                  <span className="relative text-black px-2">complete trust.</span>
-                </span>
+                Operate with <br className="hidden md:block" />
+              <span className="relative inline-block mt-2">
+                <span className="absolute inset-y-1 -inset-x-3 bg-[#FFF200] rounded-xl shadow-sm transform -skew-x-2"></span>
+                <span className="relative px-2 text-black">Complete Trust.</span>
+              </span>
               </h2>
               
               <p className="mt-8 text-lg lg:text-xl text-gray-500 leading-relaxed max-w-md font-medium">
