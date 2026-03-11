@@ -48,7 +48,7 @@ const Footer = () => {
             <div className="flex gap-4">
               <a href="https://twitter.com/yelloskye" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-500 hover:text-[#FFF200] hover:border-[#FFF200] transition-all"><Twitter size={18} /></a>
               <a href="https://linkedin.com/company/yelloskye" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-500 hover:text-[#FFF200] hover:border-[#FFF200] transition-all"><Linkedin size={18} /></a>
-              <a href="https://youtube.com/yelloskye" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-500 hover:text-[#FFF200] hover:border-[#FFF200] transition-all"><Youtube size={18} /></a>
+              <a href="https://www.youtube.com/@yelloskye" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-500 hover:text-[#FFF200] hover:border-[#FFF200] transition-all"><Youtube size={18} /></a>
               <a href="https://instagram.com/yelloskye" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-500 hover:text-[#FFF200] hover:border-[#FFF200] transition-all"><Instagram size={18} /></a>
             </div>
           </div>
