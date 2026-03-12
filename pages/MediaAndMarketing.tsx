@@ -110,12 +110,40 @@ const UseCaseSection = () => {
 // ─── DATA: FLOOR ELEVATIONS ───────────────────────────────────────────────
 
 const FLOOR_VIEWS = [
-  { id: 'penthouse', level: 'Penthouse', height: '145m', desc: 'Unobstructed Panoramic Skyline', img: 'https://images.unsplash.com/photo-1542361345-89e58247f2d5?q=80&w=2000&auto=format&fit=crop', time: 'Sunset' },
-  { id: '35th', level: '35th Floor', height: '110m', desc: 'High-Rise Cityscape', img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000&auto=format&fit=crop', time: 'Daytime' },
-  { id: '15th', label: '15th Floor', level: '15th Floor', height: '45m', desc: 'Mid-Rise Neighborhood Context', img: 'https://images.unsplash.com/photo-1496560238219-629bd6620060?q=80&w=2000&auto=format&fit=crop', time: 'Daytime' },
-  { id: 'podium', level: 'Podium Deck', height: '15m', desc: 'Street & Amenity View', img: 'https://images.unsplash.com/photo-1449156001533-cb39c8524d1b?q=80&w=2000&auto=format&fit=crop', time: 'Morning' }
+  { 
+    id: 'terrace', 
+    level: 'Terrace Floor', 
+    height: '55m', 
+    desc: 'Exclusive Open-Air Panoramic Vantage', 
+    img: 'https://images.unsplash.com/photo-1542361345-89e58247f2d5?q=80&w=2000&auto=format&fit=crop', 
+    time: 'Sunset' 
+  },
+  { 
+    id: '15th', 
+    label: '15th Floor', 
+    level: '15th Floor', 
+    height: '45m', 
+    desc: 'Elevated Skyline & Cityscape Views', 
+    img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000&auto=format&fit=crop', 
+    time: 'Daytime' 
+  },
+  { 
+    id: '9th', 
+    level: '9th Floor', 
+    height: '27m', 
+    desc: 'Mid-Rise Neighborhood Context', 
+    img: 'https://images.unsplash.com/photo-1496560238219-629bd6620060?q=80&w=2000&auto=format&fit=crop', 
+    time: 'Daytime' 
+  },
+  { 
+    id: '6th', 
+    level: '6th Floor', 
+    height: '18m', 
+    desc: 'Canopy Level & Street Connection', 
+    img: 'https://images.unsplash.com/photo-1449156001533-cb39c8524d1b?q=80&w=2000&auto=format&fit=crop', 
+    time: 'Morning' 
+  }
 ];
-
 export const FloorPickerModule = () => {
   const [activeFloor, setActiveFloor] = useState(0);
 
