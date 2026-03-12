@@ -146,113 +146,76 @@ export const Home: React.FC = () => {
       
       <SectionObserver />
 
-
-{/* ====================== THE NEW ASYMMETRICAL SaaS HERO ====================== */}
-<section className="relative w-full pt-32 lg:pt-40 pb-20 lg:pb-32 bg-[#FAFAFA] overflow-hidden font-sans border-b border-gray-100">
+{/* ====================== HERO SECTION ====================== */}
+<section className="relative w-full h-[100dvh] min-h-[750px] pt-[100px] lg:pt-[110px] pb-6 lg:pb-10 bg-white flex flex-col overflow-hidden font-sans border-b border-gray-100">
   
-  {/* Premium Dot Pattern Background */}
-  <div className="absolute inset-0 opacity-[0.4] pointer-events-none z-0" 
-        style={{ 
-          backgroundImage: "radial-gradient(#d1d5db 1px, transparent 1px)", 
-          backgroundSize: "32px 32px",
-          maskImage: "linear-gradient(to bottom right, black 20%, transparent 80%)",
-          WebkitMaskImage: "linear-gradient(to bottom right, black 20%, transparent 80%)"
-        }} 
-  />
-
-  <div className="max-w-[1450px] mx-auto px-6 lg:px-12 relative z-10">
-    <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+  {/* 1. TOP: MAXIMIZED VIDEO WINDOW */}
+  {/* flex-1 gives the video the absolute maximum amount of vertical space */}
+  <div className="flex-1 w-full max-w-[1600px] mx-auto px-6 md:px-10 lg:px-12 flex flex-col relative z-10 animate-in fade-in zoom-in-95 duration-1000">
+    
+    <div className="relative w-full h-full min-h-[350px] bg-[#080808] rounded-3xl lg:rounded-[40px] shadow-[0_20px_50px_rgba(0,0,0,0.1)] overflow-hidden group">
+      <video 
+        autoPlay 
+        loop 
+        muted 
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover scale-[1.01] transition-transform duration-[10s] group-hover:scale-105 opacity-90"
+        poster="https://i.ibb.co/bMN7Kzv0/Website-Visuals-Presentation-7.png" 
+      >
+        {/* <source src="/your-cinematic-site-flyover.mp4" type="video/mp4" /> */}
+      </video>
       
-      {/* LEFT SIDE: Typography & Conversion */}
-      <div className="lg:col-span-5 flex flex-col justify-center animate-in fade-in slide-in-from-bottom-8 duration-1000">
-        
-        {/* Sleek Eyebrow Tag */}
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-gray-200 bg-white text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 mb-6 shadow-sm w-fit">
-          <Sparkles size={12} className="text-[#FFF200] fill-[#FFF200]" /> 
-          Next-Gen Reality Capture
-        </div>
+      {/* Premium Glass Glare Overlay */}
+      <div className="absolute inset-0 rounded-3xl lg:rounded-[40px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.15)] pointer-events-none"></div>
 
-        {/* Left-Aligned Headline with Tighter Highlight */}
-        <h1 className="text-[clamp(50px,6vw,90px)] font-black tracking-tighter text-[#0A0A0A] leading-[1.05] mb-6">
-          Your site, <br/>
-          <span className="relative inline-block mt-2">
-            <span className="absolute inset-y-1 md:inset-y-2 -inset-x-3 bg-[#FFF200] rounded-xl md:rounded-2xl shadow-sm transform -rotate-1"></span>
-            <span className="relative px-2 text-black">in sight.</span>
+      {/* Live Recording Badge */}
+      <div className="absolute top-6 left-6 md:top-8 md:left-8 bg-black/60 backdrop-blur-md border border-white/10 rounded-full px-4 py-2 flex items-center gap-3">
+        <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.8)]"></div>
+        <span className="text-[10px] md:text-xs font-bold text-white uppercase tracking-widest">Live: Autonomous Capture</span>
+      </div>
+    </div>
+
+  </div>
+
+  {/* 2. BOTTOM: SINGLE-LINE COPY & CREATIVE CTA DOCK */}
+  {/* shrink-0 keeps the text pinned to the bottom */}
+  <div className="w-full max-w-[1600px] mx-auto px-6 md:px-10 lg:px-12 pt-8 lg:pt-10 shrink-0 relative z-20">
+    
+    <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-8">
+      
+      {/* LEFT SIDE: Copy */}
+      <div className="flex flex-col gap-3 lg:gap-4 overflow-hidden">
+        {/* Heading forced to ONE line */}
+        <h1 className="text-[clamp(44px,5.5vw,84px)] font-black tracking-tighter text-[#0A0A0A] leading-none flex items-center gap-3 lg:gap-4 whitespace-nowrap animate-in fade-in slide-in-from-bottom-6 duration-1000">
+          Your site,
+          <span className="bg-[#FFF200] px-5 py-1.5 rounded-[16px] lg:rounded-[20px] text-black shadow-sm">
+            in sight.
           </span>
         </h1>
         
-        <p className="text-lg lg:text-[22px] text-gray-600 font-medium leading-relaxed mb-10 max-w-lg">
-          Stop managing by assumption. Know exactly what's happening with AI-powered data extraction and absolute visual certainty.
+        {/* Subheading forced to ONE line */}
+        <p className="text-[18px] md:text-[22px] text-gray-600 font-medium tracking-tight whitespace-nowrap animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
+          Know exactly what's happening on your site with AI-powered reality capture.
         </p>
-        
-        {/* Action Row */}
-        <div className="flex flex-col sm:flex-row items-center gap-4 mb-10">
-          <button className="group flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-full bg-[#0A0A0A] text-white font-bold text-[15px] transition-all hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(0,0,0,0.15)] ring-1 ring-black/5">
-            Book a demo
-            <ArrowRight size={16} strokeWidth={3} className="transition-transform duration-300 group-hover:translate-x-1" />
-          </button>
-          <button className="flex items-center justify-center w-full sm:w-auto px-8 py-4 rounded-full bg-white border border-gray-200 text-[#0A0A0A] font-bold text-[15px] transition-all hover:-translate-y-1 hover:bg-gray-50 hover:border-gray-300 hover:shadow-sm">
-            Explore platform
-          </button>
-        </div>
-
-        {/* Mini Trust Indicators integrated into Hero */}
-        <div className="flex items-center gap-4 border-t border-gray-200 pt-6">
-          <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Trusted by</span>
-          <div className="flex items-center gap-6 opacity-50 grayscale">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/L%26T.png/640px-L%26T.png" alt="L&T" className="h-5 object-contain" />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Tata_logo.svg/1200px-Tata_logo.svg.png" alt="Tata" className="h-4 object-contain" />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/640px-Amazon_logo.svg.png" alt="Amazon" className="h-5 object-contain mt-1" />
-          </div>
-        </div>
-
       </div>
 
-      {/* RIGHT SIDE: The Layered Intelligence Composition */}
-      <div className="lg:col-span-7 relative mt-10 lg:mt-0 animate-in fade-in zoom-in-95 duration-1000 delay-300">
+      {/* RIGHT SIDE: Creative CTA Dock */}
+      {/* A frosted glass "Dock" that encases the buttons to make them pop out */}
+      <div className="flex items-center p-2 bg-gray-50/80 backdrop-blur-xl border border-gray-200/80 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.06)] animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-300 mb-1 w-fit">
         
-        {/* Abstract Background Glow for Depth */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#FFF200]/20 blur-[100px] rounded-full z-0 pointer-events-none"></div>
-
-        {/* Main Video Container */}
-        <div className="relative z-10 w-full aspect-[4/3] lg:aspect-[16/11] bg-[#0A0A0A] rounded-[32px] lg:rounded-[40px] shadow-[0_40px_100px_rgba(0,0,0,0.15)] border border-gray-200/50 overflow-hidden ml-auto lg:w-[110%] group">
-          <video 
-            autoPlay loop muted playsInline
-            className="w-full h-full object-cover scale-[1.02] transition-transform duration-1000 group-hover:scale-100 opacity-90" 
-            poster="https://i.ibb.co/bMN7Kzv0/Website-Visuals-Presentation-7.png" 
-          >
-            {/* <source src="/your-video.mp4" type="video/mp4" /> */}
-          </video>
-          <div className="absolute inset-0 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.15)] rounded-[32px] lg:rounded-[40px] pointer-events-none"></div>
-        </div>
-
-        {/* FLOATING UI WIDGET 1: Top Left (Shows AI is active) */}
-        <div className="absolute -left-4 md:-left-8 top-10 z-20 bg-white/90 backdrop-blur-xl border border-white p-4 rounded-2xl shadow-2xl flex items-center gap-4 animate-in fade-in slide-in-from-left-8 duration-1000 delay-700 hover:-translate-y-1 transition-transform cursor-default">
-          <div className="w-10 h-10 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center">
-            <Scan size={18} className="text-blue-600" />
+        {/* Primary CTA inside the dock */}
+        <button className="group flex items-center justify-center gap-3 px-8 py-3.5 rounded-full bg-[#0A0A0A] text-white font-bold text-[15px] transition-all duration-300 hover:shadow-[0_10px_20px_rgba(0,0,0,0.2)] whitespace-nowrap">
+          Book a demo
+          <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-[#FFF200] group-hover:text-black transition-colors">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-0.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </div>
-          <div>
-            <div className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-0.5">Live Processing</div>
-            <div className="text-sm font-black text-black flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
-              Extracting BIM overlay
-            </div>
-          </div>
-        </div>
-
-        {/* FLOATING UI WIDGET 2: Bottom Right (Shows Business Value) */}
-        <div className="absolute -right-4 md:right-8 bottom-10 z-20 bg-[#0A0A0A] border border-gray-800 p-4 lg:p-5 rounded-2xl shadow-[0_30px_60px_rgba(0,0,0,0.4)] flex flex-col gap-2 animate-in fade-in slide-in-from-right-8 duration-1000 delay-1000 hover:-translate-y-1 transition-transform cursor-default">
-          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#FFF200]">
-            <AlertTriangle size={12} /> Auto-Alert
-          </div>
-          <div className="text-white font-bold text-sm">
-            Slab 4 structural variance: <span className="text-red-400">42mm</span>
-          </div>
-          <div className="text-xs font-medium text-gray-400 border-t border-gray-800 pt-2 mt-1">
-            Immediate review suggested.
-          </div>
-        </div>
-
+        </button>
+        
+        {/* Secondary CTA inside the dock */}
+        <button className="flex items-center justify-center px-8 py-3.5 rounded-full text-[#0A0A0A] font-bold text-[15px] transition-all duration-300 hover:bg-white hover:shadow-sm whitespace-nowrap">
+          Explore platform
+        </button>
+        
       </div>
 
     </div>
