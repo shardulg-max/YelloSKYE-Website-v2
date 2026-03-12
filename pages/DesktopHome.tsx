@@ -147,13 +147,20 @@ export const Home: React.FC = () => {
       <SectionObserver />
 
 {/* ====================== HERO SECTION ====================== */}
-<section className="relative w-full h-[100dvh] min-h-[750px] pt-[100px] lg:pt-[110px] pb-6 lg:pb-10 bg-white flex flex-col overflow-hidden font-sans border-b border-gray-100">
-  
-  {/* 1. TOP: MAXIMIZED VIDEO WINDOW */}
-  {/* flex-1 gives the video the absolute maximum amount of vertical space */}
-  <div className="flex-1 w-full max-w-[1600px] mx-auto px-6 md:px-10 lg:px-12 flex flex-col relative z-10 animate-in fade-in zoom-in-95 duration-1000">
+<section className="relative w-full h-[100dvh] min-h-[750px] pt-[120px] lg:pt-[140px] pb-6 lg:pb-10 bg-white flex flex-col overflow-hidden font-sans border-gray-100">
+  {/* Subtle Background Grid */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+             style={{ 
+               backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", 
+               backgroundSize: "80px 80px",
+               maskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
+               WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)"
+             }} />
+  {/* 1. TOP: MAXIMIZED VIDEO WINDOW (RESTORED TO 1500px WIDTH) */}
+  {/* The max-w and px values here now strictly match your original container width */}
+  <div className="flex-1 w-full max-w-[1755px] mx-auto px-6 md:px-10 flex flex-col relative z-10 animate-in fade-in zoom-in-95 duration-1000">
     
-    <div className="relative w-full h-full min-h-[350px] bg-[#080808] rounded-3xl lg:rounded-[40px] shadow-[0_20px_50px_rgba(0,0,0,0.1)] overflow-hidden group">
+    <div className="relative w-full h-full min-h-[350px] bg-[#080808] rounded-[24px] lg:rounded-[28px] shadow-[0_20px_50px_rgba(0,0,0,0.1)] overflow-hidden group">
       <video 
         autoPlay 
         loop 
@@ -166,56 +173,68 @@ export const Home: React.FC = () => {
       </video>
       
       {/* Premium Glass Glare Overlay */}
-      <div className="absolute inset-0 rounded-3xl lg:rounded-[40px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.15)] pointer-events-none"></div>
-
-      {/* Live Recording Badge */}
-      <div className="absolute top-6 left-6 md:top-8 md:left-8 bg-black/60 backdrop-blur-md border border-white/10 rounded-full px-4 py-2 flex items-center gap-3">
-        <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.8)]"></div>
-        <span className="text-[10px] md:text-xs font-bold text-white uppercase tracking-widest">Live: Autonomous Capture</span>
-      </div>
+      <div className="absolute inset-0 rounded-[24px] lg:rounded-[28px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.15)] pointer-events-none"></div>
     </div>
 
   </div>
 
-  {/* 2. BOTTOM: SINGLE-LINE COPY & CREATIVE CTA DOCK */}
-  {/* shrink-0 keeps the text pinned to the bottom */}
-  <div className="w-full max-w-[1600px] mx-auto px-6 md:px-10 lg:px-12 pt-8 lg:pt-10 shrink-0 relative z-20">
+  {/* 2. BOTTOM: COPY & CTA DOCK (RESTORED TO 1500px WIDTH) */}
+  {/* These exact same width constraints ensure the text perfectly aligns with the video edges */}
+  <div className="w-full max-w-[1755px] mx-auto px-6 md:px-10 pt-8 lg:pt-10 shrink-0 relative z-20">
     
     <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-8">
       
       {/* LEFT SIDE: Copy */}
       <div className="flex flex-col gap-3 lg:gap-4 overflow-hidden">
-        {/* Heading forced to ONE line */}
-        <h1 className="text-[clamp(44px,5.5vw,84px)] font-black tracking-tighter text-[#0A0A0A] leading-none flex items-center gap-3 lg:gap-4 whitespace-nowrap animate-in fade-in slide-in-from-bottom-6 duration-1000">
+        <h1 className="text-[clamp(44px,5vw,84px)] font-black tracking-tighter text-[#0A0A0A] leading-none flex items-center gap-3 lg:gap-4 whitespace-nowrap animate-in fade-in slide-in-from-bottom-6 duration-1000">
           Your site,
           <span className="bg-[#FFF200] px-5 py-1.5 rounded-[16px] lg:rounded-[20px] text-black shadow-sm">
             in sight.
           </span>
         </h1>
         
-        {/* Subheading forced to ONE line */}
         <p className="text-[18px] md:text-[22px] text-gray-600 font-medium tracking-tight whitespace-nowrap animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
           Know exactly what's happening on your site with AI-powered reality capture.
         </p>
       </div>
 
-      {/* RIGHT SIDE: Creative CTA Dock */}
-      {/* A frosted glass "Dock" that encases the buttons to make them pop out */}
-      <div className="flex items-center p-2 bg-gray-50/80 backdrop-blur-xl border border-gray-200/80 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.06)] animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-300 mb-1 w-fit">
+      {/* RIGHT SIDE: 3 Pillars + CTA Dock */}
+      <div className="flex flex-col items-start xl:items-end animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
         
-        {/* Primary CTA inside the dock */}
-        <button className="group flex items-center justify-center gap-3 px-8 py-3.5 rounded-full bg-[#0A0A0A] text-white font-bold text-[15px] transition-all duration-300 hover:shadow-[0_10px_20px_rgba(0,0,0,0.2)] whitespace-nowrap">
-          Book a demo
-          <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-[#FFF200] group-hover:text-black transition-colors">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-0.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </div>
-        </button>
-        
-        {/* Secondary CTA inside the dock */}
-        <button className="flex items-center justify-center px-8 py-3.5 rounded-full text-[#0A0A0A] font-bold text-[15px] transition-all duration-300 hover:bg-white hover:shadow-sm whitespace-nowrap">
-          Explore platform
-        </button>
-        
+        {/* PREMIUM 3-PILLARS */}
+        <div className="flex items-center gap-5 lg:gap-6 mb-5 mr-2 xl:mr-4">
+          {[
+            { label: "Clarity" },
+            { label: "Consistency" },
+            { label: "Accuracy" }
+          ].map((item, index) => (
+            <div key={item.label} className="flex items-center gap-2.5">
+              <div className="w-1.5 h-1.5 bg-[#FFF200] shadow-[0_0_8px_rgba(255,242,0,0.8)]"></div>
+              <span className="text-[10px] lg:text-[11px] font-bold text-gray-400 uppercase tracking-[0.25em]">
+                {item.label}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* Frosted Glass Dock */}
+        <div className="flex items-center p-2.5 bg-gray-50/90 backdrop-blur-2xl border border-gray-200/80 rounded-full shadow-[0_15px_40px_rgb(0,0,0,0.06)] w-fit">
+          
+          {/* Primary CTA */}
+          <button className="group flex items-center justify-center gap-4 pl-8 pr-2.5 py-2.5 rounded-full bg-[#0A0A0A] text-white font-black text-[16px] transition-all duration-300 hover:shadow-[0_15px_30px_rgba(0,0,0,0.25)] hover:-translate-y-0.5 whitespace-nowrap">
+            Book a demo
+            <div className="w-10 h-10 rounded-full bg-[#FFF200] flex items-center justify-center text-black shadow-[0_0_15px_rgba(255,242,0,0.4)] group-hover:scale-105 transition-transform duration-300">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-0.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </div>
+          </button>
+          
+          {/* Secondary CTA */}
+          <button className="flex items-center justify-center px-8 py-4 rounded-full text-gray-600 hover:text-[#0A0A0A] font-bold text-[16px] transition-all duration-300  whitespace-nowrap">
+            Explore platform
+          </button>
+          
+        </div>
+
       </div>
 
     </div>
@@ -223,106 +242,162 @@ export const Home: React.FC = () => {
 </section>
 
       {/* ====================== TRUST BAND ====================== */}
-      <section className="bg-white relative z-30 pt-6 pb-12 lg:pb-16  border-gray-100/50">
-        <p className="text-center text-[10px] lg:text-[11px] font-black uppercase tracking-[0.5em] text-gray-400 mb-8">
-          Providing intelligence to intelligent leaders
+{/* CHANGED: Reduced padding from py-16 lg:py-24 to py-8 lg:py-12 to cut the space exactly in half */}
+<section className="bg-white relative z-30 py-8 lg:py-12 border-gray-100/50">
+  {/* CHANGED: Reduced margin-bottom from mb-10 to mb-8 to tighten the gap above the logos */}
+  <p className="text-center text-[10px] lg:text-[11px] font-black uppercase tracking-[0.5em] text-gray-400 mb-8">
+    Providing intelligence to intelligent leaders
+  </p>
+  
+  <div className="relative overflow-hidden marquee-mask flex w-full group">
+    <div className="flex shrink-0 animate-marquee items-center gap-16 md:gap-24 px-8 md:px-12 group-hover:[animation-play-state:paused]">
+      {[
+        { name: "Larsen & Toubro", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/L%26T.png/640px-L%26T.png" },
+        { name: "Amazon", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/640px-Amazon_logo.svg.png" },
+        { name: "TATA Projects", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Tata_logo.svg/1200px-Tata_logo.svg.png" },
+        { name: "Adani Enterprise", logo: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Adani_logo_2012.svg" },
+        { name: "DLF Limited", logo: "https://upload.wikimedia.org/wikipedia/commons/a/aa/DLF_logo.svg" },
+        { name: "Google", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/640px-Google_2015_logo.svg.png" },
+        { name: "Godrej", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Godrej_Logo.svg/640px-Godrej_Logo.svg.png" },
+        { name: "Lodha", logo: "https://companieslogo.com/img/orig/LODHA.NS_BIG-691dc856.png?t=1720244492" },
+        { name: "HDFC", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/HDFC_Bank_Logo.svg/640px-HDFC_Bank_Logo.svg.png" },
+        { name: "Kirloskar", logo: "https://kirloskar.com/img/KIRLOSKAR%20SAFE%20SPACE%20LOGO-01.jpg" },
+        { name: "Toyota Kirloskar", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Toyota_logo_3D.webp/640px-Toyota_logo_3D.webp.png" },
+        { name: "Mahindra", logo: "https://images.seeklogo.com/logo-png/61/1/mahindra-auto-logo-png_seeklogo-613492.png" },
+        { name: "Larsen & Toubro", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/L%26T.png/640px-L%26T.png" },
+        { name: "Amazon", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/640px-Amazon_logo.svg.png" },
+        { name: "TATA Projects", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Tata_logo.svg/1200px-Tata_logo.svg.png" },
+        { name: "Adani Enterprise", logo: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Adani_logo_2012.svg" },
+        { name: "DLF Limited", logo: "https://upload.wikimedia.org/wikipedia/commons/a/aa/DLF_logo.svg" },
+        { name: "Google", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/640px-Google_2015_logo.svg.png" },
+        { name: "Godrej", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Godrej_Logo.svg/640px-Godrej_Logo.svg.png" },
+        { name: "Lodha", logo: "https://companieslogo.com/img/orig/LODHA.NS_BIG-691dc856.png?t=1720244492" },
+        { name: "HDFC", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/HDFC_Bank_Logo.svg/640px-HDFC_Bank_Logo.svg.png" },
+        { name: "Kirloskar", logo: "https://kirloskar.com/img/KIRLOSKAR%20SAFE%20SPACE%20LOGO-01.jpg" },
+        { name: "Toyota Kirloskar", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Toyota_logo_3D.webp/640px-Toyota_logo_3D.webp.png" },
+        { name: "Mahindra", logo: "https://images.seeklogo.com/logo-png/61/1/mahindra-auto-logo-png_seeklogo-613492.png" }
+      ].map((client, i) => (
+        <div key={i} className="flex items-center justify-center w-28 md:w-32 h-10 md:h-12">
+          <img 
+            src={client.logo} 
+            alt={client.name} 
+            className="max-w-full max-h-full object-contain grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-700 cursor-pointer"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+      {/* ====================== PURPOSE / TRUST SECTION ====================== */}
+<section className="relative bg-white pt-24 lg:pt-32 pb-24 lg:pb-32 overflow-hidden z-10  border-gray-100">
+  
+  {/* Subtle Background Grid */}
+  <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+       style={{ 
+         backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", 
+         backgroundSize: "80px 80px",
+         maskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
+         WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)"
+       }} 
+  />
+
+  <div className="relative max-w-[1450px] mx-auto px-6 lg:px-10">
+    <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      
+      {/* LEFT SIDE: Bulletproof 3-Line Typography */}
+      <div className="lg:col-span-5 pr-0 lg:pr-8 flex flex-col justify-center items-start">
+        
+        {/* Using flex-col and items-start guarantees 3 lines and tight highlight */}
+        <h2 className="flex flex-col items-start text-[clamp(44px,5vw,72px)] font-black tracking-tighter leading-[1.05] text-[#0A0A0A]">
+          <span className="whitespace-nowrap">Eliminate doubt.</span>
+          <span className="whitespace-nowrap mt-1">Operate with</span>
+          <span className="relative inline-block mt-2 lg:mt-3 w-fit">
+            <span className="absolute inset-y-1 lg:inset-y-1.5 -inset-x-3 bg-[#FFF200] rounded-xl shadow-sm"></span>
+            <span className="relative px-2 text-black whitespace-nowrap">Complete Trust.</span>
+          </span>
+        </h2>
+        
+        <p className="mt-8 text-[18px] lg:text-[20px] text-gray-500 leading-relaxed font-medium">
+          Because decisions that shape the real world deserve more than assumptions, interpretations, and incomplete views.
         </p>
+      </div>
+      
+      {/* RIGHT SIDE: Unified White Grid */}
+      <div className="lg:col-span-7 grid sm:grid-cols-2 gap-5 lg:gap-6 pt-6 lg:pt-0">
         
-        <div className="relative overflow-hidden marquee-mask flex w-full group">
-          <div className="flex shrink-0 animate-marquee items-center gap-16 md:gap-24 px-8 md:px-12 group-hover:[animation-play-state:paused]">
-            {[
-              { name: "Larsen & Toubro", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/L%26T.png/640px-L%26T.png" },
-              { name: "Amazon", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/640px-Amazon_logo.svg.png" },
-              { name: "TATA Projects", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Tata_logo.svg/1200px-Tata_logo.svg.png" },
-              { name: "Adani Enterprise", logo: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Adani_logo_2012.svg" },
-              { name: "DLF Limited", logo: "https://upload.wikimedia.org/wikipedia/commons/a/aa/DLF_logo.svg" },
-              { name: "Google", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/640px-Google_2015_logo.svg.png" },
-              { name: "Godrej", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Godrej_Logo.svg/640px-Godrej_Logo.svg.png" },
-              { name: "Lodha", logo: "https://companieslogo.com/img/orig/LODHA.NS_BIG-691dc856.png?t=1720244492" },
-              { name: "HDFC", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/HDFC_Bank_Logo.svg/640px-HDFC_Bank_Logo.svg.png" },
-              { name: "Kirloskar", logo: "https://kirloskar.com/img/KIRLOSKAR%20SAFE%20SPACE%20LOGO-01.jpg" },
-              { name: "Toyota Kirloskar", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Toyota_logo_3D.webp/640px-Toyota_logo_3D.webp.png" },
-              { name: "Mahindra", logo: "https://images.seeklogo.com/logo-png/61/1/mahindra-auto-logo-png_seeklogo-613492.png" },
-              { name: "Larsen & Toubro", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/L%26T.png/640px-L%26T.png" },
-              { name: "Amazon", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/640px-Amazon_logo.svg.png" },
-              { name: "TATA Projects", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Tata_logo.svg/1200px-Tata_logo.svg.png" },
-              { name: "Adani Enterprise", logo: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Adani_logo_2012.svg" },
-              { name: "DLF Limited", logo: "https://upload.wikimedia.org/wikipedia/commons/a/aa/DLF_logo.svg" },
-              { name: "Google", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/640px-Google_2015_logo.svg.png" },
-              { name: "Godrej", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Godrej_Logo.svg/640px-Godrej_Logo.svg.png" },
-              { name: "Lodha", logo: "https://companieslogo.com/img/orig/LODHA.NS_BIG-691dc856.png?t=1720244492" },
-              { name: "HDFC", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/HDFC_Bank_Logo.svg/640px-HDFC_Bank_Logo.svg.png" },
-              { name: "Kirloskar", logo: "https://kirloskar.com/img/KIRLOSKAR%20SAFE%20SPACE%20LOGO-01.jpg" },
-              { name: "Toyota Kirloskar", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Toyota_logo_3D.webp/640px-Toyota_logo_3D.webp.png" },
-              { name: "Mahindra", logo: "https://images.seeklogo.com/logo-png/61/1/mahindra-auto-logo-png_seeklogo-613492.png" }
-            ].map((client, i) => (
-              <div key={i} className="flex items-center justify-center w-28 md:w-32 h-10 md:h-12">
-                <img 
-                  src={client.logo} 
-                  alt={client.name} 
-                  className="max-w-full max-h-full object-contain grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-700 cursor-pointer"
-                />
-              </div>
-            ))}
+        {/* CARD 1 */}
+        <div className="bg-white rounded-[24px] p-8 shadow-[0_8px_30px_rgba(0,0,0,0.03)] border border-gray-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] flex flex-col group">
+          <div className="w-12 h-12 rounded-[14px] bg-gray-50 border border-gray-100 text-black flex items-center justify-center mb-6 group-hover:bg-[#FFF200] group-hover:border-[#FFF200] transition-colors duration-300">
+             <Scan size={20} strokeWidth={2.5} />
+          </div>
+          <h3 className="text-[19px] font-black text-black mb-2 leading-snug tracking-tight">Independent Ground Truth</h3>
+          <p className="text-[14px] text-gray-500 leading-relaxed font-medium flex-1">Captured directly as-built. Never interpreted, filtered, or assumed.</p>
+          
+          <div className="mt-6 relative h-10 w-full border border-gray-100 bg-gray-50 rounded-lg overflow-hidden flex items-center justify-center">
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] bg-[size:10px_10px]"></div>
+            <div className="w-5 h-5 border-2 border-black rounded-full relative z-10 flex items-center justify-center">
+              <div className="w-1.5 h-1.5 bg-[#FFF200] rounded-full"></div>
+            </div>
           </div>
         </div>
-      </section>
 
-      {/* ====================== PURPOSE / TRUST SECTION (EDITORIAL SPLIT) ====================== */}
-      <section className="relative bg-white pt-24 lg:pt-32 pb-24 lg:pb-32 overflow-hidden z-10 border-gray-100">
-        
-        {/* Subtle Background Grid */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-             style={{ 
-               backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", 
-               backgroundSize: "80px 80px",
-               maskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
-               WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)"
-             }} />
-
-        <div className="relative max-w-[1450px] mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
-            {/* Left Side: Editorial Typography */}
-            <div className="lg:col-span-5 pr-0 lg:pr-8">
-              
-              <h2 className="text-[clamp(44px,5.5vw,72px)] font-black tracking-tighter leading-[1.05] text-black">
-                Eliminate doubt. <br />
-                Operate with <br className="hidden md:block" />
-              <span className="relative inline-block mt-2">
-                <span className="absolute inset-y-1 -inset-x-3 bg-[#FFF200] rounded-xl shadow-sm transform -skew-x-2"></span>
-                <span className="relative px-2 text-black">Complete Trust.</span>
-              </span>
-              </h2>
-              
-              <p className="mt-8 text-lg lg:text-xl text-gray-500 leading-relaxed max-w-md font-medium">
-                Because decisions that shape the real world deserve more than assumptions, interpretations, and incomplete views.
-              </p>
-            </div>
-            
-            {/* Right Side: Clear, Distinct Boxes */}
-            <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4 lg:gap-6 pt-4 lg:pt-0">
-              {[
-                { title: "Independent Ground Truth", caption: "Captured directly as-built. Never interpreted, filtered, or assumed.", icon: <Scan size={20} strokeWidth={2.5} /> },
-                { title: "Consistent Over Time", caption: "The exact same visual reference, updated week after week.", icon: <History size={20} strokeWidth={2.5} /> },
-                { title: "Shared, Verifiable Reality", caption: "Decisions rely on hard visual evidence, not subjective explanations.", icon: <FileCheck size={20} strokeWidth={2.5} /> },
-                { title: "Trusted Across Teams", caption: "Unifying everyone from on-site managers to executive leadership.", icon: <Users size={20} strokeWidth={2.5} /> },
-              ].map((item, index) => (
-                <div key={index} className="bg-white rounded-[24px] border border-gray-200 p-8 shadow-sm hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)] hover:border-gray-300 transition-all duration-300 flex flex-col group">
-                  
-                  <div className="w-12 h-12 rounded-[14px] bg-gray-50 border border-gray-100 text-gray-500 flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-[#FFF200] group-hover:text-black group-hover:border-[#FFF200]">
-                     {item.icon}
-                  </div>
-                  
-                  <h3 className="text-[19px] font-black text-black mb-3 leading-snug tracking-tight">{item.title}</h3>
-                  <p className="text-[14px] text-gray-500 leading-relaxed font-medium">{item.caption}</p>
-                </div>
-              ))}
-            </div>
-
+        {/* CARD 2 */}
+        <div className="bg-white rounded-[24px] p-8 shadow-[0_8px_30px_rgba(0,0,0,0.03)] border border-gray-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] flex flex-col group">
+          <div className="w-12 h-12 rounded-[14px] bg-gray-50 border border-gray-100 text-black flex items-center justify-center mb-6 group-hover:bg-[#FFF200] group-hover:border-[#FFF200] transition-colors duration-300">
+             <History size={20} strokeWidth={2.5} />
+          </div>
+          <h3 className="text-[19px] font-black text-black mb-2 leading-snug tracking-tight">Consistent Over Time</h3>
+          <p className="text-[14px] text-gray-500 leading-relaxed font-medium flex-1">The exact same visual reference, updated week after week.</p>
+          
+          <div className="mt-6 flex items-center w-full gap-1.5 opacity-70 group-hover:opacity-100 transition-opacity">
+            <div className="w-2 h-2 rounded-full bg-gray-300"></div>
+            <div className="flex-1 h-[2px] bg-gray-100"></div>
+            <div className="w-2 h-2 rounded-full bg-gray-300"></div>
+            <div className="flex-1 h-[2px] bg-gray-100"></div>
+            <div className="w-2.5 h-2.5 rounded-full bg-[#FFF200] ring-4 ring-[#FFF200]/30 shadow-sm"></div>
           </div>
         </div>
-      </section>
+
+        {/* CARD 3 */}
+        <div className="bg-white rounded-[24px] p-8 shadow-[0_8px_30px_rgba(0,0,0,0.03)] border border-gray-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] flex flex-col group">
+          <div className="w-12 h-12 rounded-[14px] bg-gray-50 border border-gray-100 text-black flex items-center justify-center mb-6 group-hover:bg-[#FFF200] group-hover:border-[#FFF200] transition-colors duration-300">
+             <FileCheck size={20} strokeWidth={2.5} />
+          </div>
+          <h3 className="text-[19px] font-black text-black mb-2 leading-snug tracking-tight">Shared Reality</h3>
+          <p className="text-[14px] text-gray-500 leading-relaxed font-medium flex-1">Decisions rely on hard visual evidence, not subjective explanations.</p>
+          
+          {/* Refined Minimal Visual: Overlapping Design vs Reality */}
+          <div className="mt-6 relative h-10 w-full">
+            <div className="absolute left-0 top-2 w-[45%] h-8 border-[1.5px] border-dashed border-gray-300 rounded bg-white"></div>
+            <div className="absolute left-8 top-0 w-[45%] h-8 border border-black rounded bg-black/5 backdrop-blur-sm shadow-sm flex items-center justify-center">
+               <Check size={14} className="text-black" />
+            </div>
+          </div>
+        </div>
+
+        {/* CARD 4 */}
+        <div className="bg-white rounded-[24px] p-8 shadow-[0_8px_30px_rgba(0,0,0,0.03)] border border-gray-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] flex flex-col group">
+          <div className="w-12 h-12 rounded-[14px] bg-gray-50 border border-gray-100 text-black flex items-center justify-center mb-6 group-hover:bg-[#FFF200] group-hover:border-[#FFF200] transition-colors duration-300">
+             <Users size={20} strokeWidth={2.5} />
+          </div>
+          <h3 className="text-[19px] font-black text-black mb-2 leading-snug tracking-tight">Trusted Across Teams</h3>
+          <p className="text-[14px] text-gray-500 leading-relaxed font-medium flex-1">Unifying everyone from on-site managers to executive leadership.</p>
+          
+          {/* Restored Minimal Role Avatars */}
+          <div className="mt-6 flex -space-x-2">
+            <div className="w-8 h-8 rounded-full border-2 border-white bg-blue-50 flex items-center justify-center text-[9px] font-black text-blue-600 shadow-sm z-30">PM</div>
+            <div className="w-8 h-8 rounded-full border-2 border-white bg-purple-50 flex items-center justify-center text-[9px] font-black text-purple-600 shadow-sm z-20">GC</div>
+            <div className="w-8 h-8 rounded-full border-2 border-white bg-green-50 flex items-center justify-center text-[9px] font-black text-green-600 shadow-sm z-10">DEV</div>
+            <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-50 flex items-center justify-center text-[10px] font-black text-gray-500 shadow-sm z-0">+</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
 
       {/* ====================== CAPABILITIES / SENSORS (WHITE/LIGHT MODE) ====================== */}
       {/* We use bg-gray-50 here so it stands out beautifully from the pure white section above it */}
