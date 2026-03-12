@@ -167,7 +167,7 @@ export const Home: React.FC = () => {
         muted 
         playsInline
         className="absolute inset-0 w-full h-full object-cover scale-[1.01] transition-transform duration-[10s] group-hover:scale-105 opacity-90"
-        poster="https://i.ibb.co/bMN7Kzv0/Website-Visuals-Presentation-7.png" 
+        poster="" 
       >
         {/* <source src="/your-cinematic-site-flyover.mp4" type="video/mp4" /> */}
       </video>

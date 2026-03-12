@@ -239,11 +239,11 @@ export const Platform: React.FC = () => {
   return (
     <div className="bg-white text-black font-sans selection:bg-[#FFF200] selection:text-black">
       
-{/* ═══ Hero Section ═══ */}
-<section className="pt-32 md:pt-40 lg:pt-48 pb-16 lg:pb-24 w-full bg-[#FAFAFA] relative font-sans border-b border-gray-100 overflow-hidden">
+{/* ═══ PLATFORM HERO SECTION ═══ */}
+<section className="pt-28 lg:pt-44 pb-12 lg:pb-16 w-full bg-white relative font-sans overflow-hidden">
   
   {/* Premium Fade Grid Background */}
-  <div className="absolute inset-0 opacity-[0.04] pointer-events-none" 
+  <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
        style={{ 
          backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", 
          backgroundSize: "80px 80px",
@@ -251,36 +251,60 @@ export const Platform: React.FC = () => {
          WebkitMaskImage: "linear-gradient(to bottom, black 40%, transparent 100%)"
        }} />
        
-  <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
+  <div className="max-w-[1500px] mx-auto px-6 md:px-10">
     
-    {/* TEXT CONTENT: Editorial Split Layout */}
-    <div className="grid lg:grid-cols-12 gap-6 lg:gap-12 mb-12 lg:mb-20 relative z-10 lg:items-end">
+    {/* TEXT CONTENT: Tighter spacing (mb-8 instead of mb-16) */}
+    <div className="grid lg:grid-cols-12 gap-6 lg:gap-12 mb-8 lg:mb-10 relative z-10 items-center">
       
-      {/* LEFT COLUMN: Massive Heading */}
-      <div className="lg:col-span-7 flex flex-col">
-        <h1 className="text-[clamp(56px,8vw,110px)] font-black leading-[0.95] tracking-tighter text-[#0A0A0A] m-0 p-0">
-          Command <br className="hidden md:block"/> your 
-          <span className="relative inline-block ml-3 md:ml-4 lg:mt-3">
-            {/* Signature YelloSKYE Highlight */}
-            <span className="absolute inset-y-1 md:inset-y-0 -inset-x-3 bg-[#FFF200] rounded-[16px] md:rounded-[24px] shadow-sm transform -skew-x-2"></span>
-            <span className="relative text-black px-2">site.</span>
+      {/* LEFT COLUMN: 1-Line Heading & Feature Row */}
+      <div className="lg:col-span-7 flex flex-col justify-center items-start">
+        
+        {/* Forced 1-line heading */}
+        <h1 className="text-[clamp(44px,5.5vw,90px)] font-black leading-none tracking-tighter text-[#0A0A0A] m-0 p-0 flex items-center gap-3 lg:gap-4 whitespace-nowrap">
+          Command your
+          <span className="bg-[#FFF200] px-5 py-1.5 lg:py-2 rounded-[16px] lg:rounded-[20px] text-black shadow-sm">
+            site.
           </span>
         </h1>
+
+        {/* Feature Checkmark Row */}
+        <div className="flex flex-wrap items-center gap-3 lg:gap-4 mt-5 lg:mt-6">
+          {[
+            "Live Digital Twin",
+            "AI-Powered Analytics",
+            "Seamless Collaboration"
+          ].map((feature, index) => (
+            <div key={index} className="flex items-center gap-2.5">
+              <div className="flex items-center gap-1.5">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF200" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span className="text-[12px] lg:text-[13px] font-bold text-gray-500 tracking-tight">
+                  {feature}
+                </span>
+              </div>
+              {index < 2 && (
+                <div className="w-1 h-1 rounded-full bg-gray-300 hidden sm:block"></div>
+              )}
+            </div>
+          ))}
+        </div>
+
       </div>
 
-      {/* RIGHT COLUMN: Aspirational Copy */}
-      <div className="lg:col-span-5 flex flex-col lg:pb-3">
-        <p className="text-xl md:text-[24px] font-medium leading-[1.5] text-gray-500 tracking-tight max-w-lg">
+      {/* RIGHT COLUMN: Subheading */}
+      <div className="lg:col-span-5 flex flex-col pt-4 lg:pt-0">
+        <p className="text-[18px] md:text-[20px] font-medium leading-relaxed text-gray-600 tracking-tight max-w-lg lg:ml-auto">
           Turn scattered data into a live digital twin. One platform for complete project visibility.
         </p>
       </div>
 
     </div>
 
-    {/* BOTTOM VISUAL: Premium Hardware-Style Image Container */}
-    <div className="relative z-10 w-full aspect-[4/3] md:aspect-[21/9] bg-[#080808] rounded-3xl lg:rounded-[40px] shadow-[0_40px_100px_rgba(0,0,0,0.15)] ring-1 ring-black/5 overflow-hidden group">
+    {/* BOTTOM VISUAL: Larger Image Box (Taller aspect ratio) */}
+    <div className="relative z-10 w-full aspect-[16/9] lg:aspect-[21/10] min-h-[450px] bg-[#080808] rounded-3xl lg:rounded-[40px] shadow-[0_30px_80px_rgba(0,0,0,0.12)] ring-1 ring-black/5 overflow-hidden group">
       
-      {/* Ambient Backlight inside the container */}
+      {/* Ambient Backlight */}
       <div className="absolute inset-0 bg-gradient-to-tr from-[#FFF200]/10 via-transparent to-transparent opacity-50 z-0"></div>
 
       {/* The Image Element */}
@@ -290,13 +314,35 @@ export const Platform: React.FC = () => {
         className="absolute inset-0 w-full h-full object-cover scale-[1.02] group-hover:scale-105 transition-transform duration-[15s] ease-out z-10 opacity-90"
       />
       
-      {/* Inner Glare / Glass Edge Overlay (Gives it that premium Apple-display feel) */}
+      {/* Inner Glare / Glass Edge */}
       <div className="absolute inset-0 rounded-3xl lg:rounded-[40px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.15)] pointer-events-none z-20"></div>
+
+      {/* UI OVERLAYS */}
+      <div className="absolute top-6 left-6 md:top-8 md:left-8 bg-white/90 backdrop-blur-md rounded-full px-4 py-2 flex items-center gap-2.5 shadow-sm z-30">
+        <div className="flex items-end gap-0.5 h-3">
+          <div className="w-1 h-3 bg-black rounded-sm animate-[pulse_1.5s_ease-in-out_infinite]"></div>
+          <div className="w-1 h-2 bg-black rounded-sm animate-[pulse_1.5s_ease-in-out_infinite_0.3s]"></div>
+          <div className="w-1 h-2.5 bg-black rounded-sm animate-[pulse_1.5s_ease-in-out_infinite_0.6s]"></div>
+        </div>
+        <span className="text-[10px] font-black text-black uppercase tracking-widest">Platform Sync Active</span>
+      </div>
+
+      <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 bg-[#1A1A1A]/95 backdrop-blur-md rounded-xl px-5 py-3 flex items-center gap-6 shadow-xl z-30 border border-white/10">
+        <div className="flex flex-col">
+          <span className="text-[8px] font-black text-gray-400 uppercase tracking-widest mb-0.5">Projects</span>
+          <span className="text-[13px] font-bold text-[#FFF200] font-mono tracking-tight">12 ACTIVE</span>
+        </div>
+        <div className="w-[1px] h-6 bg-white/20"></div>
+        <div className="flex flex-col">
+          <span className="text-[8px] font-black text-gray-400 uppercase tracking-widest mb-0.5">Last Sync</span>
+          <span className="text-[13px] font-bold text-white font-mono tracking-tight">JUST NOW</span>
+        </div>
+      </div>
       
     </div>   
 
   </div>
-</section>  
+</section>
 
     {/* ════════════════════════════════════════
           THE TRUST BAR
