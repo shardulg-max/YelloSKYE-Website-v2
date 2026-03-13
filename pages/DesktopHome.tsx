@@ -386,9 +386,10 @@ export const Home: React.FC = () => {
           
           {/* Restored Minimal Role Avatars */}
           <div className="mt-6 flex -space-x-2">
-            <div className="w-8 h-8 rounded-full border-2 border-white bg-blue-50 flex items-center justify-center text-[9px] font-black text-blue-600 shadow-sm z-30">PM</div>
-            <div className="w-8 h-8 rounded-full border-2 border-white bg-purple-50 flex items-center justify-center text-[9px] font-black text-purple-600 shadow-sm z-20">GC</div>
-            <div className="w-8 h-8 rounded-full border-2 border-white bg-green-50 flex items-center justify-center text-[9px] font-black text-green-600 shadow-sm z-10">DEV</div>
+            <div className="w-8 h-8 rounded-full border-2 border-white bg-blue-50 flex items-center justify-center text-[9px] font-black text-blue-600 shadow-sm z-30">KA</div>
+            <div className="w-8 h-8 rounded-full border-2 border-white bg-blue-50 flex items-center justify-center text-[9px] font-black text-blue-600 shadow-sm z-30">KS</div>
+            <div className="w-8 h-8 rounded-full border-2 border-white bg-purple-50 flex items-center justify-center text-[9px] font-black text-purple-600 shadow-sm z-20">PR</div>
+            <div className="w-8 h-8 rounded-full border-2 border-white bg-green-50 flex items-center justify-center text-[9px] font-black text-green-600 shadow-sm z-10">SG</div>
             <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-50 flex items-center justify-center text-[10px] font-black text-gray-500 shadow-sm z-0">+</div>
           </div>
         </div>
