@@ -158,7 +158,7 @@ export const Home: React.FC = () => {
              }} />
   {/* 1. TOP: MAXIMIZED VIDEO WINDOW (RESTORED TO 1500px WIDTH) */}
   {/* The max-w and px values here now strictly match your original container width */}
-  <div className="flex-1 w-full max-w-[1755px] mx-auto px-6 md:px-10 flex flex-col relative z-10 animate-in fade-in zoom-in-95 duration-1000">
+  <div className="flex-1 w-full max-w-[1745px] mx-auto px-6 md:px-10 flex flex-col relative z-10 animate-in fade-in zoom-in-95 duration-1000">
     
     <div className="relative w-full h-full min-h-[350px] bg-[#080808] rounded-[24px] lg:rounded-[28px] shadow-[0_20px_50px_rgba(0,0,0,0.1)] overflow-hidden group">
       <video 
@@ -180,7 +180,7 @@ export const Home: React.FC = () => {
 
   {/* 2. BOTTOM: COPY & CTA DOCK (RESTORED TO 1500px WIDTH) */}
   {/* These exact same width constraints ensure the text perfectly aligns with the video edges */}
-  <div className="w-full max-w-[1755px] mx-auto px-6 md:px-10 pt-8 lg:pt-10 shrink-0 relative z-20">
+  <div className="w-full max-w-[1745px] mx-auto px-6 md:px-10 pt-8 lg:pt-10 shrink-0 relative z-20">
     
     <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-8">
       

@@ -16,7 +16,7 @@ const INSPECTION_FEATURES = [
     id: 'chimneys',
     label: 'Chimneys',
     title: 'Vertical Stack Inspection',
-    desc: 'Safely inspect towering industrial chimneys and exhaust stacks for structural cracks, corrosion, and thermal anomalies without deploying costly scaffolding or rope access teams.',
+    desc: 'Safely inspect towering industrial chimneys and exhaust stacks for structural cracks, corrosion, and thermal anomalies.',
     gif: '/gifs/drone-facade.gif',
     fallbackImg: 'https://ik.imagekit.io/saxybrgkp/Asset%20inspection/Website%20Images%20Land%20Survey3.png',
     placeholderBg: 'bg-gray-100'
@@ -25,7 +25,7 @@ const INSPECTION_FEATURES = [
     id: 'bridges',
     label: 'Bridges',
     title: 'Structural Integrity Scans',
-    desc: 'Assess critical load-bearing components, concrete spalling, and joint integrity on expansive bridge networks without requiring hazardous under-bridge inspection units or traffic closures.',
+    desc: 'Assess critical load-bearing components, concrete spalling, and joint integrity on expansive bridge networks.',
     gif: '/gifs/interior-walkthrough.gif',
     fallbackImg: 'https://ik.imagekit.io/saxybrgkp/Asset%20inspection/Website%20Images%20Land%20Survey1.png?updatedAt=1773641166597',
     placeholderBg: 'bg-gray-100'
@@ -34,7 +34,7 @@ const INSPECTION_FEATURES = [
     id: 'windmills',
     label: 'Windmills',
     title: 'Turbine Blade Diagnostics',
-    desc: 'Perform rapid, high-resolution visual and thermal sweeps of turbine blades. Detect lightning strikes, leading-edge erosion, and structural fatigue while minimizing operational downtime.',
+    desc: 'Perform rapid, high-resolution visual & thermal sweeps of turbine blades. Detect lightning strikes, leading-edge erosion, and structural fatigue.',
     gif: '/gifs/lidar-as-built.gif', 
     fallbackImg: 'https://images.unsplash.com/photo-1581092921461-7d6560b37081?q=80&w=2000&auto=format&fit=crop',
     placeholderBg: 'bg-gray-100'
@@ -43,7 +43,7 @@ const INSPECTION_FEATURES = [
     id: 'roofs',
     label: 'Roofs',
     title: 'Expansive Roof Mapping',
-    desc: 'Execute comprehensive thermal and RGB mapping of commercial facilities. Instantly identify water pooling, membrane degradation, and malfunctioning solar panels with millimeter precision.',
+    desc: 'Execute comprehensive thermal and RGB mapping of commercial facilities.',
     gif: '/gifs/mep-inspection.gif',
     fallbackImg: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2000&auto=format&fit=crop',
     placeholderBg: 'bg-gray-100'
@@ -88,7 +88,7 @@ export const InspectionViewerSection = () => {
           </h2>
           <p className="text-lg lg:text-xl text-gray-500 font-medium leading-relaxed max-w-3xl mx-auto">
             We use aerial capture technology to document your asset with survey-grade precision. <br/>
-            Quality teams review issues remotely and tag defects in place, preventing rework costs.
+            Quality teams review issues remotely and tag defects in place, preventing rework.
           </p>
         </div>
 
