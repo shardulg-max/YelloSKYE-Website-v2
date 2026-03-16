@@ -231,8 +231,7 @@ export const ConstructionMonitoring: React.FC = () => {
 
           <div className="w-full aspect-[4/3] md:aspect-[2.2/1] rounded-[32px] lg:rounded-[40px] overflow-hidden bg-gray-100 relative shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-gray-200 group">
             <img 
-              src="https://ik.imagekit.io/saxybrgkp/Construction%20Monitoring/Website%20Images%20Land%20Survey.png" 
-              alt="Construction Monitoring Visual Timeline" 
+              src="https://ik.imagekit.io/saxybrgkp/Construction%20Monitoring/Website%20Images%20Land%20Survey%20new.png?updatedAt=1773640755116"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[20s] ease-out"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10"></div>

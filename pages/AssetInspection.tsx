@@ -494,7 +494,7 @@ export const AssetInspection: React.FC = () => {
                    <div className="absolute inset-0 bg-[#FFF200] rounded-full blur-[100px] opacity-15 pointer-events-none" style={{ animation: 'hub-glow 4s ease-in-out infinite' }}></div>
                    <div className="relative w-full max-w-[550px] aspect-[16/10] rounded-[28px] bg-black border-[3px] border-black shadow-[0_40px_100px_rgba(0,0,0,0.15)] p-0.5 transition-transform duration-700 ease-out z-20">
                       <div className="w-full h-full rounded-[24px] overflow-hidden relative bg-gray-900">
-                         <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-1000" alt="Truth Hub" />
+                         <img src="https://ik.imagekit.io/saxybrgkp/Website%20Images%20Land%20Survey6.png?updatedAt=1773637747328" className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-1000" alt="Truth Hub" />
                          <div className="absolute top-1/2 -translate-y-1/2 left-4 bg-white/95 backdrop-blur-xl px-5 py-4 rounded-[20px] shadow-2xl border border-white/60 flex flex-col items-start">
                             <Globe size={20} className="text-[#D4C900] mb-1.5" />
                             <div className="text-[8px] font-bold uppercase tracking-[0.2em] text-gray-400">Single Source</div>
