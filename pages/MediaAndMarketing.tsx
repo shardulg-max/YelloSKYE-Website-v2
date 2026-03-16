@@ -144,8 +144,22 @@ const FLOOR_VIEWS = [
     time: 'Morning' 
   }
 ];
+
 export const FloorPickerModule = () => {
-  const [activeFloor, setActiveFloor] = useState(0);
+  // Start at index 3 (6th Floor)
+  const [activeFloor, setActiveFloor] = useState(3);
+
+  // Auto-play from bottom to top every 500ms
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveFloor((prev) => {
+        if (prev === 0) return 3; // If at Terrace (0), loop back to 6th Floor (3)
+        return prev - 1;          // Otherwise, move up the building (decrease index)
+      });
+    }, 500); // Exactly half a second
+
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section className="bg-white py-16 lg:py-24 relative overflow-hidden font-sans">
@@ -158,7 +172,7 @@ export const FloorPickerModule = () => {
               <div className="absolute -top-[2px] right-24 w-12 h-[3px] bg-[#1a1a1a] rounded-t-md border-x border-[#333]"></div>
               <div className="relative flex-1 w-full rounded-[34px] overflow-hidden bg-black shadow-inner min-h-[400px]">
                 {FLOOR_VIEWS.map((floor, idx) => (
-                  <div key={floor.id} className={`absolute inset-0 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${activeFloor === idx ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 z-0'}`}>
+                  <div key={floor.id} className={`absolute inset-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${activeFloor === idx ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 z-0'}`}>
                     <img src={floor.img} className="w-full h-full object-cover brightness-95" alt={floor.level} />
                     <div className="absolute top-6 left-6 right-6 flex justify-between items-start">
                       <div className="bg-black/60 backdrop-blur-xl px-4 py-2.5 rounded-full border border-white/10 shadow-lg flex items-center gap-2.5">

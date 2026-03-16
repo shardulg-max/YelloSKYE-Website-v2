@@ -23,7 +23,7 @@ export const About: React.FC = () => {
       name: "Kiran Shah",
       title: "Chairman & MD",
       image: "https://ik.imagekit.io/saxybrgkp/MME/YelloSkye%20Kiran%20Shah.jpg",
-      linkedin: "https://linkedin.com/company/yelloskye", // Update to actual link
+      linkedin: "https://www.linkedin.com/in/kiran-shah-522509113/",
       bio: (
         <>
           <p className="mb-6">
@@ -39,7 +39,7 @@ export const About: React.FC = () => {
       name: "Kush Agarwal",
       title: "Co-Founder & CEO",
       image: "https://ik.imagekit.io/saxybrgkp/MME/YelloSkye%20Drone%20Expertise.jpg",
-      linkedin: "https://linkedin.com/in/kush-agarwal",
+      linkedin: "https://www.linkedin.com/in/captkushagarwal/",
       bio: (
         <>
           <p className="mb-6">
@@ -493,17 +493,20 @@ export const About: React.FC = () => {
                  </div>
               </div>
             </div>
-
-            {/* Map Area: Blended perfectly into the background */}
+{/* Map Area: Blended perfectly into the background */}
             <div className="lg:col-span-7 relative h-[500px] lg:h-[700px] flex items-center justify-center">
                <img 
                  src="https://ik.imagekit.io/saxybrgkp/MME/final.png?updatedAt=1773650468380" 
-                 // mix-blend-screen instantly hides the image's black background!
+                 // The mix-blend removes the black background
                  className="w-full h-full object-contain mix-blend-screen opacity-90" 
                  alt="National Footprint Map" 
+                 // This mask smoothly fades out the outer 5% of the image, erasing any hard border lines from the file
+                 style={{
+                   maskImage: "radial-gradient(ellipse at center, black 85%, transparent 100%)",
+                   WebkitMaskImage: "radial-gradient(ellipse at center, black 85%, transparent 100%)"
+                 }}
                />
             </div>
-
           </div>
         </div>
       </section>
