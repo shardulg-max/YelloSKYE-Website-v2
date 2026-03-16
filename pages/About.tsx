@@ -106,7 +106,7 @@ export const About: React.FC = () => {
               {/* aspect-square and max-w-[500px] enforce the exact shape from your screenshot */}
               <div className="relative aspect-square w-full max-w-[500px] overflow-hidden rounded-[40px] shadow-[0_40px_100px_rgba(0,0,0,0.15)] bg-gray-100 border border-gray-100">
                 <img 
-                  src="https://ik.imagekit.io/saxybrgkp/uploaded:Screenshot%202026-03-16%20at%2017.27.18.png-0bb12f86-90e1-450a-bc6d-467262f2f3f9" 
+                  src="https://ik.imagekit.io/saxybrgkp/MME/Prayag%20Photo%20Website.webp" 
                   className="w-full h-full object-cover" 
                   alt="Drone Pilot Operations" 
                 />
