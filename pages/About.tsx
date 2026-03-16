@@ -55,7 +55,7 @@ export const About: React.FC = () => {
       <AboutStyles />
 
      {/* ════════════════════════════════════════
-          1. HERO (WIDER IMAGE)
+          1. HERO (PERFECT FIT & WIDER IMAGE)
       ════════════════════════════════════════ */}
       <section className="pt-24 md:pt-32 lg:pt-44 pb-12 lg:pb-20 relative overflow-hidden bg-white">
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
@@ -67,18 +67,17 @@ export const About: React.FC = () => {
              }} />
              
         <div className="max-w-[1450px] mx-auto px-6 lg:px-10 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             
-            {/* LEFT SIDE: Copy (Increased to 6 columns for balance) */}
-            <div className="lg:col-span-5 flex flex-col justify-center items-start">
+            {/* LEFT SIDE: Copy (7 columns for breathing room, removed nowrap that caused overlap) */}
+            <div className="lg:col-span-7 flex flex-col justify-center items-start">
               
-              {/* Forced 3-Line Heading */}
-              <h1 className="flex flex-col items-start text-[clamp(40px,4.5vw,78px)] font-black tracking-tighter leading-[1.02] text-black mb-14">
-                <span className="whitespace-nowrap">We exist to make</span>
-                <span className="whitespace-nowrap mt-1">the built environment</span>
-                <span className="relative inline-block mt-2 lg:mt-3 w-fit">
-                  <span className="absolute inset-y-1 lg:inset-y-2 -inset-x-3 lg:-inset-x-4 bg-[#FFF200] rounded-xl lg:rounded-2xl shadow-sm"></span>
-                  <span className="relative text-black whitespace-nowrap px-2">trustworthy.</span>
+              <h1 className="text-[clamp(44px,5vw,78px)] font-black tracking-tighter leading-[1.05] text-black mb-12">
+                We exist to make <br />
+                the built environment <br />
+                <span className="relative inline-block mt-2 lg:mt-3">
+                  <span className="absolute inset-y-1 lg:inset-y-2 -inset-x-3 lg:-inset-x-4 bg-[#FFF200] rounded-xl lg:rounded-2xl shadow-sm transform -skew-x-2"></span>
+                  <span className="relative text-black px-2">trustworthy.</span>
                 </span>
               </h1>
 
@@ -90,7 +89,7 @@ export const About: React.FC = () => {
                   { label: "Decision Confidence", desc: "Enable action without second-guessing site conditions.", icon: <ShieldCheck size={18} /> }
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-4 group cursor-default">
-                    <div className="w-10 h-10 rounded-xl bg-[#FFF200] flex items-center justify-center shrink-0 mt-1 shadow-[0_8px_20px_rgba(255,242,0,0.3)] group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-10 h-10 rounded-xl bg-[#FFF200] flex items-center justify-center shrink-0 mt-1 shadow-[0_8px_20px_rgba(255,242,0,0.3)]">
                       <div className="text-black">{item.icon}</div>
                     </div>
                     <div>
@@ -102,16 +101,14 @@ export const About: React.FC = () => {
               </div>
             </div>
 
-            {/* RIGHT SIDE: Wider Image */}
-            <div className="lg:col-span-6 relative mt-12 lg:mt-0">
-              {/* CHANGED: aspect-[4/3] makes the image wide and rectangular instead of tall */}
-              <div className="relative aspect-[4/3] lg:aspect-[16/11] w-full overflow-hidden rounded-[40px] shadow-[0_40px_100px_rgba(0,0,0,0.15)] group">
+            {/* RIGHT SIDE: Perfect fitting image box (5 columns) */}
+            <div className="lg:col-span-5 relative mt-12 lg:mt-0 w-full">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[40px] shadow-[0_40px_100px_rgba(0,0,0,0.15)] bg-gray-100">
                 <img 
                   src="https://i.ibb.co/LX00P9s0/Screenshot-2026-02-24-at-12-58-21.png" 
-                  className="w-full h-full object-cover grayscale-[10%] group-hover:scale-105 transition-transform duration-[10s] ease-out" 
+                  className="w-full h-full object-cover grayscale-[10%]" 
                   alt="Site Intelligence Visual" 
                 />
-                <div className="absolute inset-0 rounded-[40px] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.1)] pointer-events-none"></div>
               </div>
             </div>
 
@@ -454,11 +451,11 @@ export const About: React.FC = () => {
         </div>
       </section>
       {/* ════════════════════════════════════════
-          5. NATIONAL COVERAGE: FULL BLACK BG + NO IMAGE BOX
+          5. NATIONAL COVERAGE (BLENDED MAP)
       ════════════════════════════════════════ */}
       <section className="py-24 lg:py-40 bg-[#0A0A0A] relative overflow-hidden text-white">
         
-        <div className="absolute inset-0 fade-grid" />
+        <div className="absolute inset-0 fade-grid pointer-events-none" />
 
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
           <div className="grid lg:grid-cols-12 gap-16 items-center">
@@ -496,11 +493,12 @@ export const About: React.FC = () => {
               </div>
             </div>
 
-            {/* Map Area: Floating freely without a box */}
+            {/* Map Area: Blended perfectly into the background */}
             <div className="lg:col-span-7 relative h-[500px] lg:h-[700px] flex items-center justify-center">
                <img 
-                 src="https://ik.imagekit.io/saxybrgkp/MME/final.png?updatedAt=1773650468380" 
-                 className="w-full h-full object-contain drop-shadow-[0_0_50px_rgba(255,242,0,0.1)]" 
+                 src="https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey.png" 
+                 // mix-blend-screen instantly hides the image's black background!
+                 className="w-full h-full object-contain mix-blend-screen opacity-90" 
                  alt="National Footprint Map" 
                />
             </div>
