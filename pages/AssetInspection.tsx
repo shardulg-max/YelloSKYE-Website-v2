@@ -10,154 +10,25 @@ import {
   ArrowUpRight, Sun, Factory, Building,
 } from 'lucide-react';
 
-const AssetInspectionUseCases = () => {
-  const useCases = [
-    {
-      title: "Solar Power Farms",
-      img: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=1600",
-      icon: <Sun size={18} />,
-      bullets: ["Thermal anomaly detection", "Panel degradation tracking", "Automated defect reporting"]
-    },
-    {
-      title: "Power Transmission",
-      img: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?q=80&w=1600",
-      icon: <Zap size={18} />,
-      bullets: ["Corrosion & rust identification", "Vegetation encroachment analysis", "Safe high-voltage inspections"]
-    },
-    {
-      title: "Industrial Chimneys",
-      img: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=1600",
-      icon: <Factory size={18} />,
-      bullets: ["Zero-scaffolding drone scans", "Crack and spalling detection", "Regulatory compliance records"]
-    },
-    {
-      title: "Corporate Facilities",
-      img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600",
-      icon: <Building size={18} />,
-      bullets: ["Roof condition & leak analysis", "HVAC thermal inspections", "Preventative maintenance logs"]
-    },
-    {
-      title: "Real Estate Facades",
-      img: "https://images.unsplash.com/photo-1555255707-c07966088b7b?q=80&w=1600",
-      icon: <Building2 size={18} />,
-      bullets: ["Millimeter-accurate surface mapping", "Water ingress & sealant failure", "Safe, rope-free surveying"]
-    },
-    {
-      title: "Bridges & Utilities",
-      img: "https://images.unsplash.com/photo-1513334752251-502a11b66723?q=80&w=1600",
-      icon: <ShieldCheck size={18} />,
-      bullets: ["Structural fatigue monitoring", "Underside concrete spalling", "Digitized infrastructure records"]
-    }
-  ];
-
-  return (
-    <section className="bg-white py-12 lg:py-16 font-sans overflow-hidden border-gray-100">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-        
-        {/* Section Header - Split Layout and Compact Spacing */}
-        <div className="grid lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-8 lg:mb-10">
-          <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-50 border border-gray-200 text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-4">
-              Inspection Scopes
-            </div>
-            <h2 className="text-[clamp(28px,3.5vw,48px)] font-black tracking-tighter leading-[1.05] text-black">
-              Intelligence that ensures <br /> 
-              <span className="relative inline-block mt-1">
-                <span className="absolute inset-y-1 -inset-x-2 bg-[#FFF200] rounded-lg shadow-sm transform -skew-x-2"></span>
-                <span className="relative text-black">structural integrity.</span>
-              </span>
-            </h2>
-          </div>
-          <div className="lg:col-span-5">
-            <p className="text-[15px] lg:text-base text-gray-500 font-medium leading-relaxed pb-1 lg:pb-2">
-              From high-risk industrial stacks to sprawling corporate campuses, we provide the visual decision infrastructure required to detect defects and maintain compliance safely.
-            </p>
-          </div>
-        </div>
-
-        {/* Use Case Grid - Tightened row and column gaps */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
-          {useCases.map((uc, i) => (
-            <div key={i} className="group relative flex flex-col h-full">
-              
-              {/* Image Container - Glitch-free rounded corners */}
-              <div 
-                className="relative aspect-[4/3] rounded-[20px] overflow-hidden mb-4 bg-gray-100 border border-gray-100 shadow-sm transition-all duration-300 group-hover:shadow-md group-hover:border-[#FFF200]/80 group-hover:-translate-y-1 z-10 transform-gpu"
-                style={{ WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}
-              >
-                <img 
-                  src={uc.img} 
-                  alt={uc.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                
-                {/* Visual Overlay Button */}
-                <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/90 backdrop-blur shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                  <ArrowUpRight size={14} className="text-black" />
-                </div>
-
-                {/* Bottom Label Overlay (Dashboard Style) */}
-                <div className="absolute bottom-3 left-3 right-3 bg-black/80 backdrop-blur-md p-2 rounded-xl border border-white/10 flex items-center gap-2.5">
-                  <div className="w-6 h-6 rounded-lg bg-[#FFF200] flex items-center justify-center text-black shrink-0">
-                    {uc.icon}
-                  </div>
-                  <span className="text-[10px] font-black text-white uppercase tracking-widest truncate">{uc.title}</span>
-                </div>
-              </div>
-
-              {/* Text Content - Tighter leading and spacing */}
-              <div className="px-1 flex flex-col flex-1">
-                <h4 className="text-[16px] lg:text-[17px] font-black text-black mb-2 tracking-tight group-hover:text-[#D4C900] transition-colors">{uc.title}</h4>
-                <ul className="space-y-1.5 mt-auto">
-                  {uc.bullets.map((bullet, idx) => (
-                    <li key={idx} className="flex items-start gap-2.5 text-[12px] text-gray-500 font-medium leading-tight">
-                      <div className="w-1 h-1 rounded-full bg-[#FFF200] shrink-0 mt-[6px]" />
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-            </div>
-          ))}
-        </div>
-
-        {/* Global Footer Callout - Compact Version */}
-        <div className="mt-12 lg:mt-16 p-8 lg:p-10 rounded-[28px] bg-[#0A0A0A] text-white flex flex-col md:flex-row items-center justify-between gap-6 border border-white/5 shadow-xl relative overflow-hidden group">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFF200]/10 blur-[100px] group-hover:bg-[#FFF200]/20 transition-all duration-700" />
-          <div className="relative z-10 max-w-2xl">
-             <h3 className="text-2xl lg:text-3xl font-black tracking-tight mb-2">Have a specialized asset?</h3>
-             <p className="text-gray-400 text-sm font-medium leading-relaxed">Our reality capture technology is adaptable to almost any infrastructure environment. We can custom-build an inspection protocol for your exact safety and compliance needs.</p>
-          </div>
-          <button className="relative z-10 px-6 py-3.5 bg-[#FFF200] text-black font-black uppercase text-[11px] tracking-widest rounded-xl hover:bg-white transition-all shadow-[0_10px_20px_rgba(255,242,0,0.15)] shrink-0">
-            Custom Inspection Request
-          </button>
-        </div>
-
-      </div>
-    </section>
-  );
-};
-
 // ─── DATA: INTERACTIVE INSPECTION VIEWER ───────────────────────────────────────
 
 const INSPECTION_FEATURES = [
-  {
-    id: 'interior-360',
-    label: '360° Interior Walkthrough',
-    title: 'Digital Twins of Every Floor',
-    desc: 'Replace manual walkthroughs with comprehensive 360° documentation. Capture every rack, zone, and MEP system with timestamped precision.',
-    gif: '/gifs/interior-walkthrough.gif',
-    fallbackImg: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000&auto=format&fit=crop',
-    placeholderBg: 'bg-gray-100'
-  },
   {
     id: 'facade',
     label: 'Drone Facade Scan',
     title: 'High-Res Vertical Inspection',
     desc: 'Inspect hard-to-reach areas for cracks, water ingress, and structural damage without scaffolding or rope access. AI-assisted defect detection.',
     gif: '/gifs/drone-facade.gif',
-    fallbackImg: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2000&auto=format&fit=crop',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/Asset%20inspection/Website%20Images%20Land%20Survey3.png',
+    placeholderBg: 'bg-gray-100'
+  },
+  {
+    id: 'interior-360',
+    label: '360° Interior Walkthrough',
+    title: 'Digital Twins of Every Floor',
+    desc: 'Replace manual walkthroughs with comprehensive 360° documentation. Capture every rack, zone, and MEP system with timestamped precision.',
+    gif: '/gifs/interior-walkthrough.gif',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/Asset%20inspection/Website%20Images%20Land%20Survey1.png?updatedAt=1773641166597',
     placeholderBg: 'bg-gray-100'
   },
   {
@@ -303,7 +174,7 @@ export const AssetInspection: React.FC = () => {
     </div>
 
     <div className="w-full aspect-[4/3] md:aspect-[2.2/1] rounded-[32px] lg:rounded-[40px] overflow-hidden bg-gray-100 relative shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-gray-200 group">
-      <img src="https://i.ibb.co/bRvWZb7N/Screenshot-2026-02-24-at-10-56-02.png" alt="Asset Inspection Interface" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[20s] ease-out" />
+      <img src="https://ik.imagekit.io/saxybrgkp/Asset%20inspection/Website%20Images%20Land%20Survey.png?updatedAt=1773641166632" alt="Asset Inspection Interface" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[20s] ease-out" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10"></div>
       
       {/* Floating UI Elements */}
@@ -495,11 +366,6 @@ export const AssetInspection: React.FC = () => {
                    <div className="relative w-full max-w-[550px] aspect-[16/10] rounded-[28px] bg-black border-[3px] border-black shadow-[0_40px_100px_rgba(0,0,0,0.15)] p-0.5 transition-transform duration-700 ease-out z-20">
                       <div className="w-full h-full rounded-[24px] overflow-hidden relative bg-gray-900">
                          <img src="https://ik.imagekit.io/saxybrgkp/Website%20Images%20Land%20Survey6.png?updatedAt=1773637747328" className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-1000" alt="Truth Hub" />
-                         <div className="absolute top-1/2 -translate-y-1/2 left-4 bg-white/95 backdrop-blur-xl px-5 py-4 rounded-[20px] shadow-2xl border border-white/60 flex flex-col items-start">
-                            <Globe size={20} className="text-[#D4C900] mb-1.5" />
-                            <div className="text-[8px] font-bold uppercase tracking-[0.2em] text-gray-400">Single Source</div>
-                            <div className="text-[12px] font-black uppercase tracking-tight text-black">Inspection Truth</div>
-                         </div>
                       </div>
                    </div>
                 </div>

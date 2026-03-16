@@ -11,18 +11,18 @@ import {
 
 const UseCaseSection = () => {
   const useCases = [
-    { title: "Aerial Virtual Tour", img: "https://i.ibb.co/6RGR0mK/Aerial-Virtual-Tour.jpg", icon: <Globe size={18} />, bullets: ["Dynamic site navigation", "Interactive location hotspots", "Integrated Google Map context"] },
-    { title: "Drone Location Video", img: "https://i.ibb.co/hRvqSgC/Drone-Location.jpg", icon: <Video size={18} />, bullets: ["Cinematic site overviews", "Facility & amenity spotlight", "Immersive exploration experience"] },
-    { title: "Interior Virtual Tour", img: "https://i.ibb.co/p38Yj9z/Interior-Virtual-Tour.jpg", icon: <Building2 size={18} />, bullets: ["Immersive 3D walk-throughs", "CRM-integrated sales tool", "Embed brochures and collateral"] },
-    { title: "Interactive 360° Floor Picker", img: "https://i.ibb.co/K2Z9rXv/Floor-Picker.jpg", icon: <LayoutGrid size={18} />, bullets: ["Multi-floor view previews", "Day/Night lighting toggles", "Master plan & location hotspots"] },
-    { title: "Project Location Animation", img: "https://i.ibb.co/xX4Vv0S/Location-Animation.jpg", icon: <Map size={18} />, bullets: ["Showcase access routes", "Highlight upcoming infrastructure", "Social micro-market insights"] },
-    { title: "3D Superimpose", img: "https://i.ibb.co/SrtpT2M/3D-Superimpose.jpg", icon: <Layers size={18} />, bullets: ["Visualize projects before completion", "Real-world context alignment", "Investor-grade renderings"] },
-    { title: "Construction Progress Film", img: "https://i.ibb.co/y4X9L7p/Construction-Monitoring.jpg", icon: <Activity size={18} />, bullets: ["Monthly progress tracking", "Automated time-lapse generation", "Side-by-side comparison"] },
-    { title: "FPV Storytelling", img: "https://i.ibb.co/L5hYFpX/FPV-Videos.jpg", icon: <Play size={18} />, bullets: ["High-speed complex fly-throughs", "Unique site perspectives", "Ad-ready social content"] },
-    { title: "Plot Live Inventory", img: "https://i.ibb.co/YyYf85r/Plot-Inventory.jpg", icon: <Box size={18} />, bullets: ["Real-time inventory mapping", "Visual customer buying guide", "Interactive plot selection"] },
-    { title: "Live Cam Stream", img: "https://i.ibb.co/mRT8vK1/Live-Cam.jpg", icon: <Camera size={18} />, bullets: ["24/7 real-time site views", "Stakeholder transparency", "Weather & site safety monitoring"] },
-    { title: "Corporate & Training Films", img: "https://i.ibb.co/Lkhm706/Corporate-Training.jpg", icon: <Users size={18} />, bullets: ["Safety protocol demonstrations", "Process optimization visuals", "Immersive learning modules"] },
-    { title: "360° VR Experience", img: "https://i.ibb.co/TMWfF9xV/360-Videos.jpg", icon: <Maximize2 size={18} />, bullets: ["Full VR headset compatibility", "Interactive post-production", "Shorten sales closing cycles"] }
+    { title: "Aerial Virtual Tour", img: "https://ik.imagekit.io/saxybrgkp/MME/website/Aerial%20Virtual%20Tour.png", icon: <Globe size={18} />, bullets: ["Dynamic site navigation", "Interactive location hotspots", "Integrated Google Map context"] },
+    { title: "Drone Location Video", img: "https://ik.imagekit.io/saxybrgkp/MME/website/Drone%20Location%20Video.png", icon: <Video size={18} />, bullets: ["Cinematic site overviews", "Facility & amenity spotlight", "Immersive exploration experience"] },
+    { title: "Interior Virtual Tour", img: "https://ik.imagekit.io/saxybrgkp/MME/website/Interior%20Virtual%20Tour.png", icon: <Building2 size={18} />, bullets: ["Immersive 3D walk-throughs", "CRM-integrated sales tool", "Embed brochures and collateral"] },
+    { title: "Interactive 360° Floor Picker", img: "https://ik.imagekit.io/saxybrgkp/MME/website/360%20Floor%20Picker.png", icon: <LayoutGrid size={18} />, bullets: ["Multi-floor view previews", "Day/Night lighting toggles", "Master plan & location hotspots"] },
+    { title: "Project Location Animation", img: "https://ik.imagekit.io/saxybrgkp/MME/website/Project%20Location%20Animation.png", icon: <Map size={18} />, bullets: ["Showcase access routes", "Highlight upcoming infrastructure", "Social micro-market insights"] },
+    { title: "3D Superimpose", img: "https://ik.imagekit.io/saxybrgkp/MME/website/3D%20Superimpose%20YelloSkye.png", icon: <Layers size={18} />, bullets: ["Visualize projects before completion", "Real-world context alignment", "Investor-grade renderings"] },
+    { title: "Construction Progress Film", img: "https://ik.imagekit.io/saxybrgkp/MME/website/Construction%20Monitoring%20Video.png", icon: <Activity size={18} />, bullets: ["Monthly progress tracking", "Automated time-lapse generation", "Side-by-side comparison"] },
+    { title: "FPV Storytelling", img: "https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey6.png?updatedAt=1773643277564", icon: <Play size={18} />, bullets: ["High-speed complex fly-throughs", "Unique site perspectives", "Ad-ready social content"] },
+    { title: "Plot Live Inventory", img: "https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey5.png?updatedAt=1773643277583", icon: <Box size={18} />, bullets: ["Real-time inventory mapping", "Visual customer buying guide", "Interactive plot selection"] },
+    { title: "Live Cam Stream", img: "https://ik.imagekit.io/saxybrgkp/MME/website/Live%20Cam%20YelloSkye.png", icon: <Camera size={18} />, bullets: ["24/7 real-time site views", "Stakeholder transparency", "Weather & site safety monitoring"] },
+    { title: "Corporate & Training Films", img: "https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey.png?updatedAt=1773643277575", icon: <Users size={18} />, bullets: ["Safety protocol demonstrations", "Process optimization visuals", "Immersive learning modules"] },
+    { title: "360° VR Experience", img: "https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey4.png?updatedAt=1773643277655", icon: <Maximize2 size={18} />, bullets: ["Full VR headset compatibility", "Interactive post-production", "Shorten sales closing cycles"] }
   ];
 
   return (
@@ -115,7 +115,7 @@ const FLOOR_VIEWS = [
     level: 'Terrace Floor', 
     height: '55m', 
     desc: 'Exclusive Open-Air Panoramic Vantage', 
-    img: 'https://images.unsplash.com/photo-1542361345-89e58247f2d5?q=80&w=2000&auto=format&fit=crop', 
+    img: 'https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey%20final.png', 
     time: 'Sunset' 
   },
   { 
@@ -124,7 +124,7 @@ const FLOOR_VIEWS = [
     level: '15th Floor', 
     height: '45m', 
     desc: 'Elevated Skyline & Cityscape Views', 
-    img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000&auto=format&fit=crop', 
+    img: 'https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey9.png?updatedAt=1773643277365', 
     time: 'Daytime' 
   },
   { 
@@ -132,7 +132,7 @@ const FLOOR_VIEWS = [
     level: '9th Floor', 
     height: '27m', 
     desc: 'Mid-Rise Neighborhood Context', 
-    img: 'https://images.unsplash.com/photo-1496560238219-629bd6620060?q=80&w=2000&auto=format&fit=crop', 
+    img: 'https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey7.png?updatedAt=1773643277489', 
     time: 'Daytime' 
   },
   { 
@@ -140,7 +140,7 @@ const FLOOR_VIEWS = [
     level: '6th Floor', 
     height: '18m', 
     desc: 'Canopy Level & Street Connection', 
-    img: 'https://images.unsplash.com/photo-1449156001533-cb39c8524d1b?q=80&w=2000&auto=format&fit=crop', 
+    img: 'https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey8.png?updatedAt=1773643277387', 
     time: 'Morning' 
   }
 ];
@@ -245,11 +245,11 @@ export const FloorPickerModule = () => {
 // ─── DATA: DYNAMIC SHOWCASE ───────────────────────────────────────────────
 
 const SHOWCASE_OFFERINGS = [
-  { title: "Cinematic Aerial Videos", label: "Professional Editing", desc: "Professionally color-graded 4K aerial shots that showcase site scale and grandeur.", img: "https://images.unsplash.com/photo-1473177104440-ffe2f376098c?q=80&w=2000" },
-  { title: "Progress Timelapses", label: "Construction Evolution", desc: "Compress months of construction grit into seconds of glory for investor updates.", img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2000" },
-  { title: "360° Virtual Tours", label: "Remote Walkthroughs", desc: "Let buyers explore units remotely from anywhere, on any device, with immersive tours.", img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2000" },
-  { title: "FPV Flythrough Videos", label: "Immersive Drone Racing", desc: "Heart-pounding POV drone racing through tight interior structures for high-impact marketing.", img: "https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=2000" },
-  { title: "High-Resolution Photography", label: "Marketing Ready", desc: "Professional-grade imagery for brochures, websites, and advertising capturing the golden hour.", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000" }
+  { title: "Cinematic Aerial Videos", label: "Professional Editing", desc: "Professionally color-graded 4K aerial shots that showcase site scale and grandeur.", img: "https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey3.png?updatedAt=1773643277664" },
+  { title: "Progress Timelapses", label: "Construction Evolution", desc: "Compress months of construction grit into seconds of glory for investor updates.", img: "https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey34.png" },
+  { title: "360° Virtual Tours", label: "Remote Walkthroughs", desc: "Let buyers explore units remotely from anywhere, on any device, with immersive tours.", img: "https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey4.png?updatedAt=1773643277655" },
+  { title: "FPV Flythrough Videos", label: "Immersive Drone Racing", desc: "Heart-pounding POV drone racing through tight interior structures for high-impact marketing.", img: "https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey2.png?updatedAt=1773643277686" },
+  { title: "High-Resolution Photography", label: "Marketing Ready", desc: "Professional-grade imagery for brochures, websites, and advertising capturing the golden hour.", img: "https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey6.png?updatedAt=1773643277564" }
 ];
 
 // ─── SUB-COMPONENT: EDITORIAL SHOWCASE ───────────────────────────────
@@ -362,7 +362,7 @@ export const MediaMarketing: React.FC = () => {
           </div>
 
           <div className="w-full aspect-[4/3] md:aspect-[2.2/1] rounded-[32px] lg:rounded-[40px] overflow-hidden bg-gray-100 relative shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-gray-200 group">
-            <img src="https://images.unsplash.com/photo-1473177104440-ffe2f376098c?q=80&w=2500&auto=format&fit=crop" alt="Cinematic Project Showcase" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[20s] ease-out" />
+            <img src="https://images.unsplash.com/photo-1473177104440-ffe2f376098c?q=80&w=2500&auto=format&fit=crop" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[20s] ease-out" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10"></div>
 
             <div className="absolute top-6 left-6 lg:top-8 lg:left-8 bg-white/60 backdrop-blur-2xl px-5 py-3 rounded-2xl flex items-center gap-3 shadow-lg border border-white/50">
@@ -488,7 +488,7 @@ export const MediaMarketing: React.FC = () => {
                    <div className="absolute inset-0 bg-[#FFF200] rounded-full blur-[100px] opacity-15 pointer-events-none" style={{ animation: 'hub-glow 4s ease-in-out infinite' }}></div>
                    <div className="relative w-full max-w-[550px] aspect-square rounded-[28px] bg-black border-[3px] border-black shadow-[0_40px_100px_rgba(0,0,0,0.15)] p-0.5 z-20 overflow-hidden">
                       <div className="w-full h-full rounded-[24px] overflow-hidden relative">
-                         <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" alt="Truth Hub" />
+                         <img src="https://ik.imagekit.io/saxybrgkp/Website%20Images%20Land%20Survey6.png?updatedAt=1773637747328" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" alt="Truth Hub" />
                          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
                             <Video size={48} className="text-[#FFF200] group-hover:scale-125 transition-transform" />
                          </div>
