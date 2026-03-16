@@ -102,7 +102,7 @@ export const About: React.FC = () => {
             </div>
 
             {/* RIGHT SIDE: Perfect fitting image box (5 columns) */}
-            <div className="lg:col-span-6 relative mt-12 lg:mt-0 w-full">
+            <div className="lg:col-span-5 relative mt-12 lg:mt-0 w-full">
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[40px] shadow-[0_40px_100px_rgba(0,0,0,0.15)] bg-gray-100">
                 <img 
                   src="https://ik.imagekit.io/saxybrgkp/MME/Prayag%20Photo%20Website.webp" 
