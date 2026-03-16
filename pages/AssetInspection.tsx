@@ -10,40 +10,40 @@ import {
   ArrowUpRight, Sun, Factory, Building,
 } from 'lucide-react';
 
-// ─── DATA: INTERACTIVE INSPECTION VIEWER ───────────────────────────────────────
+/// ─── DATA: INTERACTIVE INSPECTION VIEWER ───────────────────────────────────────
 const INSPECTION_FEATURES = [
   {
-    id: 'facade',
-    label: 'Drone Facade Scan',
-    title: 'High-Res Vertical Inspection',
-    desc: 'Inspect hard-to-reach areas for cracks, water ingress, and structural damage without scaffolding or rope access. AI-assisted defect detection.',
+    id: 'chimneys',
+    label: 'Chimneys',
+    title: 'Vertical Stack Inspection',
+    desc: 'Safely inspect towering industrial chimneys and exhaust stacks for structural cracks, corrosion, and thermal anomalies without deploying costly scaffolding or rope access teams.',
     gif: '/gifs/drone-facade.gif',
     fallbackImg: 'https://ik.imagekit.io/saxybrgkp/Asset%20inspection/Website%20Images%20Land%20Survey3.png',
     placeholderBg: 'bg-gray-100'
   },
   {
-    id: 'interior-360',
-    label: '360° Interior Walkthrough',
-    title: 'Digital Twins of Every Floor',
-    desc: 'Replace manual walkthroughs with comprehensive 360° documentation. Capture every rack, zone, and MEP system with timestamped precision.',
+    id: 'bridges',
+    label: 'Bridges',
+    title: 'Structural Integrity Scans',
+    desc: 'Assess critical load-bearing components, concrete spalling, and joint integrity on expansive bridge networks without requiring hazardous under-bridge inspection units or traffic closures.',
     gif: '/gifs/interior-walkthrough.gif',
     fallbackImg: 'https://ik.imagekit.io/saxybrgkp/Asset%20inspection/Website%20Images%20Land%20Survey1.png?updatedAt=1773641166597',
     placeholderBg: 'bg-gray-100'
   },
   {
-    id: 'lidar',
-    label: 'LiDAR Verification',
-    title: 'Millimeter-Grade As-Built',
-    desc: 'Verify design vs. reality. LiDAR scans validate room dimensions, ceiling heights, and floor tolerances against design specs instantly.',
+    id: 'windmills',
+    label: 'Windmills',
+    title: 'Turbine Blade Diagnostics',
+    desc: 'Perform rapid, high-resolution visual and thermal sweeps of turbine blades. Detect lightning strikes, leading-edge erosion, and structural fatigue while minimizing operational downtime.',
     gif: '/gifs/lidar-as-built.gif', 
     fallbackImg: 'https://images.unsplash.com/photo-1581092921461-7d6560b37081?q=80&w=2000&auto=format&fit=crop',
     placeholderBg: 'bg-gray-100'
   },
   {
-    id: 'mep',
-    label: 'MEP Documentation',
-    title: 'Pre-Slab Digital Record',
-    desc: 'Capture conduit and pipe layouts before slabs are poured. Create a permanent, searchable visual record for facility maintenance.',
+    id: 'roofs',
+    label: 'Roofs',
+    title: 'Expansive Roof Mapping',
+    desc: 'Execute comprehensive thermal and RGB mapping of commercial facilities. Instantly identify water pooling, membrane degradation, and malfunctioning solar panels with millimeter precision.',
     gif: '/gifs/mep-inspection.gif',
     fallbackImg: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2000&auto=format&fit=crop',
     placeholderBg: 'bg-gray-100'
@@ -64,7 +64,7 @@ export const InspectionViewerSection = () => {
   }, [activeIndex, isHovered]);
 
   return (
-    <section className="relative bg-white pt-10 lg:pt-16 pb-24 lg:pb-32 overflow-hidden font-sans border-gray-100">
+    <section className="relative bg-white pt-24 lg:pt-36 pb-24 lg:pb-32 overflow-hidden font-sans border-gray-100">
       
       <style>{`
         @keyframes interactive-progress { from { width: 0%; } to { width: 100%; } }
@@ -87,7 +87,8 @@ export const InspectionViewerSection = () => {
             </span>
           </h2>
           <p className="text-lg lg:text-xl text-gray-500 font-medium leading-relaxed max-w-3xl mx-auto">
-            YelloSKYE captures MEP systems, facades, and interiors with survey-grade precision. Quality teams review issues remotely and tag defects in place—preventing punch-list fatigue.
+            We use aerial capture technology to document your asset with survey-grade precision. <br/>
+            Quality teams review issues remotely and tag defects in place, preventing rework costs.
           </p>
         </div>
 
