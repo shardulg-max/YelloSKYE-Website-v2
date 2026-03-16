@@ -298,35 +298,33 @@ export const LandSurvey: React.FC = () => {
         </div>
       </section>
 
-      
-
-      {/* ════════════════════════════════════════
-          TERRAIN REPRESENTATION (INTERACTIVE TABS) 
-      ════════════════════════════════════════ */}
-      <TerrainRepresentationSection />
       {/* ====================== COMPARISON SECTION ====================== */}
-<section className="relative bg-white pt-24 lg:pt-32 pb-24 lg:pb-32 overflow-hidden font-sans border-b border-gray-100">
+<section className="relative bg-white pt-24 lg:pt-32 pb-24 lg:pb-32 overflow-hidden font-sans border-gray-100">
   
   <div className="max-w-[1450px] mx-auto px-6 lg:px-10">
     
-    {/* Heading Area */}
-    <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 mb-16 relative z-10 items-end">
-      
-      {/* LEFT: Forced 2-Line Heading */}
-      <div className="lg:col-span-7 flex flex-col items-start">
-        <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full bg-gray-50 border border-gray-200 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 shadow-sm">
-          Operational Clarity
-        </div>
-        
-        {/* Flex-col forces exactly 2 lines permanently */}
-        <h2 className="flex flex-col items-start text-[clamp(40px,4.5vw,72px)] font-black tracking-tighter leading-[1.05] text-[#0A0A0A]">
-          <span className="whitespace-nowrap">Centimeter-level precision</span>
-          <span className="relative inline-block mt-2 lg:mt-3 w-fit">
-            <span className="absolute inset-y-1 lg:inset-y-1.5 -inset-x-3 bg-[#FFF200] rounded-xl shadow-sm"></span>
-            <span className="relative px-2 text-black whitespace-nowrap">meets visual intelligence.</span>
-          </span>
-        </h2>
-      </div>
+    <div className="relative max-w-[1400px] mx-auto px-6 lg:px-8 z-10">
+          
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16 lg:mb-20">
+            <div className="max-w-4xl">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-gray-200 bg-gray-50 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 mb-6 shadow-sm">
+                Operational Clarity
+              </div>
+              <h2 className="text-[clamp(40px,5vw,64px)] font-black tracking-tighter leading-[1.05] text-black">
+                Centimeter–level precision <br />
+                meets 
+                <span className="relative inline-block mt-2 mx-4"> 
+                  <span className="absolute inset-y-1 -inset-x-3 bg-[#FFF200] rounded-xl shadow-sm transform -skew-x-2"></span>
+                  <span className="relative text-black">visual intelligence.</span>
+                </span>
+              </h2>
+            </div>
+            <div className="max-w-md lg:pb-3">
+              <p className="text-xl text-gray-500 font-medium leading-relaxed">
+                Traditional surveys trap data in technical silos. We use AI-assisted processing to structure that same accuracy into an interactive visual reference.
+              </p>
+            </div>
+          </div>
 
       <div className="lg:col-span-5 pb-2">
         <p className="text-[18px] lg:text-[20px] text-gray-500 leading-relaxed font-medium">
@@ -390,9 +388,6 @@ export const LandSurvey: React.FC = () => {
 
           </div>
           
-          <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.3 }}>
-            <path d="M 0 100 Q 150 150 400 50" fill="none" stroke="#9CA3AF" strokeWidth="2" strokeDasharray="8 8" />
-          </svg>
         </div>
 
         {/* Feature List */}
@@ -519,6 +514,11 @@ export const LandSurvey: React.FC = () => {
     </div>
   </div>
 </section>
+
+      {/* ════════════════════════════════════════
+          TERRAIN REPRESENTATION (INTERACTIVE TABS) 
+      ════════════════════════════════════════ */}
+      <TerrainRepresentationSection />
       {/* ════════════════════════════════════════
           NEW: CONTINUOUS VALUE (Micro-Cards Grid)
       ════════════════════════════════════════ */}
