@@ -286,7 +286,7 @@ export const About: React.FC = () => {
             <div className="lg:col-span-8 grid sm:grid-cols-2 gap-8 md:gap-12">
                {/* Kiran Shah */}
                <div className="group relative aspect-[4/5] rounded-[40px] overflow-hidden bg-gray-900 border border-white/10 transition-all duration-700 hover:-translate-y-4 shadow-2xl">
-                  <img src="https://i.ibb.co/Lkhm706/Kiran-Shah.jpg" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" alt="Kiran Shah" />
+                  <img src="https://ik.imagekit.io/saxybrgkp/MME/YelloSkye%20Kiran%20Shah.jpg" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" alt="Kiran Shah" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
                   <div className="absolute bottom-8 left-8 right-8">
                      <h4 className="text-2xl font-black tracking-tight mb-1">Kiran Shah</h4>
@@ -302,7 +302,7 @@ export const About: React.FC = () => {
 
                {/* Kush Aggarwal */}
                <div className="group relative aspect-[4/5] rounded-[40px] overflow-hidden bg-gray-900 border border-white/10 transition-all duration-700 hover:-translate-y-4 shadow-2xl" style={{ animationDelay: '0.2s' }}>
-                  <img src="https://i.ibb.co/mRT8vK1/Kush-Aggarwal.jpg" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" alt="Kush Aggarwal" />
+                  <img src="https://ik.imagekit.io/saxybrgkp/MME/YelloSkye%20Drone%20Expertise.jpg" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" alt="Kush Aggarwal" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
                   <div className="absolute bottom-8 left-8 right-8">
                      <h4 className="text-2xl font-black tracking-tight mb-1">Kush Aggarwal</h4>
@@ -328,9 +328,9 @@ export const About: React.FC = () => {
         <div className="max-w-[1400px] mx-auto px-6 text-center">
            <h3 className="text-[10px] font-black uppercase tracking-[0.5em] text-gray-400 mb-12">Fueled by Institutional Trust</h3>
            <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-24 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
-              <img src="https://upload.wikimedia.org/wikipedia/en/2/23/Keiretsu_Forum_Logo.png" alt="Keiretsu Forum" className="h-10 w-auto" />
-              <img src="https://indianangelnetwork.com/wp-content/uploads/2021/04/IAN-Logo.png" alt="IAN" className="h-12 w-auto" />
-              <img src="https://www.ivycapventures.com/wp-content/uploads/2019/12/IvyCap_Logo.png" alt="IvyCap" className="h-10 w-auto" />
+              <img src="https://yelloskye.com/wp-content/uploads/2023/11/Group-19626065.png" alt="Keiretsu Forum" className="h-10 w-auto" />
+              <img src="https://yelloskye.com/wp-content/uploads/2023/11/Group-19626063.png" alt="IAN" className="h-12 w-auto" />
+              <img src="https://yelloskye.com/wp-content/uploads/2023/11/Group-19626064.png" alt="IvyCap" className="h-10 w-auto" />
            </div>
         </div>
       </section>
@@ -378,31 +378,12 @@ export const About: React.FC = () => {
             <div className="lg:col-span-7 relative h-[600px] flex items-center justify-center">
                {/* India Map Visualization */}
                <div className="relative w-full h-full">
-                  {/* Subtle Grid behind map */}
-                  <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", backgroundSize: "30px 30px" }}></div>
-                  
                   {/* The Map Image (Using a clean SVG/Vector-style placeholder) */}
                   <img 
-                    src="https://i.ibb.co/L5hYFpX/India-Map-Yello-Skye.png" 
+                    src="https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey.png" 
                     className="w-full h-full object-contain opacity-90 drop-shadow-2xl" 
                     alt="National Footprint Map" 
                   />
-                  
-                  {/* Pulsing Office Locations (Pune & Bengaluru) */}
-                  <div className="absolute top-[65%] left-[32%] w-4 h-4 bg-blue-500 rounded-full animate-ping opacity-40"></div>
-                  <div className="absolute top-[65%] left-[32%] w-2 h-2 bg-blue-500 rounded-full shadow-[0_0_10px_#3B82F6]"></div>
-                  <span className="absolute top-[67%] left-[34%] text-[9px] font-black text-black uppercase">Pune HQ</span>
-
-                  <div className="absolute top-[82%] left-[38%] w-4 h-4 bg-blue-500 rounded-full animate-ping opacity-40"></div>
-                  <div className="absolute top-[82%] left-[38%] w-2 h-2 bg-blue-500 rounded-full shadow-[0_0_10px_#3B82F6]"></div>
-                  <span className="absolute top-[84%] left-[40%] text-[9px] font-black text-black uppercase">Bengaluru</span>
-
-                  {/* Project Dots Scatter Animation Effect */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none">
-                     <div className="absolute top-[20%] left-[45%] w-1.5 h-1.5 bg-[#FFF200] rounded-full animate-pulse" />
-                     <div className="absolute top-[40%] left-[60%] w-1.5 h-1.5 bg-[#FFF200] rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
-                     <div className="absolute top-[70%] left-[50%] w-1.5 h-1.5 bg-[#FFF200] rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-                  </div>
                </div>
             </div>
 
