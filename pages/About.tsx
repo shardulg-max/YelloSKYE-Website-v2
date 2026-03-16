@@ -105,9 +105,9 @@ export const About: React.FC = () => {
             <div className="lg:col-span-5 relative mt-12 lg:mt-0 w-full">
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[40px] shadow-[0_40px_100px_rgba(0,0,0,0.15)] bg-gray-100">
                 <img 
-                  src="https://i.ibb.co/LX00P9s0/Screenshot-2026-02-24-at-12-58-21.png" 
-                  className="w-full h-full object-cover grayscale-[10%]" 
-                  alt="Site Intelligence Visual" 
+                  src="https://ik.imagekit.io/saxybrgkp/uploaded:Screenshot%202026-03-16%20at%2017.27.18.png-0bb12f86-90e1-450a-bc6d-467262f2f3f9" 
+                  className="w-full h-full object-cover" 
+                  alt="Drone Pilot Operations" 
                 />
               </div>
             </div>

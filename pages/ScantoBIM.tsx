@@ -2,160 +2,213 @@ import { useNavigate } from "react-router-dom";
 import { AppRoutes } from "../types";
 import React, { useState, useEffect } from "react";
 import { 
-  Check, Globe, Layers, Mail, Twitter, Linkedin, Youtube, Instagram, 
+  Check, Globe, Layers, Mail, Twitter, Linkedin, Youtube, Instagram, PenTool, Scan, Crosshair,
   MapPin, MoveUpRight, Sparkles, Box, AlertTriangle, FileBox, Users, 
   Ruler, LayoutTemplate, Activity, RefreshCw, Hexagon, HardHat, ShieldCheck,
   CheckCircle2, Cpu
 } from "lucide-react";
 
-// ─── DATA: BIM SHOWCASE ───────────────────────────────────────────────────
+// ─── DATA: FULL-STACK BIM SERVICES ───────────────────────────────────────
 
 const BIM_FEATURES = [
   {
-    id: 'overlay',
-    title: 'BIM Overlay on Reality',
-    desc: 'Superimpose your Revit, Navisworks, or IFC models directly onto high-fidelity point clouds and 360° visuals.',
-    img: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2000&auto=format&fit=crop',
-    tag: 'Visual Verification'
+    id: 'design-to-bim',
+    tag: 'Creation',
+    title: 'Design to BIM',
+    desc: 'We take your 2D CAD drawings, PDFs, and conceptual designs and convert them into intelligent, fully-coordinated 3D BIM models ready for execution.',
+    img: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2000&auto=format&fit=crop'
   },
   {
-    id: 'deviation',
-    title: 'Deviation Analysis',
-    desc: 'Automated heatmaps comparing BIM geometry against scan data. Instantly flag elements installed out of tolerance.',
-    img: 'https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?q=80&w=2000&auto=format&fit=crop',
-    tag: 'Millimeter Accuracy'
+    id: 'scan-to-bim',
+    tag: 'Reverse Engineering',
+    title: 'Scan to BIM',
+    desc: 'We take raw laser scans and drone point clouds from your physical site and reverse-engineer them into millimeter-accurate As-Built BIM models.',
+    img: 'https://images.unsplash.com/photo-1581092921461-7d6560b37081?q=80&w=2000&auto=format&fit=crop'
   },
   {
-    id: 'clash',
+    id: 'clash-detection',
+    tag: 'Pre-Construction',
     title: 'Clash Detection',
-    desc: 'Verify that modeled clashes were actually resolved onsite. Prevent compounding rework during MEP installation.',
-    img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2000&auto=format&fit=crop',
-    tag: 'Proactive Coordination'
+    desc: 'We federate your architectural, structural, and MEP models to identify and resolve hard and soft clashes before construction even begins.',
+    img: 'https://images.unsplash.com/photo-1541888087-b5523b0c5942?q=80&w=2000&auto=format&fit=crop'
+  },
+  {
+    id: 'bim-on-reality',
+    tag: 'Validation',
+    title: 'BIM on Reality',
+    desc: 'We mirror your real-world asset in BIM. We overlay the 3D model directly onto live site captures to validate execution and track deviations instantly.',
+    img: 'https://i.ibb.co/HDGVjy6S/Screenshot-2026-02-19-at-22-12-29.png'
   }
 ];
 
-// ─── SUB-COMPONENT: INTERACTIVE BIM VALIDATION SHOWCASE (WHITE THEME) ──────────
+// ─── SUB-COMPONENT: INTERACTIVE BIM SHOWCASE (WHITE THEME) ──────────
 
-const BIMValidationModule = () => {
+export const BIMValidationModule = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % BIM_FEATURES.length);
-    }, 3000); // 3 second rotation
+    }, 4000); // 4 second rotation gives them time to read the new service descriptions
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <section 
-      // REDUCED PADDING
-      className="bg-white py-12 lg:py-16 relative overflow-hidden font-sans"
-      style={{
-        maskImage: "linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%)",
-        WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%)"
-      }}
-    >
-      {/* Light Mode Grid Background */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
-           style={{
-             backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)",
-             backgroundSize: "60px 60px",
-             maskImage: "linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)",
-             WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)"
-           }} />
+    <>
+      {/* ════════════════════════════════════════
+            INTERACTIVE VIEWER: FULL STACK BIM
+        ════════════════════════════════════════ */}
+      <section 
+        className="bg-white py-12 lg:py-16 relative overflow-hidden font-sans"
+        style={{
+          maskImage: "linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%)"
+        }}
+      >
+        {/* Light Mode Grid Background */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+             style={{
+               backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)",
+               backgroundSize: "60px 60px",
+               maskImage: "linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)",
+               WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)"
+             }} />
 
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-8 relative z-10">
-        
-        {/* HEADER (Validation Pill Removed) */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-[clamp(32px,4vw,48px)] font-black tracking-tighter leading-[1.1] text-black mb-6">
-            Reality Capture as your <br />
-            <span className="relative inline-block mt-2">
-              <span className="absolute inset-y-1 -inset-x-2 bg-[#FFF200] rounded-md shadow-sm transform -skew-x-2"></span>
-              <span className="relative text-black">BIM Validation Engine.</span>
-            </span>
-          </h2>
-          <p className="text-lg text-gray-500 font-medium leading-relaxed">
-            Overlay federated models onto captured site data instantly. Validate execution against design, catch deviations early, and keep coordination aligned.
-          </p>
-        </div>
-
-        {/* FLEX-STRETCH CONTAINER: Forces exact equal height for Left and Right */}
-        <div className="flex flex-col lg:flex-row items-stretch gap-10 lg:gap-14">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-8 relative z-10">
           
-          {/* LEFT: INTERACTIVE TABS (40% width) */}
-          <div className="lg:w-[40%] flex flex-col justify-between space-y-4">
-            {BIM_FEATURES.map((feature, idx) => {
-              const isActive = activeIndex === idx;
-              return (
-                <button
-                  key={feature.id}
-                  onClick={() => setActiveIndex(idx)}
-                  // INACTIVE STATE: Black outline & white background. ACTIVE: Black background.
-                  className={`text-left p-6 pl-8 rounded-[24px] border-[0.5px] transition-all duration-500 relative overflow-hidden flex-1 flex flex-col justify-center ${
-                    isActive 
-                    ? 'bg-black border-black/60 shadow-[0_20px_40px_rgba(0,0,0,0.2)] translate-x-2' 
-                    : 'bg-white border-black hover:bg-gray-50 shadow-sm'
-                  }`}
-                >
-                  {/* YELLOW STRIP: Now visible on both active and inactive states */}
-                  <div className="absolute left-0 top-0 bottom-0 w-2 bg-[#FFF200]"></div>
-                  
-                  <div className={`text-[10px] font-black uppercase tracking-widest mb-2 transition-colors ${isActive ? 'text-[#FFF200]' : 'text-gray-500'}`}>
-                    {feature.tag}
-                  </div>
-                  <h4 className={`text-xl font-black tracking-tight mb-2 transition-colors ${isActive ? 'text-white' : 'text-black'}`}>
-                    {feature.title}
-                  </h4>
-                  <p className={`text-sm font-medium leading-relaxed transition-colors ${isActive ? 'text-gray-400' : 'text-gray-600'}`}>
-                    {feature.desc}
-                  </p>
-                </button>
-              );
-            })}
+          {/* HEADER: Repositioned as a full service offering */}
+          <div className="text-center max-w-4xl mx-auto mb-16">
+            <h2 className="text-[clamp(32px,4vw,56px)] font-black tracking-tighter leading-[1.05] text-black mb-6">
+              A full-stack BIM practice. <br />
+              <span className="relative inline-block mt-2">
+                <span className="absolute inset-y-1 -inset-x-3 bg-[#FFF200] rounded-xl shadow-sm transform -skew-x-2"></span>
+                <span className="relative text-black px-2">From concept to reality.</span>
+              </span>
+            </h2>
+            <p className="text-lg lg:text-xl text-gray-500 font-medium leading-relaxed max-w-3xl mx-auto">
+              We don't just draft models. We convert designs to BIM, turn site scans into As-Builts, resolve clashes, and overlay models onto reality to guarantee flawless execution.
+            </p>
           </div>
 
-          {/* RIGHT: THE SCREEN MOCKUP (60% width) */}
-          <div className="lg:w-[60%] relative flex">
+          {/* FLEX-STRETCH CONTAINER */}
+          <div className="flex flex-col lg:flex-row items-stretch gap-10 lg:gap-14">
             
-            {/* Screen Hardware Frame - flex-col allows it to stretch */}
-            <div className="relative z-20 bg-[#080808] rounded-[32px] p-2.5 shadow-[0_40px_100px_rgba(0,0,0,0.2)] border-[2px] border-[#222] w-full flex flex-col">
-              
-              {/* Screen Container - flex-1 fills the height perfectly */}
-              <div className="relative flex-1 w-full rounded-[24px] overflow-hidden bg-black shadow-inner min-h-[350px]">
-                
-                {BIM_FEATURES.map((feature, idx) => (
-                  <div 
+            {/* LEFT: INTERACTIVE TABS */}
+            <div className="lg:w-[40%] flex flex-col justify-between space-y-4">
+              {BIM_FEATURES.map((feature, idx) => {
+                const isActive = activeIndex === idx;
+                return (
+                  <button
                     key={feature.id}
-                    className={`absolute inset-0 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                      activeIndex === idx ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 z-0'
+                    onClick={() => setActiveIndex(idx)}
+                    className={`text-left p-6 pl-8 rounded-[24px] border-[0.5px] transition-all duration-500 relative overflow-hidden flex-1 flex flex-col justify-center ${
+                      isActive 
+                      ? 'bg-black border-black/60 shadow-[0_20px_40px_rgba(0,0,0,0.2)] translate-x-2' 
+                      : 'bg-white border-gray-200 hover:bg-gray-50 shadow-sm'
                     }`}
                   >
-                    <img 
-                      src={feature.img} 
-                      className="w-full h-full object-cover brightness-95" 
-                      alt={feature.title} 
-                    />
-                    {/* Simulated "Scan-to-BIM" tech overlay effect */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-[#FFF200]/10 to-transparent mix-blend-overlay"></div>
+                    <div className="absolute left-0 top-0 bottom-0 w-2 bg-[#FFF200]"></div>
                     
-                    {/* UI HUD Elements inside screen */}
-                    <div className="absolute top-6 left-6 bg-black/60 backdrop-blur-md px-4 py-2 rounded-lg border border-white/10 flex items-center gap-3 shadow-lg">
-                      <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                      <span className="text-white text-[10px] font-black uppercase tracking-widest mt-0.5">Model Aligned</span>
+                    <div className={`text-[10px] font-black uppercase tracking-widest mb-2 transition-colors ${isActive ? 'text-[#FFF200]' : 'text-gray-400'}`}>
+                      {feature.tag}
                     </div>
-                  </div>
-                ))}
-              </div>
+                    <h4 className={`text-xl font-black tracking-tight mb-2 transition-colors ${isActive ? 'text-white' : 'text-black'}`}>
+                      {feature.title}
+                    </h4>
+                    <p className={`text-sm font-medium leading-relaxed transition-colors ${isActive ? 'text-gray-400' : 'text-gray-500'}`}>
+                      {feature.desc}
+                    </p>
+                  </button>
+                );
+              })}
             </div>
-            
-            {/* Ambient Glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-[#FFF200]/5 blur-[100px] rounded-full pointer-events-none -z-10"></div>
+
+            {/* RIGHT: THE SCREEN MOCKUP */}
+            <div className="lg:w-[60%] relative flex">
+              <div className="relative z-20 bg-[#080808] rounded-[32px] p-2.5 shadow-[0_40px_100px_rgba(0,0,0,0.2)] border-[2px] border-[#222] w-full flex flex-col">
+                <div className="relative flex-1 w-full rounded-[24px] overflow-hidden bg-black shadow-inner min-h-[350px]">
+                  {BIM_FEATURES.map((feature, idx) => (
+                    <div 
+                      key={feature.id}
+                      className={`absolute inset-0 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                        activeIndex === idx ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 z-0'
+                      }`}
+                    >
+                      <img 
+                        src={feature.img} 
+                        className="w-full h-full object-cover brightness-95" 
+                        alt={feature.title} 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-tr from-[#FFF200]/10 to-transparent mix-blend-overlay"></div>
+                      
+                      <div className="absolute top-6 left-6 bg-black/60 backdrop-blur-md px-4 py-2 rounded-lg border border-white/10 flex items-center gap-3 shadow-lg">
+                        <div className="w-2 h-2 rounded-full bg-[#FFF200] animate-pulse"></div>
+                        <span className="text-white text-[10px] font-black uppercase tracking-widest mt-0.5">{feature.tag} Active</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-[#FFF200]/5 blur-[100px] rounded-full pointer-events-none -z-10"></div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════
+            CORE SERVICES: WHAT WE DO (4 CARDS)
+        ════════════════════════════════════════ */}
+      <section className="bg-white py-24 relative z-10 border-t border-gray-100">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
+          
+          <div className="text-center max-w-3xl mx-auto mb-16">
+             <div className="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-full bg-gray-50 border border-gray-200 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 shadow-sm">
+                Our Capabilities
+             </div>
+             <h3 className="text-[clamp(32px,3vw,42px)] font-black tracking-tighter text-black leading-tight">
+               We build, coordinate, and validate your 
+               <span className="text-[#FFF200] bg-black px-3 py-1 rounded-xl mx-2 inline-block shadow-sm">Digital Twin.</span>
+             </h3>
+          </div>
+          
+          {/* The 4 Core Offerings Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { 
+                icon: <PenTool size={24}/>, 
+                title: "Design to BIM", 
+                desc: "We take your 2D CAD drawings, PDFs, and conceptual designs and convert them into intelligent, data-rich 3D BIM models ready for execution." 
+              },
+              { 
+                icon: <Scan size={24}/>, 
+                title: "Scan to BIM", 
+                desc: "We take raw point clouds and laser scans from your physical site and reverse-engineer them into millimeter-accurate As-Built BIM models." 
+              },
+              { 
+                icon: <Crosshair size={24}/>, 
+                title: "Clash Detection", 
+                desc: "We run comprehensive clash detection on your federated models, identifying and resolving structural and MEP conflicts before construction begins." 
+              },
+              { 
+                icon: <Layers size={24}/>, 
+                title: "BIM on Reality", 
+                desc: "We mirror the real-world asset in BIM. By overlaying your models onto live site captures, we track deviations and validate execution instantly." 
+              }
+            ].map((item, i) => (
+              <div key={i} className="p-8 rounded-[32px] bg-gray-50 border border-gray-100 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] hover:-translate-y-2 hover:border-[#FFF200] transition-all duration-300 group cursor-default">
+                <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center text-black shadow-sm border border-gray-100 group-hover:bg-[#FFF200] group-hover:border-[#FFF200] transition-all duration-300 mb-8">
+                  {item.icon}
+                </div>
+                <h4 className="text-xl font-black text-black mb-4 tracking-tight">{item.title}</h4>
+                <p className="text-[15px] text-gray-500 font-medium leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
           </div>
 
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
