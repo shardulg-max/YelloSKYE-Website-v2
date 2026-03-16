@@ -11,7 +11,6 @@ import {
 } from 'lucide-react';
 
 // ─── DATA: INTERACTIVE INSPECTION VIEWER ───────────────────────────────────────
-
 const INSPECTION_FEATURES = [
   {
     id: 'facade',
@@ -52,8 +51,7 @@ const INSPECTION_FEATURES = [
 ];
 
 // ─── SUB-COMPONENT: INTERACTIVE DASHBOARD ─────────────────────────────────────
-
-const InspectionViewerSection = () => {
+export const InspectionViewerSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -66,64 +64,119 @@ const InspectionViewerSection = () => {
   }, [activeIndex, isHovered]);
 
   return (
-    <section className="relative bg-white pt-10 lg:pt-16 pb-12 lg:pb-20 overflow-hidden font-sans border-gray-100">
+    <section className="relative bg-white pt-10 lg:pt-16 pb-24 lg:pb-32 overflow-hidden font-sans border-gray-100">
+      
       <style>{`
         @keyframes interactive-progress { from { width: 0%; } to { width: 100%; } }
       `}</style>
+      
+      {/* Background Grid */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
         style={{ backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", backgroundSize: "80px 80px", maskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)" }} 
       />
 
       <div className="max-w-[1400px] mx-auto px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-4xl mx-auto mb-10 lg:mb-14">
-          <h2 className="text-[clamp(32px,4vw,48px)] font-black tracking-tighter leading-[1.1] text-black mb-5">
-            Complete visual record of <br />
-            <span className="relative inline-block mx-2">
-              <span className="absolute inset-y-1 -inset-x-3 bg-[#FFF200] rounded-lg shadow-sm transform -skew-x-2"></span>
-              <span className="relative text-black">every space, every surface.</span>
+        
+        {/* Section Header */}
+        <div className="text-center max-w-4xl mx-auto mb-16 lg:mb-20">
+          <h2 className="text-[clamp(36px,4.5vw,56px)] font-black tracking-tighter leading-[1.05] text-black mb-6">
+            Complete visual record of <br className="hidden md:block"/>
+            <span className="relative inline-block mt-2">
+              <span className="absolute inset-y-1 lg:inset-y-2 -inset-x-3 bg-[#FFF200] rounded-xl shadow-sm transform -skew-x-2"></span>
+              <span className="relative text-black px-2">every space, every surface.</span>
             </span>
           </h2>
-          <p className="text-base lg:text-lg text-gray-500 font-medium leading-relaxed max-w-4xl mx-auto">
-            YelloSKYE captures MEP systems, facades, and interiors with survey-grade precision. Quality teams <br className="hidden md:block" />
-            review issues remotely and tag defects in place—preventing punch-list fatigue.
+          <p className="text-lg lg:text-xl text-gray-500 font-medium leading-relaxed max-w-3xl mx-auto">
+            YelloSKYE captures MEP systems, facades, and interiors with survey-grade precision. Quality teams review issues remotely and tag defects in place—preventing punch-list fatigue.
           </p>
         </div>
 
-        <div className="bg-white rounded-[24px] lg:rounded-[32px] border border-gray-200 shadow-[0_20px_60px_rgba(0,0,0,0.06)] p-3 lg:p-4" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-          <div className="flex gap-2 overflow-x-auto hide-scrollbar scroll-smooth mb-3 pb-1 px-1">
+        {/* Interactive Viewer Component (Floating Layout) */}
+        <div 
+          className="relative max-w-[1200px] mx-auto bg-white rounded-[32px] lg:rounded-[40px] border border-gray-200 shadow-[0_30px_80px_rgba(0,0,0,0.08)] p-4 lg:p-6" 
+          onMouseEnter={() => setIsHovered(true)} 
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          
+          {/* Top Navigation Tabs */}
+          <div className="flex gap-2 overflow-x-auto hide-scrollbar scroll-smooth mb-4 px-2">
             {INSPECTION_FEATURES.map((feature, index) => {
               const isActive = activeIndex === index;
               return (
-                <button key={feature.id} onClick={() => setActiveIndex(index)} className={`whitespace-nowrap px-6 py-2.5 text-[10px] font-black uppercase tracking-widest transition-all duration-300 rounded-full border ${isActive ? 'bg-black border-black text-[#FFF200] shadow-md' : 'bg-transparent border-gray-200 text-gray-500 hover:border-gray-400 hover:text-black'}`}>
+                <button 
+                  key={feature.id} 
+                  onClick={() => setActiveIndex(index)} 
+                  className={`whitespace-nowrap px-6 py-2.5 text-[10px] font-black uppercase tracking-widest transition-all duration-300 rounded-full border 
+                    ${isActive ? 'bg-black border-black text-[#FFF200] shadow-md' : 'bg-transparent border-gray-200 text-gray-500 hover:border-gray-400 hover:text-black'}`}
+                >
                   {feature.label}
                 </button>
               );
             })}
           </div>
 
-          <div className="relative w-full aspect-[16/9] lg:aspect-[2.5/1] bg-gray-100 border border-gray-200 shadow-inner overflow-hidden rounded-[20px] group mb-3">
+          {/* Viewer Area (Image + Data Overlay) */}
+          <div className="relative w-full aspect-[4/3] lg:aspect-[21/9] bg-gray-100 overflow-hidden rounded-[24px] lg:rounded-[32px] group">
+            
+            {/* Image Layers */}
             {INSPECTION_FEATURES.map((feature, index) => (
               <div key={feature.id} className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${activeIndex === index ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                <img src={feature.gif} alt={feature.title} className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).src = feature.fallbackImg; }} />
+                <img 
+                  src={feature.fallbackImg} 
+                  alt={feature.title} 
+                  className="w-full h-full object-cover scale-[1.01]" 
+                />
               </div>
             ))}
-            <div className="absolute bottom-0 left-0 w-full h-[6px] bg-white/50 z-20 backdrop-blur-sm">
-               <div key={activeIndex} className="h-full bg-[#FFF200] shadow-[0_0_10px_#FFF200]" style={{ animation: 'interactive-progress 4.5s linear forwards', animationPlayState: isHovered ? 'paused' : 'running' }} />
+            
+            {/* The Animated Yellow Progress Bar */}
+            <div className="absolute bottom-0 left-0 w-full h-1.5 bg-black/20 z-20">
+               <div 
+                 key={activeIndex} 
+                 className="h-full bg-[#FFF200]" 
+                 style={{ 
+                   animation: 'interactive-progress 4.5s linear forwards', 
+                   animationPlayState: isHovered ? 'paused' : 'running' 
+                 }} 
+               />
             </div>
+
+            {/* Simulated Floating UI Element */}
+            <div className="absolute bottom-6 right-6 lg:bottom-8 lg:right-8 bg-[#0A0A0A]/95 backdrop-blur-md border border-white/10 rounded-xl p-4 shadow-2xl z-30 hidden md:block w-64 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+               <div className="flex items-center justify-between mb-3 border-b border-white/10 pb-3">
+                 <div className="flex items-center gap-2">
+                   <div className="w-1.5 h-1.5 bg-[#FFF200] rounded-full animate-pulse"></div>
+                   <span className="text-[8px] font-black uppercase tracking-widest text-white">System Active</span>
+                 </div>
+                 <span className="text-[10px] font-mono text-gray-400">100%</span>
+               </div>
+               <div className="space-y-1">
+                 <div className="text-[8px] font-black text-gray-500 uppercase tracking-widest">Current View</div>
+                 <div className="text-xs font-bold text-white truncate">{INSPECTION_FEATURES[activeIndex].title}</div>
+               </div>
+            </div>
+
           </div>
 
-          <div className="bg-gray-50 rounded-[20px] p-6 lg:p-8 flex flex-col md:flex-row gap-4 justify-between items-start md:items-center border border-gray-100">
-             <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 mb-3 rounded-md bg-[#FFF200]/20 text-black text-[10px] font-black uppercase tracking-widest border border-[#FFF200]/50">
+          {/* Bottom Content Bar */}
+          <div className="px-6 py-8 lg:px-10 lg:py-10 flex flex-col md:flex-row gap-6 justify-between items-start md:items-center">
+             <div className="md:w-1/2">
+                <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-md bg-[#FFF200]/20 text-black text-[10px] font-black uppercase tracking-widest border border-[#FFF200]/50">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#FFF200] shadow-[0_0_5px_#FFF200]"></span>
                   {INSPECTION_FEATURES[activeIndex].label}
                 </div>
-                <h3 className="text-xl lg:text-2xl font-black text-black leading-tight tracking-tight">{INSPECTION_FEATURES[activeIndex].title}</h3>
+                <h3 className="text-2xl lg:text-3xl font-black text-black leading-tight tracking-tight">
+                  {INSPECTION_FEATURES[activeIndex].title}
+                </h3>
              </div>
-             <div className="md:max-w-md md:text-right">
-                <p className="text-sm lg:text-base text-gray-500 font-medium leading-relaxed">{INSPECTION_FEATURES[activeIndex].desc}</p>
+             
+             <div className="md:w-1/2 md:text-right">
+                <p className="text-base lg:text-[17px] text-gray-500 font-medium leading-relaxed max-w-md ml-auto">
+                  {INSPECTION_FEATURES[activeIndex].desc}
+                </p>
              </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -201,7 +254,7 @@ export const AssetInspection: React.FC = () => {
       {/* ════════════════════════════════════════
           INSPECTION STATS ROW
       ════════════════════════════════════════ */}
-      <section className="bg-white pt-12 pb-24 border-b border-gray-100">
+      <section className="bg-white pt-12 pb-24 border-gray-100">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 divide-x divide-gray-100">
             
@@ -370,71 +423,6 @@ export const AssetInspection: React.FC = () => {
 
           </div>
 
-        </div>
-      </section>
-      {/* ════════════════════════════════════════
-          THE TRUST BAR
-      ════════════════════════════════════════ */}
-      <section className="bg-whitepy-12 relative z-10">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
-           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-gray-200">
-             {[
-               { label: "Site Visits", value: "90%", sub: "Reduction in travel" },
-               { label: "Coverage", value: "5x", sub: "More than manual" },
-               { label: "Resolution", value: "40-50%", sub: "Faster issue closure" },
-               { label: "Compliance", value: "100%", sub: "Audit-ready logs" },
-             ].map((spec, i) => (
-               <div key={i} className={`flex flex-col pt-6 md:pt-0 ${i !== 0 ? "md:pl-8 lg:pl-12" : ""}`}>
-                 <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3 flex items-center gap-2">
-                   <span className="w-1.5 h-1.5 rounded-full bg-[#FFF200]"></span>
-                   {spec.label}
-                 </div>
-                 <div className="text-4xl lg:text-5xl font-black text-black mb-1 tracking-tighter">{spec.value}</div>
-                 <div className="text-xs text-gray-500 font-bold uppercase tracking-wide">{spec.sub}</div>
-               </div>
-             ))}
-           </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════
-          THE PROBLEM: LATE DISCOVERY
-      ════════════════════════════════════════ */}
-      <section className="relative bg-white pt-16 lg:pt-24 pb-12 lg:pb-20 overflow-hidden font-sans">
-        
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center mb-12 lg:mb-16">
-            <h2 className="text-[clamp(32px,4vw,48px)] font-black tracking-tighter leading-[1.1] text-black mb-5">
-              Quality issues surface at handover <br />
-              <span className="relative inline-block mt-1 mx-2">
-                <span className="absolute inset-y-1 -inset-x-3 bg-[#FFF200] rounded-lg shadow-sm transform -skew-x-2"></span>
-                <span className="relative text-black">when they're too expensive to fix.</span>
-              </span>
-            </h2>
-            <p className="text-base lg:text-lg text-gray-500 font-medium leading-relaxed max-w-4xl mx-auto">
-              Punch lists grow while contractors argue over timing. Clients delay acceptance because no one has <br className="hidden md:block" />
-              a complete record of what was built, when, and by whom.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-4 lg:gap-6 max-w-6xl mx-auto">
-            {[
-              { icon: <Clock size={20}/>, title: "Late Discovery", desc: "Defects spotted during handover require massive rework. Contractors have already moved on." },
-              { icon: <AlertTriangle size={20}/>, title: "Incomplete Documentation", desc: "Manual inspections miss details. Photos don't capture full context, leaving gray areas in audits." },
-              { icon: <Search size={20}/>, title: "The 'Who Did This?' Dispute", desc: "No timestamped record of execution. Impossible to prove work sequence or liability." },
-              { icon: <Unplug size={20}/>, title: "Rework Costs Mount", desc: "Fixing issues after-the-fact is 10x more expensive than catching them during active execution." }
-            ].map((card, i) => (
-              <div key={i} className="p-6 rounded-[24px] bg-[#F9F9F9] border border-transparent hover:bg-white hover:border-gray-200 shadow-none hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-300 group flex flex-col lg:flex-row items-start gap-5">
-                <div className="w-12 h-12 shrink-0 rounded-xl bg-[#FFF200]/10 border border-[#FFF200]/20 shadow-sm flex items-center justify-center text-black group-hover:bg-[#FFF200] group-hover:border-[#FFF200] group-hover:scale-105 transition-all duration-300 ease-out">
-                  {card.icon}
-                </div>
-                <div>
-                  <h3 className="text-lg font-black text-black mb-2 tracking-tight">{card.title}</h3>
-                  <p className="text-gray-500 font-medium leading-relaxed text-sm lg:text-base">{card.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
