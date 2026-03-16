@@ -63,7 +63,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
           {/* LOGO */}
           <NavLink to={AppRoutes.HOME} className="flex items-center">
             <img
-              src="https://ik.imagekit.io/saxybrgkp/Untitled%20Design%20Presentation%20(2)%20(1).png"
+              src="https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey%20final.png"
               alt="YelloSKYE"
               className="h-8 sm:h-10 md:h-12 w-auto object-contain"
             />
