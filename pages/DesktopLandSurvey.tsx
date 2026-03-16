@@ -148,13 +148,11 @@ const TerrainRepresentationSection = () => {
                   ${activeIndex === index ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}
                 `}
               >
+                {/* CHANGED: src is now pointing to fallbackImg, and removed mix-blend-screen */}
                 <img 
-                  src={feature.gif} 
+                  src={feature.fallbackImg} 
                   alt={feature.title}
-                  className="w-full h-full object-cover opacity-90 mix-blend-screen"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = feature.fallbackImg;
-                  }}
+                  className="w-full h-full object-cover opacity-90"
                 />
                 <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.4)] pointer-events-none"></div>
               </div>
