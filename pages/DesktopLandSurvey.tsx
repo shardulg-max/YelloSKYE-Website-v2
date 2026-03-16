@@ -53,7 +53,7 @@ const TERRAIN_FEATURES = [
     title: 'Visual Diff Over Time',
     desc: 'Visual diff between survey dates. See exactly where earthwork happened and validate progress claims.',
     gif: '/gifs/contour.gif',
-    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/Website%20Images%20Land%20Survey5.png',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/s.png',
     placeholderBg: 'bg-purple-50'
   }
 ];
@@ -311,15 +311,23 @@ export const LandSurvey: React.FC = () => {
     
     {/* Heading Area */}
     <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 mb-16 relative z-10 items-end">
+      
+      {/* LEFT: Forced 2-Line Heading */}
       <div className="lg:col-span-7 flex flex-col items-start">
         <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full bg-gray-50 border border-gray-200 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 shadow-sm">
           Operational Clarity
         </div>
-        <h2 className="text-[clamp(40px,5vw,72px)] font-black tracking-tighter leading-[1.05] text-[#0A0A0A]">
-          Centimeter-level precision <br />
-          meets <span className="bg-[#FFF200] px-4 py-1 rounded-[16px] text-black">visual intelligence.</span>
+        
+        {/* Flex-col forces exactly 2 lines permanently */}
+        <h2 className="flex flex-col items-start text-[clamp(40px,4.5vw,72px)] font-black tracking-tighter leading-[1.05] text-[#0A0A0A]">
+          <span className="whitespace-nowrap">Centimeter-level precision</span>
+          <span className="relative inline-block mt-2 lg:mt-3 w-fit">
+            <span className="absolute inset-y-1 lg:inset-y-1.5 -inset-x-3 bg-[#FFF200] rounded-xl shadow-sm"></span>
+            <span className="relative px-2 text-black whitespace-nowrap">meets visual intelligence.</span>
+          </span>
         </h2>
       </div>
+
       <div className="lg:col-span-5 pb-2">
         <p className="text-[18px] lg:text-[20px] text-gray-500 leading-relaxed font-medium">
           Traditional surveys trap data in technical silos. We use AI-assisted processing to structure that same accuracy into an interactive visual reference.
@@ -330,7 +338,7 @@ export const LandSurvey: React.FC = () => {
     {/* Comparison Cards Grid */}
     <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 relative z-10">
 
-      {/* CARD 1: TRADITIONAL (Fragmented / Siloed Concept) */}
+      {/* CARD 1: TRADITIONAL */}
       <div className="bg-[#F9FAFB] rounded-[32px] p-8 lg:p-12 border border-gray-200 shadow-sm flex flex-col group">
         
         <h3 className="text-[14px] font-black uppercase tracking-[0.2em] text-gray-400 mb-8 flex items-center gap-3">
@@ -338,30 +346,50 @@ export const LandSurvey: React.FC = () => {
           Traditional Survey
         </h3>
 
-        {/* Abstract Visual: Disconnected Data Silos */}
-        <div className="w-full h-[200px] bg-white rounded-2xl border border-gray-200 mb-10 flex items-center justify-center relative overflow-hidden shadow-inner">
-          {/* Subtle Background Grid */}
+        {/* Abstract Visual: Disconnected Apps */}
+        <div className="w-full h-[220px] bg-white rounded-2xl border border-gray-200 mb-10 flex items-center justify-center relative overflow-hidden shadow-inner">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#f3f4f6_1px,transparent_1px),linear-gradient(to_bottom,#f3f4f6_1px,transparent_1px)] bg-[size:20px_20px]"></div>
           
-          {/* Disjointed File Blocks */}
-          <div className="relative flex gap-6 items-center">
-            <div className="w-20 h-24 bg-gray-50 border border-gray-200 rounded-lg shadow-sm flex flex-col items-center justify-center -translate-y-4 group-hover:-translate-y-5 transition-transform duration-500">
-              <span className="text-[10px] font-mono text-gray-400 font-bold">.DWG</span>
-              <div className="w-8 h-1 bg-gray-200 rounded mt-3"></div>
+          {/* App Blocks */}
+          <div className="relative flex gap-5 items-center">
+            
+            {/* Spreadsheet (Excel) */}
+            <div className="w-20 h-24 bg-white border border-gray-200 rounded-xl shadow-sm flex flex-col items-center justify-center -translate-y-4 group-hover:-translate-y-6 transition-transform duration-500 relative overflow-hidden">
+              <div className="absolute top-0 w-full h-1.5 bg-green-500"></div>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mb-2">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="3" y1="9" x2="21" y2="9"></line>
+                <line x1="9" y1="21" x2="9" y2="9"></line>
+              </svg>
+              <span className="text-[8px] font-black text-gray-400 uppercase tracking-wider">Spreadsheet</span>
             </div>
             
-            <div className="w-20 h-20 bg-gray-50 border border-gray-200 rounded-lg shadow-sm flex flex-col items-center justify-center translate-y-6 group-hover:translate-y-8 transition-transform duration-500">
-              <span className="text-[10px] font-mono text-gray-400 font-bold">.LAS</span>
-              <div className="w-6 h-1 bg-gray-200 rounded mt-3"></div>
+            {/* Images */}
+            <div className="w-20 h-20 bg-white border border-gray-200 rounded-xl shadow-sm flex flex-col items-center justify-center translate-y-6 group-hover:translate-y-8 transition-transform duration-500 relative overflow-hidden z-10">
+              <div className="absolute top-0 w-full h-1.5 bg-blue-500"></div>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mb-2">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+              <span className="text-[8px] font-black text-gray-400 uppercase tracking-wider">Images</span>
             </div>
 
-            <div className="w-20 h-28 bg-gray-50 border border-gray-200 rounded-lg shadow-sm flex flex-col items-center justify-center -translate-y-2 group-hover:-translate-y-4 transition-transform duration-500">
-              <span className="text-[10px] font-mono text-gray-400 font-bold">.PDF</span>
-              <div className="w-10 h-1 bg-gray-200 rounded mt-3"></div>
+            {/* PDF Plans */}
+            <div className="w-20 h-28 bg-white border border-gray-200 rounded-xl shadow-sm flex flex-col items-center justify-center -translate-y-2 group-hover:-translate-y-4 transition-transform duration-500 relative overflow-hidden">
+              <div className="absolute top-0 w-full h-1.5 bg-red-500"></div>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mb-2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              <span className="text-[8px] font-black text-gray-400 uppercase tracking-wider">PDF Plans</span>
             </div>
+
           </div>
           
-          {/* Broken connecting lines */}
           <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.3 }}>
             <path d="M 0 100 Q 150 150 400 50" fill="none" stroke="#9CA3AF" strokeWidth="2" strokeDasharray="8 8" />
           </svg>
@@ -389,10 +417,9 @@ export const LandSurvey: React.FC = () => {
         </ul>
       </div>
 
-      {/* CARD 2: YELLOSKYE (Unified / Live Concept) */}
+      {/* CARD 2: YELLOSKYE */}
       <div className="bg-[#0A0A0A] rounded-[32px] p-8 lg:p-12 border border-gray-800 shadow-[0_20px_50px_rgba(0,0,0,0.2)] flex flex-col group relative overflow-hidden">
         
-        {/* Glow Effects */}
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#FFF200]/5 blur-[100px] rounded-full pointer-events-none"></div>
 
         <h3 className="text-[14px] font-black uppercase tracking-[0.2em] text-[#FFF200] mb-8 flex items-center gap-3 relative z-10">
@@ -403,168 +430,95 @@ export const LandSurvey: React.FC = () => {
           YelloSKYE Intelligence
         </h3>
 
-        {/* Abstract Visual: Unified Digital Twin */}
-        <div className="w-full h-[200px] bg-black rounded-2xl border border-white/10 mb-10 flex items-center justify-center relative overflow-hidden shadow-[inset_0_0_40px_rgba(255,242,0,0.05)] z-10">
+        {/* Abstract Visual: AI Construction Scan */}
+        <div className="w-full h-[220px] bg-black rounded-2xl border border-white/10 mb-10 flex items-center justify-center relative overflow-hidden shadow-[inset_0_0_40px_rgba(255,242,0,0.05)] z-10 group/visual">
           
-          {/* Glowing Tech Grid */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#333_1px,transparent_1px),linear-gradient(to_bottom,#333_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_at_center,black_10%,transparent_70%)]"></div>
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#333_1px,transparent_1px),linear-gradient(to_bottom,#333_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_90%)]"></div>
           
-          {/* Central Node Structure */}
-          <div className="relative flex items-center justify-center transform group-hover:scale-110 transition-transform duration-700 ease-out">
-            {/* Outer rings */}
-            <div className="absolute w-40 h-40 border border-[#FFF200]/20 rounded-full animate-[spin_10s_linear_infinite]"></div>
-            <div className="absolute w-32 h-32 border border-[#FFF200]/40 rounded-full border-dashed animate-[spin_15s_linear_infinite_reverse]"></div>
+          {/* Construction Site Vector Animation */}
+          <div className="relative w-56 h-40 flex items-end justify-center group-hover/visual:scale-105 transition-transform duration-700 ease-out">
             
-            {/* Center Core */}
-            <div className="w-16 h-16 bg-[#111] border border-[#FFF200] rounded-xl flex items-center justify-center shadow-[0_0_30px_rgba(255,242,0,0.3)] relative z-10">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFF200" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-              </svg>
+            {/* Ground Plane */}
+            <div className="absolute bottom-4 w-full h-8 border-t border-[#FFF200]/30 bg-gradient-to-t from-transparent to-[#FFF200]/5 [transform:rotateX(60deg)]"></div>
+            
+            {/* Building & Crane SVG */}
+            <svg viewBox="0 0 100 100" className="w-full h-full relative z-10" fill="none" stroke="#FFF200" strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round">
+              {/* Foundation Area */}
+              <path d="M20 85 L80 85" strokeOpacity="0.5" strokeDasharray="2 2" />
+              
+              {/* Building Structure */}
+              <path d="M30 85 L30 45 L55 45 L55 85" />
+              <path d="M55 65 L75 65 L75 85" />
+              
+              {/* Internal Floors / Grid */}
+              <path d="M30 55 L55 55" strokeWidth="0.5" strokeOpacity="0.5"/>
+              <path d="M30 65 L55 65" strokeWidth="0.5" strokeOpacity="0.5"/>
+              <path d="M30 75 L55 75" strokeWidth="0.5" strokeOpacity="0.5"/>
+              <path d="M42.5 45 L42.5 85" strokeWidth="0.5" strokeOpacity="0.5"/>
+              <path d="M65 65 L65 85" strokeWidth="0.5" strokeOpacity="0.5"/>
+              
+              {/* Tower Crane */}
+              <path d="M20 85 L20 20 L55 20" />
+              <path d="M20 30 L40 20" strokeWidth="0.5" />
+              <path d="M55 20 L55 35" strokeDasharray="2 2" />
+              {/* Load Block */}
+              <rect x="52" y="35" width="6" height="6" fill="rgba(255,242,0,0.2)" strokeWidth="1" />
+            </svg>
+            
+            {/* Data Nodes (Glowing dots on structure) */}
+            <div className="absolute top-[45%] right-[40%] w-1.5 h-1.5 bg-[#FFF200] rounded-full shadow-[0_0_8px_#FFF200] animate-pulse"></div>
+            <div className="absolute top-[65%] right-[20%] w-1 h-1 bg-white rounded-full shadow-[0_0_4px_white]"></div>
+            
+            {/* AI Scanning Laser Line */}
+            <div className="absolute top-0 bottom-4 w-full overflow-hidden z-20">
+               <div className="w-full h-[1px] bg-[#FFF200] shadow-[0_0_15px_#FFF200,0_0_5px_white] absolute animate-[scan_3s_ease-in-out_infinite]"></div>
             </div>
 
-            {/* Scanning Line Effect */}
-            <div className="absolute top-0 left-1/2 w-[2px] h-full bg-gradient-to-b from-transparent via-[#FFF200] to-transparent -translate-x-1/2 animate-[pulse_2s_ease-in-out_infinite]"></div>
+            {/* Custom Animation for the Scanner */}
+            <style>{`
+              @keyframes scan {
+                0% { top: 10%; opacity: 0; }
+                15% { opacity: 1; }
+                85% { opacity: 1; }
+                100% { top: 90%; opacity: 0; }
+              }
+            `}</style>
           </div>
           
-          {/* Platform UI Header Tab Mockup */}
-          <div className="absolute top-3 left-3 bg-white/10 backdrop-blur-md border border-white/10 rounded-md px-3 py-1.5 flex items-center gap-2">
-             <div className="w-1.5 h-1.5 bg-[#FFF200] rounded-sm"></div>
-             <span className="text-[8px] font-black uppercase tracking-widest text-white">AI Spatial Processing</span>
+          <div className="absolute top-4 left-4 bg-[#111] border border-white/10 rounded-md px-3 py-1.5 flex items-center gap-2 z-20">
+             <div className="w-1.5 h-1.5 bg-[#FFF200] rounded-sm animate-pulse"></div>
+             <span className="text-[9px] font-black uppercase tracking-widest text-white">AI Spatial Processing</span>
           </div>
         </div>
 
-        {/* Feature List */}
+        {/* Feature List (Hardcoded for perfect formatting) */}
         <ul className="flex flex-col gap-5 mt-auto relative z-10">
-          {[
-            { bold: "AI-classified", text: "3D terrain models" },
-            { bold: "Accessible", text: "to all stakeholders via web" },
-            { bold: "Automated", text: "volume & progress tracking" },
-            { text: "Integrated with", bold: "live site captures" },
-            { text: "Coordination happens", bold: "in visual context" }
-          ].map((item, i) => (
-            <li key={i} className="flex items-start gap-4">
-              <div className="mt-0.5 flex-shrink-0">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFF200" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              </div>
-              <span className="text-[16px] text-gray-400 font-medium leading-snug">
-                {item.text && !item.bold && <span>{item.text} </span>}
-                {item.bold && <span className="text-white font-bold">{item.bold} </span>}
-                {item.text && item.bold && <span>{item.text}</span>}
-              </span>
-            </li>
-          ))}
+          <li className="flex items-start gap-4">
+            <div className="mt-0.5 flex-shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFF200" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <span className="text-[16px] text-gray-400 font-medium leading-snug"><span className="text-white font-bold">AI-classified</span> 3D terrain models</span>
+          </li>
+          <li className="flex items-start gap-4">
+            <div className="mt-0.5 flex-shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFF200" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <span className="text-[16px] text-gray-400 font-medium leading-snug"><span className="text-white font-bold">Accessible</span> to all stakeholders via web</span>
+          </li>
+          <li className="flex items-start gap-4">
+            <div className="mt-0.5 flex-shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFF200" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <span className="text-[16px] text-gray-400 font-medium leading-snug"><span className="text-white font-bold">Automated</span> volume & progress tracking</span>
+          </li>
+          <li className="flex items-start gap-4">
+            <div className="mt-0.5 flex-shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFF200" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <span className="text-[16px] text-gray-400 font-medium leading-snug">Integrated with <span className="text-white font-bold">live site captures</span></span>
+          </li>
+          <li className="flex items-start gap-4">
+            <div className="mt-0.5 flex-shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFF200" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <span className="text-[16px] text-gray-400 font-medium leading-snug">Coordination happens <span className="text-white font-bold">in visual context</span></span>
+          </li>
         </ul>
       </div>
 
     </div>
   </div>
 </section>
-{/* ════════════════════════════════════════
-          NEW HOOK: VISUAL CLARITY VS TRADITIONAL
-      ════════════════════════════════════════ */}
-      <section className="relative bg-white pt-16 lg:pt-24 pb-12 lg:pb-16 overflow-hidden font-sans">
-
-        <div className="relative max-w-[1400px] mx-auto px-6 lg:px-8 z-10">
-          
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16 lg:mb-20">
-            <div className="max-w-4xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-gray-200 bg-gray-50 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 mb-6 shadow-sm">
-                Operational Clarity
-              </div>
-              <h2 className="text-[clamp(40px,5vw,64px)] font-black tracking-tighter leading-[1.05] text-black">
-                Centimeter–level precision <br />
-                meets 
-                <span className="relative inline-block mt-2 mx-4"> 
-                  <span className="absolute inset-y-1 -inset-x-3 bg-[#FFF200] rounded-xl shadow-sm transform -skew-x-2"></span>
-                  <span className="relative text-black">visual intelligence.</span>
-                </span>
-              </h2>
-            </div>
-            <div className="max-w-md lg:pb-3">
-              <p className="text-xl text-gray-500 font-medium leading-relaxed">
-                Traditional surveys trap data in technical silos. We use AI-assisted processing to structure that same accuracy into an interactive visual reference.
-              </p>
-            </div>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-8 mb-16">
-            
-            <div className="bg-gray-50 border border-gray-200 rounded-[32px] p-8 lg:p-12 flex flex-col shadow-inner transition-all duration-500">
-              <h3 className="text-xl font-black uppercase tracking-widest text-gray-400 mb-8 flex items-center gap-3">
-                <span className="w-2 h-2 bg-gray-300 rounded-full"></span> Traditional Survey
-              </h3>
-              
-              <div className="w-full h-64 bg-gray-200 rounded-2xl mb-10 overflow-hidden relative border border-gray-300">
-                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600" className="w-full h-full object-cover opacity-30 grayscale saturate-0 mix-blend-multiply" alt="Traditional CAD" />
-                <div className="absolute inset-0 bg-white/10 backdrop-blur-[1px]"></div>
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none"></div>
-              </div>
-
-              <ul className="space-y-6 flex-grow">
-                {[
-                  "CAD files and raw point clouds",
-                  "Requires technical expertise to interpret",
-                  "Static, disconnected deliverables",
-                  "Isolated from actual site visuals",
-                  "Manual volume and cut/fill calculations"
-                ].map((item, i) => (
-                  <li key={i} className="flex gap-4 items-start text-gray-500">
-                    <X size={20} strokeWidth={3} className="text-red-300 mt-1 shrink-0" />
-                    <span className="text-lg font-medium leading-tight">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="bg-[#0A0A0A] text-white rounded-[32px] p-8 lg:p-12 shadow-[0_30px_60px_rgba(0,0,0,0.3)] flex flex-col relative overflow-hidden group border border-white/5">
-              <div className="absolute top-0 right-0 w-80 h-80 bg-[#FFF200] rounded-full blur-[140px] opacity-10 pointer-events-none group-hover:opacity-20 transition-opacity duration-1000"></div>
-              
-              <h3 className="text-xl font-black uppercase tracking-widest text-[#FFF200] mb-8 flex items-center gap-3">
-                <span className="w-2 h-2 bg-[#FFF200] rounded-full shadow-[0_0_8px_#FFF200] animate-pulse"></span> YelloSKYE Intelligence
-              </h3>
-              
-              <div className="w-full h-64 bg-zinc-900 rounded-2xl mb-10 overflow-hidden relative border border-white/10 shadow-2xl">
-                <img src="https://i.ibb.co/bMN7Kzv0/Website-Visuals-Presentation-7.png" className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-[15s] ease-out" alt="DEX Interface" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                
-                <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
-                  <div className="w-full h-full bg-gradient-to-b from-transparent via-[#FFF200]/10 to-transparent -translate-y-full group-hover:animate-[scanline_4s_ease-in-out_infinite]"></div>
-                </div>
-
-                <div className="absolute top-4 left-4 bg-[#111]/80 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-lg flex items-center gap-2 shadow-lg">
-                  <Layers size={12} className="text-[#FFF200]" />
-                  <span className="text-[9px] font-black uppercase tracking-widest text-gray-300 mt-0.5">AI Spatial Processing</span>
-                </div>
-              </div>
-
-              <ul className="space-y-6 flex-grow relative z-10">
-                {[
-                  <><span className="text-white font-black">AI-classified</span> 3D terrain models</>,
-                  <><span className="text-white font-black">Accessible</span> to all stakeholders via web</>,
-                  <><span className="text-[#FFF200] font-black">Automated</span> volume & progress tracking</>,
-                  <>Integrated with <span className="text-white font-black">live site captures</span></>,
-                  <>Coordination happens <span className="text-white font-black">in visual context</span></>
-                ].map((item, i) => (
-                  <li key={i} className="flex gap-4 items-start">
-                    <Check size={20} strokeWidth={4} className="text-[#FFF200] mt-1 shrink-0" />
-                    <span className="text-lg font-medium leading-tight text-gray-300">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          
-          <style>{`
-            @keyframes scanline {
-              0% { transform: translateY(-100%); }
-              100% { transform: translateY(100%); }
-            }
-          `}</style>
-
-        </div>
-      </section>
       {/* ════════════════════════════════════════
           NEW: CONTINUOUS VALUE (Micro-Cards Grid)
       ════════════════════════════════════════ */}
@@ -615,12 +569,6 @@ export const LandSurvey: React.FC = () => {
               alt="Continuous Terrain Data" 
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20"></div>
-
-            <div className="absolute bottom-6 left-6 lg:bottom-8 lg:left-8 bg-white/95 backdrop-blur-md p-5 rounded-[20px] shadow-2xl flex items-center gap-4 border border-white/40">
-               <div className="w-12 h-12 bg-[#FFF200] rounded-xl flex items-center justify-center shadow-inner">
-                  <Check size={24} strokeWidth={3} className="text-black" />
-               </div>
-            </div>
           </div>
 
         </div>
