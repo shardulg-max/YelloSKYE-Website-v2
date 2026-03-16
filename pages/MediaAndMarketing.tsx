@@ -362,7 +362,7 @@ export const MediaMarketing: React.FC = () => {
           </div>
 
           <div className="w-full aspect-[4/3] md:aspect-[2.2/1] rounded-[32px] lg:rounded-[40px] overflow-hidden bg-gray-100 relative shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-gray-200 group">
-            <img src="https://images.unsplash.com/photo-1473177104440-ffe2f376098c?q=80&w=2500&auto=format&fit=crop" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[20s] ease-out" />
+            <img src="Website Images Land Survey.png" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[20s] ease-out" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10"></div>
 
             <div className="absolute top-6 left-6 lg:top-8 lg:left-8 bg-white/60 backdrop-blur-2xl px-5 py-3 rounded-2xl flex items-center gap-3 shadow-lg border border-white/50">

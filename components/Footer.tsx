@@ -10,7 +10,7 @@ import {
   MapPin, 
   Mail 
 } from 'lucide-react';
-
+import GlobalBottomCTA from './GlobalBottomCTA';
 const Footer = () => {
   // ════════════════════════════════════════
   //  GLOBAL FOOTER (RESTORED DESIGN + FIXED LINKS)
