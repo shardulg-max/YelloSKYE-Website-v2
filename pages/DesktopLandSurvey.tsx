@@ -17,7 +17,7 @@ const TERRAIN_FEATURES = [
     title: 'Survey-Grade Topographic Maps',
     desc: 'High-resolution contour maps with elevation data. Plan drainage, access roads, and foundation levels with confidence.',
     gif: '/gifs/topography.gif',
-    fallbackImg: 'https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2500&auto=format&fit=crop',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/Website%20Images%20Land%20Survey.png',
     placeholderBg: 'bg-green-50'
   },
   {
@@ -26,7 +26,7 @@ const TERRAIN_FEATURES = [
     title: 'Automated Earthwork Calculations',
     desc: 'Automated earthwork calculations. Validate contractor claims with visual proof of volumes moved.',
     gif: '/gifs/cut-fill.gif',
-    fallbackImg: 'https://images.unsplash.com/photo-1541888086225-f64069f2142e?q=80&w=2500&auto=format&fit=crop',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/Website%20Images%20Land%20Survey%201.png',
     placeholderBg: 'bg-yellow-50'
   },
   {
@@ -35,7 +35,7 @@ const TERRAIN_FEATURES = [
     title: 'Precise Material Tracking',
     desc: 'Track material volumes over time. Know exactly how much aggregate, soil, or rubble is on site.',
     gif: '/gifs/elevation-terrain.gif', 
-    fallbackImg: 'https://images.unsplash.com/photo-1587293852726-70cdb56c2836?q=80&w=2500&auto=format&fit=crop',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/Website%20Images%20Land%20Survey2.png',
     placeholderBg: 'bg-blue-50'
   },
   {
@@ -44,17 +44,8 @@ const TERRAIN_FEATURES = [
     title: 'Proactive Water Flow Analysis',
     desc: 'Identify low points and water flow paths before excavation starts. Prevent flooding issues proactively.',
     gif: '/gifs/watershed.gif',
-    fallbackImg: 'https://images.unsplash.com/photo-1580050854614-22b9365c192f?q=80&w=2500&auto=format&fit=crop',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/Website%20Images%20Land%20Survey3.png',
     placeholderBg: 'bg-cyan-50'
-  },
-  {
-    id: 'as-built',
-    label: 'As-Built Verification',
-    title: 'Design vs. Reality Comparison',
-    desc: 'Compare final terrain against design intent. Prove site was prepared to specification for handover.',
-    gif: '/gifs/slope-analysis.gif',
-    fallbackImg: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2500&auto=format&fit=crop',
-    placeholderBg: 'bg-orange-50'
   },
   {
     id: 'change-detection',
@@ -62,7 +53,7 @@ const TERRAIN_FEATURES = [
     title: 'Visual Diff Over Time',
     desc: 'Visual diff between survey dates. See exactly where earthwork happened and validate progress claims.',
     gif: '/gifs/contour.gif',
-    fallbackImg: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2500&auto=format&fit=crop',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/Website%20Images%20Land%20Survey5.png',
     placeholderBg: 'bg-purple-50'
   }
 ];
@@ -464,7 +455,7 @@ export const LandSurvey: React.FC = () => {
 
           <div className="relative w-full aspect-square lg:aspect-[4/5] rounded-[32px] overflow-hidden bg-gray-100 border border-gray-200 shadow-[0_30px_80px_rgba(0,0,0,0.1)] group">
             <img 
-              src="https://images.unsplash.com/photo-1581094288338-2314dddb31b5?q=80&w=2000&auto=format&fit=crop" 
+              src="https://ik.imagekit.io/saxybrgkp/Website%20Images%20Land%20Survey6.png" 
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[15s] ease-out" 
               alt="Continuous Terrain Data" 
             />
