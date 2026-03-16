@@ -306,7 +306,7 @@ export const Platform: React.FC = () => {
 
       {/* The Image Element */}
       <img 
-        src="https://ik.imagekit.io/saxybrgkp/MME/23.png" 
+        src="https://ik.imagekit.io/saxybrgkp/MME/345.png" 
         alt="DEX Aerial Survey Snippet" 
         className="absolute inset-0 w-full h-full object-cover scale-[1.02] group-hover:scale-105 transition-transform duration-[15s] ease-out z-10 opacity-90"
       />
@@ -514,7 +514,7 @@ export const Platform: React.FC = () => {
           <div className="relative bg-[#0A0A0A] rounded-3xl lg:rounded-[40px] p-8 lg:p-12 overflow-hidden group shadow-[0_20px_40px_rgba(0,0,0,0.08)] ring-1 ring-black/5 flex flex-col justify-between min-h-[450px]">
             {/* Background Map Placeholder */}
             <div className="absolute inset-0 opacity-40 group-hover:opacity-50 transition-opacity duration-700">
-              <img src="https://i.ibb.co/HDGVjy6S/Screenshot-2026-02-19-at-22-12-29.png" alt="Site Map" className="w-full h-full object-cover grayscale" />
+              <img src="https://ik.imagekit.io/saxybrgkp/MME/234.png" alt="Site Map" className="w-full h-full object-cover grayscale" />
             </div>
             
             <div className="relative z-10 max-w-md">
@@ -525,25 +525,6 @@ export const Platform: React.FC = () => {
               <p className="text-gray-400 font-medium text-lg leading-relaxed">
                 Scroll back in time to any date. Compare exact site conditions week-over-week to eliminate contractor disputes instantly.
               </p>
-            </div>
-
-            {/* Mock UI: Timeline Slider */}
-            <div className="relative z-10 mt-12 bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-2xl transform group-hover:-translate-y-2 transition-transform duration-500">
-              <div className="flex items-center justify-between text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 px-2">
-                <span>April 12</span>
-                <span className="text-[#FFF200]">Today</span>
-              </div>
-              <div className="relative w-full h-2 bg-white/20 rounded-full flex items-center">
-                <div className="absolute left-0 h-full w-[85%] bg-[#FFF200] rounded-full"></div>
-                <div className="absolute left-[85%] w-5 h-5 bg-white rounded-full shadow-lg border-2 border-[#FFF200] -translate-x-1/2 cursor-pointer flex items-center justify-center">
-                  <div className="w-1.5 h-1.5 bg-black rounded-full"></div>
-                </div>
-              </div>
-              <div className="flex justify-center mt-4">
-                <button className="flex items-center gap-2 text-white text-xs font-bold bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full transition-colors">
-                  <Play size={12} fill="currentColor" /> Play Progression
-                </button>
-              </div>
             </div>
           </div>
 
@@ -562,7 +543,7 @@ export const Platform: React.FC = () => {
             {/* Single Image Area */}
             <div className="relative w-full h-48 lg:h-56 rounded-2xl overflow-hidden border border-gray-200 shadow-inner group-hover:-translate-y-2 transition-transform duration-500">
                {/* Replace this src with your actual BIM overlay image */}
-               <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover" alt="BIM Overlay" />
+               <img src="https://ik.imagekit.io/saxybrgkp/MME/Website%20Visuals%20Overlay%20(1).png" className="w-full h-full object-cover" alt="BIM Overlay" />
                <div className="absolute bottom-3 right-3 bg-black/80 backdrop-blur-md text-[#FFF200] text-[10px] font-black px-3 py-1.5 rounded-lg uppercase tracking-widest border border-white/10 shadow-lg">
                  BIM Match Active
                </div>
@@ -627,7 +608,6 @@ export const Platform: React.FC = () => {
             {/* Mock UI: Alert Card */}
             <div className="relative z-10 mt-12 bg-black/60 backdrop-blur-xl border border-red-500/20 rounded-2xl p-5 shadow-2xl transform group-hover:-translate-y-2 transition-transform duration-500 flex gap-4 items-center">
                <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-white/10 relative">
-                 <img src="https://images.unsplash.com/photo-1541888087-b5523b0c5942?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover grayscale" alt="Site Issue" />
                  {/* Bounding Box Simulation */}
                  <div className="absolute inset-2 border-2 border-red-500 rounded-sm"></div>
                </div>
