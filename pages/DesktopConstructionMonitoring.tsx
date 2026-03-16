@@ -16,7 +16,7 @@ const MONITORING_FEATURES = [
     title: 'Drone-Based Progress Tracking',
     desc: 'Regular automated drone flights capture site progress. Compare actual execution against planned schedules with transparent work-done reconciliation.',
     gif: '/gifs/aerial-progress.gif',
-    fallbackImg: 'https://images.unsplash.com/photo-1541888086225-f64069f2142e?q=80&w=2500&auto=format&fit=crop',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/Construction%20Monitoring/Website%20Images%20Land%20Survey%20new.png',
     placeholderBg: 'bg-blue-50'
   },
   {
@@ -25,7 +25,7 @@ const MONITORING_FEATURES = [
     title: 'Digital Twins of Interiors',
     desc: 'Walk through interiors remotely. Tag problem areas, compare changes across dates, and track MEP installations without leaving the office.',
     gif: '/gifs/interior-360.gif',
-    fallbackImg: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2500&auto=format&fit=crop',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/Construction%20Monitoring/Website%20Images%20La2nd%20Survey.png?updatedAt=1773640609383',
     placeholderBg: 'bg-orange-50'
   },
   {
@@ -34,7 +34,7 @@ const MONITORING_FEATURES = [
     title: 'Always-On Site Monitoring',
     desc: 'Continuously analyze progress, crew patterns, and material flow. Generate high-resolution timelapses and track workforce presence effortlessly.',
     gif: '/gifs/fixed-cam.gif', 
-    fallbackImg: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2500&auto=format&fit=crop',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/Construction%20Monitoring/3.png?updatedAt=1773640609238',
     placeholderBg: 'bg-green-50'
   },
   {
@@ -43,7 +43,7 @@ const MONITORING_FEATURES = [
     title: 'Unified Executive Analytics',
     desc: 'Monitor all sites in one centralized data hub. Customizable insights, stage-wise completion rates, and real-time lag calculations across your portfolio.',
     gif: '/gifs/portfolio.gif',
-    fallbackImg: 'https://i.ibb.co/2DQZqRT/Website-Visuals-Presentation-2.png',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/Construction%20Monitoring/4.png?updatedAt=1773640609542',
     placeholderBg: 'bg-purple-50'
   }
 ];
@@ -138,9 +138,8 @@ const MonitoringRepresentationSection = () => {
                 `}
               >
                 <img 
-                  src={feature.gif} 
+                  src={feature.fallbackImg} 
                   alt={feature.title}
-                  className={`w-full h-full object-cover opacity-90 ${index === 3 ? '' : 'mix-blend-screen'}`}
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = feature.fallbackImg;
                   }}
@@ -232,7 +231,7 @@ export const ConstructionMonitoring: React.FC = () => {
 
           <div className="w-full aspect-[4/3] md:aspect-[2.2/1] rounded-[32px] lg:rounded-[40px] overflow-hidden bg-gray-100 relative shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-gray-200 group">
             <img 
-              src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2500&auto=format&fit=crop" 
+              src="https://ik.imagekit.io/saxybrgkp/Construction%20Monitoring/Website%20Images%20Land%20Survey.png" 
               alt="Construction Monitoring Visual Timeline" 
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[20s] ease-out"
             />
@@ -510,7 +509,7 @@ export const ConstructionMonitoring: React.FC = () => {
                    {/* Visual Container with Black Border */}
                    <div className="relative w-full max-w-[550px] aspect-[16/10] rounded-[28px] bg-black border-[3px] border-black shadow-[0_40px_100px_rgba(0,0,0,0.15)] p-0.5 transition-transform duration-700 ease-out z-20">
                       <div className="w-full h-full rounded-[24px] overflow-hidden relative bg-gray-900">
-                         <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-1000" alt="Truth Hub" />
+                         <img src="https://ik.imagekit.io/saxybrgkp/Website%20Images%20Land%20Survey6.png?updatedAt=1773637747328" className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-1000" alt="Truth Hub" />
 
                          <div className="absolute top-3 right-4 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg flex items-center gap-2 border border-white/10">
                            <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></div>

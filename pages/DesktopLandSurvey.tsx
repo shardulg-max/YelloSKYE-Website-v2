@@ -325,12 +325,6 @@ export const LandSurvey: React.FC = () => {
               </p>
             </div>
           </div>
-
-      <div className="lg:col-span-5 pb-2">
-        <p className="text-[18px] lg:text-[20px] text-gray-500 leading-relaxed font-medium">
-          Traditional surveys trap data in technical silos. We use AI-assisted processing to structure that same accuracy into an interactive visual reference.
-        </p>
-      </div>
     </div>
 
     {/* Comparison Cards Grid */}
