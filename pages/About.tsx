@@ -55,9 +55,9 @@ export const About: React.FC = () => {
       <AboutStyles />
 
      {/* ════════════════════════════════════════
-          1. HERO (PERFECT FIT & WIDER IMAGE)
+          1. HERO (PERFECT FIT & CORRECT IMAGE DIMENSIONS)
       ════════════════════════════════════════ */}
-      <section className="pt-24 md:pt-32 lg:pt-44 pb-12 lg:pb-20 relative overflow-hidden bg-white">
+      <section className="pt-24 md:pt-36 lg:pt-48 pb-16 lg:pb-24 relative overflow-hidden bg-white">
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
              style={{ 
                backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", 
@@ -69,7 +69,7 @@ export const About: React.FC = () => {
         <div className="max-w-[1450px] mx-auto px-6 lg:px-10 relative z-10">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             
-            {/* LEFT SIDE: Copy (7 columns for breathing room, removed nowrap that caused overlap) */}
+            {/* LEFT SIDE: Copy */}
             <div className="lg:col-span-7 flex flex-col justify-center items-start">
               
               <h1 className="text-[clamp(44px,5vw,78px)] font-black tracking-tighter leading-[1.05] text-black mb-12">
@@ -101,11 +101,12 @@ export const About: React.FC = () => {
               </div>
             </div>
 
-            {/* RIGHT SIDE: Perfect fitting image box (5 columns) */}
-            <div className="lg:col-span-5 relative mt-12 lg:mt-0 w-full">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[40px] shadow-[0_40px_100px_rgba(0,0,0,0.15)] bg-gray-100">
+            {/* RIGHT SIDE: Perfect fitting image box matching the reference dimensions */}
+            <div className="lg:col-span-5 relative mt-16 lg:mt-0 w-full flex justify-center lg:justify-end">
+              {/* aspect-square and max-w-[500px] enforce the exact shape from your screenshot */}
+              <div className="relative aspect-square w-full max-w-[500px] overflow-hidden rounded-[40px] shadow-[0_40px_100px_rgba(0,0,0,0.15)] bg-gray-100 border border-gray-100">
                 <img 
-                  src="https://ik.imagekit.io/saxybrgkp/MME/Prayag%20Photo%20Website.webp" 
+                  src="https://ik.imagekit.io/saxybrgkp/uploaded:Screenshot%202026-03-16%20at%2017.27.18.png-0bb12f86-90e1-450a-bc6d-467262f2f3f9" 
                   className="w-full h-full object-cover" 
                   alt="Drone Pilot Operations" 
                 />
