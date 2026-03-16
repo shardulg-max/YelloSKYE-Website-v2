@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { 
-  X, Check, DownloadCloud, Globe, Layers, MapPin, Mail, 
-  Twitter, Linkedin, Youtube, Instagram, BarChart, History, 
+  X, Check, DownloadCloud, Globe, Layers, MapPin, Mail, Timer, Activity,
+  Twitter, Linkedin, Youtube, Instagram, BarChart, History,
   Box, Camera, Clock, AlertTriangle, Unplug, 
   LayoutDashboard, Users, Zap, ShieldCheck, 
   RefreshCw, Search, HardHat, FileCheck, Eye, ClipboardCheck, Building2
@@ -168,7 +168,7 @@ export const AssetInspection: React.FC = () => {
       </div>
       <div className="lg:col-span-5 flex flex-col">
         <h2 className="text-2xl lg:text-[28px] font-medium leading-[1.3] text-gray-800 tracking-tight">
-          Replace manual walkthroughs with AI-powered 360° documentation.
+          Replace manual walkthroughs with drone-based aerial documentation.
         </h2>
       </div>
     </div>
@@ -198,7 +198,180 @@ export const AssetInspection: React.FC = () => {
     </div>
   </div>
 </section>
+      {/* ════════════════════════════════════════
+          INSPECTION STATS ROW
+      ════════════════════════════════════════ */}
+      <section className="bg-white pt-12 pb-24 border-b border-gray-100">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 divide-x divide-gray-100">
+            
+            <div className="px-4 lg:px-8">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#FFF200]"></div>
+                <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">Risk Reduction</span>
+              </div>
+              <div className="text-4xl lg:text-5xl font-black text-black tracking-tighter mb-2">90%</div>
+              <div className="text-xs font-bold text-gray-500 uppercase tracking-wider">Less Scaffolding & Climbing</div>
+            </div>
 
+            <div className="px-4 lg:px-8">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#FFF200]"></div>
+                <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">Speed</span>
+              </div>
+              <div className="text-4xl lg:text-5xl font-black text-black tracking-tighter mb-2">5x</div>
+              <div className="text-xs font-bold text-gray-500 uppercase tracking-wider">Faster Than Manual Checks</div>
+            </div>
+
+            <div className="px-4 lg:px-8">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#FFF200]"></div>
+                <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">Accuracy</span>
+              </div>
+              <div className="text-4xl lg:text-5xl font-black text-black tracking-tighter mb-2">100%</div>
+              <div className="text-xs font-bold text-gray-500 uppercase tracking-wider">Visual Coverage of Assets</div>
+            </div>
+
+            <div className="px-4 lg:px-8">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#FFF200]"></div>
+                <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">Compliance</span>
+              </div>
+              <div className="text-4xl lg:text-5xl font-black text-black tracking-tighter mb-2">Zero</div>
+              <div className="text-xs font-bold text-gray-500 uppercase tracking-wider">Compromise on Safety</div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════
+          THE PROBLEM: MANUAL INSPECTION RISKS
+      ════════════════════════════════════════ */}
+      <section className="bg-white py-24 lg:py-32 font-sans relative overflow-hidden">
+        
+        {/* Faint Grid Background */}
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none" 
+             style={{ backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
+
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
+          
+          <div className="text-center mb-16 lg:mb-20">
+            <h2 className="text-[clamp(36px,4.5vw,56px)] font-black tracking-tighter leading-[1.05] text-[#0A0A0A] mb-6">
+              Manual asset inspections are <br className="hidden md:block"/>
+              <span className="relative inline-block mt-2">
+                <span className="absolute inset-y-1 lg:inset-y-2 -inset-x-3 bg-[#FFF200] rounded-xl shadow-sm"></span>
+                <span className="relative text-black px-2">slow, risky, and incomplete.</span>
+              </span>
+            </h2>
+            <p className="text-lg lg:text-xl text-gray-500 font-medium leading-relaxed max-w-2xl mx-auto">
+              Climbing stacks, erecting scaffolding, or using binoculars leaves critical infrastructure vulnerable. Sending crews into hazardous areas shouldn't be your first line of defense.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+            
+            <div className="bg-gray-50 rounded-[32px] p-8 lg:p-10 border border-gray-100 hover:border-[#FFF200] transition-colors group">
+              <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-black mb-6 shadow-sm border border-gray-100 group-hover:bg-[#FFF200] transition-colors">
+                <AlertTriangle size={24} />
+              </div>
+              <h3 className="text-xl font-black text-black tracking-tight mb-3">Extreme Safety Risks</h3>
+              <p className="text-gray-500 font-medium leading-relaxed">
+                Sending crews up industrial chimneys, transmission towers, or steep ridges introduces severe safety liabilities and insurance overhead.
+              </p>
+            </div>
+
+            <div className="bg-gray-50 rounded-[32px] p-8 lg:p-10 border border-gray-100 hover:border-[#FFF200] transition-colors group">
+              <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-black mb-6 shadow-sm border border-gray-100 group-hover:bg-[#FFF200] transition-colors">
+                <Timer size={24} />
+              </div>
+              <h3 className="text-xl font-black text-black tracking-tight mb-3">Costly Operational Downtime</h3>
+              <p className="text-gray-500 font-medium leading-relaxed">
+                Erecting scaffolding, deploying rope access teams, and halting operations for routine manual checks costs thousands in lost productivity.
+              </p>
+            </div>
+
+            <div className="bg-gray-50 rounded-[32px] p-8 lg:p-10 border border-gray-100 hover:border-[#FFF200] transition-colors group">
+              <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-black mb-6 shadow-sm border border-gray-100 group-hover:bg-[#FFF200] transition-colors">
+                <Search size={24} />
+              </div>
+              <h3 className="text-xl font-black text-black tracking-tight mb-3">Inconsistent Documentation</h3>
+              <p className="text-gray-500 font-medium leading-relaxed">
+                Binoculars and ground-level photos miss micro-fractures, hidden corrosion, and critical roof-level defects, leaving gray areas in audits.
+              </p>
+            </div>
+
+            <div className="bg-gray-50 rounded-[32px] p-8 lg:p-10 border border-gray-100 hover:border-[#FFF200] transition-colors group">
+              <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-black mb-6 shadow-sm border border-gray-100 group-hover:bg-[#FFF200] transition-colors">
+                <Activity size={24} />
+              </div>
+              <h3 className="text-xl font-black text-black tracking-tight mb-3">Reactive Maintenance</h3>
+              <p className="text-gray-500 font-medium leading-relaxed">
+                Without a clear, historical visual record of your asset's degradation over time, you are forced to fix infrastructure only *after* it fails.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════
+          THE SOLUTION: EXPLICIT ASSET TARGETS
+      ════════════════════════════════════════ */}
+      <section className="bg-[#0A0A0A] py-24 lg:py-32 font-sans relative overflow-hidden">
+        
+        {/* Subtle Ambient Glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#FFF200]/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10 text-center">
+          
+          <h2 className="text-[clamp(36px,4.5vw,56px)] font-black tracking-tighter leading-[1.05] text-white mb-6">
+            Inspect the unreachable with <br className="hidden md:block"/>
+            <span className="text-[#FFF200]">survey-grade drone data.</span>
+          </h2>
+          <p className="text-lg lg:text-xl text-gray-400 font-medium leading-relaxed max-w-3xl mx-auto mb-16">
+            YelloSKYE captures high-resolution imagery and thermal data of your hardest-to-reach infrastructure, keeping your teams on the ground and your assets online.
+          </p>
+
+          {/* EXPLICIT USE CASES ROW */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-5xl mx-auto">
+            
+            {/* Asset 1: Power & Transmission */}
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col items-center justify-center gap-4 hover:bg-white/10 hover:border-[#FFF200]/50 transition-all cursor-default group">
+              <div className="w-12 h-12 rounded-full bg-[#FFF200]/10 flex items-center justify-center text-[#FFF200] group-hover:scale-110 transition-transform">
+                <Zap size={24} />
+              </div>
+              <h4 className="text-white font-bold text-sm uppercase tracking-widest text-center">Power & <br/> Transmission</h4>
+            </div>
+
+            {/* Asset 2: Industrial Chimneys */}
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col items-center justify-center gap-4 hover:bg-white/10 hover:border-[#FFF200]/50 transition-all cursor-default group">
+              <div className="w-12 h-12 rounded-full bg-[#FFF200]/10 flex items-center justify-center text-[#FFF200] group-hover:scale-110 transition-transform">
+                <Factory size={24} />
+              </div>
+              <h4 className="text-white font-bold text-sm uppercase tracking-widest text-center">Industrial <br/> Chimneys</h4>
+            </div>
+
+            {/* Asset 3: Solar Roofs */}
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col items-center justify-center gap-4 hover:bg-white/10 hover:border-[#FFF200]/50 transition-all cursor-default group">
+              <div className="w-12 h-12 rounded-full bg-[#FFF200]/10 flex items-center justify-center text-[#FFF200] group-hover:scale-110 transition-transform">
+                <Sun size={24} />
+              </div>
+              <h4 className="text-white font-bold text-sm uppercase tracking-widest text-center">Commercial <br/> Solar Roofs</h4>
+            </div>
+
+            {/* Asset 4: Facades & Ridges */}
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col items-center justify-center gap-4 hover:bg-white/10 hover:border-[#FFF200]/50 transition-all cursor-default group">
+              <div className="w-12 h-12 rounded-full bg-[#FFF200]/10 flex items-center justify-center text-[#FFF200] group-hover:scale-110 transition-transform">
+                <Building size={24} />
+              </div>
+              <h4 className="text-white font-bold text-sm uppercase tracking-widest text-center">Facades & <br/> Steep Ridges</h4>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
       {/* ════════════════════════════════════════
           THE TRUST BAR
       ════════════════════════════════════════ */}

@@ -496,7 +496,7 @@ export const About: React.FC = () => {
             {/* Map Area: Blended perfectly into the background */}
             <div className="lg:col-span-7 relative h-[500px] lg:h-[700px] flex items-center justify-center">
                <img 
-                 src="https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey.png" 
+                 src="https://ik.imagekit.io/saxybrgkp/MME/final.png?updatedAt=1773650468380" 
                  // mix-blend-screen instantly hides the image's black background!
                  className="w-full h-full object-contain mix-blend-screen opacity-90" 
                  alt="National Footprint Map" 

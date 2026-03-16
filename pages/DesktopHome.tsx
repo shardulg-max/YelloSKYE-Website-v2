@@ -1076,7 +1076,7 @@ export const Home: React.FC = () => {
         <LifecycleLinePill 
           title="Media & Marketing" 
           start={4} end={4} 
-          imageUrl="https://i.ibb.co/twP5J0P8/Screenshot-2026-02-19-at-22-19-55.png" 
+          imageUrl="https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey3.png?updatedAt=1773643277664" 
           description="Visual assets and launch films for sales and executive leadership." 
           link="/solutions/media-and-marketing"
         />
