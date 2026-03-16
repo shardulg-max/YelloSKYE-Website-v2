@@ -1,31 +1,55 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { 
-  Check, Globe, Layers, Mail, Twitter, Linkedin, Youtube, Instagram, 
-  MapPin, Sparkles, ShieldCheck, Eye, Zap, Target, Users, AlertTriangle, ShieldAlert,
-  ArrowRight, Search, Activity, RefreshCw, Box
+  Check, Globe, Layers, Twitter, Linkedin, Youtube, Instagram, 
+  MapPin, Eye, Zap, ShieldCheck, Users, ArrowRight, X 
 } from "lucide-react";
 
-// ─── STYLES & ANIMATIONS ──────────────────────────────────────────────────
 const AboutStyles = () => (
   <style>{`
-    @keyframes line-glow {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
+    .fade-grid {
+      background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), 
+                        linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 80px 80px;
     }
-    .animate-line-glow {
-      background: linear-gradient(90deg, transparent, #FFF200, transparent);
-      background-size: 200% 100%;
-      animation: line-glow 3s linear infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
-    .animate-float { animation: float 5s ease-in-out infinite; }
   `}</style>
 );
 
 export const About: React.FC = () => {
+  // --- STATE AND DATA ADDED HERE ---
+  const [activeFounder, setActiveFounder] = useState<string | null>(null);
+
+  const foundersData = {
+    kiran: {
+      name: "Kiran Shah",
+      title: "Chairman & MD",
+      image: "https://ik.imagekit.io/saxybrgkp/MME/YelloSkye%20Kiran%20Shah.jpg",
+      linkedin: "https://linkedin.com/company/yelloskye", // Update to actual link
+      bio: (
+        <>
+          <p className="mb-6">
+            Kiran Shah embodies the core principles of YelloSKYE, where business acumen and aerial intelligence are the foundation of our mission. With an unwavering commitment to innovative solutions and exceptional customer experiences, he is the driving force behind our ability to make a real impact on businesses.
+          </p>
+          <p>
+            As a global finance industry veteran and a dedicated aviation enthusiast, Kiran brings over two decades of experience in leadership roles at renowned institutions like Goldman Sachs India, JPMorgan, and Bank of America. His expertise empowers businesses and leadership by harnessing emotional intelligence, ensuring data transparency, and leveraging advanced analytics to navigate and thrive in today's dynamic landscape.
+          </p>
+        </>
+      )
+    },
+    kush: {
+      name: "Kush Agarwal",
+      title: "Co-Founder & CEO",
+      image: "https://ik.imagekit.io/saxybrgkp/MME/YelloSkye%20Drone%20Expertise.jpg",
+      linkedin: "https://linkedin.com/in/kush-agarwal",
+      bio: (
+        <>
+          <p className="mb-6">
+            Exploring the boundless potential of aerial intelligence and the ability to witness a profound impact across diverse sectors has been Kush's exhilarating journey. With a background as the Ex-Deputy Chief Pilot for the Boeing 737 and 777 fleets at Jet Airways, amassing over 4000 flight hours, Kush's passion for flying has been channeled into crafting extraordinary experiences for YelloSKYE's customers.
+          </p>
+        </>
+      )
+    }
+  };
+
   return (
     <div className="bg-white text-black font-sans selection:bg-[#FFF200] selection:text-black w-full overflow-x-hidden">
       <AboutStyles />
@@ -46,7 +70,7 @@ export const About: React.FC = () => {
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             
             {/* LEFT SIDE: Copy (Increased to 6 columns for balance) */}
-            <div className="lg:col-span-6 flex flex-col justify-center items-start">
+            <div className="lg:col-span-5 flex flex-col justify-center items-start">
               
               {/* Forced 3-Line Heading */}
               <h1 className="flex flex-col items-start text-[clamp(40px,4.5vw,78px)] font-black tracking-tighter leading-[1.02] text-black mb-14">
@@ -264,7 +288,6 @@ export const About: React.FC = () => {
                    {/* Card Header & Arrow */}
                    <div className="relative z-10 flex items-center justify-between mb-8">
                       <div className="w-12 h-12 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center group-hover:bg-[#FFF200] group-hover:border-[#FFF200] transition-colors duration-500 shadow-sm">
-                         <div className="w-2.5 h-2.5 rounded-full bg-black"></div>
                       </div>
                       
                       {/* Arrow slides in and straightens out on hover */}
@@ -290,10 +313,11 @@ export const About: React.FC = () => {
       {/* ════════════════════════════════════════
           FOUNDERS: VISIONARY LEADERSHIP
       ════════════════════════════════════════ */}
-      <section className="py-24 lg:py-40 bg-[#0A0A0A] text-white relative overflow-hidden">
+      <section className="py-24 lg:py-40 bg-[#0A0A0A] text-white relative overflow-hidden border-t border-white/10">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
           <div className="grid lg:grid-cols-12 gap-16 items-center">
             
+            {/* Section Header */}
             <div className="lg:col-span-4">
               <h2 className="text-4xl lg:text-6xl font-black tracking-tighter leading-[1.05] mb-8">
                 The Visionaries <br /> 
@@ -308,41 +332,112 @@ export const About: React.FC = () => {
               </div>
             </div>
 
+            {/* Founder Cards */}
             <div className="lg:col-span-8 grid sm:grid-cols-2 gap-8 md:gap-12">
-               {/* Kiran Shah */}
-               <div className="group relative aspect-[4/5] rounded-[40px] overflow-hidden bg-gray-900 border border-white/10 transition-all duration-700 hover:-translate-y-4 shadow-2xl">
-                  <img src="https://ik.imagekit.io/saxybrgkp/MME/YelloSkye%20Kiran%20Shah.jpg" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" alt="Kiran Shah" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+               
+               {/* Kiran Shah Card */}
+               <div 
+                 onClick={() => setActiveFounder('kiran')}
+                 className="group relative aspect-[4/5] rounded-[40px] overflow-hidden bg-gray-900 border border-white/10 transition-all duration-700 hover:-translate-y-4 shadow-2xl cursor-pointer"
+               >
+                  <img src={foundersData.kiran.image} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" alt="Kiran Shah" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
                   <div className="absolute bottom-8 left-8 right-8">
                      <h4 className="text-2xl font-black tracking-tight mb-1">Kiran Shah</h4>
                      <p className="text-xs font-black text-[#FFF200] uppercase tracking-widest mb-4">Chairman & MD</p>
                      <div className="flex justify-between items-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all">
-                        <Linkedin size={20} className="text-gray-400 hover:text-[#FFF200] cursor-pointer" />
-                        <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-md">
+                        <div className="p-2 -ml-2 text-gray-400 hover:text-white transition-colors">
+                          <Linkedin size={20} />
+                        </div>
+                        <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-md text-white">
                            <ArrowRight size={18} className="-rotate-45" />
                         </div>
                      </div>
                   </div>
                </div>
 
-               {/* Kush Aggarwal */}
-               <div className="group relative aspect-[4/5] rounded-[40px] overflow-hidden bg-gray-900 border border-white/10 transition-all duration-700 hover:-translate-y-4 shadow-2xl" style={{ animationDelay: '0.2s' }}>
-                  <img src="https://ik.imagekit.io/saxybrgkp/MME/YelloSkye%20Drone%20Expertise.jpg" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" alt="Kush Aggarwal" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+               {/* Kush Agarwal Card */}
+               <div 
+                 onClick={() => setActiveFounder('kush')}
+                 className="group relative aspect-[4/5] rounded-[40px] overflow-hidden bg-gray-900 border border-white/10 transition-all duration-700 hover:-translate-y-4 shadow-2xl cursor-pointer" 
+                 style={{ animationDelay: '0.2s' }}
+               >
+                  <img src={foundersData.kush.image} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" alt="Kush Agarwal" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
                   <div className="absolute bottom-8 left-8 right-8">
-                     <h4 className="text-2xl font-black tracking-tight mb-1">Kush Aggarwal</h4>
+                     <h4 className="text-2xl font-black tracking-tight mb-1">Kush Agarwal</h4>
                      <p className="text-xs font-black text-[#FFF200] uppercase tracking-widest mb-4">Co-Founder & CEO</p>
                      <div className="flex justify-between items-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all">
-                        <Linkedin size={20} className="text-gray-400 hover:text-[#FFF200] cursor-pointer" />
-                        <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-md">
+                        <div className="p-2 -ml-2 text-gray-400 hover:text-white transition-colors">
+                          <Linkedin size={20} />
+                        </div>
+                        <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-md text-white">
                            <ArrowRight size={18} className="-rotate-45" />
                         </div>
                      </div>
                   </div>
                </div>
             </div>
-
           </div>
+
+          {/* ================= MODAL OVERLAY ================= */}
+          {activeFounder && (
+            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 lg:p-12 bg-black/95 backdrop-blur-xl animate-in fade-in duration-300">
+              
+              {/* Click outside to close */}
+              <div className="absolute inset-0" onClick={() => setActiveFounder(null)}></div>
+              
+              {/* Modal Content Box */}
+              <div className="relative w-full max-w-[1100px] max-h-[90vh] overflow-y-auto hide-scrollbar bg-[#0A0A0A] rounded-[32px] border border-white/10 shadow-2xl flex flex-col md:flex-row animate-in zoom-in-95 duration-300">
+                
+                {/* Close Button */}
+                <button 
+                  onClick={() => setActiveFounder(null)}
+                  className="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors z-20"
+                >
+                  <X size={20} />
+                </button>
+
+                {/* Left Side: Image */}
+                <div className="w-full md:w-[45%] lg:w-[40%] h-[350px] md:h-auto relative shrink-0">
+                  <img 
+                    src={foundersData[activeFounder as keyof typeof foundersData].image} 
+                    alt={foundersData[activeFounder as keyof typeof foundersData].name}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] to-transparent md:hidden"></div>
+                </div>
+
+                {/* Right Side: Editorial Text */}
+                <div className="w-full md:w-[55%] lg:w-[60%] p-8 lg:p-16 flex flex-col justify-center relative z-10">
+                  <h3 className="text-4xl lg:text-5xl font-black tracking-tight mb-2 text-white">
+                    {foundersData[activeFounder as keyof typeof foundersData].name}
+                  </h3>
+                  <p className="text-sm font-black text-gray-400 uppercase tracking-[0.2em] mb-8 pb-8 border-b border-white/10">
+                    {foundersData[activeFounder as keyof typeof foundersData].title}
+                  </p>
+                  
+                  <div className="text-[15px] lg:text-[17px] text-gray-400 font-medium leading-relaxed mb-10">
+                    {foundersData[activeFounder as keyof typeof foundersData].bio}
+                  </div>
+
+                  {foundersData[activeFounder as keyof typeof foundersData].linkedin && (
+                    <a 
+                      href={foundersData[activeFounder as keyof typeof foundersData].linkedin} 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      className="inline-flex items-center w-fit gap-3 text-[#FFF200] hover:text-white font-bold text-sm uppercase tracking-widest transition-colors"
+                    >
+                      <span className="underline underline-offset-4">Follow on LinkedIn</span>
+                      <div className="w-6 h-6 bg-[#FFF200] text-black flex items-center justify-center rounded-sm">
+                        <Linkedin size={14} fill="currentColor" />
+                      </div>
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 {/* ════════════════════════════════════════
