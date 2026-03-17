@@ -4,6 +4,13 @@ import { Check } from 'lucide-react';
 
 export default function GlobalBottomCTA() {
   const location = useLocation();
+
+// 1. ADD THIS GUARD: If the path is '/book-demo', return null (render nothing)
+  // Check your exact route path in App.tsx. It might be '/book-demo' or '/book'
+  if (location.pathname === '/book-demo' || location.pathname === '/book') {
+    return null;
+  }
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',

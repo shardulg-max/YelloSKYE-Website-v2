@@ -41,7 +41,7 @@ const Footer = () => {
             {/* Column 1: Brand Info */}
             <div className="lg:col-span-4">
               <img 
-                src="https://i.ibb.co/k2LDXWzm/Master-Solutions-Deck-v2-3.png" 
+                src="https://ik.imagekit.io/saxybrgkp/MME/Final%20Logo.png?updatedAt=1773646448171" 
                 alt="YelloSKYE" 
                 className="h-14 w-auto mb-8 brightness-0 invert" 
               />
