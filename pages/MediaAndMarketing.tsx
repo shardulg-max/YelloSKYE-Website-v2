@@ -115,7 +115,7 @@ const FLOOR_VIEWS = [
     level: 'Terrace Floor', 
     height: '55m', 
     desc: 'Exclusive Open-Air Panoramic Vantage', 
-    img: 'https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey%20final.png', 
+    img: 'https://ik.imagekit.io/saxybrgkp/MME/floor%20picker/72.png', 
     time: 'Sunset' 
   },
   { 
@@ -124,7 +124,7 @@ const FLOOR_VIEWS = [
     level: '15th Floor', 
     height: '45m', 
     desc: 'Elevated Skyline & Cityscape Views', 
-    img: 'https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey9.png?updatedAt=1773643277365', 
+    img: 'https://ik.imagekit.io/saxybrgkp/MME/floor%20picker/58.png', 
     time: 'Daytime' 
   },
   { 
@@ -132,7 +132,7 @@ const FLOOR_VIEWS = [
     level: '9th Floor', 
     height: '27m', 
     desc: 'Mid-Rise Neighborhood Context', 
-    img: 'https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey7.png?updatedAt=1773643277489', 
+    img: 'https://ik.imagekit.io/saxybrgkp/MME/floor%20picker/38.png', 
     time: 'Daytime' 
   },
   { 
@@ -140,7 +140,7 @@ const FLOOR_VIEWS = [
     level: '6th Floor', 
     height: '18m', 
     desc: 'Canopy Level & Street Connection', 
-    img: 'https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey8.png?updatedAt=1773643277387', 
+    img: 'https://ik.imagekit.io/saxybrgkp/MME/floor%20picker/23.png', 
     time: 'Morning' 
   }
 ];
