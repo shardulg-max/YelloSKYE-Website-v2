@@ -31,7 +31,7 @@ export default function GlobalBottomCTA() {
     setStatus('submitting');
 
     // 👇 REPLACE THIS WITH YOUR GOOGLE APPS SCRIPT WEB APP URL 👇
-    const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwN2H10TqPr-uj-uiQcIO9znvd-xdAySF6CXJh0fLblVkX5KXyM-MGmQj-rUiqTSCeV0A/exec';
 
     try {
       const data = new FormData();
