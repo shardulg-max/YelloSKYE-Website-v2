@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { AppRoutes } from "../types";
 import React, { useState, useEffect } from "react";
 import { 
-  Check, Globe, Layers, Mail, Twitter, Linkedin, Youtube, Instagram, PenTool, Scan, Crosshair,
+  Check, Globe, Layers, Mail, Twitter, Linkedin, Youtube, Instagram, PenTool, Scan, Crosshair, ArrowDown, 
   MapPin, MoveUpRight, Sparkles, Box, AlertTriangle, FileBox, Users, 
   Ruler, LayoutTemplate, Activity, RefreshCw, Hexagon, HardHat, ShieldCheck,
   CheckCircle2, Cpu
@@ -41,174 +41,148 @@ const BIM_FEATURES = [
   }
 ];
 
-// ─── SUB-COMPONENT: INTERACTIVE BIM SHOWCASE (WHITE THEME) ──────────
+// ─── SUB-COMPONENT: DUAL-TRACK BIM SERVICES ──────────
 
 export const BIMValidationModule = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % BIM_FEATURES.length);
-    }, 4000); // 4 second rotation gives them time to read the new service descriptions
-    return () => clearInterval(timer);
-  }, []);
-
   return (
-    <>
-      {/* ════════════════════════════════════════
-            INTERACTIVE VIEWER: FULL STACK BIM
-        ════════════════════════════════════════ */}
-      <section 
-        className="bg-white py-12 lg:py-16 relative overflow-hidden font-sans"
-        style={{
-          maskImage: "linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%)",
-          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%)"
-        }}
-      >
-        {/* Light Mode Grid Background */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
-             style={{
-               backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)",
-               backgroundSize: "60px 60px",
-               maskImage: "linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)",
-               WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)"
-             }} />
+    <section className="bg-white py-16 lg:py-24 relative overflow-hidden font-sans border-b border-gray-100">
+      
+      {/* Light Mode Grid Background */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+           style={{
+             backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)",
+             backgroundSize: "60px 60px",
+             maskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
+             WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)"
+           }} 
+      />
 
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-8 relative z-10">
+        
+        {/* HEADER */}
+        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
+          <h2 className="text-[clamp(32px,4vw,56px)] font-black tracking-tighter leading-[1.05] text-black mb-6">
+            A full-stack BIM practice. <br />
+            <span className="relative inline-block mt-2">
+              <span className="absolute inset-y-1 -inset-x-3 bg-[#FFF200] rounded-xl shadow-sm transform -skew-x-2"></span>
+              <span className="relative text-black px-2">From concept to reality.</span>
+            </span>
+          </h2>
+          <p className="text-lg text-gray-500 font-medium leading-relaxed">
+            We operate on two core tracks. We reverse-engineer your physical site into a digital twin, or we take your 2D designs and build them into clash-free 3D reality.
+          </p>
+        </div>
+
+        {/* DUAL TRACK GRID */}
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           
-          {/* HEADER: Repositioned as a full service offering */}
-          <div className="text-center max-w-4xl mx-auto mb-16">
-            <h2 className="text-[clamp(32px,4vw,56px)] font-black tracking-tighter leading-[1.05] text-black mb-6">
-              A full-stack BIM practice. <br />
-              <span className="relative inline-block mt-2">
-                <span className="absolute inset-y-1 -inset-x-3 bg-[#FFF200] rounded-xl shadow-sm transform -skew-x-2"></span>
-                <span className="relative text-black px-2">From concept to reality.</span>
-              </span>
-            </h2>
-            <p className="text-lg lg:text-xl text-gray-500 font-medium leading-relaxed max-w-3xl mx-auto">
-              We don't just draft models. We convert designs to BIM, turn site scans into As-Builts, resolve clashes, and overlay models onto reality to guarantee flawless execution.
-            </p>
-          </div>
-
-          {/* FLEX-STRETCH CONTAINER */}
-          <div className="flex flex-col lg:flex-row items-stretch gap-10 lg:gap-14">
+          {/* ════════════ TRACK 1: THE REALITY TRACK ════════════ */}
+          <div className="flex flex-col bg-gray-50 rounded-[32px] border border-gray-200 shadow-sm overflow-hidden hover:shadow-xl hover:border-gray-300 transition-all duration-500 group">
             
-            {/* LEFT: INTERACTIVE TABS */}
-            <div className="lg:w-[40%] flex flex-col justify-between space-y-4">
-              {BIM_FEATURES.map((feature, idx) => {
-                const isActive = activeIndex === idx;
-                return (
-                  <button
-                    key={feature.id}
-                    onClick={() => setActiveIndex(idx)}
-                    className={`text-left p-6 pl-8 rounded-[24px] border-[0.5px] transition-all duration-500 relative overflow-hidden flex-1 flex flex-col justify-center ${
-                      isActive 
-                      ? 'bg-black border-black/60 shadow-[0_20px_40px_rgba(0,0,0,0.2)] translate-x-2' 
-                      : 'bg-white border-gray-200 hover:bg-gray-50 shadow-sm'
-                    }`}
-                  >
-                    <div className="absolute left-0 top-0 bottom-0 w-2 bg-[#FFF200]"></div>
-                    
-                    <div className={`text-[10px] font-black uppercase tracking-widest mb-2 transition-colors ${isActive ? 'text-[#FFF200]' : 'text-gray-400'}`}>
-                      {feature.tag}
-                    </div>
-                    <h4 className={`text-xl font-black tracking-tight mb-2 transition-colors ${isActive ? 'text-white' : 'text-black'}`}>
-                      {feature.title}
-                    </h4>
-                    <p className={`text-sm font-medium leading-relaxed transition-colors ${isActive ? 'text-gray-400' : 'text-gray-500'}`}>
-                      {feature.desc}
-                    </p>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* RIGHT: THE SCREEN MOCKUP */}
-            <div className="lg:w-[60%] relative flex">
-              <div className="relative z-20 bg-[#080808] rounded-[32px] p-2.5 shadow-[0_40px_100px_rgba(0,0,0,0.2)] border-[2px] border-[#222] w-full flex flex-col">
-                <div className="relative flex-1 w-full rounded-[24px] overflow-hidden bg-black shadow-inner min-h-[350px]">
-                  {BIM_FEATURES.map((feature, idx) => (
-                    <div 
-                      key={feature.id}
-                      className={`absolute inset-0 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                        activeIndex === idx ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 z-0'
-                      }`}
-                    >
-                      <img 
-                        src={feature.img} 
-                        className="w-full h-full object-cover brightness-95" 
-                        alt={feature.title} 
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-tr from-[#FFF200]/10 to-transparent mix-blend-overlay"></div>
-                      
-                      <div className="absolute top-6 left-6 bg-black/60 backdrop-blur-md px-4 py-2 rounded-lg border border-white/10 flex items-center gap-3 shadow-lg">
-                        <div className="w-2 h-2 rounded-full bg-[#FFF200] animate-pulse"></div>
-                        <span className="text-white text-[10px] font-black uppercase tracking-widest mt-0.5">{feature.tag} Active</span>
-                      </div>
-                    </div>
-                  ))}
+            {/* Primary Service: Scan to BIM */}
+            <div className="p-3">
+              <div className="relative w-full aspect-[16/9] rounded-[24px] overflow-hidden bg-black mb-6">
+                <img 
+                  src="https://images.unsplash.com/photo-1581092921461-7d6560b37081?q=80&w=2000&auto=format&fit=crop" 
+                  alt="Scan to BIM" 
+                  className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 text-white text-[10px] font-black uppercase tracking-widest">
+                  Track 1: Reality Capture
                 </div>
               </div>
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-[#FFF200]/5 blur-[100px] rounded-full pointer-events-none -z-10"></div>
+              
+              <div className="px-5 lg:px-8 pb-8">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-center text-black">
+                    <Scan size={24} />
+                  </div>
+                  <h3 className="text-3xl font-black text-black tracking-tight">Scan to BIM</h3>
+                </div>
+                <p className="text-gray-500 font-medium leading-relaxed">
+                  We take raw laser scans and drone point clouds from your physical site and reverse-engineer them into millimeter-accurate As-Built BIM models.
+                </p>
+              </div>
             </div>
 
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════
-            CORE SERVICES: WHAT WE DO (4 CARDS)
-        ════════════════════════════════════════ */}
-      <section className="bg-white py-24 relative z-10 border-t border-gray-100">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
-          
-          <div className="text-center max-w-3xl mx-auto mb-16">
-             <div className="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-full bg-gray-50 border border-gray-200 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 shadow-sm">
-                Our Capabilities
-             </div>
-             <h3 className="text-[clamp(32px,3vw,42px)] font-black tracking-tighter text-black leading-tight">
-               We build, coordinate, and validate your 
-               <span className="text-[#FFF200] bg-black px-3 py-1 rounded-xl mx-2 inline-block shadow-sm">Digital Twin.</span>
-             </h3>
-          </div>
-          
-          {/* The 4 Core Offerings Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { 
-                icon: <PenTool size={24}/>, 
-                title: "Design to BIM", 
-                desc: "We take your 2D CAD drawings, PDFs, and conceptual designs and convert them into intelligent, data-rich 3D BIM models ready for execution." 
-              },
-              { 
-                icon: <Scan size={24}/>, 
-                title: "Scan to BIM", 
-                desc: "We take raw point clouds and laser scans from your physical site and reverse-engineer them into millimeter-accurate As-Built BIM models." 
-              },
-              { 
-                icon: <Crosshair size={24}/>, 
-                title: "Clash Detection", 
-                desc: "We run comprehensive clash detection on your federated models, identifying and resolving structural and MEP conflicts before construction begins." 
-              },
-              { 
-                icon: <Layers size={24}/>, 
-                title: "BIM on Reality", 
-                desc: "We mirror the real-world asset in BIM. By overlaying your models onto live site captures, we track deviations and validate execution instantly." 
-              }
-            ].map((item, i) => (
-              <div key={i} className="p-8 rounded-[32px] bg-gray-50 border border-gray-100 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] hover:-translate-y-2 hover:border-[#FFF200] transition-all duration-300 group cursor-default">
-                <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center text-black shadow-sm border border-gray-100 group-hover:bg-[#FFF200] group-hover:border-[#FFF200] transition-all duration-300 mb-8">
-                  {item.icon}
-                </div>
-                <h4 className="text-xl font-black text-black mb-4 tracking-tight">{item.title}</h4>
-                <p className="text-[15px] text-gray-500 font-medium leading-relaxed">{item.desc}</p>
+            {/* Connection UI */}
+            <div className="relative h-8 bg-gray-100 border-y border-gray-200 flex items-center justify-center">
+              <div className="absolute w-8 h-8 bg-[#FFF200] rounded-full flex items-center justify-center shadow-md border-2 border-white z-10">
+                <ArrowDown size={16} className="text-black" />
               </div>
-            ))}
+              <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-[#FFF200] to-transparent opacity-50"></div>
+            </div>
+
+            {/* Secondary Service / Value Add: BIM on Reality */}
+            <div className="bg-white p-8 lg:p-10">
+              <div className="flex items-center gap-4 mb-3">
+                <div className="w-10 h-10 bg-gray-50 rounded-lg border border-gray-100 flex items-center justify-center text-gray-500">
+                  <Layers size={20} />
+                </div>
+                <h4 className="text-xl font-black text-black tracking-tight">BIM on Reality</h4>
+                <span className="ml-auto bg-green-50 text-green-700 border border-green-200 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md">Validation</span>
+              </div>
+              <p className="text-sm text-gray-500 font-medium leading-relaxed">
+                Once we have the model, we mirror your real-world asset in BIM. We overlay the 3D model directly onto live site captures to validate execution and track deviations instantly.
+              </p>
+            </div>
+          </div>
+
+          {/* ════════════ TRACK 2: THE DESIGN TRACK ════════════ */}
+          <div className="flex flex-col bg-gray-50 rounded-[32px] border border-gray-200 shadow-sm overflow-hidden hover:shadow-xl hover:border-gray-300 transition-all duration-500 group">
+            
+            {/* Primary Service: Design to BIM */}
+            <div className="p-3">
+              <div className="relative w-full aspect-[16/9] rounded-[24px] overflow-hidden bg-black mb-6">
+                <img 
+                  src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2000&auto=format&fit=crop" 
+                  alt="Design to BIM" 
+                  className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 text-white text-[10px] font-black uppercase tracking-widest">
+                  Track 2: Digital Creation
+                </div>
+              </div>
+              
+              <div className="px-5 lg:px-8 pb-8">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-center text-black">
+                    <PenTool size={24} />
+                  </div>
+                  <h3 className="text-3xl font-black text-black tracking-tight">Design to BIM</h3>
+                </div>
+                <p className="text-gray-500 font-medium leading-relaxed">
+                  We take your 2D CAD drawings, PDFs, and conceptual designs and convert them into intelligent, fully-coordinated 3D BIM models ready for execution.
+                </p>
+              </div>
+            </div>
+
+            {/* Connection UI */}
+            <div className="relative h-8 bg-gray-100 border-y border-gray-200 flex items-center justify-center">
+              <div className="absolute w-8 h-8 bg-[#FFF200] rounded-full flex items-center justify-center shadow-md border-2 border-white z-10">
+                <ArrowDown size={16} className="text-black" />
+              </div>
+              <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-[#FFF200] to-transparent opacity-50"></div>
+            </div>
+
+            {/* Secondary Service / Value Add: Clash Detection */}
+            <div className="bg-white p-8 lg:p-10">
+              <div className="flex items-center gap-4 mb-3">
+                <div className="w-10 h-10 bg-gray-50 rounded-lg border border-gray-100 flex items-center justify-center text-gray-500">
+                  <Crosshair size={20} />
+                </div>
+                <h4 className="text-xl font-black text-black tracking-tight">Clash Detection</h4>
+                <span className="ml-auto bg-blue-50 text-blue-700 border border-blue-200 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md">Coordination</span>
+              </div>
+              <p className="text-sm text-gray-500 font-medium leading-relaxed">
+                Before construction begins, we federate your architectural, structural, and MEP models to identify and resolve hard and soft clashes, saving massive rework costs.
+              </p>
+            </div>
           </div>
 
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 
