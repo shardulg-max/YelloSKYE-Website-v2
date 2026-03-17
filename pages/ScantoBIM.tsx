@@ -41,143 +41,136 @@ const BIM_FEATURES = [
   }
 ];
 
-// ─── SUB-COMPONENT: DUAL-TRACK BIM SERVICES ──────────
+// ─── SUB-COMPONENT: PREMIUM 4-BOX TRACK LAYOUT ──────────
 
 export const BIMValidationModule = () => {
   return (
-    <section className="bg-white py-16 lg:py-24 relative overflow-hidden font-sans border-b border-gray-100">
+    <section className="bg-[#FAFAFA] py-20 lg:py-32 relative overflow-hidden font-sans border-b border-gray-100">
       
       {/* Light Mode Grid Background */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
            style={{
              backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)",
-             backgroundSize: "60px 60px",
+             backgroundSize: "64px 64px",
              maskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
              WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)"
            }} 
       />
 
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
         
         {/* HEADER */}
-        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
-          <h2 className="text-[clamp(32px,4vw,56px)] font-black tracking-tighter leading-[1.05] text-black mb-6">
+        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-24">
+          <h2 className="text-[clamp(36px,4.5vw,60px)] font-black tracking-tighter leading-[1.05] text-[#0A0A0A] mb-6">
             A full-stack BIM practice. <br />
             <span className="relative inline-block mt-2">
-              <span className="absolute inset-y-1 -inset-x-3 bg-[#FFF200] rounded-xl shadow-sm transform -skew-x-2"></span>
+              <span className="absolute inset-y-1 lg:inset-y-2 -inset-x-3 bg-[#FFF200] rounded-xl shadow-sm transform -skew-x-2"></span>
               <span className="relative text-black px-2">From concept to reality.</span>
             </span>
           </h2>
-          <p className="text-lg text-gray-500 font-medium leading-relaxed">
-            We operate on two core tracks. We reverse-engineer your physical site into a digital twin, or we take your 2D designs and build them into clash-free 3D reality.
+          <p className="text-lg lg:text-xl text-gray-500 font-medium leading-relaxed max-w-2xl mx-auto">
+            We don't just draft models. We convert designs to BIM, turn site scans into As-Builts, resolve clashes, and overlay models onto reality to guarantee flawless execution.
           </p>
         </div>
 
-        {/* DUAL TRACK GRID */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+        {/* 2x2 GRID FLOW */}
+        <div className="grid lg:grid-cols-2 gap-x-8 gap-y-12 lg:gap-y-0">
           
           {/* ════════════ TRACK 1: THE REALITY TRACK ════════════ */}
-          <div className="flex flex-col bg-gray-50 rounded-[32px] border border-gray-200 shadow-sm overflow-hidden hover:shadow-xl hover:border-gray-300 transition-all duration-500 group">
+          <div className="flex flex-col relative">
             
-            {/* Primary Service: Scan to BIM */}
-            <div className="p-3">
-              <div className="relative w-full aspect-[16/9] rounded-[24px] overflow-hidden bg-black mb-6">
-                <img 
-                  src="https://images.unsplash.com/photo-1581092921461-7d6560b37081?q=80&w=2000&auto=format&fit=crop" 
-                  alt="Scan to BIM" 
-                  className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 text-white text-[10px] font-black uppercase tracking-widest">
-                  Track 1: Reality Capture
-                </div>
-              </div>
-              
-              <div className="px-5 lg:px-8 pb-8">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-center text-black">
-                    <Scan size={24} />
-                  </div>
-                  <h3 className="text-3xl font-black text-black tracking-tight">Scan to BIM</h3>
-                </div>
-                <p className="text-gray-500 font-medium leading-relaxed">
+            {/* Box 1: Scan to BIM */}
+            <div className="bg-[#0A0A0A] rounded-[32px] overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.15)] flex flex-col sm:flex-row relative group h-full min-h-[280px]">
+              {/* Content */}
+              <div className="p-8 sm:p-10 sm:w-[55%] flex flex-col justify-center relative z-10">
+                <span className="text-[#FFF200] text-[10px] font-black uppercase tracking-widest mb-3">Reverse Engineering</span>
+                <h3 className="text-3xl font-black text-white tracking-tight mb-4">Scan to BIM.</h3>
+                <p className="text-gray-400 text-sm font-medium leading-relaxed">
                   We take raw laser scans and drone point clouds from your physical site and reverse-engineer them into millimeter-accurate As-Built BIM models.
                 </p>
               </div>
+              {/* Image */}
+              <div className="sm:w-[45%] relative min-h-[200px] sm:min-h-full overflow-hidden bg-gray-900">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent z-10 hidden sm:block"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent z-10 sm:hidden"></div>
+                <img src="https://images.unsplash.com/photo-1581092921461-7d6560b37081?q=80&w=2000&auto=format&fit=crop" alt="Scan to BIM" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-70" />
+              </div>
             </div>
 
-            {/* Connection UI */}
-            <div className="relative h-8 bg-gray-100 border-y border-gray-200 flex items-center justify-center">
-              <div className="absolute w-8 h-8 bg-[#FFF200] rounded-full flex items-center justify-center shadow-md border-2 border-white z-10">
-                <ArrowDown size={16} className="text-black" />
+            {/* Down Arrow Connector */}
+            <div className="flex justify-center -my-3 lg:my-6 relative z-20">
+              <div className="w-14 h-14 bg-gradient-to-b from-[#FFF200] to-[#E5D900] rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(255,242,0,0.3)] border-[4px] border-[#FAFAFA] transform hover:scale-110 transition-transform duration-300">
+                <ArrowDown size={24} className="text-black" strokeWidth={2.5} />
               </div>
-              <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-[#FFF200] to-transparent opacity-50"></div>
             </div>
 
-            {/* Secondary Service / Value Add: BIM on Reality */}
-            <div className="bg-white p-8 lg:p-10">
-              <div className="flex items-center gap-4 mb-3">
-                <div className="w-10 h-10 bg-gray-50 rounded-lg border border-gray-100 flex items-center justify-center text-gray-500">
-                  <Layers size={20} />
-                </div>
-                <h4 className="text-xl font-black text-black tracking-tight">BIM on Reality</h4>
-                <span className="ml-auto bg-green-50 text-green-700 border border-green-200 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md">Validation</span>
+            {/* Box 2: BIM on Reality */}
+            <div className="bg-[#0A0A0A] rounded-[32px] overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.15)] flex flex-col sm:flex-row relative group h-full min-h-[280px]">
+              {/* Content */}
+              <div className="p-8 sm:p-10 sm:w-[55%] flex flex-col justify-center relative z-10">
+                <span className="text-[#FFF200] text-[10px] font-black uppercase tracking-widest mb-3">Validation</span>
+                <h3 className="text-3xl font-black text-white tracking-tight mb-4">BIM on Reality.</h3>
+                <p className="text-gray-400 text-sm font-medium leading-relaxed">
+                  Once we have the model, we mirror your real-world asset in BIM. We overlay the 3D model directly onto live site captures to validate execution and track deviations instantly.
+                </p>
               </div>
-              <p className="text-sm text-gray-500 font-medium leading-relaxed">
-                Once we have the model, we mirror your real-world asset in BIM. We overlay the 3D model directly onto live site captures to validate execution and track deviations instantly.
-              </p>
+              {/* Image */}
+              <div className="sm:w-[45%] relative min-h-[200px] sm:min-h-full overflow-hidden bg-gray-900">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent z-10 hidden sm:block"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent z-10 sm:hidden"></div>
+                <img src="https://ik.imagekit.io/saxybrgkp/MME/website/Drone%20Location%20Video.png?updatedAt=1773643441240" alt="BIM on Reality" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-70" />
+              </div>
             </div>
+
           </div>
 
           {/* ════════════ TRACK 2: THE DESIGN TRACK ════════════ */}
-          <div className="flex flex-col bg-gray-50 rounded-[32px] border border-gray-200 shadow-sm overflow-hidden hover:shadow-xl hover:border-gray-300 transition-all duration-500 group">
+          <div className="flex flex-col relative">
             
-            {/* Primary Service: Design to BIM */}
-            <div className="p-3">
-              <div className="relative w-full aspect-[16/9] rounded-[24px] overflow-hidden bg-black mb-6">
-                <img 
-                  src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2000&auto=format&fit=crop" 
-                  alt="Design to BIM" 
-                  className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 text-white text-[10px] font-black uppercase tracking-widest">
-                  Track 2: Digital Creation
-                </div>
-              </div>
-              
-              <div className="px-5 lg:px-8 pb-8">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-center text-black">
-                    <PenTool size={24} />
-                  </div>
-                  <h3 className="text-3xl font-black text-black tracking-tight">Design to BIM</h3>
-                </div>
-                <p className="text-gray-500 font-medium leading-relaxed">
+            {/* Box 3: Design to BIM */}
+            <div className="bg-[#0A0A0A] rounded-[32px] overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.15)] flex flex-col sm:flex-row relative group h-full min-h-[280px]">
+              {/* Content */}
+              <div className="p-8 sm:p-10 sm:w-[55%] flex flex-col justify-center relative z-10">
+                <span className="text-[#FFF200] text-[10px] font-black uppercase tracking-widest mb-3">Creation</span>
+                <h3 className="text-3xl font-black text-white tracking-tight mb-4">Design to BIM.</h3>
+                <p className="text-gray-400 text-sm font-medium leading-relaxed">
                   We take your 2D CAD drawings, PDFs, and conceptual designs and convert them into intelligent, fully-coordinated 3D BIM models ready for execution.
                 </p>
               </div>
+              {/* Image */}
+              <div className="sm:w-[45%] relative min-h-[200px] sm:min-h-full overflow-hidden bg-gray-900">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent z-10 hidden sm:block"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent z-10 sm:hidden"></div>
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2000&auto=format&fit=crop" alt="Design to BIM" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-70" />
+              </div>
             </div>
 
-            {/* Connection UI */}
-            <div className="relative h-8 bg-gray-100 border-y border-gray-200 flex items-center justify-center">
-              <div className="absolute w-8 h-8 bg-[#FFF200] rounded-full flex items-center justify-center shadow-md border-2 border-white z-10">
-                <ArrowDown size={16} className="text-black" />
+            {/* Down Arrow Connector */}
+            <div className="flex justify-center -my-3 lg:my-6 relative z-20">
+              <div className="w-14 h-14 bg-gradient-to-b from-[#FFF200] to-[#E5D900] rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(255,242,0,0.3)] border-[4px] border-[#FAFAFA] transform hover:scale-110 transition-transform duration-300">
+                <ArrowDown size={24} className="text-black" strokeWidth={2.5} />
               </div>
-              <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-[#FFF200] to-transparent opacity-50"></div>
             </div>
 
-            {/* Secondary Service / Value Add: Clash Detection */}
-            <div className="bg-white p-8 lg:p-10">
-              <div className="flex items-center gap-4 mb-3">
-                <div className="w-10 h-10 bg-gray-50 rounded-lg border border-gray-100 flex items-center justify-center text-gray-500">
-                  <Crosshair size={20} />
-                </div>
-                <h4 className="text-xl font-black text-black tracking-tight">Clash Detection</h4>
-                <span className="ml-auto bg-blue-50 text-blue-700 border border-blue-200 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md">Coordination</span>
+            {/* Box 4: Clash Detection */}
+            <div className="bg-[#0A0A0A] rounded-[32px] overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.15)] flex flex-col sm:flex-row relative group h-full min-h-[280px]">
+              {/* Content */}
+              <div className="p-8 sm:p-10 sm:w-[55%] flex flex-col justify-center relative z-10">
+                <span className="text-[#FFF200] text-[10px] font-black uppercase tracking-widest mb-3">Pre-Construction</span>
+                <h3 className="text-3xl font-black text-white tracking-tight mb-4">Clash Detection.</h3>
+                <p className="text-gray-400 text-sm font-medium leading-relaxed">
+                  Before construction begins, we federate your architectural, structural, and MEP models to identify and resolve hard and soft clashes, saving massive rework costs.
+                </p>
               </div>
-              <p className="text-sm text-gray-500 font-medium leading-relaxed">
-                Before construction begins, we federate your architectural, structural, and MEP models to identify and resolve hard and soft clashes, saving massive rework costs.
-              </p>
+              {/* Image */}
+              <div className="sm:w-[45%] relative min-h-[200px] sm:min-h-full overflow-hidden bg-gray-900">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent z-10 hidden sm:block"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent z-10 sm:hidden"></div>
+                {/* Changed this image to a generic BIM structural one for distinction */}
+                <img src="https://images.unsplash.com/photo-1541888087-b5523b0c5942?q=80&w=2000&auto=format&fit=crop" alt="Clash Detection" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-70" />
+              </div>
             </div>
+
           </div>
 
         </div>
