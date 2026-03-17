@@ -111,36 +111,35 @@ const UseCaseSection = () => {
 
 const FLOOR_VIEWS = [
   { 
-    id: 'terrace', 
-    level: 'Terrace Floor', 
-    height: '55m', 
-    desc: 'Exclusive Open-Air Panoramic Vantage', 
-    img: 'https://ik.imagekit.io/saxybrgkp/MME/floor%20picker/72.png', 
+    id: '72nd', 
+    level: '72nd Floor', 
+    height: '220m', 
+    desc: 'Penthouse-level unobstructed horizon-to-horizon panoramic views', 
+    img: 'https://ik.imagekit.io/saxybrgkp/MME/72.png', 
     time: 'Sunset' 
   },
   { 
-    id: '15th', 
-    label: '15th Floor', 
-    level: '15th Floor', 
-    height: '45m', 
-    desc: 'Elevated Skyline & Cityscape Views', 
-    img: 'https://ik.imagekit.io/saxybrgkp/MME/floor%20picker/58.png', 
+    id: '58th', 
+    level: '58th Floor', 
+    height: '180m', 
+    desc: 'Premium upper-tier vantage point capturing sweeping cityscapes', 
+    img: 'https://ik.imagekit.io/saxybrgkp/MME/58.png', 
     time: 'Daytime' 
   },
   { 
-    id: '9th', 
-    level: '9th Floor', 
-    height: '27m', 
-    desc: 'Mid-Rise Neighborhood Context', 
-    img: 'https://ik.imagekit.io/saxybrgkp/MME/floor%20picker/38.png', 
+    id: '38th', 
+    level: '38th Floor', 
+    height: '120m', 
+    desc: 'Mid-to-high tower views capturing the active urban skyline', 
+    img: 'https://ik.imagekit.io/saxybrgkp/MME/38.png', 
     time: 'Daytime' 
   },
   { 
-    id: '6th', 
-    level: '6th Floor', 
-    height: '18m', 
-    desc: 'Canopy Level & Street Connection', 
-    img: 'https://ik.imagekit.io/saxybrgkp/MME/floor%20picker/23.png', 
+    id: '23rd', 
+    level: '23rd Floor', 
+    height: '75m', 
+    desc: 'Elevated neighborhood context well above the canopy level', 
+    img: 'https://ik.imagekit.io/saxybrgkp/MME/23.png', 
     time: 'Morning' 
   }
 ];
