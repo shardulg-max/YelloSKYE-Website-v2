@@ -41,13 +41,30 @@ const BIM_FEATURES = [
   }
 ];
 
-
 // ─── SUB-COMPONENT: PREMIUM LIGHT-MODE DUAL-TRACK ──────────
 
 export const BIMValidationModule = () => {
   return (
-    <section className="bg-[#FBFBFD] py-20 lg:py-32 relative overflow-hidden font-sans border-b border-gray-100">
+    <section className="bg-white py-20 lg:py-32 relative overflow-hidden font-sans border-gray-100">
       
+      {/* Custom CSS Animations for the premium visuals */}
+      <style>{`
+        @keyframes scan-sweep {
+          0% { transform: translateY(-100%); opacity: 0; }
+          10% { opacity: 1; }
+          90% { opacity: 1; }
+          100% { transform: translateY(300%); opacity: 0; }
+        }
+        @keyframes float-wireframe {
+          0%, 100% { transform: rotateX(60deg) rotateZ(45deg) translateZ(20px); }
+          50% { transform: rotateX(60deg) rotateZ(45deg) translateZ(40px); }
+        }
+        @keyframes pulse-ring {
+          0% { transform: scale(0.8); opacity: 0.8; }
+          100% { transform: scale(2.5); opacity: 0; }
+        }
+      `}</style>
+
       {/* Subtle Background Texture */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
            style={{
@@ -88,7 +105,7 @@ export const BIMValidationModule = () => {
                     <Scan size={28} className="text-black" />
                  </div>
                  
-                 <span className="text-[#FFF200] bg-black px-3.5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest inline-block w-fit mb-5">Reverse Engineering</span>
+                 <span className="text-gray-500 bg-gray-100 px-3.5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest inline-block w-fit mb-5">Reverse Engineering</span>
                  <h3 className="text-3xl font-black text-[#1D1D1F] tracking-tight mb-3">Scan to BIM.</h3>
                  <p className="text-gray-500 font-medium leading-relaxed text-[15px]">
                     Convert raw laser scans and drone point clouds into millimeter-accurate As-Built BIM models.
@@ -104,13 +121,30 @@ export const BIMValidationModule = () => {
               </div>
             </div>
 
-            {/* Box 2: BIM on Reality */}
+            {/* Box 2: BIM on Reality (PREMIUM ANIMATED VISUAL) */}
             <div className="bg-white rounded-[32px] overflow-hidden border border-gray-200 shadow-[0_20px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)] hover:border-gray-300 transition-all duration-500 group flex flex-col h-full">
-              <div className="h-[260px] lg:h-[300px] w-full overflow-hidden relative bg-gray-100">
-                 <img src="https://images.unsplash.com/photo-1541888087-b5523b0c5942?q=80&w=2000&auto=format&fit=crop" alt="BIM on Reality" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              
+              {/* ANIMATED CANVAS */}
+              <div className="h-[260px] lg:h-[300px] w-full overflow-hidden relative bg-[#0A0A0A] flex items-center justify-center">
+                 {/* 3D Perspective Grid */}
+                 <div className="absolute inset-0" style={{ 
+                    backgroundImage: 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)', 
+                    backgroundSize: '30px 30px', 
+                    transform: 'perspective(600px) rotateX(60deg) scale(2)', 
+                    transformOrigin: 'top center' 
+                 }}></div>
+                 
+                 {/* Solid Base (Representing Reality) */}
+                 <div className="absolute w-40 h-40 bg-gray-800 border border-gray-600 shadow-[0_20px_50px_rgba(0,0,0,0.8)]" style={{ transform: 'rotateX(60deg) rotateZ(45deg)' }}></div>
+                 
+                 {/* Floating Wireframe (Representing BIM) */}
+                 <div className="absolute w-40 h-40 border-2 border-[#FFF200] border-dashed bg-[#FFF200]/5 backdrop-blur-sm" style={{ animation: 'float-wireframe 4s ease-in-out infinite' }}></div>
+                 
+                 {/* Scanning Laser Line */}
+                 <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-transparent via-[#FFF200]/10 to-[#FFF200]/60 border-b-2 border-[#FFF200] z-20" style={{ animation: 'scan-sweep 3s linear infinite' }}></div>
               </div>
+
               <div className="p-8 lg:p-10 relative flex-grow flex flex-col justify-center">
-                 {/* Floating Icon */}
                  <div className="absolute -top-8 right-8 w-16 h-16 bg-[#FFF200] rounded-[18px] flex items-center justify-center shadow-lg transform rotate-3 group-hover:rotate-0 transition-transform duration-300">
                     <Layers size={28} className="text-black" />
                  </div>
@@ -139,7 +173,7 @@ export const BIMValidationModule = () => {
                     <PenTool size={28} className="text-black" />
                  </div>
                  
-                 <span className="text-[#FFF200] bg-black px-3.5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest inline-block w-fit mb-5">Creation</span>
+                 <span className="text-gray-500 bg-gray-100 px-3.5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest inline-block w-fit mb-5">Creation</span>
                  <h3 className="text-3xl font-black text-[#1D1D1F] tracking-tight mb-3">Design to BIM.</h3>
                  <p className="text-gray-500 font-medium leading-relaxed text-[15px]">
                     Transform 2D CAD and conceptual designs into intelligent, fully-coordinated 3D BIM models.
@@ -155,13 +189,45 @@ export const BIMValidationModule = () => {
               </div>
             </div>
 
-            {/* Box 4: Clash Detection */}
+            {/* Box 4: Clash Detection (PREMIUM ANIMATED VISUAL) */}
             <div className="bg-white rounded-[32px] overflow-hidden border border-gray-200 shadow-[0_20px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)] hover:border-gray-300 transition-all duration-500 group flex flex-col h-full">
-              <div className="h-[260px] lg:h-[300px] w-full overflow-hidden relative bg-gray-100">
-                 <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2000&auto=format&fit=crop" alt="Clash Detection" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              
+              {/* ANIMATED CANVAS */}
+              <div className="h-[260px] lg:h-[300px] w-full overflow-hidden relative bg-[#0A0A0A] flex items-center justify-center">
+                 {/* Tech Background */}
+                 <div className="absolute inset-0 opacity-20" style={{ 
+                    backgroundImage: 'radial-gradient(circle at center, #333 1px, transparent 1px)', 
+                    backgroundSize: '16px 16px' 
+                 }}></div>
+                 
+                 {/* Beam 1 (Gray/Structural) */}
+                 <div className="absolute w-72 h-14 bg-gray-700 border-y border-gray-500 shadow-2xl transform -rotate-12 translate-y-6 flex items-center px-4">
+                   <div className="w-full h-[2px] bg-gray-600"></div>
+                 </div>
+                 
+                 {/* Beam 2 (Blue/MEP) */}
+                 <div className="absolute w-16 h-72 bg-blue-600/90 border-x border-blue-400 shadow-2xl transform rotate-12 -translate-x-8 backdrop-blur-md flex justify-center py-4 z-10">
+                   <div className="w-[2px] h-full bg-blue-400/50"></div>
+                 </div>
+                 
+                 {/* Clash Point Alert System */}
+                 <div className="absolute transform -translate-x-6 translate-y-8 z-20 flex items-center justify-center">
+                    {/* Pulsing ring */}
+                    <div className="absolute w-12 h-12 border-[3px] border-red-500 rounded-full" style={{ animation: 'pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite' }}></div>
+                    {/* Core glowing dot */}
+                    <div className="absolute w-4 h-4 bg-red-500 rounded-full shadow-[0_0_20px_rgba(239,68,68,1)]"></div>
+                    {/* Crosshair Graphic */}
+                    <Crosshair size={40} className="text-red-500 absolute drop-shadow-md" strokeWidth={1.5} />
+                 </div>
+
+                 {/* Simulated UI Alert Tag */}
+                 <div className="absolute bottom-5 right-5 bg-red-500/10 border border-red-500/30 text-red-500 text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-md flex items-center gap-2 z-30 backdrop-blur-md">
+                   <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                   Clash Detected
+                 </div>
               </div>
+
               <div className="p-8 lg:p-10 relative flex-grow flex flex-col justify-center">
-                 {/* Floating Icon */}
                  <div className="absolute -top-8 right-8 w-16 h-16 bg-[#FFF200] rounded-[18px] flex items-center justify-center shadow-lg transform rotate-3 group-hover:rotate-0 transition-transform duration-300">
                     <Crosshair size={28} className="text-black" />
                  </div>
