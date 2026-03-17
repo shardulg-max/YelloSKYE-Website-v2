@@ -6,7 +6,7 @@ export default function GlobalBottomCTA() {
   return (
     <>
       {/* ====================== THE EXECUTIVE GATEWAY (FORM) ====================== */}
-      <section className="bg-white py-24 lg:py-32 relative overflow-hidden font-sans border-t border-gray-100">
+      <section className="bg-white py-24 lg:py-32 relative overflow-hidden font-sans border-gray-100">
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
              style={{ 
                backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", 
@@ -21,7 +21,7 @@ export default function GlobalBottomCTA() {
               {/* LEFT SIDE: Copy */}
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-50 border border-gray-200 text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-8 shadow-sm">
-                  Get Started
+                  Book Your Free Demo
                 </div>
                 <h3 className="text-4xl lg:text-6xl font-black tracking-tighter text-black mb-8 leading-[1.05]">
                   Ready to gain <br/>
@@ -36,9 +36,9 @@ export default function GlobalBottomCTA() {
                 
                 <ul className="space-y-5">
                   {[
-                    '15-Minute Tailored Site Walkthrough', 
-                    'Zero Commitment Or Hardware Required', 
-                    'Custom Strategy For Your Project Goals'
+                    '15-Minute Walkthrough', 
+                    'Zero Commitment', 
+                    'Custom Strategy'
                   ].map((item) => (
                     <li key={item} className="flex items-center gap-4 text-black font-black uppercase text-[11px] tracking-[0.1em]">
                       <div className="w-6 h-6 bg-black rounded-lg flex items-center justify-center text-[#FFF200] shadow-lg shrink-0">
@@ -52,8 +52,6 @@ export default function GlobalBottomCTA() {
 
               {/* RIGHT SIDE: Compact Form */}
               <div className="bg-[#0A0A0A] rounded-[40px] p-8 lg:p-10 shadow-[0_40px_120px_rgba(0,0,0,0.3)] border border-white/5 relative overflow-hidden group">
-                {/* Ambient Glow */}
-                <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#FFF200]/10 blur-[100px] rounded-full group-hover:bg-[#FFF200]/20 transition-all duration-700 pointer-events-none" />
                 
                 <form className="relative z-10 space-y-4" onSubmit={(e) => e.preventDefault()}>
                   
@@ -77,7 +75,7 @@ export default function GlobalBottomCTA() {
                     </div>
                     <div className="space-y-1.5">
                       <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Phone Number *</label>
-                      <input required type="tel" placeholder="+1 (555) 000-0000" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
+                      <input required type="tel" placeholder="+91 555 000 0000" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
                     </div>
                   </div>
                   

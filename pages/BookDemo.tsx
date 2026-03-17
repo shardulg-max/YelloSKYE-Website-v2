@@ -1,7 +1,60 @@
-import React from 'react';
-import { Check, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { Check, ArrowRight, Loader2, CheckCircle2 } from 'lucide-react';
 
 export const BookDemo: React.FC = () => {
+  // 1. Form State Management
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    jobTitle: '',
+    company: '',
+    country: '',
+    message: '',
+    source: ''
+  });
+
+  // 2. UI Submission States
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState('');
+
+  // 3. Handle Input Changes
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // 4. Handle Form Submission to Google Sheets
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError('');
+
+    try {
+      // ⚠️ IMPORTANT: PASTE YOUR GOOGLE APPS SCRIPT URL HERE
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwN2H10TqPr-uj-uiQcIO9znvd-xdAySF6CXJh0fLblVkX5KXyM-MGmQj-rUiqTSCeV0A/exec';  
+      
+      // We use mode: 'no-cors' so the browser doesn't block the request to Google
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors', 
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      // With no-cors, we can't read the exact response, so if it didn't throw a network error, we assume success!
+      setIsSuccess(true);
+      
+    } catch (err) {
+      setError('Something went wrong. Please try again or email us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="bg-white min-h-screen pt-32 pb-24 relative overflow-hidden font-sans">
       
@@ -31,14 +84,14 @@ export const BookDemo: React.FC = () => {
                 </span>
               </h1>
               <p className="text-lg lg:text-xl text-gray-500 font-medium leading-relaxed mb-10 max-w-md">
-                Stop debating interpretations. Request a custom walkthrough of your site and see how YelloSKYE delivers boardroom-ready answers.
+                Request a custom walkthrough of your site and see how YelloSKYE delivers boardroom-ready answers.
               </p>
               
               <ul className="space-y-6">
                 {[
-                  '15-Minute Tailored Site Walkthrough', 
-                  'Zero Commitment Or Hardware Required', 
-                  'Custom Strategy For Your Project Goals'
+                  '15-Minute Walkthrough', 
+                  'Zero Commitment', 
+                  'Custom Strategy'
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-4 text-black font-black uppercase text-[11px] tracking-[0.1em]">
                     <div className="w-7 h-7 bg-black rounded-lg flex items-center justify-center text-[#FFF200] shadow-md shrink-0">
@@ -51,94 +104,121 @@ export const BookDemo: React.FC = () => {
             </div>
 
             {/* ─── RIGHT SIDE: THE FULL FORM ─── */}
-            <div className="bg-[#0A0A0A] rounded-[40px] p-8 lg:p-12 shadow-[0_40px_120px_rgba(0,0,0,0.3)] border border-white/5 relative overflow-hidden group">
+            <div className="bg-[#0A0A0A] rounded-[40px] p-8 lg:p-12 shadow-[0_40px_120px_rgba(0,0,0,0.3)] border border-white/5 relative overflow-hidden group min-h-[700px] flex flex-col justify-center">
+              
               {/* Ambient Glow */}
               <div className="absolute -top-32 -right-32 w-96 h-96 bg-[#FFF200]/10 blur-[120px] rounded-full pointer-events-none" />
               
-              <form className="relative z-10 space-y-5" onSubmit={(e) => e.preventDefault()}>
-                
-                <h3 className="text-white font-black text-2xl tracking-tight mb-6">Contact Sales</h3>
-
-                {/* ROW 1: Names */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div className="space-y-1.5">
-                    <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">First Name *</label>
-                    <input required placeholder="John" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
+              {/* ─── SUCCESS STATE UI ─── */}
+              {isSuccess ? (
+                <div className="relative z-10 flex flex-col items-center justify-center text-center animate-in fade-in zoom-in duration-500">
+                  <div className="w-20 h-20 bg-[#FFF200] rounded-full flex items-center justify-center mb-6 shadow-[0_0_40px_rgba(255,242,0,0.3)]">
+                    <CheckCircle2 size={40} className="text-black" />
                   </div>
-                  <div className="space-y-1.5">
-                    <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Last Name *</label>
-                    <input required placeholder="Doe" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
-                  </div>
+                  <h3 className="text-3xl font-black text-white mb-4">Request Received.</h3>
+                  <p className="text-gray-400 font-medium leading-relaxed max-w-sm">
+                    Thank you, {formData.firstName}. Our team has received your request and will be in touch shortly to schedule your walkthrough.
+                  </p>
                 </div>
-                
-                {/* ROW 2: Contact Info */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div className="space-y-1.5">
-                    <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Business Email *</label>
-                    <input required type="email" placeholder="john@company.com" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
-                  </div>
-                  <div className="space-y-1.5">
-                    <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Phone Number *</label>
-                    <input required type="tel" placeholder="+1 (555) 000-0000" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
-                  </div>
-                </div>
+              ) : (
 
-                {/* ROW 3: Professional Info */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div className="space-y-1.5">
-                    <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Job Title *</label>
-                    <input required placeholder="Project Manager" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
-                  </div>
-                  <div className="space-y-1.5">
-                    <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Company *</label>
-                    <input required placeholder="Ex: Larsen & Toubro" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
-                  </div>
-                </div>
+                /* ─── FORM UI ─── */
+                <form className="relative z-10 space-y-5" onSubmit={handleSubmit}>
+                  
+                  <h3 className="text-white font-black text-2xl tracking-tight mb-6">Contact Sales</h3>
 
-                {/* ROW 4: Country */}
-                <div className="space-y-1.5">
-                  <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Country *</label>
-                  <div className="relative">
-                    <select required defaultValue="" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium appearance-none">
-                      <option value="" disabled className="text-gray-800">Select Country...</option>
-                      <option value="IN" className="text-black">India</option>
-                      <option value="US" className="text-black">United States</option>
-                      <option value="UK" className="text-black">United Kingdom</option>
-                      <option value="AE" className="text-black">UAE</option>
-                      <option value="OTHER" className="text-black">Other</option>
-                    </select>
-                    <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                  {/* Error Message Display */}
+                  {error && <div className="p-4 bg-red-500/10 border border-red-500/50 rounded-xl text-red-500 text-sm font-medium">{error}</div>}
+
+                  {/* ROW 1: Names */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">First Name *</label>
+                      <input required name="firstName" value={formData.firstName} onChange={handleChange} placeholder="John" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Last Name *</label>
+                      <input required name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Doe" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
                     </div>
                   </div>
-                </div>
+                  
+                  {/* ROW 2: Contact Info */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Business Email *</label>
+                      <input required name="email" value={formData.email} onChange={handleChange} type="email" placeholder="john@company.com" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Phone Number *</label>
+                      <input required name="phone" value={formData.phone} onChange={handleChange} type="tel" placeholder="+1 (555) 000-0000" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
+                    </div>
+                  </div>
 
-                {/* ROW 5: Message */}
-                <div className="space-y-1.5">
-                  <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Message *</label>
-                  <textarea required placeholder="Please share additional context so we can route your request to the right person..." className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium h-24 resize-none" />
-                </div>
+                  {/* ROW 3: Professional Info */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Job Title *</label>
+                      <input required name="jobTitle" value={formData.jobTitle} onChange={handleChange} placeholder="Project Manager" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Company *</label>
+                      <input required name="company" value={formData.company} onChange={handleChange} placeholder="Ex: Larsen & Toubro" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
+                    </div>
+                  </div>
 
-                {/* ROW 6: Source */}
-                <div className="space-y-1.5">
-                  <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">How did you hear about us? *</label>
-                  <textarea required placeholder="Please provide as much detail as possible..." className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium h-16 resize-none" />
-                </div>
+                  {/* ROW 4: Country */}
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Country *</label>
+                    <div className="relative">
+                      <select required name="country" value={formData.country} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium appearance-none">
+                        <option value="" disabled className="text-gray-800">Select Country...</option>
+                        <option value="IN" className="text-black">India</option>
+                        <option value="US" className="text-black">United States</option>
+                        <option value="UK" className="text-black">United Kingdom</option>
+                        <option value="AE" className="text-black">UAE</option>
+                        <option value="OTHER" className="text-black">Other</option>
+                      </select>
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                      </div>
+                    </div>
+                  </div>
 
-                {/* Privacy Policy */}
-                <p className="text-[11px] text-gray-500 leading-relaxed pt-2 pl-1">
-                  By submitting, you confirm that you have reviewed YelloSKYE's Privacy Policy and agree to its terms.
-                </p>
+                  {/* ROW 5: Message */}
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Message *</label>
+                    <textarea required name="message" value={formData.message} onChange={handleChange} placeholder="Please share additional context so we can route your request to the right person..." className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium h-24 resize-none" />
+                  </div>
 
-                {/* Submit Button */}
-                <div className="pt-4">
-                  <button type="submit" className="w-full bg-[#FFF200] hover:bg-white text-black font-black py-4 lg:py-5 rounded-xl uppercase tracking-[0.2em] text-[12px] transition-all transform hover:-translate-y-0.5 shadow-[0_10px_30px_rgba(255,242,0,0.15)] flex items-center justify-center gap-3 group/btn">
-                    Book a Demo
-                    <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
-                  </button>
-                </div>
+                  {/* ROW 6: Source */}
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">How did you hear about us? *</label>
+                    <textarea required name="source" value={formData.source} onChange={handleChange} placeholder="Please provide as much detail as possible..." className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium h-16 resize-none" />
+                  </div>
 
-              </form>
+                  {/* Privacy Policy */}
+                  <p className="text-[11px] text-gray-500 leading-relaxed pt-2 pl-1">
+                    By submitting, you confirm that you have reviewed YelloSKYE's Privacy Policy and agree to its terms.
+                  </p>
+
+                  {/* Submit Button */}
+                  <div className="pt-4">
+                    <button 
+                      type="submit" 
+                      disabled={isSubmitting}
+                      className="w-full bg-[#FFF200] hover:bg-white text-black font-black py-4 lg:py-5 rounded-xl uppercase tracking-[0.2em] text-[12px] transition-all transform hover:-translate-y-0.5 shadow-[0_10px_30px_rgba(255,242,0,0.15)] flex items-center justify-center gap-3 group/btn disabled:opacity-70 disabled:hover:translate-y-0 disabled:cursor-not-allowed"
+                    >
+                      {isSubmitting ? (
+                        <><Loader2 size={18} className="animate-spin" /> Processing...</>
+                      ) : (
+                        <>Book a Demo <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" /></>
+                      )}
+                    </button>
+                  </div>
+
+                </form>
+              )}
+
             </div>
 
           </div>
