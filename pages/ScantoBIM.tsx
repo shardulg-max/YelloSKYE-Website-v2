@@ -45,7 +45,7 @@ const BIM_FEATURES = [
 
 export const BIMValidationModule = () => {
   return (
-    <section className="bg-white py-20 lg:py-32 relative overflow-hidden font-sans border-gray-100">
+    <section className="bg-[#FBFBFD] py-20 lg:py-32 relative overflow-hidden font-sans border-b border-gray-100">
       
       {/* Custom CSS Animations for the premium visuals */}
       <style>{`
@@ -79,11 +79,14 @@ export const BIMValidationModule = () => {
         
         {/* HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-24">
-          <h2 className="text-[clamp(36px,4.5vw,60px)] font-black tracking-tighter leading-[1.05] text-[#1D1D1F] mb-6">
-            A full-stack BIM practice. <br />
-            <span className="text-gray-400">From concept to reality.</span>
+          <h2 className="text-[clamp(40px,5vw,64px)] font-black tracking-tighter leading-[1.1] text-[#1D1D1F] mb-8">
+            A full-stack BIM practice. <br className="hidden md:block"/>
+            <span className="relative inline-block mt-3">
+              <span className="absolute inset-y-1 lg:inset-y-2 -inset-x-3 bg-[#FFF200] rounded-xl shadow-sm transform -skew-x-2"></span>
+              <span className="relative text-black px-2">From concept to reality.</span>
+            </span>
           </h2>
-          <p className="text-lg lg:text-xl text-gray-500 font-medium leading-relaxed max-w-2xl mx-auto">
+          <p className="text-lg lg:text-xl text-gray-500 font-medium leading-relaxed max-w-2xl mx-auto mt-6">
             We don't just draft models. We reverse-engineer your physical site into a digital twin, or build your 2D designs into clash-free 3D reality.
           </p>
         </div>
@@ -100,7 +103,6 @@ export const BIMValidationModule = () => {
                  <img src="https://images.unsplash.com/photo-1581092921461-7d6560b37081?q=80&w=2000&auto=format&fit=crop" alt="Scan to BIM" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               </div>
               <div className="p-8 lg:p-10 relative flex-grow flex flex-col justify-center">
-                 {/* Floating Icon */}
                  <div className="absolute -top-8 right-8 w-16 h-16 bg-[#FFF200] rounded-[18px] flex items-center justify-center shadow-lg transform rotate-3 group-hover:rotate-0 transition-transform duration-300">
                     <Scan size={28} className="text-black" />
                  </div>
@@ -113,11 +115,13 @@ export const BIMValidationModule = () => {
               </div>
             </div>
 
-            {/* Down Arrow Connector */}
-            <div className="flex justify-center py-6 relative z-20">
-              <div className="absolute top-0 bottom-0 w-[2px] bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200 -z-10"></div>
-              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md border border-gray-200">
-                <ArrowDown size={20} className="text-black" strokeWidth={2.5} />
+            {/* MINIMAL Down Arrow Connector */}
+            <div className="flex justify-center py-8 relative z-20">
+              {/* Solid Grey Line */}
+              <div className="absolute top-0 bottom-0 w-[2px] bg-gray-200 -z-10"></div>
+              {/* Integrated minimal arrow matching the background */}
+              <div className="bg-[#FBFBFD] py-2 px-1">
+                <ArrowDown size={18} className="text-gray-400" strokeWidth={3} />
               </div>
             </div>
 
@@ -168,7 +172,6 @@ export const BIMValidationModule = () => {
                  <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2000&auto=format&fit=crop" alt="Design to BIM" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               </div>
               <div className="p-8 lg:p-10 relative flex-grow flex flex-col justify-center">
-                 {/* Floating Icon */}
                  <div className="absolute -top-8 right-8 w-16 h-16 bg-[#FFF200] rounded-[18px] flex items-center justify-center shadow-lg transform rotate-3 group-hover:rotate-0 transition-transform duration-300">
                     <PenTool size={28} className="text-black" />
                  </div>
@@ -181,11 +184,13 @@ export const BIMValidationModule = () => {
               </div>
             </div>
 
-            {/* Down Arrow Connector */}
-            <div className="flex justify-center py-6 relative z-20">
-              <div className="absolute top-0 bottom-0 w-[2px] bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200 -z-10"></div>
-              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md border border-gray-200">
-                <ArrowDown size={20} className="text-black" strokeWidth={2.5} />
+            {/* MINIMAL Down Arrow Connector */}
+            <div className="flex justify-center py-8 relative z-20">
+              {/* Solid Grey Line */}
+              <div className="absolute top-0 bottom-0 w-[2px] bg-gray-200 -z-10"></div>
+              {/* Integrated minimal arrow matching the background */}
+              <div className="bg-[#FBFBFD] py-2 px-1">
+                <ArrowDown size={18} className="text-gray-400" strokeWidth={3} />
               </div>
             </div>
 
