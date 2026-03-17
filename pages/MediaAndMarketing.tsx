@@ -477,15 +477,14 @@ export const MediaMarketing: React.FC = () => {
       <EditorialShowcase />
 
       {/* ════════════════════════════════════════
-          FLOOR PICKER
-      ════════════════════════════════════════ */}
-      <FloorPickerModule />
-
-      {/* ════════════════════════════════════════
           USE CASES SECTION
       ════════════════════════════════════════ */}
       <UseCaseSection />
 
+      {/* ════════════════════════════════════════
+          FLOOR PICKER
+      ════════════════════════════════════════ */}
+      <FloorPickerModule />
 {/* ════════════════════════════════════════
           HUB & SPOKE - ONE CAPTURE, MULTIPLE AUDIENCES
       ════════════════════════════════════════ */}
@@ -517,32 +516,41 @@ export const MediaMarketing: React.FC = () => {
           </div>
 
           <div className="relative w-full max-w-[1300px] mx-auto min-h-[500px] flex items-center justify-center">
-             <div className="hidden lg:block absolute inset-0 z-0 pointer-events-none">
-                <svg className="w-full h-full" viewBox="0 0 1000 500" preserveAspectRatio="none">
-                  <path d="M 330 250 C 300 250, 300 85, 272 85" fill="none" stroke="#FFF200" strokeWidth="2.5" className="animate-data-flow" />
-                  <path d="M 330 250 L 272 250" fill="none" stroke="#FFF200" strokeWidth="2.5" className="animate-data-flow" />
-                  <path d="M 330 250 C 300 250, 300 415, 272 415" fill="none" stroke="#FFF200" strokeWidth="2.5" className="animate-data-flow" />
-                  <path d="M 670 250 C 700 250, 700 85, 728 85" fill="none" stroke="#FFF200" strokeWidth="2.5" className="animate-data-flow" />
-                  <path d="M 670 250 L 728 250" fill="none" stroke="#FFF200" strokeWidth="2.5" className="animate-data-flow" />
-                  <path d="M 670 250 C 700 250, 700 415, 728 415" fill="none" stroke="#FFF200" strokeWidth="2.5" className="animate-data-flow" />
+             
+             {/* PERFECTLY ALIGNED SVG LINES */}
+             <div className="hidden lg:block absolute inset-0 z-0 pointer-events-none flex items-center justify-center">
+                <svg className="w-full h-[450px]" viewBox="0 0 1000 450" preserveAspectRatio="none">
+                  {/* Left Side Lines */}
+                  <path d="M 350 225 C 310 225, 310 60, 272 60" fill="none" stroke="#FFF200" strokeWidth="2.5" className="animate-data-flow" />
+                  <path d="M 350 225 L 272 225" fill="none" stroke="#FFF200" strokeWidth="2.5" className="animate-data-flow" />
+                  <path d="M 350 225 C 310 225, 310 390, 272 390" fill="none" stroke="#FFF200" strokeWidth="2.5" className="animate-data-flow" />
+                  
+                  {/* Right Side Lines */}
+                  <path d="M 650 225 C 690 225, 690 60, 728 60" fill="none" stroke="#FFF200" strokeWidth="2.5" className="animate-data-flow" />
+                  <path d="M 650 225 L 728 225" fill="none" stroke="#FFF200" strokeWidth="2.5" className="animate-data-flow" />
+                  <path d="M 650 225 C 690 225, 690 390, 728 390" fill="none" stroke="#FFF200" strokeWidth="2.5" className="animate-data-flow" />
                 </svg>
              </div>
              
-             <div className="w-full flex flex-col lg:grid lg:grid-cols-[27.2%_auto_27.2%] justify-between relative z-10 items-stretch h-full py-2">
-                <div className="flex flex-col justify-between h-[450px] relative z-20">
+             <div className="w-full flex flex-col lg:grid lg:grid-cols-[27.2%_auto_27.2%] justify-between relative z-10 items-stretch h-[450px]">
+                
+                {/* LEFT COL */}
+                <div className="flex flex-col justify-between h-full relative z-20">
                    {[
                      { role: "Marketing Teams", desc: "Fresh monthly content for social media and campaigns—all sourced from reality capture.", icon: <ImageIcon size={18}/> },
                      { role: "Sales Teams", desc: "Show buyers units before completion. Accelerate pre-sales with virtual tours.", icon: <Users size={18}/> },
                      { role: "Investor Relations", desc: "Progress updates with visual proof. Show exactly where capital is deployed.", icon: <ShieldCheck size={18}/> }
                    ].map((persona, i) => (
                      <div key={i} className="p-5 rounded-[22px] bg-white border border-gray-200 shadow-sm hover:shadow-xl hover:border-[#FFF200] transition-all duration-300 group relative flex flex-col items-start h-[120px] justify-center">
-                        <div className="hidden lg:block absolute top-1/2 -right-[11px] -translate-y-1/2 w-4 h-4 bg-white border-[3px] border-[#FFF200] rounded-full shadow-[0_0_10px_#FFF200] z-30"></div>
+                        {/* Dot correctly centered using -right-2 (which is exactly half of the 16px width) */}
+                        <div className="hidden lg:block absolute top-1/2 -right-2 -translate-y-1/2 w-4 h-4 bg-white border-[3px] border-[#FFF200] rounded-full shadow-[0_0_10px_#FFF200] z-30"></div>
                         <h4 className="text-black font-black text-[12px] tracking-widest uppercase mb-2">{persona.role}</h4>
                         <p className="text-gray-500 font-medium leading-snug text-[12px]">{persona.desc}</p>
                      </div>
                    ))}
                 </div>
 
+                {/* CENTER IMAGE */}
                 <div className="relative group flex justify-center items-center px-4 lg:px-12 z-10">
                    <div className="absolute inset-0 bg-[#FFF200] rounded-full blur-[100px] opacity-15 pointer-events-none" style={{ animation: 'hub-glow 4s ease-in-out infinite' }}></div>
                    <div className="relative w-full max-w-[550px] aspect-square rounded-[28px] bg-black border-[3px] border-black shadow-[0_40px_100px_rgba(0,0,0,0.15)] p-0.5 z-20 overflow-hidden">
@@ -555,14 +563,16 @@ export const MediaMarketing: React.FC = () => {
                    </div>
                 </div>
 
-                <div className="flex flex-col justify-between h-[450px] relative z-20">
+                {/* RIGHT COL */}
+                <div className="flex flex-col justify-between h-full relative z-20">
                    {[
                      { role: "Leadership", desc: "Celebrate milestones with partners. Capture topping out and share achievements.", icon: <Sparkles size={18}/> },
                      { role: "Brand Building", desc: "Showcase craftsmanship and scale. Build reputation through visual storytelling.", icon: <Video size={18}/> },
                      { role: "Awards & Recognition", desc: "Submit high-quality documentation for industry awards. Prove excellence.", icon: <Maximize size={18}/> }
                    ].map((persona, i) => (
                      <div key={i} className="p-5 rounded-[22px] bg-white border border-gray-200 shadow-sm hover:shadow-xl hover:border-[#FFF200] transition-all duration-300 group relative flex flex-col items-start h-[120px] justify-center">
-                        <div className="hidden lg:block absolute top-1/2 -left-[11px] -translate-y-1/2 w-4 h-4 bg-white border-[3px] border-[#FFF200] rounded-full shadow-[0_0_12px_#FFF200] z-30"></div>
+                        {/* Dot correctly centered using -left-2 */}
+                        <div className="hidden lg:block absolute top-1/2 -left-2 -translate-y-1/2 w-4 h-4 bg-white border-[3px] border-[#FFF200] rounded-full shadow-[0_0_12px_#FFF200] z-30"></div>
                         <h4 className="text-black font-black text-[12px] tracking-widest uppercase mb-2">{persona.role}</h4>
                         <p className="text-gray-500 font-medium leading-snug text-[12px]">{persona.desc}</p>
                      </div>
