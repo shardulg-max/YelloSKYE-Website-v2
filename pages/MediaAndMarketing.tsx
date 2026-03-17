@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { 
-  Check, Globe, Layers, Mail, Twitter, Linkedin, Youtube, Instagram, 
+  Check, Globe, Layers, Mail, Twitter, Linkedin, Youtube, Instagram, Pause,
   BarChart, Play, Camera, Film, Zap, Users, ShieldCheck, MapPin,
   Video, MoveUpRight, Sparkles, Image as ImageIcon, Maximize,
   Eye, Building2, Map, ArrowUpRight, Maximize2, LayoutGrid, Activity, Box, ArrowRight, ChevronDown
@@ -257,7 +257,6 @@ export const FloorPickerModule = () => {
 };
 
 // ─── DATA: DYNAMIC SHOWCASE ───────────────────────────────────────────────
-
 const SHOWCASE_OFFERINGS = [
   { title: "Cinematic Aerial Videos", label: "Professional Editing", desc: "Professionally color-graded 4K aerial shots that showcase site scale and grandeur.", img: "https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey3.png?updatedAt=1773643277664" },
   { title: "Progress Timelapses", label: "Construction Evolution", desc: "Compress months of construction grit into seconds of glory for investor updates.", img: "https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey34.png" },
@@ -267,31 +266,38 @@ const SHOWCASE_OFFERINGS = [
 ];
 
 // ─── SUB-COMPONENT: EDITORIAL SHOWCASE ───────────────────────────────
-
-const EditorialShowcase = () => {
+export const EditorialShowcase = () => {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
+  // Auto-play timer that respects the isPaused state
   useEffect(() => {
+    if (isPaused) return; // Stop the timer if paused
+    
     const timer = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % SHOWCASE_OFFERINGS.length);
-    }, 2000);
+    }, 3000); // 3 seconds per slide
+    
     return () => clearInterval(timer);
-  }, []);
+  }, [isPaused]);
 
   return (
     <section className="bg-white py-12 lg:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", backgroundSize: "80px 80px", maskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)" }} />
+      {/* Background Grid */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", backgroundSize: "80px 80px", maskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)" }} />
+      
       <div className="max-w-[1400px] mx-auto px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
+          {/* LEFT: iPad / Screen Mockup */}
           <div className="lg:col-span-7 relative w-full group">
             <div className="relative z-20 bg-[#080808] rounded-[44px] p-3.5 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] border-[1.5px] border-white/10">
               <div className="absolute -top-[2px] right-16 w-12 h-[3px] bg-[#1a1a1a] rounded-t-sm border-x border-white/5"></div>
               <div className="relative aspect-[4/3] w-full rounded-[32px] overflow-hidden bg-black">
                 {SHOWCASE_OFFERINGS.map((slide, index) => (
-                  <div key={index} className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${activeSlide === index ? 'opacity-100' : 'opacity-0'}`}>
+                  <div key={index} className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${activeSlide === index ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                     <img src={slide.img} className="w-full h-full object-cover" alt={slide.title} />
-                    <div className="absolute bottom-8 left-8 bg-white/10 backdrop-blur-2xl px-6 py-4 rounded-2xl border border-white/20 shadow-2xl">
+                    <div className="absolute bottom-8 left-8 bg-black/40 backdrop-blur-2xl px-6 py-4 rounded-2xl border border-white/20 shadow-2xl">
                       <div className="text-[9px] font-black uppercase tracking-[0.2em] text-[#FFF200] mb-1">{slide.label}</div>
                       <div className="text-base font-bold text-white tracking-tight">{slide.title}</div>
                     </div>
@@ -302,6 +308,7 @@ const EditorialShowcase = () => {
             <div className="absolute -inset-4 bg-black/5 blur-3xl rounded-[60px] -z-10"></div>
           </div>
 
+          {/* RIGHT: Content & Navigation */}
           <div className="lg:col-span-5 flex flex-col justify-center space-y-8">
             <div className="space-y-6">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-50 border border-gray-200 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">
@@ -319,15 +326,52 @@ const EditorialShowcase = () => {
               </p>
             </div>
             
-            <div className="bg-gray-50/50 p-8 rounded-[32px] border border-gray-100 min-h-[160px] flex flex-col justify-center transition-all duration-500 hover:bg-white hover:shadow-xl hover:border-gray-200">
-               <h4 className="text-black font-black uppercase text-[11px] tracking-widest mb-3">{SHOWCASE_OFFERINGS[activeSlide].title}</h4>
-               <p className="text-gray-600 font-medium leading-relaxed">{SHOWCASE_OFFERINGS[activeSlide].desc}</p>
+            {/* Dynamic Info Box (Now with Yellow Border and Fade Animation) */}
+            <div className="bg-white p-8 rounded-[32px] border-2 border-[#FFF200] shadow-[0_15px_40px_rgba(255,242,0,0.12)] min-h-[160px] flex flex-col justify-center transition-all duration-500 relative overflow-hidden">
+               {/* key={activeSlide} forces React to re-render this block, triggering the animate-in fade every time it changes */}
+               <div key={activeSlide} className="animate-in fade-in zoom-in-[0.98] duration-500">
+                 <h4 className="text-black font-black uppercase text-[11px] tracking-widest mb-3">
+                   {SHOWCASE_OFFERINGS[activeSlide].title}
+                 </h4>
+                 <p className="text-gray-600 font-medium leading-relaxed">
+                   {SHOWCASE_OFFERINGS[activeSlide].desc}
+                 </p>
+               </div>
             </div>
 
-            <div className="flex items-center gap-2">
-              {SHOWCASE_OFFERINGS.map((_, i) => (
-                <div key={i} className={`h-1 rounded-full transition-all duration-700 ${activeSlide === i ? 'w-12 bg-[#D4C900]' : 'w-4 bg-gray-200'}`} />
-              ))}
+            {/* Custom Pause/Play Navigation Widget (Matching your screenshot) */}
+            <div className="flex items-center gap-3 pt-2">
+              
+              {/* Progress Pill */}
+              <div className="bg-gray-100 rounded-full px-5 py-3.5 flex items-center gap-3">
+                {SHOWCASE_OFFERINGS.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => {
+                      setActiveSlide(i);
+                      setIsPaused(true); // Automatically pause if the user manually clicks a slide
+                    }}
+                    className={`h-2 rounded-full transition-all duration-500 ${
+                      activeSlide === i ? 'w-8 bg-gray-800' : 'w-2 bg-gray-400 hover:bg-gray-600'
+                    }`}
+                    aria-label={`Go to slide ${i + 1}`}
+                  />
+                ))}
+              </div>
+
+              {/* Pause/Play Circular Button */}
+              <button
+                onClick={() => setIsPaused(!isPaused)}
+                className="w-12 h-12 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-800 transition-colors shadow-sm"
+                aria-label={isPaused ? "Play slideshow" : "Pause slideshow"}
+              >
+                {isPaused ? (
+                  <Play size={18} fill="currentColor" className="ml-0.5" /> 
+                ) : (
+                  <Pause size={18} fill="currentColor" />
+                )}
+              </button>
+
             </div>
           </div>
 
@@ -378,15 +422,6 @@ export const MediaMarketing: React.FC = () => {
           <div className="w-full aspect-[4/3] md:aspect-[2.2/1] rounded-[32px] lg:rounded-[40px] overflow-hidden bg-gray-100 relative shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-gray-200 group">
             <img src="https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey3.png?updatedAt=1773643277664" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[20s] ease-out" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10"></div>
-
-            <div className="absolute top-6 left-6 lg:top-8 lg:left-8 bg-white/60 backdrop-blur-2xl px-5 py-3 rounded-2xl flex items-center gap-3 shadow-lg border border-white/50">
-               <div className="flex gap-1 items-end h-4">
-                  <div className="w-1 h-3 bg-black rounded-full animate-pulse"></div>
-                  <div className="w-1 h-2 bg-black/40 rounded-full animate-pulse delay-75"></div>
-                  <div className="w-1 h-4 bg-black/60 rounded-full animate-pulse delay-150"></div>
-               </div>
-               <span className="text-[10px] font-black uppercase tracking-widest text-black mt-0.5">Cinematic Render Active</span>
-            </div>
 
             <div className="absolute bottom-6 right-6 lg:bottom-8 lg:right-8 bg-black/60 backdrop-blur-2xl px-6 py-4 rounded-2xl border border-white/20 flex items-center gap-6 shadow-2xl">
                <div className="text-right">
@@ -442,6 +477,16 @@ export const MediaMarketing: React.FC = () => {
       <EditorialShowcase />
 
       {/* ════════════════════════════════════════
+          FLOOR PICKER
+      ════════════════════════════════════════ */}
+      <FloorPickerModule />
+
+      {/* ════════════════════════════════════════
+          USE CASES SECTION
+      ════════════════════════════════════════ */}
+      <UseCaseSection />
+
+{/* ════════════════════════════════════════
           HUB & SPOKE - ONE CAPTURE, MULTIPLE AUDIENCES
       ════════════════════════════════════════ */}
       <section className="bg-white pt-16 pb-24 relative overflow-hidden font-sans">
@@ -502,7 +547,7 @@ export const MediaMarketing: React.FC = () => {
                    <div className="absolute inset-0 bg-[#FFF200] rounded-full blur-[100px] opacity-15 pointer-events-none" style={{ animation: 'hub-glow 4s ease-in-out infinite' }}></div>
                    <div className="relative w-full max-w-[550px] aspect-square rounded-[28px] bg-black border-[3px] border-black shadow-[0_40px_100px_rgba(0,0,0,0.15)] p-0.5 z-20 overflow-hidden">
                       <div className="w-full h-full rounded-[24px] overflow-hidden relative">
-                         <img src="https://ik.imagekit.io/saxybrgkp/Website%20Images%20Land%20Survey6.png?updatedAt=1773637747328" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" alt="Truth Hub" />
+                         <img src="https://ik.imagekit.io/saxybrgkp/MME/website/Drone%20Location%20Video.png?updatedAt=1773643441240" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" alt="Truth Hub" />
                          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
                             <Video size={48} className="text-[#FFF200] group-hover:scale-125 transition-transform" />
                          </div>
@@ -528,17 +573,6 @@ export const MediaMarketing: React.FC = () => {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════
-          FLOOR PICKER
-      ════════════════════════════════════════ */}
-      <FloorPickerModule />
-
-      {/* ════════════════════════════════════════
-          USE CASES SECTION
-      ════════════════════════════════════════ */}
-      <UseCaseSection />
-
-      
     </div>
   );
 };

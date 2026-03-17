@@ -141,22 +141,6 @@ export const InspectionViewerSection = () => {
                  }} 
                />
             </div>
-
-            {/* Simulated Floating UI Element */}
-            <div className="absolute bottom-6 right-6 lg:bottom-8 lg:right-8 bg-[#0A0A0A]/95 backdrop-blur-md border border-white/10 rounded-xl p-4 shadow-2xl z-30 hidden md:block w-64 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-               <div className="flex items-center justify-between mb-3 border-b border-white/10 pb-3">
-                 <div className="flex items-center gap-2">
-                   <div className="w-1.5 h-1.5 bg-[#FFF200] rounded-full animate-pulse"></div>
-                   <span className="text-[8px] font-black uppercase tracking-widest text-white">System Active</span>
-                 </div>
-                 <span className="text-[10px] font-mono text-gray-400">100%</span>
-               </div>
-               <div className="space-y-1">
-                 <div className="text-[8px] font-black text-gray-500 uppercase tracking-widest">Current View</div>
-                 <div className="text-xs font-bold text-white truncate">{INSPECTION_FEATURES[activeIndex].title}</div>
-               </div>
-            </div>
-
           </div>
 
           {/* Bottom Content Bar */}
@@ -232,12 +216,6 @@ export const AssetInspection: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10"></div>
       
       {/* Floating UI Elements */}
-      <div className="absolute top-6 left-6 lg:top-8 lg:left-8 bg-white/80 backdrop-blur-2xl px-5 py-3 rounded-2xl flex items-center gap-3 shadow-lg border border-white/50">
-         <div className="flex gap-1">
-            <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse shadow-[0_0_8px_#EF4444]"></div>
-         </div>
-         <span className="text-[10px] font-black uppercase tracking-widest text-black mt-0.5">Live Defect Scanning</span>
-      </div>
       <div className="absolute bottom-6 right-6 lg:bottom-8 lg:right-8 bg-white/80 backdrop-blur-2xl px-6 py-4 rounded-2xl border border-white/50 flex items-center gap-6 shadow-2xl text-black">
          <div className="text-right">
             <div className="text-[9px] text-gray-500 font-bold uppercase tracking-widest mb-1">Coverage</div>
