@@ -33,7 +33,7 @@ export const BookDemo: React.FC = () => {
 
     try {
       // ⚠️ IMPORTANT: PASTE YOUR GOOGLE APPS SCRIPT URL HERE
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwN2H10TqPr-uj-uiQcIO9znvd-xdAySF6CXJh0fLblVkX5KXyM-MGmQj-rUiqTSCeV0A/exec';  
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwN2H10TqPr-uj-uiQcIO9znvd-xdAySF6CXJh0fLblVkX5KXyM-MGmQj-rUiqTSCeV0A/exec'; 
       
       // We use mode: 'no-cors' so the browser doesn't block the request to Google
       await fetch(GOOGLE_SCRIPT_URL, {
@@ -106,8 +106,6 @@ export const BookDemo: React.FC = () => {
             {/* ─── RIGHT SIDE: THE FULL FORM ─── */}
             <div className="bg-[#0A0A0A] rounded-[40px] p-8 lg:p-12 shadow-[0_40px_120px_rgba(0,0,0,0.3)] border border-white/5 relative overflow-hidden group min-h-[700px] flex flex-col justify-center">
               
-              {/* Ambient Glow */}
-              <div className="absolute -top-32 -right-32 w-96 h-96 bg-[#FFF200]/10 blur-[120px] rounded-full pointer-events-none" />
               
               {/* ─── SUCCESS STATE UI ─── */}
               {isSuccess ? (
@@ -173,9 +171,9 @@ export const BookDemo: React.FC = () => {
                       <select required name="country" value={formData.country} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium appearance-none">
                         <option value="" disabled className="text-gray-800">Select Country...</option>
                         <option value="IN" className="text-black">India</option>
+                        <option value="UAE" className="text-black">UAE</option>
                         <option value="US" className="text-black">United States</option>
                         <option value="UK" className="text-black">United Kingdom</option>
-                        <option value="AE" className="text-black">UAE</option>
                         <option value="OTHER" className="text-black">Other</option>
                       </select>
                       <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
@@ -190,16 +188,24 @@ export const BookDemo: React.FC = () => {
                     <textarea required name="message" value={formData.message} onChange={handleChange} placeholder="Please share additional context so we can route your request to the right person..." className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium h-24 resize-none" />
                   </div>
 
-                  {/* ROW 6: Source */}
+                  {/* ROW 6: Source Dropdown */}
                   <div className="space-y-1.5">
                     <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">How did you hear about us? *</label>
-                    <textarea required name="source" value={formData.source} onChange={handleChange} placeholder="Please provide as much detail as possible..." className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium h-16 resize-none" />
+                    <div className="relative">
+                      <select required name="source" value={formData.source} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium appearance-none">
+                        <option value="" disabled className="text-gray-800">Select Source...</option>
+                        <option value="Google Search" className="text-black">Google Search</option>
+                        <option value="LinkedIn" className="text-black">LinkedIn</option>
+                        <option value="AI Tools (ChatGPT, Claude, etc.)" className="text-black">AI Tools (ChatGPT, Claude, etc.)</option>
+                        <option value="Referral / Word of Mouth" className="text-black">Referral / Word of Mouth</option>
+                        <option value="Industry Event / Conference" className="text-black">Industry Event / Conference</option>
+                        <option value="Other" className="text-black">Other</option>
+                      </select>
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                      </div>
+                    </div>
                   </div>
-
-                  {/* Privacy Policy */}
-                  <p className="text-[11px] text-gray-500 leading-relaxed pt-2 pl-1">
-                    By submitting, you confirm that you have reviewed YelloSKYE's Privacy Policy and agree to its terms.
-                  </p>
 
                   {/* Submit Button */}
                   <div className="pt-4">

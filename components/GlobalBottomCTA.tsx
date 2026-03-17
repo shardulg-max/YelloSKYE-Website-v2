@@ -1,8 +1,69 @@
 // components/GlobalBottomCTA.tsx
-import React from 'react';
+import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Check } from 'lucide-react';
 
 export default function GlobalBottomCTA() {
+  const location = useLocation();
+
+  // 1. Set up state for form fields
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    company: '',
+    message: ''
+  });
+
+  // 2. Set up state for submission status (loading/success/error)
+  const [status, setStatus] = useState('idle'); 
+
+  // 3. Handle input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  // 4. Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('submitting');
+
+    // 👇 REPLACE THIS WITH YOUR GOOGLE APPS SCRIPT WEB APP URL 👇
+    const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+
+    try {
+      const data = new FormData();
+      Object.keys(formData).forEach(key => data.append(key, formData[key]));
+      
+      // We pass the current page path so you know exactly where they converted!
+      data.append('formName', `Global Bottom Gateway - Path: ${location.pathname}`); 
+
+      await fetch(scriptURL, {
+        method: 'POST',
+        body: data,
+        // mode: 'no-cors' // Uncomment this ONLY if you get CORS errors
+      });
+
+      setStatus('success');
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        company: '',
+        message: ''
+      });
+
+      setTimeout(() => setStatus('idle'), 5000);
+
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setStatus('error');
+    }
+  };
+
   return (
     <>
       {/* ====================== THE EXECUTIVE GATEWAY (FORM) ====================== */}
@@ -53,17 +114,31 @@ export default function GlobalBottomCTA() {
               {/* RIGHT SIDE: Compact Form */}
               <div className="bg-[#0A0A0A] rounded-[40px] p-8 lg:p-10 shadow-[0_40px_120px_rgba(0,0,0,0.3)] border border-white/5 relative overflow-hidden group">
                 
-                <form className="relative z-10 space-y-4" onSubmit={(e) => e.preventDefault()}>
+                <form className="relative z-10 space-y-4" onSubmit={handleSubmit}>
                   
                   {/* ROW 1: Names side-by-side */}
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1.5">
                       <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">First Name *</label>
-                      <input required placeholder="John" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
+                      <input 
+                        required 
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleChange}
+                        placeholder="John" 
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" 
+                      />
                     </div>
                     <div className="space-y-1.5">
                       <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Last Name *</label>
-                      <input required placeholder="Doe" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
+                      <input 
+                        required 
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleChange}
+                        placeholder="Doe" 
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" 
+                      />
                     </div>
                   </div>
                   
@@ -71,30 +146,74 @@ export default function GlobalBottomCTA() {
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1.5">
                       <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Business Email *</label>
-                      <input required type="email" placeholder="john@company.com" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
+                      <input 
+                        required 
+                        type="email" 
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="john@company.com" 
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" 
+                      />
                     </div>
                     <div className="space-y-1.5">
                       <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Phone Number *</label>
-                      <input required type="tel" placeholder="+91 555 000 0000" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
+                      <input 
+                        required 
+                        type="tel" 
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+91 555 000 0000" 
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" 
+                      />
                     </div>
                   </div>
                   
                   {/* ROW 3: Company */}
                   <div className="space-y-1.5">
                     <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Company *</label>
-                    <input required placeholder="Ex: Larsen & Toubro" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
+                    <input 
+                      required 
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      placeholder="Ex: Larsen & Toubro" 
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" 
+                    />
                   </div>
 
                   {/* ROW 4: Compact Message Box */}
                   <div className="space-y-1.5">
                     <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Message *</label>
-                    <textarea required placeholder="Share additional context so we can route your request..." className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium h-16 resize-none" />
+                    <textarea 
+                      required 
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Share additional context so we can route your request..." 
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium h-16 resize-none" 
+                    />
                   </div>
 
+                  {/* Status Messages */}
+                  {status === 'success' && (
+                    <p className="text-[#FFF200] text-sm font-bold text-center">Details submitted successfully!</p>
+                  )}
+                  {status === 'error' && (
+                    <p className="text-red-400 text-sm font-bold text-center">Something went wrong. Please try again.</p>
+                  )}
+
                   <div className="pt-2">
-                    <button type="submit" className="w-full bg-[#FFF200] hover:bg-white text-black font-black py-4 rounded-xl uppercase tracking-[0.2em] text-[11px] transition-all transform hover:-translate-y-0.5 shadow-[0_10px_20px_rgba(255,242,0,0.15)] flex items-center justify-center gap-3 group/btn">
-                      Book a free demo
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" className="group-hover/btn:translate-x-1 transition-transform"><path d="m9 18 6-6-6-6"/></svg>
+                    <button 
+                      type="submit" 
+                      disabled={status === 'submitting'}
+                      className={`w-full bg-[#FFF200] hover:bg-white text-black font-black py-4 rounded-xl uppercase tracking-[0.2em] text-[11px] transition-all transform hover:-translate-y-0.5 shadow-[0_10px_20px_rgba(255,242,0,0.15)] flex items-center justify-center gap-3 group/btn ${status === 'submitting' ? 'opacity-70 cursor-not-allowed' : ''}`}
+                    >
+                      {status === 'submitting' ? 'Sending...' : 'Book a free demo'}
+                      {status !== 'submitting' && (
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" className="group-hover/btn:translate-x-1 transition-transform"><path d="m9 18 6-6-6-6"/></svg>
+                      )}
                     </button>
                   </div>
                 </form>

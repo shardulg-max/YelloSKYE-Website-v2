@@ -306,7 +306,7 @@ export const Platform: React.FC = () => {
 
       {/* The Image Element */}
       <img 
-        src="https://ik.imagekit.io/saxybrgkp/MME/DEx.png"
+        src="https://ik.imagekit.io/saxybrgkp/MME/dexpagehero.png"
         alt="DEX Aerial Survey Snippet" 
         className="absolute inset-0 w-full h-full object-cover scale-[1.02] group-hover:scale-105 transition-transform duration-[15s] ease-out z-10 opacity-90"
       />
