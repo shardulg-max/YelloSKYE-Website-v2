@@ -1,12 +1,9 @@
-// components/GlobalBottomCTA.tsx
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Check } from 'lucide-react';
 
 export default function GlobalBottomCTA() {
   const location = useLocation();
-
-  // 1. Set up state for form fields
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -15,51 +12,41 @@ export default function GlobalBottomCTA() {
     company: '',
     message: ''
   });
+  const [status, setStatus] = useState('idle');
 
-  // 2. Set up state for submission status (loading/success/error)
-  const [status, setStatus] = useState('idle'); 
-
-  // 3. Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  // 4. Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('submitting');
 
-    // 👇 REPLACE THIS WITH YOUR GOOGLE APPS SCRIPT WEB APP URL 👇
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwN2H10TqPr-uj-uiQcIO9znvd-xdAySF6CXJh0fLblVkX5KXyM-MGmQj-rUiqTSCeV0A/exec';
 
-    try {
-      const data = new FormData();
-      Object.keys(formData).forEach(key => data.append(key, formData[key]));
-      
-      // We pass the current page path so you know exactly where they converted!
-      data.append('formName', `Global Bottom Gateway - Path: ${location.pathname}`); 
+    // Prepare data to match your AppScript's expected JSON format
+    const payload = {
+      ...formData,
+      source: `Global Bottom Gateway - Path: ${location.pathname}`,
+      jobTitle: "N/A", // Placeholder as this form doesn't have this field
+      country: "N/A"   // Placeholder as this form doesn't have this field
+    };
 
+    try {
       await fetch(scriptURL, {
         method: 'POST',
-        body: data,
-        // mode: 'no-cors' // Uncomment this ONLY if you get CORS errors
+        mode: 'no-cors', // Essential for Google Apps Script
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
       });
 
+      // With no-cors, we assume success if no error is thrown
       setStatus('success');
-      setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        company: '',
-        message: ''
-      });
-
+      setFormData({ firstName: '', lastName: '', email: '', phone: '', company: '', message: '' });
       setTimeout(() => setStatus('idle'), 5000);
-
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error('Submission Error:', error);
       setStatus('error');
     }
   };
