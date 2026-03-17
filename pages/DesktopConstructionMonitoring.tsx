@@ -16,7 +16,7 @@ const MONITORING_FEATURES = [
     title: 'Drone-Based Progress Tracking',
     desc: 'Regular automated drone flights capture site progress. Compare actual execution against planned schedules with transparent work-done reconciliation.',
     gif: '/gifs/aerial-progress.gif',
-    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/Construction%20Monitoring/Website%20Images%20Land%20Survey%20new.png',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/MME/aerieal%20progress.png',
     placeholderBg: 'bg-blue-50'
   },
   {

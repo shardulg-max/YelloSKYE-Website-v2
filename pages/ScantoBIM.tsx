@@ -259,34 +259,13 @@ export const ScantoBIM: React.FC = () => {
           {/* Hero Visual */}
           <div className="w-full aspect-[4/3] md:aspect-[2.2/1] rounded-[32px] lg:rounded-[40px] overflow-hidden bg-gray-100 relative shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-gray-200 group">
             <img 
-              src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2500&auto=format&fit=crop" 
+              src="https://ik.imagekit.io/saxybrgkp/MME/BIM/Website%20Images%20Land%20Survey.png" 
               alt="BIM Overlay Visualization" 
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[20s] ease-out"
             />
             {/* High-tech overlay simulation */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/10 mix-blend-multiply"></div>
             <div className="absolute inset-0 bg-[#FFF200]/5 mix-blend-overlay"></div>
-
-            {/* Top Status Pill */}
-            <div className="absolute top-6 left-6 lg:top-8 lg:left-8 bg-white/80 backdrop-blur-2xl px-5 py-3 rounded-2xl flex items-center gap-3 shadow-lg border border-white">
-               <div className="flex gap-1 items-center h-4">
-                  <Cpu size={16} className="text-black animate-pulse" />
-               </div>
-               <span className="text-[10px] font-black uppercase tracking-widest text-black mt-0.5">BIM Overlay Active</span>
-            </div>
-
-            {/* Bottom Data Pill */}
-            <div className="absolute bottom-6 right-6 lg:bottom-8 lg:right-8 bg-black/80 backdrop-blur-2xl px-6 py-4 rounded-2xl border border-white/10 flex items-center gap-6 shadow-2xl">
-               <div className="text-right">
-                  <div className="text-[9px] text-gray-400 font-bold uppercase tracking-widest mb-1">Accuracy</div>
-                  <div className="text-[#FFF200] font-mono text-base font-bold">±5mm</div>
-               </div>
-               <div className="w-[1px] h-8 bg-white/20"></div>
-               <div className="text-right">
-                  <div className="text-[9px] text-gray-400 font-bold uppercase tracking-widest mb-1">Format</div>
-                  <div className="text-white font-mono text-base font-bold">.RVT / .IFC</div>
-               </div>
-            </div>
           </div>
         </div>
       </section>

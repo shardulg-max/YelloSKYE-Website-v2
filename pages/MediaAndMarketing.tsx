@@ -156,7 +156,7 @@ export const FloorPickerModule = () => {
         if (prev === 0) return 3; // If at Terrace (0), loop back to 6th Floor (3)
         return prev - 1;          // Otherwise, move up the building (decrease index)
       });
-    }, 500); // Exactly half a second
+    }, 2000); // Exactly half a second
 
     return () => clearInterval(timer);
   }, []);
