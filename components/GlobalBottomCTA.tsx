@@ -6,7 +6,7 @@ export default function GlobalBottomCTA() {
   return (
     <>
       {/* ====================== THE EXECUTIVE GATEWAY (FORM) ====================== */}
-      <section className="bg-white py-24 lg:py-40 relative overflow-hidden font-sans border-gray-100">
+      <section className="bg-white py-24 lg:py-32 relative overflow-hidden font-sans border-t border-gray-100">
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
              style={{ 
                backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", 
@@ -18,26 +18,27 @@ export default function GlobalBottomCTA() {
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
               
+              {/* LEFT SIDE: Copy */}
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-50 border border-gray-200 text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-8">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-50 border border-gray-200 text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-8 shadow-sm">
                   Get Started
                 </div>
-                <h3 className="text-4xl lg:text-6xl font-black tracking-tighter text-black mb-8 leading-[1.1]">
+                <h3 className="text-4xl lg:text-6xl font-black tracking-tighter text-black mb-8 leading-[1.05]">
                   Ready to gain <br/>
                   <span className="relative inline-block mt-2">
                     <span className="absolute inset-y-1 -inset-x-2 bg-[#FFF200] rounded-lg shadow-sm transform -skew-x-2"></span>
                     <span className="relative text-black">absolute clarity?</span>
                   </span>
                 </h3>
-                <p className="text-xl text-gray-500 font-medium leading-relaxed mb-10 max-w-lg">
-                  Stop debating interpretations. Request a custom walkthrough of your site and see how DEX delivers boardroom-ready answers.
+                <p className="text-lg lg:text-xl text-gray-500 font-medium leading-relaxed mb-10 max-w-lg">
+                  Request a custom walkthrough of your site and see how YelloSKYE delivers boardroom-ready answers.
                 </p>
                 
                 <ul className="space-y-5">
                   {[
-                    '15-minute tailored site walkthrough', 
-                    'Zero commitment or hardware required', 
-                    'Custom strategy for your project goals'
+                    '15-Minute Tailored Site Walkthrough', 
+                    'Zero Commitment Or Hardware Required', 
+                    'Custom Strategy For Your Project Goals'
                   ].map((item) => (
                     <li key={item} className="flex items-center gap-4 text-black font-black uppercase text-[11px] tracking-[0.1em]">
                       <div className="w-6 h-6 bg-black rounded-lg flex items-center justify-center text-[#FFF200] shadow-lg shrink-0">
@@ -49,45 +50,53 @@ export default function GlobalBottomCTA() {
                 </ul>
               </div>
 
-              <div className="bg-[#0A0A0A] rounded-[48px] p-8 lg:p-14 shadow-[0_40px_120px_rgba(0,0,0,0.4)] border border-white/5 relative overflow-hidden group">
-                <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#FFF200]/10 blur-[100px] rounded-full group-hover:bg-[#FFF200]/20 transition-all duration-700" />
+              {/* RIGHT SIDE: Compact Form */}
+              <div className="bg-[#0A0A0A] rounded-[40px] p-8 lg:p-10 shadow-[0_40px_120px_rgba(0,0,0,0.3)] border border-white/5 relative overflow-hidden group">
+                {/* Ambient Glow */}
+                <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#FFF200]/10 blur-[100px] rounded-full group-hover:bg-[#FFF200]/20 transition-all duration-700 pointer-events-none" />
                 
-                <form className="relative z-10 space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Full Name</label>
-                      <input placeholder="John Doe" className="w-full bg-white/5 border-b border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all font-medium" />
+                <form className="relative z-10 space-y-4" onSubmit={(e) => e.preventDefault()}>
+                  
+                  {/* ROW 1: Names side-by-side */}
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">First Name *</label>
+                      <input required placeholder="John" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
                     </div>
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Work Email</label>
-                      <input placeholder="john@company.com" className="w-full bg-white/5 border-b border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all font-medium" />
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Last Name *</label>
+                      <input required placeholder="Doe" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
                     </div>
                   </div>
                   
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Company</label>
-                    <input placeholder="Ex: Larsen & Toubro" className="w-full bg-white/5 border-b border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all font-medium" />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Project Phase</label>
-                    <div className="relative">
-                      <select className="w-full bg-white/5 border-b border-white/10 rounded-xl px-5 py-4 text-gray-400 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all font-medium appearance-none">
-                        <option>Select Current Stage</option>
-                        <option>Pre-Construction / Planning</option>
-                        <option>Active Construction</option>
-                        <option>Handover / Operations</option>
-                      </select>
-                      <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-600">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-                      </div>
+                  {/* ROW 2: Contact side-by-side */}
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Business Email *</label>
+                      <input required type="email" placeholder="john@company.com" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Phone Number *</label>
+                      <input required type="tel" placeholder="+1 (555) 000-0000" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
                     </div>
                   </div>
+                  
+                  {/* ROW 3: Company */}
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Company *</label>
+                    <input required placeholder="Ex: Larsen & Toubro" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
+                  </div>
 
-                  <div className="pt-4">
-                    <button type="button" className="w-full bg-[#FFF200] hover:bg-white text-black font-black py-6 rounded-2xl uppercase tracking-[0.25em] text-xs transition-all transform hover:-translate-y-1 shadow-[0_20px_40px_rgba(255,242,0,0.15)] flex items-center justify-center gap-3 group/btn">
+                  {/* ROW 4: Compact Message Box */}
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Message *</label>
+                    <textarea required placeholder="Share additional context so we can route your request..." className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium h-16 resize-none" />
+                  </div>
+
+                  <div className="pt-2">
+                    <button type="submit" className="w-full bg-[#FFF200] hover:bg-white text-black font-black py-4 rounded-xl uppercase tracking-[0.2em] text-[11px] transition-all transform hover:-translate-y-0.5 shadow-[0_10px_20px_rgba(255,242,0,0.15)] flex items-center justify-center gap-3 group/btn">
                       Book a free demo
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" className="group-hover/btn:translate-x-1 transition-transform"><path d="m9 18 6-6-6-6"/></svg>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" className="group-hover/btn:translate-x-1 transition-transform"><path d="m9 18 6-6-6-6"/></svg>
                     </button>
                   </div>
                 </form>

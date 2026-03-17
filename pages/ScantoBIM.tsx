@@ -3,7 +3,7 @@ import { AppRoutes } from "../types";
 import React, { useState, useEffect } from "react";
 import { 
   Check, Globe, Layers, Mail, Twitter, Linkedin, Youtube, Instagram, PenTool, Scan, Crosshair, ArrowDown, 
-  MapPin, MoveUpRight, Sparkles, Box, AlertTriangle, FileBox, Users, Target,
+  MapPin, MoveUpRight, Sparkles, Box, AlertTriangle, FileBox, Users, 
   Ruler, LayoutTemplate, Activity, RefreshCw, Hexagon, HardHat, ShieldCheck,
   CheckCircle2, Cpu
 } from "lucide-react";
@@ -41,12 +41,11 @@ const BIM_FEATURES = [
   }
 ];
 
-
 // ─── SUB-COMPONENT: PREMIUM LIGHT-MODE DUAL-TRACK ──────────
 
 export const BIMValidationModule = () => {
   return (
-    <section className="bg-[#FBFBFD] py-20 lg:py-32 relative overflow-hidden font-sans border-b border-gray-100">
+    <section className="bg-[#FBFBFD] py-20 lg:py-32 relative overflow-hidden font-sans border-gray-100">
       
       {/* Custom CSS Animations for the premium visuals */}
       <style>{`
@@ -60,12 +59,9 @@ export const BIMValidationModule = () => {
           0%, 100% { transform: rotateX(60deg) rotateZ(45deg) translateZ(20px); }
           50% { transform: rotateX(60deg) rotateZ(45deg) translateZ(40px); }
         }
-        @keyframes model-slide-in {
-          0% { transform: perspective(1000px) rotateX(60deg) rotateZ(-30deg) translate(-20%, 0); opacity: 0; }
-          100% { transform: perspective(1000px) rotateX(60deg) rotateZ(-30deg) translate(0%, 0%); opacity: 1; }
-        }
-        .group:hover .animate-model-slide-in {
-          animation: model-slide-in 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+        @keyframes pulse-ring {
+          0% { transform: scale(0.8); opacity: 0.8; }
+          100% { transform: scale(2.5); opacity: 0; }
         }
       `}</style>
 
@@ -85,7 +81,7 @@ export const BIMValidationModule = () => {
         <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-24">
           <h2 className="text-[clamp(40px,5vw,64px)] font-black tracking-tighter leading-[1.1] text-[#1D1D1F] mb-8">
             A full-stack BIM practice. <br className="hidden md:block"/>
-            <span className="relative inline-block mt-3 mx-2">
+            <span className="relative inline-block mt-3">
               <span className="absolute inset-y-1 lg:inset-y-2 -inset-x-3 bg-[#FFF200] rounded-xl shadow-sm transform -skew-x-2"></span>
               <span className="relative text-black px-2">From concept to reality.</span>
             </span>
@@ -202,52 +198,43 @@ export const BIMValidationModule = () => {
             <div className="bg-white rounded-[32px] overflow-hidden border border-gray-200 shadow-[0_20px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)] hover:border-gray-300 transition-all duration-500 group flex flex-col h-full">
               
               {/* ANIMATED CANVAS */}
-              <div className="h-[260px] lg:h-[300px] w-full overflow-hidden relative bg-black flex flex-col items-center justify-center group-hover:bg-[#0A0A0A] transition-all duration-500">
+              <div className="h-[260px] lg:h-[300px] w-full overflow-hidden relative bg-[#0A0A0A] flex items-center justify-center">
+                 {/* Tech Background */}
+                 <div className="absolute inset-0 opacity-20" style={{ 
+                    backgroundImage: 'radial-gradient(circle at center, #333 1px, transparent 1px)', 
+                    backgroundSize: '16px 16px' 
+                 }}></div>
                  
-                 {/* Faint Internal Grid */}
-                 <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: "linear-gradient(to right, #666 1px, transparent 1px), linear-gradient(to bottom, #666 1px, transparent 1px)", backgroundSize: "40px 40px", transform: "perspective(600px) rotateX(60deg) scale(2)" }}></div>
-
-                 {/* Structural Layer: Grey detailed I-beams on Grid */}
-                 <div className="absolute w-[80%] h-[40%] bg-gray-900 shadow-inner rounded-xl" style={{ transform: "perspective(1000px) rotateX(60deg) rotateZ(-30deg) translate(-20%, -10%)" }}>
-                    <div className="absolute top-[20%] left-0 w-full h-[3px] bg-gray-700"></div>
-                    <div className="absolute bottom-[20%] left-0 w-full h-[3px] bg-gray-700"></div>
+                 {/* Beam 1 (Gray/Structural) */}
+                 <div className="absolute w-72 h-14 bg-gray-700 border-y border-gray-500 shadow-2xl transform -rotate-12 translate-y-6 flex items-center px-4">
+                   <div className="w-full h-[2px] bg-gray-600"></div>
+                 </div>
+                 
+                 {/* Beam 2 (Blue/MEP) */}
+                 <div className="absolute w-16 h-72 bg-blue-600/90 border-x border-blue-400 shadow-2xl transform rotate-12 -translate-x-8 backdrop-blur-md flex justify-center py-4 z-10">
+                   <div className="w-[2px] h-full bg-blue-400/50"></div>
+                 </div>
+                 
+                 {/* Clash Point Alert System */}
+                 <div className="absolute transform -translate-x-6 translate-y-8 z-20 flex items-center justify-center">
+                    {/* Pulsing ring */}
+                    <div className="absolute w-12 h-12 border-[3px] border-red-500 rounded-full" style={{ animation: 'pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite' }}></div>
+                    {/* Core glowing dot */}
+                    <div className="absolute w-4 h-4 bg-red-500 rounded-full shadow-[0_0_20px_rgba(239,68,68,1)]"></div>
+                    {/* Crosshair Graphic */}
+                    <Crosshair size={40} className="text-red-500 absolute drop-shadow-md" strokeWidth={1.5} />
                  </div>
 
-                 {/* MEP Layer (Animated): Bright light-blue piping systems */}
-                 <div className="absolute w-[85%] h-[45%] flex items-center justify-center animate-model-slide-in opacity-0" style={{ transform: "perspective(1000px) rotateX(60deg) rotateZ(-30deg)" }}>
-                    {/* Primary duct */}
-                    <div className="absolute w-[120%] h-[20%] bg-blue-600 rounded-lg group-hover:scale-110 transition-transform duration-700">
-                       <div className="w-[95%] h-[4px] bg-blue-400 opacity-50 absolute top-[10%] left-[2.5%]"></div>
-                    </div>
-                    {/* Secondary system */}
-                    <div className="absolute h-[110%] w-[15%] bg-blue-700 rounded-lg top-[-5%] left-[60%]"></div>
-                    {/* Minor branch */}
-                    <div className="absolute w-[30%] h-[6%] bg-blue-800 rounded-md top-[60%] left-[80%]"></div>
-                 </div>
-
-                 {/* Clash Point Interaction Layer */}
-                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none">
-                    <div className="absolute w-12 h-12 bg-red-600 rounded-full blur-[20px] opacity-0 group-hover:opacity-90 group-hover:animate-pulse transition-opacity duration-300"></div>
-                    <div className="absolute w-20 h-20 border-[3px] border-red-500/80 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                       <div className="w-[4px] h-[4px] bg-red-500 rounded-full shadow-[0_0_15px_#EF4444] animate-ping"></div>
-                    </div>
-                    <div className="absolute text-red-500 group-hover:scale-125 transition-transform duration-300 opacity-0 group-hover:opacity-100 scale-90">
-                       <Target size={60} strokeWidth={1} />
-                    </div>
-                 </div>
-
-                 {/* Red Text Tag */}
-                 <div className="absolute bottom-5 right-5 flex items-center gap-3">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-red-500/20 bg-red-500/10 text-red-500 text-[10px] font-black uppercase tracking-widest">
-                       <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_#EF4444]"></div>
-                       CLASH DETECTED
-                    </div>
+                 {/* Simulated UI Alert Tag */}
+                 <div className="absolute bottom-5 right-5 bg-red-500/10 border border-red-500/30 text-red-500 text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-md flex items-center gap-2 z-30 backdrop-blur-md">
+                   <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                   Clash Detected
                  </div>
               </div>
 
               <div className="p-8 lg:p-10 relative flex-grow flex flex-col justify-center">
                  <div className="absolute -top-8 right-8 w-16 h-16 bg-[#FFF200] rounded-[18px] flex items-center justify-center shadow-lg transform rotate-3 group-hover:rotate-0 transition-transform duration-300">
-                    <Target size={28} className="text-black" />
+                    <Crosshair size={28} className="text-black" />
                  </div>
                  
                  <span className="text-black bg-gray-100 px-3.5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest inline-block w-fit mb-5">Pre-Construction</span>
