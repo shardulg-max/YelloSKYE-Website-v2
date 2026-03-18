@@ -1,165 +1,145 @@
 import { Link } from "react-router-dom";
-import React, { useState, useEffect } from "react";
-import AutonomousAgents from '../components/AutonomousAgents';
+import React, { useState } from "react";
 import { 
-  FileCheck, Radar, Check, Scan, History, Video, Zap, MessageSquare, CheckCircle2, BrainCircuit, ScanSearch, FileWarning,
-  Rotate3D, Satellite, Layers, BarChart3, Twitter, Linkedin, Youtube, Play, Search, Bell, Plus, LayoutDashboard, Map, Box, AlertTriangle, 
-  FileText, Settings, Users, ChevronDown, ArrowRight, Activity, ShieldCheck, Image as ImageIcon,
-  Instagram, MapPin, Mail, Globe, Sparkles, Clock,
+  FileCheck, Radar, Check, Scan, History, Video, LayoutDashboard, 
+  ArrowRight, Activity, ShieldCheck, Image as ImageIcon, Sparkles,
+  Layers, BarChart3, Users, CheckCircle2, AlertTriangle, Satellite, FileText
 } from "lucide-react";
 
-// ─── SECTION OBSERVER ────────────────────────────────────────────────────────
-const SectionObserver = () => {
-  useEffect(() => {
-    const items = document.querySelectorAll(".illusion");
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) e.target.classList.remove("opacity-0", "translate-y-8");
-        });
-      },
-      { threshold: 0.1 }
-    );
-    items.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, []);
-  return null;
-};
-
-// ─── LIFECYCLE LINE PILL COMPONENT ───────────────────────────
-const LifecycleLinePill = ({ title, start, end, imageUrl, description, link = "#" }) => {
-  const leftPercent = ((start - 1) / 6) * 100;
-  const widthPercent = ((end - start + 1) / 6) * 100;
-
-  return (
-    <div 
-      className="relative group z-10 hover:z-50 cursor-default hidden lg:block px-2"
-      style={{ marginLeft: `${leftPercent}%`, width: `${widthPercent}%` }}
-    >
-      <div className="w-full bg-[#FFF200] border-[1.5px] border-black/10 text-black font-black py-4 px-6 rounded-full group-hover:bg-white group-hover:border-black transition-all duration-300 shadow-sm text-center text-[13px] relative flex justify-center items-center">
-        {title}
-      </div>
-
-      <div className="absolute left-1/2 -translate-x-1/2 bottom-full pb-4 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 w-[340px]">
-        <div className="bg-[#111] rounded-2xl shadow-[0_30px_60px_rgba(0,0,0,0.4)] border border-gray-800 overflow-hidden transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300 relative">
-          <div className="w-full h-32 bg-gray-900 relative">
-            <img src={imageUrl} alt={title} className="w-full h-full object-cover opacity-80" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#111] to-transparent"></div>
-          </div>
-          <div className="p-5 flex flex-col">
-            <h4 className="font-black text-white text-base mb-1.5 leading-tight">{title}</h4>
-            <p className="text-gray-400 text-xs font-medium mb-5 leading-relaxed">{description}</p>
-            <Link 
-              to={link} 
-              className="relative z-50 w-full py-3 bg-[#FFF200] text-black hover:bg-white text-[11px] font-black uppercase tracking-[0.15em] rounded-xl transition-colors flex items-center justify-center gap-2 shadow-md cursor-pointer"
-            >
-              Explore Service
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </Link>
-          </div>
-        </div>
-      </div>
+// Mobile-specific Autonomous Agents List (Bypasses the 400vh desktop scroll track)
+const MobileAutonomousAgents = () => (
+  <section className="bg-gray-50 py-16 px-5 border-y border-gray-100 relative overflow-hidden">
+    {/* Subtle Background Pattern */}
+    <div className="absolute inset-0 opacity-[0.4]" style={{ backgroundImage: "radial-gradient(#d1d5db 1px, transparent 1px)", backgroundSize: "24px 24px" }}></div>
+    
+    <div className="relative z-10 mb-8">
+      <h2 className="text-[36px] font-black tracking-tighter leading-[1.05] text-black mb-3">
+        The era of <br/>
+        <span className="bg-[#FFF200] px-2 rounded-lg inline-block mt-1">Autonomous Agents.</span>
+      </h2>
+      <p className="text-[15px] text-gray-500 font-medium leading-relaxed">Meet Kumar. Specialized AI modules processing your site data 24/7.</p>
     </div>
-  );
-};
+    
+    <div className="relative z-10 flex flex-col gap-3">
+      {[
+        { id: 'progress', name: 'Progress Agent', icon: Activity, tag: 'Schedule & Tracking', desc: 'Tracks how each site is moving versus plan.' },
+        { id: 'billing', name: 'Billing Agent', icon: FileText, tag: 'Automated BOQ', desc: 'Creates clear, audit-ready progress and billing reports.' },
+        { id: 'quality', name: 'Quality Agent', icon: ShieldCheck, tag: 'Clash & Compliance', desc: 'Checks built work against drawings and standards.' },
+        { id: 'content', name: 'Content Agent', icon: ImageIcon, tag: 'Stakeholder Comms', desc: 'Pulls the right images into ready-to-send updates.' },
+      ].map((agent) => (
+        <div key={agent.id} className="bg-white p-5 rounded-[24px] border border-gray-200 shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col gap-3 relative overflow-hidden">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-[#0A0A0A] text-[#FFF200] flex items-center justify-center shadow-md shrink-0">
+               <agent.icon size={18} strokeWidth={2.5} />
+            </div>
+            <div>
+              <h3 className="text-[16px] font-black text-black leading-tight">{agent.name}</h3>
+              <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest">{agent.tag}</span>
+            </div>
+          </div>
+          <p className="text-[12px] text-gray-500 font-medium leading-snug">{agent.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+);
 
-// ─── HOME COMPONENT ─────────────────────────────────────────────────────────────
-export const MobileHome: React.FC = () => { 
+export const MobileHome: React.FC = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
 
   return (
     <div className="bg-white selection:bg-[#FFF200] selection:text-black font-sans overflow-x-hidden">
       
+      {/* Global Mobile Animations */}
       <style>{`
         @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        .animate-marquee { animation: marquee 24s linear infinite; }
+        .animate-marquee { animation: marquee 20s linear infinite; }
         .marquee-mask {
           -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
           mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         }
-        @keyframes ai-core-glow { 0%, 100% { transform: scale(1); opacity: 0.8; filter: drop-shadow(0 0 10px #FFF200); } 50% { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 0 30px #FFF200); } }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        @keyframes scan-beam { 0%, 100% { transform: translateX(-100%); } 50% { transform: translateX(100%); } }
+        @keyframes pulse-ring { 0% { box-shadow: 0 0 0 0 rgba(255, 242, 0, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(255, 242, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 242, 0, 0); } }
       `}</style>
-      
-      <SectionObserver />
 
-      {/* ====================== HERO SECTION (MOBILE OPTIMIZED) ====================== */}
-      <section className="relative w-full min-h-screen lg:h-[100dvh] pt-[100px] lg:pt-[140px] pb-10 bg-white flex flex-col overflow-hidden border-gray-100">
+      {/* ====================== HERO SECTION ====================== */}
+      {/* Fixed the spacing: Removed min-h-screen, tightened padding */}
+      <section className="relative w-full pt-[90px] pb-10 bg-white flex flex-col overflow-hidden border-b border-gray-100">
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-             style={{ 
-               backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", 
-               backgroundSize: "60px 60px",
-               maskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
-             }} />
+             style={{ backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", backgroundSize: "30px 30px" }} />
 
-        {/* TOP: VIDEO WINDOW */}
-        <div className="flex-1 w-full max-w-[1735px] mx-auto px-4 md:px-10 flex flex-col relative z-10">
-          <div className="relative w-full h-[40vh] md:h-full bg-[#080808] rounded-[20px] lg:rounded-[28px] shadow-2xl overflow-hidden group">
-            <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-90">
-              {/* <source src="..." /> */}
-            </video>
-            <div className="absolute inset-0 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1)] pointer-events-none"></div>
+        <div className="px-5 flex flex-col gap-6 relative z-10">
+          
+          {/* HEADLINE */}
+          <div className="flex flex-col gap-3">
+            <h1 className="text-[48px] font-black tracking-tighter text-[#0A0A0A] leading-[0.95] flex flex-col">
+              Your site,
+              <span className="bg-[#FFF200] w-fit px-3 py-1 rounded-[14px] text-black shadow-sm mt-1">
+                in sight.
+              </span>
+            </h1>
+            <p className="text-[16px] text-gray-500 font-medium leading-snug max-w-[90%]">
+              Know exactly what's happening on your site with AI-powered reality capture.
+            </p>
           </div>
-        </div>
 
-        {/* BOTTOM: COPY & CTA */}
-        <div className="w-full max-w-[1735px] mx-auto px-5 md:px-10 pt-8 lg:pt-10 shrink-0 relative z-20">
-          <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-10">
-            <div className="flex flex-col gap-4">
-              <h1 className="text-[42px] sm:text-[60px] lg:text-[84px] font-black tracking-tighter text-[#0A0A0A] leading-[0.95] flex flex-col sm:flex-row sm:items-center gap-3">
-                Your site,
-                <span className="bg-[#FFF200] w-fit px-4 sm:px-6 py-1 rounded-[12px] sm:rounded-[20px] text-black shadow-sm">
-                  in sight.
-                </span>
-              </h1>
-              <p className="text-[18px] sm:text-[22px] text-gray-600 font-medium tracking-tight max-w-xl">
-                Know exactly what's happening on your site with AI-powered reality capture.
-              </p>
+          {/* VIDEO WINDOW: Portrait Aspect Ratio */}
+          <div className="relative w-full aspect-[4/5] bg-[#080808] rounded-[24px] shadow-2xl overflow-hidden border border-black/5 mt-2">
+            <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-90">
+               {/* <source src="/your-mobile-hero-video.mp4" /> */}
+            </video>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
+            
+            {/* Live Badge */}
+            <div className="absolute top-4 left-4 bg-black/40 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-full flex items-center gap-2 shadow-lg">
+              <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_#22c55e]"></div>
+              <span className="text-[9px] font-black text-white uppercase tracking-widest">Platform Live</span>
             </div>
+          </div>
 
-            <div className="flex flex-col items-start xl:items-end">
-              <div className="flex flex-wrap items-center gap-4 sm:gap-6 mb-6">
-                {["Clarity", "Consistency", "Accuracy"].map((label) => (
-                  <div key={label} className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 bg-[#FFF200] shadow-[0_0_8px_rgba(255,242,0,0.8)]"></div>
-                    <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">{label}</span>
-                  </div>
-                ))}
+          {/* THREE PILLARS */}
+          <div className="flex items-center justify-between px-2 pt-2">
+            {["Clarity", "Consistency", "Accuracy"].map((label) => (
+              <div key={label} className="flex items-center gap-1.5">
+                <div className="w-1 h-1 bg-[#FFF200] shadow-[0_0_4px_rgba(255,242,0,0.8)]"></div>
+                <span className="text-[9px] font-black text-gray-400 uppercase tracking-[0.2em]">{label}</span>
               </div>
+            ))}
+          </div>
 
-              {/* Responsive Dock */}
-              <div className="flex flex-col sm:flex-row items-center p-1.5 sm:p-2.5 bg-gray-50/90 backdrop-blur-2xl border border-gray-200/80 rounded-[24px] sm:rounded-full shadow-lg w-full sm:w-fit gap-2">
-                <Link to="/book-demo" className="w-full sm:w-auto group flex items-center justify-center gap-4 pl-8 pr-2.5 py-3 rounded-full bg-[#0A0A0A] text-white font-black text-[15px] transition-all hover:shadow-xl active:scale-95">
-                  Book a demo
-                  <div className="w-9 h-9 rounded-full bg-[#FFF200] flex items-center justify-center text-black">
-                    <ArrowRight size={18} strokeWidth={3} />
-                  </div>
-                </Link>
-                <Link to="/platform" className="w-full sm:w-auto px-8 py-4 rounded-full text-gray-500 hover:text-black font-bold text-[15px] text-center">
-                  Explore platform
-                </Link>
+          {/* CTA PILL DOCK */}
+          <div className="flex flex-col gap-2 p-1.5 bg-gray-50/90 backdrop-blur-xl border border-gray-200 rounded-[28px] shadow-lg mt-2">
+            <Link to="/book-demo" className="group flex items-center justify-between pl-6 pr-1.5 py-1.5 rounded-full bg-[#0A0A0A] text-white font-black text-[15px] active:scale-[0.98] transition-transform">
+              Book a demo
+              <div className="w-10 h-10 rounded-full bg-[#FFF200] flex items-center justify-center text-black shadow-lg">
+                <ArrowRight size={20} strokeWidth={3} />
               </div>
-            </div>
+            </Link>
+            <Link to="/platform" className="py-3 text-center text-gray-500 font-bold text-[14px] uppercase tracking-widest active:text-black">
+              Explore platform
+            </Link>
           </div>
         </div>
       </section>
 
       {/* ====================== TRUST BAND ====================== */}
-      <section className="bg-white py-10 border-b border-gray-50">
-        <p className="text-center text-[9px] font-black uppercase tracking-[0.4em] text-gray-400 mb-8 px-6">
+      <section className="bg-white py-6 border-b border-gray-50 overflow-hidden">
+        <p className="text-center text-[8px] font-black uppercase tracking-[0.4em] text-gray-400 mb-5 px-6">
           Providing intelligence to intelligent leaders
         </p>
-        <div className="relative overflow-hidden marquee-mask flex w-full">
-          <div className="flex shrink-0 animate-marquee items-center gap-12 md:gap-24 px-4">
+        <div className="relative marquee-mask flex w-full">
+          <div className="flex shrink-0 animate-marquee items-center gap-10 px-4">
             {[...Array(2)].map((_, i) => (
               <React.Fragment key={i}>
                 {[
-                  { name: "L&T", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/L%26T.png/640px-L%26T.png" },
-                  { name: "Amazon", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/640px-Amazon_logo.svg.png" },
-                  { name: "TATA", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Tata_logo.svg/1200px-Tata_logo.svg.png" },
-                  { name: "Google", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/640px-Google_2015_logo.svg.png" },
-                  { name: "Lodha", logo: "https://companieslogo.com/img/orig/LODHA.NS_BIG-691dc856.png?t=1720244492" },
-                ].map((client, idx) => (
-                  <img key={idx} src={client.logo} alt={client.name} className="h-7 md:h-10 w-auto object-contain grayscale opacity-40" />
+                  "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/L%26T.png/640px-L%26T.png",
+                  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/640px-Amazon_logo.svg.png",
+                  "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Tata_logo.svg/1200px-Tata_logo.svg.png",
+                  "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/640px-Google_2015_logo.svg.png",
+                  "https://companieslogo.com/img/orig/LODHA.NS_BIG-691dc856.png?t=1720244492"
+                ].map((logo, idx) => (
+                  <img key={idx} src={logo} className="h-5 w-auto object-contain grayscale opacity-40" alt="Partner" />
                 ))}
               </React.Fragment>
             ))}
@@ -167,230 +147,254 @@ export const MobileHome: React.FC = () => {
         </div>
       </section>
 
-      {/* ====================== PURPOSE / TRUST (RESPONSIVE GRID) ====================== */}
-      <section className="relative bg-white py-20 lg:py-32 border-gray-100">
-        <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
-          <div className="grid lg:grid-cols-12 gap-16 items-center">
-            <div className="lg:col-span-5 flex flex-col items-start">
-              <h2 className="text-[40px] sm:text-[56px] lg:text-[72px] font-black tracking-tighter leading-[1.05] text-[#0A0A0A]">
-                Eliminate doubt.<br/>
-                Operate with<br/>
-                <span className="relative inline-block mt-2">
-                  <span className="absolute inset-y-1 lg:inset-y-1.5 -inset-x-3 bg-[#FFF200] rounded-xl shadow-sm"></span>
-                  <span className="relative px-2 text-black">Complete Trust.</span>
-                </span>
-              </h2>
-              <p className="mt-8 text-lg lg:text-xl text-gray-500 font-medium max-w-md">
-                Because decisions that shape the real world deserve more than assumptions and incomplete views.
-              </p>
+      {/* ====================== PURPOSE: 2-COLUMN GRID ====================== */}
+      <section className="bg-white py-16 px-5 border-b border-gray-50">
+        <h2 className="text-[36px] font-black tracking-tighter leading-[1.05] text-[#0A0A0A] mb-8">
+          Eliminate doubt. <br/>
+          <span className="relative inline-block mt-1">
+            <span className="absolute inset-y-1 -inset-x-2 bg-[#FFF200] rounded-lg"></span>
+            <span className="relative text-black">Complete Trust.</span>
+          </span>
+        </h2>
+
+        {/* Strictly 2 Columns */}
+        <div className="grid grid-cols-2 gap-3">
+          {[
+            { icon: <Scan />, t: "Ground Truth", d: "Captured directly. Never assumed." },
+            { icon: <History />, t: "Consistency", d: "Updated weekly." },
+            { icon: <FileCheck />, t: "Shared Reality", d: "Hard visual evidence." },
+            { icon: <Users />, t: "Team Trust", d: "Site to boardroom." },
+          ].map((card, i) => (
+            <div key={i} className="bg-white rounded-[20px] p-4 border border-gray-200 shadow-[0_4px_15px_rgba(0,0,0,0.03)] flex flex-col">
+              <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center mb-4 text-black border border-gray-100">
+                {React.cloneElement(card.icon as React.ReactElement, { size: 18, strokeWidth: 2.5 })}
+              </div>
+              <h3 className="text-[13px] font-black leading-tight mb-1.5 text-black">{card.t}</h3>
+              <p className="text-[11px] text-gray-500 font-medium leading-tight">{card.d}</p>
             </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ====================== SENSORS: 2-COLUMN BENTO ====================== */}
+      <section className="bg-gray-50 py-16 px-5 border-b border-gray-100">
+        <div className="mb-10 text-center">
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-2 block">Multimodal Data</span>
+          <h2 className="text-[34px] font-black tracking-tighter leading-[1.05]">Multi-sensor data meets <span className="bg-[#FFF200] px-2 rounded-lg text-black inline-block mt-1">AI.</span></h2>
+        </div>
+
+        {/* Strictly 2 Columns - Dark Mode aesthetic */}
+        <div className="grid grid-cols-2 gap-3">
+          {[
+            { icon: <Radar />, t: "Drone", d:"Millimeter-accurate mapping." },
+            { icon: <LayoutDashboard />, t: "Interior 360°", d:"Walk through sites remotely." },
+            { icon: <FileCheck />, t: "Facade", d:"Vertical quality scans." },
+            { icon: <ImageIcon />, t: "Fixed Cam", d:"Continuous live feeds." },
+          ].map((f, i) => (
+            <div key={i} className="bg-[#0A0A0A] p-4 lg:p-5 rounded-[24px] flex flex-col shadow-2xl border border-white/5">
+              <div className="w-10 h-10 rounded-xl bg-white/10 text-[#FFF200] flex items-center justify-center mb-4">
+                {React.cloneElement(f.icon as React.ReactElement, { size: 18, strokeWidth: 2.5 })}
+              </div>
+              <h3 className="text-[13px] font-black text-white tracking-widest uppercase mb-1">{f.t}</h3>
+              <p className="text-[10px] text-gray-400 leading-tight font-medium">{f.d}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ====================== AUTONOMOUS AGENTS (MOBILE LITE) ====================== */}
+      <MobileAutonomousAgents />
+
+      {/* ====================== DECISION STACK (MOBILE ADAPTIVE UI) ====================== */}
+      <section className="bg-white py-16 px-5">
+        <div className="mb-16">
+          <h2 className="text-[38px] font-black tracking-tighter leading-[1.05] text-black">
+            From raw reality to <br/>
+            <span className="relative inline-block mt-2">
+               <span className="absolute inset-y-1 -inset-x-2 bg-[#FFF200] rounded-xl transform -skew-x-2 shadow-sm"></span>
+               <span className="relative text-black">boardroom certainty.</span>
+            </span>
+          </h2>
+        </div>
+
+        <div className="space-y-12">
+          
+          {/* LAYER 01 */}
+          <div className="flex flex-col gap-5">
+            <div className="w-fit px-3 py-1 rounded-full border border-[#FFF200] text-[9px] font-black uppercase tracking-widest bg-white shadow-sm">Layer 01: Capture</div>
+            <h3 className="text-[28px] font-black leading-[1.1] text-black tracking-tight">Multi-Sensor Capture.</h3>
+            <p className="text-[14px] text-gray-500 font-medium">Your site, digitised from every vantage point feeding one timeline.</p>
             
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {[
-                { icon: <Scan />, title: "Ground Truth", desc: "Captured directly as-built. Never interpreted or assumed." },
-                { icon: <History />, title: "Time Consistency", desc: "The exact same visual reference, updated weekly." },
-                { icon: <FileCheck />, title: "Shared Reality", desc: "Decisions rely on hard evidence, not subjective reports." },
-                { icon: <Users />, title: "Team Trust", desc: "Unifying everyone from the site to the boardroom." },
-              ].map((card, i) => (
-                <div key={i} className="bg-white rounded-[24px] p-8 border border-gray-200 shadow-sm hover:shadow-xl transition-all group">
-                  <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center mb-6 group-hover:bg-[#FFF200] transition-colors">
-                    {React.cloneElement(card.icon as React.ReactElement, { size: 20, strokeWidth: 2.5 })}
-                  </div>
-                  <h3 className="text-xl font-black mb-2">{card.title}</h3>
-                  <p className="text-sm text-gray-500 font-medium leading-relaxed">{card.desc}</p>
-                </div>
-              ))}
+            {/* Reconstructed Layer 1 UI for Mobile */}
+            <div className="bg-[#0A0A0A] rounded-[24px] p-5 relative overflow-hidden shadow-2xl mt-2 border border-black/5 flex flex-col justify-end min-h-[160px]">
+              <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:15px_15px]"></div>
+              <div className="absolute top-0 bottom-0 w-24 bg-gradient-to-r from-transparent via-[#FFF200]/30 to-transparent animate-[scan-beam_3s_ease-in-out_infinite]"></div>
+              
+              <div className="absolute top-4 left-4 flex justify-between items-start w-[calc(100%-2rem)]">
+                 <div className="text-[#FFF200] font-mono text-[9px] tracking-widest border border-[#FFF200]/30 px-2 py-1 rounded-md bg-[#FFF200]/10 backdrop-blur-md">LIVE_CAPTURE</div>
+                 <Radar size={18} className="text-[#FFF200] animate-pulse" />
+              </div>
+              
+              <div className="mt-auto space-y-2 relative z-10 w-full">
+                 <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden shadow-inner"><div className="w-[66%] h-full bg-[#FFF200] shadow-[0_0_8px_#FFF200]"></div></div>
+                 <div className="text-[8px] text-white/50 font-mono tracking-widest uppercase">Processing Visual Data...</div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* ====================== CAPABILITIES / SENSORS ====================== */}
-      <section className="relative bg-white py-20 lg:py-32 border-t border-gray-50">
-        <div className="max-w-[1400px] mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-[36px] sm:text-[50px] lg:text-[60px] font-black tracking-tighter leading-[1.05] mb-6">
-              Multi-sensor data meets <br/>
-              <span className="relative inline-block mt-2">
-                <span className="absolute inset-y-1 -inset-x-3 bg-[#FFF200] rounded-xl shadow-sm transform -skew-x-2"></span>
-                <span className="relative px-2 text-black">AI intelligence.</span>
-              </span>
-            </h2>
-            <p className="text-lg text-gray-500 font-medium">One live digital twin. AI-powered tracking and deviation alerts.</p>
+          {/* LAYER 02 */}
+          <div className="flex flex-col gap-5">
+            <div className="w-fit px-3 py-1 rounded-full border border-[#FFF200] text-[9px] font-black uppercase tracking-widest bg-white shadow-sm">Layer 02: Extract</div>
+            <h3 className="text-[28px] font-black leading-[1.1] text-black tracking-tight">AI Intelligence.</h3>
+            <p className="text-[14px] text-gray-500 font-medium">Extraction of progress, deviations, and quantities instantly.</p>
+            
+            {/* Reconstructed Layer 2 UI for Mobile */}
+            <div className="bg-gray-50 rounded-[24px] border border-gray-200 p-5 relative overflow-hidden shadow-inner mt-2 min-h-[180px] flex items-center justify-center">
+               <img src="https://i.ibb.co/bMN7Kzv0/Website-Visuals-Presentation-7.png" className="absolute inset-0 w-full h-full object-cover opacity-[0.35]" alt="Site Background" />
+               <div className="absolute inset-0 bg-white/20 backdrop-blur-[2px]"></div>
+               
+               <div className="relative z-10 flex flex-col gap-3 w-full">
+                 {/* Geo-Linked Pill */}
+                 <div className="bg-white/95 backdrop-blur-md border border-gray-200 p-3 rounded-[16px] shadow-[0_8px_30px_rgba(0,0,0,0.1)] flex items-center justify-between transform -rotate-2">
+                    <div className="flex items-center gap-2.5">
+                      <div className="bg-blue-50 p-1.5 rounded-lg"><History size={14} className="text-blue-500 stroke-[3px]"/></div>
+                      <span className="text-[11px] font-black uppercase tracking-widest text-black">Geo-Linked</span>
+                    </div>
+                    <CheckCircle2 size={16} className="text-green-500" strokeWidth={3} />
+                 </div>
+
+                 {/* Deviation Pill */}
+                 <div className="bg-red-50/95 backdrop-blur-md border border-red-200 p-3 rounded-[16px] shadow-[0_8px_30px_rgba(239,68,68,0.15)] flex items-center justify-between transform rotate-1 ml-4">
+                    <div className="flex items-center gap-2.5">
+                      <div className="bg-red-100 p-1.5 rounded-lg"><AlertTriangle size={14} className="text-red-600 stroke-[3px]"/></div>
+                      <span className="text-[11px] font-black uppercase tracking-widest text-red-600">Deviation</span>
+                    </div>
+                    <span className="text-[12px] font-black text-red-600 bg-white px-2 py-0.5 rounded-md shadow-sm">45mm</span>
+                 </div>
+               </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { icon: <Radar />, title: "Drone Survey", desc: "Millimeter-accurate photogrammetry from the sky." },
-              { icon: <LayoutDashboard />, title: "Interior 360°", desc: "Walk through site builds vs BIM/CAD remotely." },
-              { icon: <FileCheck />, title: "Facade Imaging", desc: "High-res scans to inspect exterior envelope quality." },
-              { icon: <Users />, title: "Fixed Camera", desc: "24/7 continuous visual feeds on your timeline." },
-            ].map((f, i) => (
-              <div key={i} className="bg-white p-8 rounded-[32px] border border-gray-100 shadow-sm hover:-translate-y-1 transition-all">
-                <div className="w-14 h-14 rounded-2xl bg-[#0A0A0A] text-[#FFF200] flex items-center justify-center mb-8 shadow-md">
-                  {React.cloneElement(f.icon as React.ReactElement, { size: 24, strokeWidth: 2.5 })}
-                </div>
-                <h3 className="text-xl font-black mb-3">{f.title}</h3>
-                <p className="text-sm text-gray-500 font-medium leading-relaxed">{f.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ====================== STICKY AGENTS COMPONENT ====================== */}
-      <AutonomousAgents />
-
-      {/* ====================== THE INTELLIGENCE ENGINE (DECISION STACK) ====================== */}
-      <section className="relative bg-white py-20 lg:py-40 overflow-hidden">
-        <div className="max-w-[1400px] mx-auto px-6">
-          <div className="text-center mb-24">
-            <h2 className="text-[38px] sm:text-[56px] lg:text-[64px] font-black tracking-tighter leading-[1.05] text-black mb-6">
-              From raw site reality to <br />
-              <span className="relative inline-block mt-2">
-                <span className="absolute inset-0 bg-[#FFF200] rounded-xl shadow-sm transform -skew-x-3"></span>
-                <span className="relative px-4 text-black">boardroom certainty.</span>
-              </span>
-            </h2>
-          </div>
-
-          <div className="space-y-32">
-            {/* LAYER 01 */}
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="order-2 lg:order-1 space-y-6">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#FFF200] text-[10px] font-black uppercase tracking-widest bg-white">Layer 01</div>
-                <h3 className="text-3xl lg:text-5xl font-black tracking-tight">Multi-Sensor Reality Capture.</h3>
-                <p className="text-gray-600 text-lg lg:text-xl font-medium">Your site, digitised from every vantage point. Drones, 360° cameras, and fixed cams feeding one timeline.</p>
-              </div>
-              <div className="order-1 lg:order-2 grid grid-cols-2 gap-4">
-                <div className="bg-gray-50 aspect-square rounded-3xl flex items-center justify-center p-8 border border-gray-100">
-                  <div className="relative w-full h-full animate-[ai-core-glow_4s_infinite]">
-                    <Radar className="w-full h-full text-black opacity-20" />
-                    <Scan className="absolute inset-0 w-full h-full text-black" strokeWidth={1} />
-                  </div>
-                </div>
-                <div className="bg-[#0A0A0A] aspect-square rounded-3xl p-6 flex flex-col justify-end">
-                   <div className="text-[#FFF200] font-mono text-[10px] mb-2">RAW_FEED_01.MP4</div>
-                   <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
-                     <div className="w-2/3 h-full bg-[#FFF200]"></div>
+          {/* LAYER 03 */}
+          <div className="flex flex-col gap-5">
+            <div className="w-fit px-3 py-1 rounded-full border border-[#FFF200] text-[9px] font-black uppercase tracking-widest bg-white shadow-sm">Layer 03: Insights</div>
+            <h3 className="text-[28px] font-black leading-[1.1] text-black tracking-tight">AI-Driven Dashboards.</h3>
+            <p className="text-[14px] text-gray-500 font-medium">Everyone works from a single, indisputable digital reality.</p>
+            
+            {/* Reconstructed Layer 3 UI for Mobile */}
+            <div className="flex flex-col gap-3 mt-2 relative z-10">
+               {/* Exec Card */}
+               <div className="bg-[#111] border border-gray-800 p-4 rounded-[20px] shadow-xl">
+                 <div className="flex items-center gap-2 mb-3">
+                   <BarChart3 className="text-[#FFF200]" size={14} />
+                   <span className="text-[9px] font-black text-gray-500 uppercase tracking-widest">Executive KPI</span>
+                 </div>
+                 <div className="flex items-end justify-between">
+                   <div>
+                     <div className="text-[11px] font-bold text-gray-400 mb-0.5">Projected Margin</div>
+                     <span className="text-[22px] font-black text-white leading-none">+12.4%</span>
                    </div>
-                </div>
-              </div>
-            </div>
+                   <span className="text-[9px] text-black bg-green-500 px-2 py-1 rounded-md font-bold uppercase tracking-widest">Optimized</span>
+                 </div>
+               </div>
 
-            {/* LAYER 02 */}
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="lg:order-2 space-y-6">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#FFF200] text-[10px] font-black uppercase tracking-widest bg-white">Layer 02</div>
-                <h3 className="text-3xl lg:text-5xl font-black tracking-tight">AI-Driven Intelligence.</h3>
-                <p className="text-gray-600 text-lg lg:text-xl font-medium">Extraction of progress, deviations, and quantities. One site record for every stakeholder, instantly clear.</p>
-              </div>
-              <div className="lg:order-1 relative">
-                <div className="bg-[#0A0A0A] rounded-[40px] p-8 aspect-video overflow-hidden relative shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-[#FFF200]/10 to-transparent opacity-50"></div>
-                  <BrainCircuit className="text-white opacity-20 w-full h-full p-12" />
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-6 py-3 rounded-2xl shadow-2xl">
-                    <span className="text-black font-black text-xs uppercase tracking-widest">Processing Data...</span>
-                  </div>
-                </div>
-              </div>
+               {/* Ops Card */}
+               <div className="bg-[#111] border border-gray-800 p-4 rounded-[20px] shadow-xl">
+                 <div className="flex items-center gap-2 mb-3">
+                   <LayoutDashboard className="text-[#FFF200]" size={14} />
+                   <span className="text-[9px] font-black text-gray-500 uppercase tracking-widest">Operations</span>
+                 </div>
+                 <div className="flex flex-col gap-2">
+                    <div className="flex justify-between text-[10px] text-white font-bold">
+                       <span className="text-gray-400">Schedule Variance:</span>
+                       <span className="text-[#FFF200]">-2 Days</span>
+                    </div>
+                    <div className="h-1.5 w-full bg-gray-800 rounded-full overflow-hidden">
+                       <div className="h-full w-[78%] bg-[#FFF200] shadow-[0_0_10px_#FFF200]"></div>
+                    </div>
+                 </div>
+               </div>
             </div>
           </div>
+
         </div>
       </section>
 
-      {/* ====================== PROJECT LIFECYCLE (MOBILE ADAPTIVE) ====================== */}
-      <section className="bg-white py-20 lg:py-32">
-        <div className="max-w-[1400px] mx-auto px-6">
-          <div className="mb-16">
-            <h2 className="text-[38px] sm:text-[56px] lg:text-[64px] font-black tracking-tighter leading-[1.05] text-black">
-              Intelligence for<br />
-              <span className="bg-[#FFF200] px-3 rounded-xl">every phase.</span>
-            </h2>
-          </div>
+      {/* ====================== LIFECYCLE: VERTICAL STEPPER ====================== */}
+      <section className="bg-gray-50 py-16 px-5 border-y border-gray-100 relative">
+        <div className="mb-12">
+          <h2 className="text-[36px] font-black tracking-tighter leading-[1.05] text-black">
+            Intelligence for <br/> <span className="bg-[#FFF200] px-2 rounded-lg inline-block mt-1">every phase.</span>
+          </h2>
+          <p className="mt-4 text-[14px] text-gray-500 font-medium">Plugs into your workflow from day zero to handover.</p>
+        </div>
 
-          {/* MOBILE VERSION: Vertical Step-list */}
-          <div className="lg:hidden space-y-10 relative">
-             <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-100"></div>
-             {[
-               { t: "Land Acquisition", d: "Analytics for contours & volumetric early-feasibility.", p: "01" },
-               { t: "Design & Planning", d: "Reality into accurate BIM models for coordination.", p: "02" },
-               { t: "Construction", d: "Automated tracking & deviation detection.", p: "03" },
-               { t: "O&M / Handover", d: "Verify final as-builts for the audit trail.", p: "04" },
-             ].map((step, idx) => (
-               <div key={idx} className="relative pl-12">
-                 <div className="absolute left-0 top-0 w-8 h-8 rounded-full bg-[#FFF200] flex items-center justify-center font-black text-xs border-2 border-white shadow-sm">{step.p}</div>
-                 <h4 className="text-lg font-black mb-1">{step.t}</h4>
-                 <p className="text-sm text-gray-500 font-medium leading-relaxed">{step.d}</p>
+        <div className="space-y-8 relative">
+           <div className="absolute left-5 top-4 bottom-4 w-[2px] bg-gray-200"></div>
+           
+           {[
+             { t: "Land Acquisition", d: "Analytics for contours & volumetric early-feasibility.", num: "01" },
+             { t: "Design & Planning", d: "Reality into accurate BIM models for coordination.", num: "02" },
+             { t: "Construction", d: "Automated tracking & deviation detection.", num: "03" },
+             { t: "Handover / O&M", d: "Verify final as-builts for the audit trail.", num: "04" },
+           ].map((step, idx) => (
+             <div key={idx} className="relative pl-14">
+               <div className="absolute left-0 top-0 w-10 h-10 rounded-full bg-white border border-gray-200 shadow-md flex items-center justify-center font-black text-xs text-black z-10">{step.num}</div>
+               <div className="pt-1.5 pb-2">
+                 <h4 className="text-[17px] font-black mb-1.5 text-black leading-tight">{step.t}</h4>
+                 <p className="text-[13px] text-gray-500 font-medium leading-snug">{step.d}</p>
                </div>
-             ))}
-          </div>
-
-          {/* DESKTOP VERSION: Horizontal Metro (Existing) */}
-          <div className="hidden lg:block pt-12">
-            <div className="grid grid-cols-6 text-[10px] font-black uppercase tracking-widest text-black mb-12 text-center">
-              {["Land Acquisition", "Design & Planning", "Construction", "Sales", "Handover", "O&M"].map(p => <div key={p}>{p}</div>)}
-            </div>
-            <div className="relative h-[2px] bg-black/5 mb-16">
-               {/* Simplified desktop trail */}
-               <div className="absolute inset-0 grid grid-cols-6">
-                 {[1,2,3,4,5,6].map(n => <div key={n} className="flex justify-center"><div className="w-6 h-6 rounded-full bg-white border-2 border-black/10 -mt-3 z-10 flex items-center justify-center text-[10px] font-bold">{n}</div></div>)}
-               </div>
-               <div className="absolute top-0 left-0 h-full bg-[#FFF200] w-2/3"></div>
-            </div>
-            <div className="space-y-4">
-               <LifecycleLinePill title="Land Survey Analytics" start={1} end={2} imageUrl="https://i.ibb.co/wN4M0j7f/Screenshot-2026-02-19-at-17-43-41.png" description="..." link="/solutions/land-survey" />
-               <LifecycleLinePill title="Construction Monitoring" start={3} end={5} imageUrl="https://i.ibb.co/HDGVjy6S/Screenshot-2026-02-19-at-22-12-29.png" description="..." link="/solutions/construction-monitoring" />
-            </div>
-          </div>
+             </div>
+           ))}
         </div>
       </section>
 
       {/* ====================== METRICS ====================== */}
-      <section className="bg-white py-20 lg:py-32">
-        <div className="max-w-[1400px] mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-10 lg:gap-0">
-            {[
-              {v:"99.9%", l:"Accuracy Rate", icon: <Check />},
-              {v:"$4bn+", l:"Assets Monitored", icon: <LayoutDashboard />},
-              {v:"350k+", l:"Images Analyzed", icon: <Satellite />},
-              {v:"80%", l:"Less Site Visits", icon: <Users />},
-              {v:"33%", l:"Manpower Savings", icon: <BarChart3 />},
-            ].map((m, i) => (
-              <div key={i} className="flex flex-col items-center text-center">
-                <div className="w-14 h-14 rounded-2xl bg-[#FFF200] flex items-center justify-center mb-6 shadow-xl">
-                  {React.cloneElement(m.icon as React.ReactElement, { size: 24, strokeWidth: 3 })}
-                </div>
-                <p className="text-3xl lg:text-5xl font-black mb-2 tracking-tighter">{m.v}</p>
-                <p className="text-[9px] font-black text-gray-400 uppercase tracking-widest">{m.l}</p>
-              </div>
-            ))}
-          </div>
+      <section className="bg-white py-16 px-5">
+        <div className="text-center mb-10">
+          <h2 className="text-[32px] font-black tracking-tighter leading-[1.05] text-black">Validated Impact</h2>
+        </div>
+        
+        <div className="grid grid-cols-2 gap-4">
+          {[
+            {v:"99.9%", l:"Accuracy Rate"},
+            {v:"$4bn+", l:"Assets Monitored"},
+            {v:"350k+", l:"Images Analyzed"},
+            {v:"80%", l:"Less Site Visits"},
+          ].map((m, i) => (
+            <div key={i} className="bg-gray-50/50 p-6 rounded-[24px] text-center border border-gray-100 shadow-[0_4px_15px_rgba(0,0,0,0.02)]">
+              <p className="text-[28px] font-black text-black mb-1.5 tracking-tighter">{m.v}</p>
+              <p className="text-[9px] font-black text-gray-400 uppercase tracking-widest">{m.l}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* ====================== TESTIMONIALS (TYPOGRAPHY SCALE) ====================== */}
-      <section className="bg-[#FFF200] py-20 lg:py-32 relative">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
-          <div className="flex gap-2 mb-12 flex-wrap">
-            {["Site Manager", "CXO / Leadership", "Owner"].map((label, id) => (
-              <button key={id} onClick={() => setActiveTestimonial(id)} className={`px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all ${activeTestimonial === id ? "bg-black text-white" : "bg-white/50 hover:bg-white"}`}>{label}</button>
+      {/* ====================== TESTIMONIALS ====================== */}
+      <section className="bg-[#FFF200] py-16 px-5 relative overflow-hidden">
+        {/* Aesthetic grid matching desktop */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+        
+        <div className="relative z-10">
+          <div className="flex gap-2 mb-10 overflow-x-auto no-scrollbar pb-2 snap-x">
+            {["Site Manager", "Leadership", "Project Owner"].map((label, id) => (
+              <button key={id} onClick={() => setActiveTestimonial(id)} className={`snap-start whitespace-nowrap px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all shadow-sm ${activeTestimonial === id ? "bg-black text-white scale-105" : "bg-white text-black opacity-70"}`}>{label}</button>
             ))}
           </div>
-
-          <div className="min-h-[250px]">
-            <p className="text-[28px] sm:text-[40px] lg:text-[54px] font-black leading-[1.1] text-black tracking-tighter mb-12">
-              {activeTestimonial === 0 && "\"YelloSKYE cut our progress verification time from hours to minutes. I share proof without stepping off site.\""}
-              {activeTestimonial === 1 && "\"Leadership finally sees the same reality as the site. Faster approvals and real accountability.\""}
-              {activeTestimonial === 2 && "\"I don't chase updates anymore. I open YelloSKYE and immediately know where my project stands.\""}
+          
+          <div className="min-h-[180px]">
+            <p className="text-[26px] font-black leading-[1.15] text-black tracking-tighter mb-8">
+              {activeTestimonial === 0 && "\"YelloSKYE cut our verification time from hours to minutes. Total game changer.\""}
+              {activeTestimonial === 1 && "\"Leadership finally sees the same reality as the site. Faster approvals and accountability.\""}
+              {activeTestimonial === 2 && "\"I don't chase updates anymore. I open it and know exactly where my project stands.\""}
             </p>
             <div>
-              <div className="font-black text-lg uppercase tracking-widest">Industry Leader</div>
-              <div className="text-sm font-bold opacity-60">National Portfolio</div>
+               <div className="font-black text-[13px] uppercase tracking-widest text-black">Industry Leader</div>
+               <div className="text-[11px] font-bold uppercase tracking-widest text-black/50 mt-0.5">Verified Partner • India</div>
             </div>
           </div>
         </div>
       </section>
     </div>
   );
-};
+};  

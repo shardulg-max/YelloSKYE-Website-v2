@@ -57,7 +57,16 @@ export default function AutonomousAgents() {
 
     return () => observer.disconnect();
   }, []);
+// Inside AutonomousAgents.tsx
+const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
 
+useEffect(() => {
+  const handleResize = () => setIsMobile(window.innerWidth < 1024);
+  window.addEventListener('resize', handleResize);
+  return () => window.removeEventListener('resize', handleResize);
+}, []);
+
+if (isMobile) return null; // We are handling the Agent list directly inside MobileHome now for better control!
   return (
     <section className="bg-white relative font-sans border-gray-100">
       
