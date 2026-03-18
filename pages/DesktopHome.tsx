@@ -401,9 +401,6 @@ export const Home: React.FC = () => {
   </div>
 </section>
 
-{/* 2. PLUG IN YOUR NEW AGENTS SECTION HERE 👇 */}
-      <AutonomousAgents />
-
       {/* ====================== CAPABILITIES / SENSORS (WHITE/LIGHT MODE) ====================== */}
       {/* We use bg-gray-50 here so it stands out beautifully from the pure white section above it */}
       <section className="relative bg-white pt-24 lg:pt-32 pb-24 lg:pb-32 flex items-center overflow-hidden font-sans border-gray-200">
@@ -458,7 +455,8 @@ export const Home: React.FC = () => {
           
         </div>
       </section>
-
+{/* 2. PLUG IN YOUR NEW AGENTS SECTION HERE 👇 */}
+      <AutonomousAgents />
       {/* ====================== AGENTS / INTELLIGENCE (YELLOW MODE) ====================== */}
     <section className="relative bg-white pt-32 pb-0 overflow-hidden font-sans border-gray-100">
       
