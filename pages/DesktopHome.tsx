@@ -221,13 +221,13 @@ export const Home: React.FC = () => {
         {/* Frosted Glass Dock */}
 <div className="flex items-center p-2.5 bg-gray-50/90 backdrop-blur-2xl border border-gray-200/80 rounded-full shadow-[0_15px_40px_rgb(0,0,0,0.06)] w-fit">
   
-  {/* Primary CTA (Changed to <a> tag for working link) */}
-  <a href="/book-demo" className="group flex items-center justify-center gap-4 pl-8 pr-2.5 py-2.5 rounded-full bg-[#0A0A0A] text-white font-black text-[16px] transition-all duration-300 hover:shadow-[0_15px_30px_rgba(0,0,0,0.25)] hover:-translate-y-0.5 whitespace-nowrap cursor-pointer">
+  {/* Primary CTA (Upgraded to React Router Link for instant navigation) */}
+  <Link to="/book-demo" className="group flex items-center justify-center gap-4 pl-8 pr-2.5 py-2.5 rounded-full bg-[#0A0A0A] text-white font-black text-[16px] transition-all duration-300 hover:shadow-[0_15px_30px_rgba(0,0,0,0.25)] hover:-translate-y-0.5 whitespace-nowrap cursor-pointer">
     Book a demo
     <div className="w-10 h-10 rounded-full bg-[#FFF200] flex items-center justify-center text-black shadow-[0_0_15px_rgba(255,242,0,0.4)] group-hover:scale-105 transition-transform duration-300">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-0.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
     </div>
-  </a>
+  </Link>
   
   {/* Secondary CTA */}
 <Link to="/platform" className="flex items-center justify-center px-8 py-4 rounded-full text-gray-500 hover:text-[#0A0A0A] font-bold text-[16px] transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap bg-transparent cursor-pointer">

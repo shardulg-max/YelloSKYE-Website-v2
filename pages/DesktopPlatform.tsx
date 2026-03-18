@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { 
   Play, 
   Layers, MonitorPlay,
@@ -306,7 +307,7 @@ export const Platform: React.FC = () => {
 
       {/* The Image Element */}
       <img 
-        src="https://ik.imagekit.io/saxybrgkp/MME/Dex%20hero.png?updatedAt=1773812383573"
+        src="https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey.png"
         alt="DEX Aerial Survey Snippet" 
         className="absolute inset-0 w-full h-full object-cover scale-[1.02] group-hover:scale-105 transition-transform duration-[15s] ease-out z-10 opacity-90"
       />
@@ -466,10 +467,12 @@ export const Platform: React.FC = () => {
                     </li>
                   ))}
                 </ul>
-
-                <button className="mt-12 w-full py-5 bg-[#FFF200] text-black font-black uppercase text-xs tracking-widest rounded-2xl flex items-center justify-center gap-3 transition-transform hover:scale-[1.02] active:scale-95">
-                  Experience the Difference <ArrowRight size={16} strokeWidth={3} />
-                </button>
+<Link 
+  to="/book-demo" 
+  className="mt-12 w-full py-5 bg-[#FFF200] text-black font-black uppercase text-xs tracking-widest rounded-2xl flex items-center justify-center gap-3 transition-transform hover:scale-[1.02] active:scale-95"
+>
+  Experience the Difference <ArrowRight size={16} strokeWidth={3} />
+</Link>
               </div>
             </div>
 
