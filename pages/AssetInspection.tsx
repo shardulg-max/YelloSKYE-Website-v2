@@ -18,7 +18,7 @@ const INSPECTION_FEATURES = [
     title: 'Vertical Stack Inspection',
     desc: 'Safely inspect towering industrial chimneys and exhaust stacks for structural cracks, corrosion, and thermal anomalies.',
     gif: '/gifs/drone-facade.gif',
-    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/MME/Inspection/chimney.png',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/MME/chimney%202.png',
     placeholderBg: 'bg-gray-100'
   },
   {
@@ -27,7 +27,7 @@ const INSPECTION_FEATURES = [
     title: 'Structural Integrity Scans',
     desc: 'Assess critical load-bearing components, concrete spalling, and joint integrity on expansive bridge networks.',
     gif: '/gifs/interior-walkthrough.gif',
-    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/MME/Inspection/DEx.png',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/MME/bridge.png',
     placeholderBg: 'bg-gray-100'
   },
   {
