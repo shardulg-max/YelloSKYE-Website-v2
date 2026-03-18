@@ -1,25 +1,22 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Check } from 'lucide-react';
+import { Check, Loader2 } from 'lucide-react';
 
 export default function GlobalBottomCTA() {
   const location = useLocation();
 
-// 1. ADD THIS GUARD: If the path is '/book-demo', return null (render nothing)
-  // Check your exact route path in App.tsx. It might be '/book-demo' or '/book'
-  if (location.pathname === '/book-demo' || location.pathname === '/book') {
-    return null;
-  }
-
+  // 1. State for form fields (City Included)
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
     phone: '',
     company: '',
+    city: '',
     message: ''
   });
-  const [status, setStatus] = useState('idle');
+
+  const [status, setStatus] = useState('idle'); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,25 +29,23 @@ export default function GlobalBottomCTA() {
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwN2H10TqPr-uj-uiQcIO9znvd-xdAySF6CXJh0fLblVkX5KXyM-MGmQj-rUiqTSCeV0A/exec';
 
-    // Prepare data to match your AppScript's expected JSON format
     const payload = {
       ...formData,
       source: `Global Bottom Gateway - Path: ${location.pathname}`,
-      jobTitle: "N/A", // Placeholder as this form doesn't have this field
-      country: "N/A"   // Placeholder as this form doesn't have this field
+      jobTitle: "N/A", 
+      country: "N/A"   
     };
 
     try {
       await fetch(scriptURL, {
         method: 'POST',
-        mode: 'no-cors', // Essential for Google Apps Script
+        mode: 'no-cors', 
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
 
-      // With no-cors, we assume success if no error is thrown
       setStatus('success');
-      setFormData({ firstName: '', lastName: '', email: '', phone: '', company: '', message: '' });
+      setFormData({ firstName: '', lastName: '', email: '', phone: '', company: '', city: '', message: '' });
       setTimeout(() => setStatus('idle'), 5000);
     } catch (error) {
       console.error('Submission Error:', error);
@@ -60,21 +55,19 @@ export default function GlobalBottomCTA() {
 
   return (
     <>
-      {/* ====================== THE EXECUTIVE GATEWAY (FORM) ====================== */}
-      <section className="bg-white pt-24 pb-12 lg:pt-32 lg:pb-16 relative font-sans">
+      {/* 🚨 ADDED z-20 AND pb-24 TO GIVE THE SHADOW ROOM TO BREATHE OVER THE TRUST BAND 🚨 */}
+      <section className="bg-white pt-24 pb-20 lg:pt-32 lg:pb-24 relative font-sans z-20">
         
-        {/* Background Grid with Fade Out at the Bottom */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+        {/* BACKGROUND GRID (Adjusted to fade out smoothly at 70% height) */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0" 
              style={{ 
                backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", 
                backgroundSize: "80px 80px",
-               maskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
-               WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)"
+               // Fades out perfectly before touching the bottom
+               maskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 70%, transparent 100%)",
+               WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 70%, transparent 100%)"
              }} />
-        
-        {/* Soft bottom gradient to blend into the Trust Band seamlessly */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none z-0"></div>
-
+             
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10 z-10">
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
@@ -96,11 +89,7 @@ export default function GlobalBottomCTA() {
                 </p>
                 
                 <ul className="space-y-5">
-                  {[
-                    '15-Minute Walkthrough', 
-                    'Zero Commitment', 
-                    'Custom Strategy'
-                  ].map((item) => (
+                  {['15-Minute Walkthrough', 'Zero Commitment', 'Custom Strategy'].map((item) => (
                     <li key={item} className="flex items-center gap-4 text-black font-black uppercase text-[11px] tracking-[0.1em]">
                       <div className="w-6 h-6 bg-black rounded-lg flex items-center justify-center text-[#FFF200] shadow-lg shrink-0">
                         <Check size={14} strokeWidth={4}/>
@@ -112,110 +101,54 @@ export default function GlobalBottomCTA() {
               </div>
 
               {/* RIGHT SIDE: Compact Form */}
-              <div className="bg-[#0A0A0A] rounded-[40px] p-8 lg:p-10 shadow-[0_40px_120px_rgba(0,0,0,0.3)] border border-white/5 relative overflow-hidden group">
+              <div className="bg-[#0A0A0A] rounded-[40px] p-8 lg:p-10 shadow-[0_40px_100px_rgba(0,0,0,0.25)] border border-white/5 relative overflow-hidden group">
                 
                 <form className="relative z-10 space-y-4" onSubmit={handleSubmit}>
                   
-                  {/* ROW 1: Names side-by-side */}
+                  {/* ROW 1: Names */}
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1.5">
                       <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">First Name *</label>
-                      <input 
-                        required 
-                        name="firstName"
-                        value={formData.firstName}
-                        onChange={handleChange}
-                        placeholder="John" 
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" 
-                      />
+                      <input required name="firstName" value={formData.firstName} onChange={handleChange} placeholder="John" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
                     </div>
                     <div className="space-y-1.5">
                       <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Last Name *</label>
-                      <input 
-                        required 
-                        name="lastName"
-                        value={formData.lastName}
-                        onChange={handleChange}
-                        placeholder="Doe" 
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" 
-                      />
+                      <input required name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Doe" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
                     </div>
                   </div>
                   
-                  {/* ROW 2: Contact side-by-side */}
+                  {/* ROW 2: Contact */}
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1.5">
                       <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Business Email *</label>
-                      <input 
-                        required 
-                        type="email" 
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="john@company.com" 
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" 
-                      />
+                      <input required type="email" name="email" value={formData.email} onChange={handleChange} placeholder="john@company.com" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
                     </div>
                     <div className="space-y-1.5">
                       <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Phone Number *</label>
-                      <input 
-                        required 
-                        type="tel" 
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="+91 555 000 0000" 
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" 
-                      />
+                      <input required type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="+91 555 000 0000" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
                     </div>
                   </div>
                   
-                  {/* ROW 3: Company & City side-by-side */}
+                  {/* ROW 3: Company & City */}
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1.5">
                       <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Company *</label>
-                      <input 
-                        required 
-                        name="company"
-                        value={formData.company}
-                        onChange={handleChange}
-                        placeholder="Ex: L&T" 
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" 
-                      />
+                      <input required name="company" value={formData.company} onChange={handleChange} placeholder="Ex: Larsen & Toubro" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
                     </div>
                     <div className="space-y-1.5">
                       <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">City *</label>
-                      <input 
-                        required 
-                        name="city"
-                        value={formData.city}
-                        onChange={handleChange}
-                        placeholder="Mumbai" 
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" 
-                      />
+                      <input required name="city" value={formData.city} onChange={handleChange} placeholder="Mumbai" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
                     </div>
                   </div>
 
-                  {/* ROW 4: Compact Message Box */}
+                  {/* ROW 4: Message */}
                   <div className="space-y-1.5">
                     <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Message *</label>
-                    <textarea 
-                      required 
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Share additional context so we can route your request..." 
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium h-16 resize-none" 
-                    />
+                    <textarea required name="message" value={formData.message} onChange={handleChange} placeholder="Share additional context so we can route your request..." className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium h-16 resize-none" />
                   </div>
 
-                  {/* Status Messages */}
-                  {status === 'success' && (
-                    <p className="text-[#FFF200] text-sm font-bold text-center">Details submitted successfully!</p>
-                  )}
-                  {status === 'error' && (
-                    <p className="text-red-400 text-sm font-bold text-center">Something went wrong. Please try again.</p>
-                  )}
+                  {status === 'success' && <p className="text-[#FFF200] text-sm font-bold text-center pt-2">Details submitted successfully!</p>}
+                  {status === 'error' && <p className="text-red-400 text-sm font-bold text-center pt-2">Something went wrong. Please try again.</p>}
 
                   <div className="pt-2">
                     <button 
@@ -223,7 +156,7 @@ export default function GlobalBottomCTA() {
                       disabled={status === 'submitting'}
                       className={`w-full bg-[#FFF200] hover:bg-white text-black font-black py-4 rounded-xl uppercase tracking-[0.2em] text-[11px] transition-all transform hover:-translate-y-0.5 shadow-[0_10px_20px_rgba(255,242,0,0.15)] flex items-center justify-center gap-3 group/btn ${status === 'submitting' ? 'opacity-70 cursor-not-allowed' : ''}`}
                     >
-                      {status === 'submitting' ? 'Sending...' : 'Book a free demo'}
+                      {status === 'submitting' ? <><Loader2 size={16} className="animate-spin" /> Sending...</> : 'Book a free demo'}
                       {status !== 'submitting' && (
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" className="group-hover/btn:translate-x-1 transition-transform"><path d="m9 18 6-6-6-6"/></svg>
                       )}
@@ -238,7 +171,7 @@ export default function GlobalBottomCTA() {
       </section>
 
       {/* ====================== TRUST BAND ====================== */}
-      <section className="bg-white relative z-10 pt-6 pb-12 lg:pb-16">
+      <section className="bg-white relative z-10 pt-8 pb-12 lg:pb-16">
         <p className="text-center text-[10px] lg:text-[11px] font-black uppercase tracking-[0.5em] text-gray-400 mb-8">
           Trusted by the best in the business
         </p>

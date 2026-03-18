@@ -73,7 +73,7 @@ export const About: React.FC = () => {
             <div className="lg:col-span-7 flex flex-col justify-center items-start">
               
               <h1 className="text-[clamp(44px,5vw,78px)] font-black tracking-tighter leading-[1.05] text-black mb-12">
-                We exist to make <br />
+                We make <br />
                 the built environment <br />
                 <span className="relative inline-block mt-2 lg:mt-3">
                   <span className="absolute inset-y-1 lg:inset-y-2 -inset-x-3 lg:-inset-x-4 bg-[#FFF200] rounded-xl lg:rounded-2xl shadow-sm transform -skew-x-2"></span>

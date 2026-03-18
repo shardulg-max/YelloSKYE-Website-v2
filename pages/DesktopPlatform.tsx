@@ -306,11 +306,12 @@ export const Platform: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-tr from-[#FFF200]/10 via-transparent to-transparent opacity-50 z-0"></div>
 
       {/* The Image Element */}
-      <img 
-        src="https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey.png"
-        alt="DEX Aerial Survey Snippet" 
-        className="absolute inset-0 w-full h-full object-cover scale-[1.02] group-hover:scale-105 transition-transform duration-[15s] ease-out z-10 opacity-90"
-      />
+<img 
+  key="dex-hero-final"
+  src="https://ik.imagekit.io/saxybrgkp/MME/Dex%20hero.png?updatedAt=1773812383573"
+  alt="DEX Aerial Survey Snippet" 
+  className="absolute inset-0 w-full h-full object-cover scale-[1.02] group-hover:scale-105 transition-transform duration-[15s] ease-out z-10 opacity-90"
+/>
       
       {/* Inner Glare / Glass Edge */}
       <div className="absolute inset-0 rounded-3xl lg:rounded-[40px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.15)] pointer-events-none z-20"></div>
