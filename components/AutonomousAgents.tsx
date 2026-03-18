@@ -117,7 +117,7 @@ export default function AutonomousAgents() {
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-black leading-[1.1] md:leading-[1.15]">
   A new era of construction,<br />
   <span className="inline-block mt-2 lg:mt-3">
-    with
+    with  
     <span className="relative inline-block ml-3 md:ml-4">
       {/* The background (skewed, padded, and shadowed) */}
       <span className="absolute inset-y-0 -inset-x-3 md:-inset-x-4 bg-[#FFF200] rounded-lg shadow-[0_4px_14px_rgba(255,242,0,0.4)] transform -skew-x-3"></span>

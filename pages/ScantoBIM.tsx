@@ -45,7 +45,7 @@ const BIM_FEATURES = [
 
 export const BIMValidationModule = () => {
   return (
-    <section className="bg-[#FBFBFD] py-20 lg:py-32 relative overflow-hidden font-sans border-gray-100">
+    <section className="bg-white py-20 lg:py-32 relative overflow-hidden font-sans border-gray-100">
       
       {/* Custom CSS Animations for the premium visuals */}
       <style>{`
@@ -65,15 +65,16 @@ export const BIMValidationModule = () => {
         }
       `}</style>
 
-      {/* Subtle Background Texture */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
-           style={{
-             backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)",
-             backgroundSize: "64px 64px",
-             maskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
-             WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)"
-           }} 
-      />
+      {/* AESTHETIC GRID BACKGROUND */}
+        <div 
+          className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+          style={{ 
+            backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", 
+            backgroundSize: "80px 80px",
+            maskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 90%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 90%, transparent 100%)"
+          }} 
+        />
 
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
         

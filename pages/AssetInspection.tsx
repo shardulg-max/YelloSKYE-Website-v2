@@ -18,7 +18,7 @@ const INSPECTION_FEATURES = [
     title: 'Vertical Stack Inspection',
     desc: 'Safely inspect towering industrial chimneys and exhaust stacks for structural cracks, corrosion, and thermal anomalies.',
     gif: '/gifs/drone-facade.gif',
-    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/Asset%20inspection/Website%20Images%20Land%20Survey3.png',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/MME/Inspection/chimney.png',
     placeholderBg: 'bg-gray-100'
   },
   {
@@ -27,7 +27,7 @@ const INSPECTION_FEATURES = [
     title: 'Structural Integrity Scans',
     desc: 'Assess critical load-bearing components, concrete spalling, and joint integrity on expansive bridge networks.',
     gif: '/gifs/interior-walkthrough.gif',
-    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/Asset%20inspection/Website%20Images%20Land%20Survey1.png?updatedAt=1773641166597',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/MME/Inspection/DEx.png',
     placeholderBg: 'bg-gray-100'
   },
   {
@@ -45,7 +45,7 @@ const INSPECTION_FEATURES = [
     title: 'Expansive Roof Mapping',
     desc: 'Execute comprehensive thermal and RGB mapping of commercial facilities.',
     gif: '/gifs/mep-inspection.gif',
-    fallbackImg: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2000&auto=format&fit=crop',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/MME/Inspection/roof.png',
     placeholderBg: 'bg-gray-100'
   }
 ];

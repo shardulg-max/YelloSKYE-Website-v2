@@ -140,6 +140,7 @@ const MonitoringRepresentationSection = () => {
                 <img 
                   src={feature.fallbackImg} 
                   alt={feature.title}
+                  className="w-full h-full object-cover object-left-top"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = feature.fallbackImg;
                   }}
