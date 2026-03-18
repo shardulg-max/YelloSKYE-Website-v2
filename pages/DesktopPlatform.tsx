@@ -477,8 +477,8 @@ export const Platform: React.FC = () => {
         </div>
       </section>
 
-    {/* ====================== DEX CORE CAPABILITIES (UNIFIED BENTO GRID) ====================== */}
-    <section className="relative w-full bg-[#FAFAFA] py-24 lg:py-32 font-sans overflow-hidden">
+    {/* ====================== DEX CORE CAPABILITIES ====================== */}
+    <section className="relative w-full bg-[#FAFAFA] py-20 lg:py-28 font-sans overflow-hidden">
       
       {/* Subtle Background Grid */}
       <div className="absolute inset-0 opacity-[0.04] pointer-events-none" 
@@ -492,31 +492,32 @@ export const Platform: React.FC = () => {
 
       <div className="relative z-10 max-w-[1450px] mx-auto px-6 lg:px-8">
         
-        {/* Section Header: The Core Value Prop */}
+        {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16 lg:mb-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/5 border border-black/10 text-sm font-bold tracking-wide text-black mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/5 border border-black/10 text-xs font-bold tracking-widest text-black mb-6 uppercase">
             <span className="w-2 h-2 rounded-full bg-[#FFF200]"></span>
-            THE DEX PLATFORM
+            The DEX Platform
           </div>
           
-          <h2 className="text-[clamp(36px,5vw,56px)] font-black tracking-tighter text-[#0A0A0A] leading-[1.1] mb-6">
-            Ground truth to the <span className="relative inline-block">
+          <h2 className="text-4xl md:text-5xl lg:text-[56px] font-black tracking-tight text-[#0A0A0A] leading-[1.15] mb-6">
+            Ground truth to the <span className="relative inline-block whitespace-nowrap">
               <span className="absolute inset-y-1 lg:inset-y-2 -inset-x-2 bg-[#FFF200] rounded-xl -z-10"></span>
               <span className="relative z-10">desktop.</span>
             </span>
           </h2>
           
-          <p className="text-lg md:text-xl text-gray-600 font-medium leading-relaxed max-w-2xl">
-            Centralize sensor data, AI analytics, and project visuals in one cloud platform. Make smarter decisions, collaborate faster, and eliminate blind spots.
+          <p className="text-lg md:text-xl text-gray-600 font-medium leading-relaxed max-w-3xl">
+            Centralize sensor data, AI analytics, and project visuals in one cloud platform. <br className="hidden md:block" />
+            Make smarter decisions, collaborate faster, and eliminate blind spots.
           </p>
         </div>
 
-        {/* 4-Box Bento Grid - Unified Clean Aesthetic */}
+        {/* 4-Box Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           
           {/* CARD 1: Visual Intelligence */}
-          <div className="relative bg-white rounded-3xl p-8 lg:p-10 group shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200 hover:border-[#FFF200] transition-all duration-300 flex flex-col justify-between min-h-[400px]">
-            <div className="relative z-10 max-w-md">
+          <div className="relative bg-white rounded-3xl p-8 group shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200 hover:border-[#FFF200] transition-all duration-300 flex flex-col justify-between">
+            <div className="relative z-10 max-w-md mb-8">
               <div className="w-12 h-12 bg-[#0A0A0A] rounded-xl flex items-center justify-center text-[#FFF200] mb-6 shadow-md group-hover:scale-110 transition-transform">
                 <MonitorPlay size={24} strokeWidth={2.5} />
               </div>
@@ -525,15 +526,16 @@ export const Platform: React.FC = () => {
                 View high-res imagery, 3D maps, immersive FPV tours, and timelapse videos—all in one place.
               </p>
             </div>
-            {/* Visual element placeholder */}
-            <div className="mt-8 w-full h-32 rounded-xl bg-gray-100 overflow-hidden relative border border-gray-200">
-               <img src="https://ik.imagekit.io/saxybrgkp/MME/234.png" alt="Site Map" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+            
+            {/* Expanded Visual Area */}
+            <div className="w-full h-56 rounded-2xl bg-gray-100 overflow-hidden relative border border-gray-200 mt-auto">
+               <img src="https://ik.imagekit.io/saxybrgkp/MME/234.png" alt="Site Map" className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
             </div>
           </div>
 
           {/* CARD 2: BIM Integration */}
-          <div className="relative bg-white rounded-3xl p-8 lg:p-10 group shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200 hover:border-[#FFF200] transition-all duration-300 flex flex-col justify-between min-h-[400px]">
-            <div className="relative z-10 max-w-md">
+          <div className="relative bg-white rounded-3xl p-8 group shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200 hover:border-[#FFF200] transition-all duration-300 flex flex-col justify-between">
+            <div className="relative z-10 max-w-md mb-8">
               <div className="w-12 h-12 bg-[#0A0A0A] rounded-xl flex items-center justify-center text-[#FFF200] mb-6 shadow-md group-hover:scale-110 transition-transform">
                 <Layers size={24} strokeWidth={2.5} />
               </div>
@@ -542,18 +544,19 @@ export const Platform: React.FC = () => {
                 Overlay CAD and BIM models directly onto actual terrain for instant design validation and clash detection.
               </p>
             </div>
-            {/* Visual element placeholder */}
-            <div className="mt-8 w-full h-32 rounded-xl bg-gray-100 overflow-hidden relative border border-gray-200">
-               <img src="https://ik.imagekit.io/saxybrgkp/MME/Website%20Visuals%20Overlay%20(1).png" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
-               <div className="absolute bottom-2 right-2 bg-black text-[#FFF200] text-[10px] font-black px-2 py-1 rounded uppercase tracking-wider">
+            
+            {/* Expanded Visual Area */}
+            <div className="w-full h-56 rounded-2xl bg-gray-100 overflow-hidden relative border border-gray-200 mt-auto">
+               <img src="https://ik.imagekit.io/saxybrgkp/MME/Website%20Visuals%20Overlay%20(1).png" className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt="BIM Overlay" />
+               <div className="absolute bottom-3 right-3 bg-black text-[#FFF200] text-[10px] font-black px-3 py-1.5 rounded-md uppercase tracking-widest shadow-lg">
                  Clash Detected
                </div>
             </div>
           </div>
 
           {/* CARD 3: Smart Analytics */}
-          <div className="relative bg-white rounded-3xl p-8 lg:p-10 group shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200 hover:border-[#FFF200] transition-all duration-300 flex flex-col justify-between min-h-[400px]">
-            <div className="relative z-10">
+          <div className="relative bg-white rounded-3xl p-8 group shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200 hover:border-[#FFF200] transition-all duration-300 flex flex-col justify-between">
+            <div className="relative z-10 mb-8">
               <div className="w-12 h-12 bg-[#0A0A0A] rounded-xl flex items-center justify-center text-[#FFF200] mb-6 shadow-md group-hover:scale-110 transition-transform">
                 <BarChart3 size={24} strokeWidth={2.5} />
               </div>
@@ -562,23 +565,33 @@ export const Platform: React.FC = () => {
                 Automate your reporting. Track exact earthwork volumes, material consumption, and project progress instantly.
               </p>
             </div>
-            {/* Visual element: Simplified Metrics */}
-            <div className="mt-8 flex flex-col gap-3">
-              <div className="bg-gray-50 px-4 py-3 rounded-xl border border-gray-100 flex items-center justify-between">
+            
+            {/* Expanded Visual Area - Matching UI Animation */}
+            <div className="w-full h-56 rounded-2xl bg-gray-50 border border-gray-200 mt-auto p-6 flex flex-col justify-center gap-4 group-hover:bg-gray-100/50 transition-colors">
+              <div className="bg-white px-5 py-4 rounded-xl border border-gray-100 shadow-sm flex items-center justify-between transform group-hover:-translate-y-1 transition-transform duration-300">
                 <div>
-                  <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Earthwork Volume</div>
-                  <div className="text-lg font-black text-black">12,450 m³</div>
+                  <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Earthwork Volume</div>
+                  <div className="text-xl font-black text-black">12,450 m³</div>
                 </div>
-                <div className="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center">
-                  <ChevronRight size={14} className="text-black" />
+                <div className="w-10 h-10 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center">
+                  <ChevronRight size={16} className="text-gray-500" />
+                </div>
+              </div>
+              <div className="bg-white px-5 py-4 rounded-xl border border-gray-100 shadow-sm flex items-center justify-between transform group-hover:-translate-y-1 transition-transform duration-300 delay-75">
+                <div>
+                  <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Material Consumption</div>
+                  <div className="text-xl font-black text-black">On Track</div>
+                </div>
+                <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center border border-green-100">
+                  <div className="w-2 h-2 rounded-full bg-green-500"></div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* CARD 4: Issue Tracking */}
-          <div className="relative bg-white rounded-3xl p-8 lg:p-10 group shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200 hover:border-[#FFF200] transition-all duration-300 flex flex-col justify-between min-h-[400px]">
-            <div className="relative z-10 max-w-md">
+          <div className="relative bg-white rounded-3xl p-8 group shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200 hover:border-[#FFF200] transition-all duration-300 flex flex-col justify-between">
+            <div className="relative z-10 max-w-md mb-8">
               <div className="w-12 h-12 bg-[#0A0A0A] rounded-xl flex items-center justify-center text-[#FFF200] mb-6 shadow-md group-hover:scale-110 transition-transform">
                 <ShieldCheck size={24} strokeWidth={2.5} />
               </div>
@@ -587,14 +600,24 @@ export const Platform: React.FC = () => {
                 Streamline defect identification. Tag hazards and track snag resolution directly on the digital twin.
               </p>
             </div>
-            {/* Visual element: Alert Card */}
-            <div className="mt-8 bg-gray-50 border border-gray-200 rounded-xl p-4 flex gap-3 items-center">
-               <div className="w-12 h-12 rounded-lg bg-red-100 border border-red-200 flex-shrink-0 relative">
-                 <div className="absolute inset-1 border-2 border-red-500 rounded-sm opacity-50"></div>
+            
+            {/* Expanded Visual Area - Matching UI Animation */}
+            <div className="w-full h-56 rounded-2xl bg-gray-50 border border-gray-200 mt-auto flex items-center justify-center p-6 group-hover:bg-gray-100/50 transition-colors relative overflow-hidden">
+               {/* Decorative background target rings */}
+               <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+                 <div className="w-32 h-32 border border-red-300 rounded-full"></div>
+                 <div className="w-48 h-48 border border-red-200 rounded-full absolute"></div>
                </div>
-               <div>
-                 <div className="text-[10px] font-black text-red-500 uppercase tracking-widest">Zone C • Open Snag</div>
-                 <div className="text-sm font-bold text-gray-800 leading-tight">Rebar spacing deviation flagged.</div>
+               
+               {/* Alert Card */}
+               <div className="relative z-10 bg-white border border-gray-100 rounded-xl p-4 flex gap-4 items-center shadow-lg transform group-hover:scale-105 transition-transform duration-300 w-full max-w-sm">
+                 <div className="w-12 h-12 rounded-lg bg-red-50 border border-red-100 flex-shrink-0 flex items-center justify-center relative">
+                   <div className="absolute inset-1 border-2 border-red-400 rounded-sm opacity-60"></div>
+                 </div>
+                 <div>
+                   <div className="text-[10px] font-black text-red-500 uppercase tracking-widest mb-1">Zone C • Open Snag</div>
+                   <div className="text-sm font-bold text-gray-900 leading-tight">Rebar spacing deviation flagged.</div>
+                 </div>
                </div>
             </div>
           </div>
