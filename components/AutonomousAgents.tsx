@@ -47,7 +47,6 @@ export default function AutonomousAgents() {
         });
       },
       {
-        // Adjusted for the tighter 60vh block heights
         rootMargin: '-30% 0px -30% 0px' 
       }
     );
@@ -60,16 +59,19 @@ export default function AutonomousAgents() {
   }, []);
 
   return (
-    <section className="bg-white relative font-sans border-gray-100 py-16 lg:py-24 overflow-hidden">
+    // FIX: Removed overflow-hidden so the sticky scroll works perfectly again
+    <section className="bg-white relative font-sans border-gray-100 py-16 lg:py-24">
       
       {/* 1. THE AESTHETIC GRID BACKGROUND */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0" 
-           style={{ 
-             backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", 
-             backgroundSize: "80px 80px",
-             maskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
-             WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)"
-           }} />
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0 overflow-hidden">
+        <div className="absolute inset-0" 
+             style={{ 
+               backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", 
+               backgroundSize: "80px 80px",
+               maskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
+               WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)"
+             }} />
+      </div>
 
       {/* Premium Custom Animations Injected */}
       <style dangerouslySetInnerHTML={{__html: `
