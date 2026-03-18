@@ -139,7 +139,7 @@ const FLOOR_VIEWS = [
     level: '23rd Floor', 
     height: '75m', 
     desc: 'Elevated neighborhood context well above the canopy level', 
-    img: 'https://ik.imagekit.io/saxybrgkp/MME/23.png', 
+    img: 'https://ik.imagekit.io/saxybrgkp/MME/23.png?updatedAt=1773739374194', 
     time: 'Morning' 
   }
 ];
@@ -155,7 +155,7 @@ export const FloorPickerModule = () => {
         if (prev === 0) return 3; // If at Terrace (0), loop back to 6th Floor (3)
         return prev - 1;          // Otherwise, move up the building (decrease index)
       });
-    }, 2000); // Exactly half a second
+    }, 2500); // Exactly half a second
 
     return () => clearInterval(timer);
   }, []);

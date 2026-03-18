@@ -478,17 +478,18 @@ export const Platform: React.FC = () => {
       </section>
 
     {/* ====================== DEX CORE CAPABILITIES ====================== */}
-    <section className="relative w-full bg-[#FAFAFA] py-20 lg:py-28 font-sans overflow-hidden">
+    <section className="relative w-full bg-white py-20 lg:py-28 font-sans overflow-hidden">
       
-      {/* Subtle Background Grid */}
-      <div className="absolute inset-0 opacity-[0.04] pointer-events-none" 
-            style={{ 
-              backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", 
-              backgroundSize: "48px 48px",
-              maskImage: "radial-gradient(ellipse at center, black 50%, transparent 90%)",
-              WebkitMaskImage: "radial-gradient(ellipse at center, black 50%, transparent 90%)"
-            }} 
-      />
+      {/* AESTHETIC GRID BACKGROUND */}
+        <div 
+          className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+          style={{ 
+            backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", 
+            backgroundSize: "80px 80px",
+            maskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 90%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 90%, transparent 100%)"
+          }} 
+        />
 
       <div className="relative z-10 max-w-[1450px] mx-auto px-6 lg:px-8">
         
@@ -500,9 +501,10 @@ export const Platform: React.FC = () => {
           </div>
           
           <h2 className="text-4xl md:text-5xl lg:text-[56px] font-black tracking-tight text-[#0A0A0A] leading-[1.15] mb-6">
-            Ground truth to the <span className="relative inline-block whitespace-nowrap">
-              <span className="absolute inset-y-1 lg:inset-y-2 -inset-x-2 bg-[#FFF200] rounded-xl -z-10"></span>
-              <span className="relative z-10">desktop.</span>
+            Ground Truth to the
+            <span className="relative inline-block">
+                <span className="absolute inset-y-1 -inset-x-2 bg-[#FFF200] rounded-lg shadow-sm"></span>
+                <span className="relative px-1 text-black">Desktop.</span>
             </span>
           </h2>
           

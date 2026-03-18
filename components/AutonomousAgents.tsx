@@ -59,7 +59,7 @@ export default function AutonomousAgents() {
   }, []);
 
   return (
-    <section className="bg-white relative font-sans border-t border-gray-100">
+    <section className="bg-white relative font-sans border-gray-100">
       
       {/* Premium Custom Animations */}
       <style dangerouslySetInnerHTML={{__html: `
@@ -116,7 +116,11 @@ export default function AutonomousAgents() {
             <div className="text-center mb-12 md:mb-20">
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-black leading-[1.1]">
                 A new era of construction,<br />
-                with <span className="bg-[#FFF200] px-2 leading-tight inline-block transform -skew-x-2 shadow-sm">Autonomous Agents.</span>
+                with
+                <span className="relative inline-block">
+                <span className="absolute inset-y-1 -inset-x-2 bg-[#FFF200] rounded-lg shadow-sm"></span>
+                <span className="relative px-1 text-black">Autonomous Agents.</span>
+              </span>
               </h2>
               <p className="mt-5 text-lg md:text-xl text-gray-500 font-medium max-w-2xl mx-auto">
                 Meet your new digital taskforce. Four specialized AI agents that continuously turn your raw site data into reports, statuses, and next steps.

@@ -34,7 +34,7 @@ const MONITORING_FEATURES = [
     title: 'Always-On Site Monitoring',
     desc: 'Continuously analyze progress, crew patterns, and material flow. Generate high-resolution timelapses and track workforce presence effortlessly.',
     gif: '/gifs/fixed-cam.gif', 
-    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/MME/website/FIX%20Cam.png',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/MME/website/Land%20Survey%20Website%20Image%20(1).png',
     placeholderBg: 'bg-green-50'
   },
   {
