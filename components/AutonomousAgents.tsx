@@ -36,7 +36,6 @@ export default function AutonomousAgents() {
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Intersection Observer to detect which text block is currently in the middle of the screen
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -48,8 +47,8 @@ export default function AutonomousAgents() {
         });
       },
       {
-        // Triggers when the element crosses the middle 40% of the viewport
-        rootMargin: '-30% 0px -30% 0px' 
+        // Triggers exactly when the element hits the middle 20% of the screen
+        rootMargin: '-40% 0px -40% 0px' 
       }
     );
 
@@ -61,24 +60,44 @@ export default function AutonomousAgents() {
   }, []);
 
   return (
-    <section className="bg-white py-24 lg:py-40 relative font-sans border-t border-gray-100">
+    <section className="bg-white relative font-sans border-t border-gray-100 pb-24">
       
-      {/* HEADER */}
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 mb-20 md:mb-32 text-center">
+      {/* Premium Custom Animations Injected */}
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes scanline {
+          0% { transform: translateY(-100%); opacity: 0; }
+          10% { opacity: 1; }
+          90% { opacity: 1; }
+          100% { transform: translateY(400px); opacity: 0; }
+        }
+        @keyframes popIn {
+          0% { opacity: 0; transform: translateY(10px) scale(0.95); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes stamp {
+          0% { opacity: 0; transform: scale(2) rotate(-10deg); }
+          50% { opacity: 1; transform: scale(0.9) rotate(5deg); }
+          100% { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+      `}} />
+
+      {/* HEADER (Scrolls normally) */}
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 pt-32 pb-16 text-center">
         <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-black leading-[1.1]">
           A new era of construction,<br />
-          with <span className="bg-[#FFF200] px-2 leading-tight inline-block transform -skew-x-2">Autonomous Agents.</span>
+          with <span className="bg-[#FFF200] px-2 leading-tight inline-block transform -skew-x-2 shadow-sm">Autonomous Agents.</span>
         </h2>
         <p className="mt-6 text-lg md:text-xl text-gray-500 font-medium max-w-2xl mx-auto">
           Meet your new digital taskforce. Four specialized AI agents that continuously turn your raw site data into reports, statuses, and next steps.
         </p>
       </div>
 
-      {/* STICKY SCROLL CONTAINER */}
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative flex flex-col lg:flex-row items-start gap-16 lg:gap-24">
+      {/* STICKY SCROLL TRACK */}
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative flex flex-col lg:flex-row items-start">
         
-        {/* LEFT SIDE: Scrolling Text */}
-        <div className="w-full lg:w-5/12 pb-[30vh] lg:pb-[50vh]">
+        {/* LEFT SIDE: The Scrolling Text Track */}
+        {/* We add margin-bottom so the user scrolls smoothly past the last item */}
+        <div className="w-full lg:w-5/12 pb-[30vh] lg:pb-[50vh] relative z-20">
           {AGENTS.map((agent, index) => {
             const isActive = activeIndex === index;
             const Icon = agent.icon;
@@ -87,12 +106,13 @@ export default function AutonomousAgents() {
               <div 
                 key={agent.id}
                 ref={(el) => (sectionRefs.current[index] = el)}
-                className={`min-h-[50vh] lg:min-h-[70vh] flex flex-col justify-center transition-all duration-700 ease-out ${
-                  isActive ? 'opacity-100 transform-none' : 'opacity-20 translate-x-[-20px]'
+                // Each block takes up exactly 100% of the screen height, pacing the scroll perfectly
+                className={`h-screen flex flex-col justify-center transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                  isActive ? 'opacity-100 translate-y-0 scale-100' : 'opacity-20 translate-y-8 scale-95'
                 }`}
               >
                 <div className="flex items-center gap-3 mb-6">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-lg transition-colors duration-500 ${isActive ? 'bg-[#FFF200] text-black' : 'bg-gray-100 text-gray-400'}`}>
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-lg transition-colors duration-700 ${isActive ? 'bg-[#FFF200] text-black shadow-[#FFF200]/30' : 'bg-gray-100 text-gray-400'}`}>
                     <Icon strokeWidth={2.5} size={24} />
                   </div>
                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">
@@ -100,7 +120,7 @@ export default function AutonomousAgents() {
                   </span>
                 </div>
                 
-                <h3 className="text-3xl md:text-5xl font-black tracking-tighter text-black mb-6">
+                <h3 className="text-4xl md:text-5xl font-black tracking-tighter text-black mb-6 leading-tight">
                   {agent.name}
                 </h3>
                 <p className="text-lg md:text-xl text-gray-500 font-medium leading-relaxed max-w-md">
@@ -111,115 +131,154 @@ export default function AutonomousAgents() {
           })}
         </div>
 
-        {/* RIGHT SIDE: Sticky Visual Window */}
-        <div className="w-full lg:w-7/12 sticky top-32 h-[500px] lg:h-[700px] hidden md:block">
-          {/* Outer Hardware Frame */}
-          <div className="w-full h-full bg-[#0A0A0A] rounded-[40px] shadow-[0_40px_100px_rgba(0,0,0,0.15)] border border-gray-200 overflow-hidden relative group p-4 lg:p-6">
+        {/* RIGHT SIDE: The Locked Sticky Box */}
+        {/* Locked to top-0, takes exactly h-screen, centers its content */}
+        <div className="w-full lg:w-7/12 sticky top-0 h-screen flex items-center justify-center hidden md:flex pointer-events-none z-10 pl-12">
+          
+          {/* THE TERMINAL / DEVICE */}
+          <div className="w-full max-w-[700px] h-[500px] lg:h-[600px] bg-[#0A0A0A] rounded-[32px] shadow-[0_40px_100px_rgba(0,0,0,0.25)] border border-white/10 overflow-hidden relative transition-all duration-700 hover:shadow-[0_50px_120px_rgba(255,242,0,0.1)] group">
             
-            {/* Top Bar (Browser/App Mac-style dots) */}
-            <div className="flex items-center gap-2 mb-6 px-2 opacity-50">
-              <div className="w-3 h-3 rounded-full bg-red-500"></div>
-              <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-              <div className="w-3 h-3 rounded-full bg-green-500"></div>
-              <div className="ml-4 text-[10px] font-mono text-gray-400">yelloskye-terminal // {AGENTS[activeIndex].id}_agent.exe</div>
+            {/* Glossy top highlight */}
+            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent z-50"></div>
+
+            {/* Top Bar */}
+            <div className="flex items-center gap-2 px-6 h-12 bg-white/5 border-b border-white/5">
+              <div className="w-3 h-3 rounded-full bg-[#FF5F56] shadow-[0_0_10px_#FF5F56]/50"></div>
+              <div className="w-3 h-3 rounded-full bg-[#FFBD2E] shadow-[0_0_10px_#FFBD2E]/50"></div>
+              <div className="w-3 h-3 rounded-full bg-[#27C93F] shadow-[0_0_10px_#27C93F]/50"></div>
+              <div className="ml-4 text-[10px] font-mono text-gray-500 tracking-wider">yelloskye-core // {AGENTS[activeIndex].id}_module.exe</div>
             </div>
 
             {/* Inner Screen Area */}
-            <div className="w-full h-[calc(100%-48px)] bg-[#111] rounded-[24px] border border-white/10 relative overflow-hidden">
+            <div className="w-full h-[calc(100%-48px)] bg-[#0A0A0A] relative overflow-hidden">
               
-              {/* VISUAL 1: PROGRESS AGENT */}
-              <div className={`absolute inset-0 p-8 transition-opacity duration-700 flex flex-col gap-4 ${activeIndex === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}>
-                <div className="text-white font-bold mb-4">Project Overview Dashboard</div>
+              {/* Background Ambient Glow */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-[radial-gradient(circle,rgba(255,242,0,0.03)_0%,transparent_50%)] pointer-events-none transition-opacity duration-1000"></div>
+              
+              {/* VISUAL 1: PROGRESS AGENT (Dynamic Dashboard) */}
+              <div className={`absolute inset-0 p-8 flex flex-col gap-5 transition-all duration-700 ${activeIndex === 0 ? 'opacity-100 scale-100 z-10 delay-300' : 'opacity-0 scale-95 z-0'}`}>
+                <div className="text-white text-sm font-bold tracking-wide uppercase opacity-80 mb-2">Project Trajectory Overview</div>
                 {[
-                  { name: "Tower A - Formwork", stat: "On Track", color: "bg-green-500", w: "w-[85%]" },
-                  { name: "Tower B - Casting", stat: "Delayed 2 Days", color: "bg-red-500", w: "w-[40%]" },
-                  { name: "Podium - Rebar", stat: "At Risk", color: "bg-yellow-500", w: "w-[60%]" }
+                  { name: "Tower A - Formwork", stat: "On Track", color: "bg-green-500", glow: "shadow-[0_0_15px_rgba(34,197,94,0.4)]", w: "85%" },
+                  { name: "Tower B - Casting", stat: "Delayed 2 Days", color: "bg-red-500", glow: "shadow-[0_0_15px_rgba(239,68,68,0.4)]", w: "40%" },
+                  { name: "Podium - Rebar", stat: "At Risk", color: "bg-yellow-500", glow: "shadow-[0_0_15px_rgba(234,179,8,0.4)]", w: "60%" },
+                  { name: "Basement - Waterproofing", stat: "Completed", color: "bg-blue-500", glow: "shadow-[0_0_15px_rgba(59,130,246,0.4)]", w: "100%" }
                 ].map((item, i) => (
-                  <div key={i} className="bg-white/5 rounded-xl p-4 border border-white/5">
-                    <div className="flex justify-between text-xs font-medium text-gray-400 mb-3">
+                  <div key={i} className="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10" style={{ animation: activeIndex === 0 ? `popIn 0.5s ease-out ${i * 0.15}s both` : 'none' }}>
+                    <div className="flex justify-between text-xs font-semibold text-gray-400 mb-3">
                       <span>{item.name}</span>
                       <span className="text-white">{item.stat}</span>
                     </div>
-                    <div className="w-full h-1.5 bg-black rounded-full overflow-hidden">
-                      <div className={`h-full ${item.w} ${item.color} shadow-[0_0_10px_currentColor] rounded-full`}></div>
+                    <div className="w-full h-2 bg-black/50 rounded-full overflow-hidden shadow-inner relative">
+                      <div className={`absolute left-0 top-0 bottom-0 ${item.color} ${item.glow} rounded-full transition-all duration-1500 ease-out`} style={{ width: activeIndex === 0 ? item.w : '0%' }}></div>
                     </div>
                   </div>
                 ))}
               </div>
 
-              {/* VISUAL 2: BILLING AGENT */}
-              <div className={`absolute inset-0 p-8 transition-opacity duration-700 flex flex-col ${activeIndex === 1 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}>
-                <div className="text-white font-bold mb-6 flex justify-between items-center">
-                  <span>Auto-Generated RA Bill</span>
-                  <span className="bg-[#FFF200] text-black text-xs px-2 py-1 rounded font-black uppercase">Approved</span>
+              {/* VISUAL 2: BILLING AGENT (Cascading Invoice) */}
+              <div className={`absolute inset-0 p-8 flex flex-col transition-all duration-700 ${activeIndex === 1 ? 'opacity-100 scale-100 z-10 delay-300' : 'opacity-0 scale-95 z-0'}`}>
+                <div className="flex justify-between items-center mb-6">
+                  <div className="text-white text-sm font-bold tracking-wide uppercase opacity-80">Auto-Generated RA Bill #42</div>
+                  <div className="bg-[#FFF200] text-black text-[10px] px-3 py-1 rounded-sm font-black uppercase tracking-widest shadow-[0_0_20px_rgba(255,242,0,0.3)]" style={{ animation: activeIndex === 1 ? 'stamp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.2s both' : 'none' }}>Approved</div>
                 </div>
-                <div className="w-full bg-white/5 border border-white/5 rounded-xl overflow-hidden text-xs">
-                  <div className="grid grid-cols-4 p-3 bg-white/10 font-bold text-gray-300">
+                <div className="w-full bg-white/5 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden text-xs shadow-2xl relative">
+                  <div className="grid grid-cols-4 p-4 bg-black/40 font-bold text-gray-400 uppercase tracking-wider text-[10px]">
                     <div className="col-span-2">Item Description</div>
                     <div>Qty (Site)</div>
-                    <div>Amount</div>
+                    <div className="text-right">Amount (₹)</div>
                   </div>
                   {[
-                    { desc: "Excavation in Soil", qty: "4,500 Cum", amt: "₹ 1,35,000" },
-                    { desc: "PCC 1:4:8", qty: "120 Cum", amt: "₹ 4,80,000" },
-                    { desc: "RCC M30 Grade", qty: "850 Cum", amt: "₹ 51,00,000" }
+                    { desc: "Excavation in Soil", qty: "4,500 Cum", amt: "1,35,000" },
+                    { desc: "PCC 1:4:8", qty: "120 Cum", amt: "4,80,000" },
+                    { desc: "RCC M30 Grade", qty: "850 Cum", amt: "51,00,000" }
                   ].map((row, i) => (
-                    <div key={i} className="grid grid-cols-4 p-3 border-b border-white/5 text-gray-400">
-                      <div className="col-span-2 text-white">{row.desc}</div>
-                      <div>{row.qty}</div>
-                      <div className="text-green-400 font-mono">{row.amt}</div>
+                    <div key={i} className="grid grid-cols-4 p-4 border-b border-white/5 text-gray-300 items-center" style={{ animation: activeIndex === 1 ? `popIn 0.4s ease-out ${0.2 + (i * 0.2)}s both` : 'none' }}>
+                      <div className="col-span-2 font-medium">{row.desc}</div>
+                      <div className="font-mono text-gray-400">{row.qty}</div>
+                      <div className="text-right text-green-400 font-mono tracking-tight">{row.amt}</div>
                     </div>
                   ))}
-                  <div className="grid grid-cols-4 p-4 bg-[#FFF200]/10 text-[#FFF200] font-bold">
-                    <div className="col-span-3 text-right pr-4">Total Value Generated:</div>
-                    <div className="font-mono">₹ 57,15,000</div>
+                  <div className="grid grid-cols-4 p-5 bg-[#FFF200]/10 text-[#FFF200] font-bold items-center" style={{ animation: activeIndex === 1 ? `popIn 0.5s ease-out 1s both` : 'none' }}>
+                    <div className="col-span-3 text-right pr-4 uppercase tracking-widest text-[10px]">Total Certified Value:</div>
+                    <div className="text-right font-mono text-sm tracking-tight">₹ 57,15,000</div>
                   </div>
                 </div>
               </div>
 
-              {/* VISUAL 3: QUALITY AGENT */}
-              <div className={`absolute inset-0 p-8 transition-opacity duration-700 ${activeIndex === 2 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}>
-                <div className="text-white font-bold mb-4 flex gap-2 items-center">
-                  <ShieldAlert size={16} className="text-red-500" />
+              {/* VISUAL 3: QUALITY AGENT (Laser Scan Blueprint) */}
+              <div className={`absolute inset-0 p-8 transition-all duration-700 flex flex-col ${activeIndex === 2 ? 'opacity-100 scale-100 z-10 delay-300' : 'opacity-0 scale-95 z-0'}`}>
+                <div className="text-white text-sm font-bold tracking-wide uppercase opacity-80 mb-4 flex gap-2 items-center">
+                  <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.8)]"></div>
                   Clash Detection Log
                 </div>
-                {/* Simulated Blueprint/BIM area */}
-                <div className="w-full h-[65%] rounded-xl border border-white/10 relative overflow-hidden bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:2rem_2rem]">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#111] to-transparent z-10"></div>
-                  {/* Flashing Error Box */}
-                  <div className="absolute top-[30%] left-[40%] w-32 h-32 border-2 border-red-500 bg-red-500/10 rounded-lg flex items-start justify-end p-2 animate-pulse z-20">
-                    <div className="bg-red-500 text-white text-[9px] font-black uppercase px-2 py-1 rounded">Deviated 45mm</div>
+                {/* Blueprint Area */}
+                <div className="w-full flex-1 rounded-xl border border-white/10 relative overflow-hidden bg-[#050505] bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:3rem_3rem]">
+                  
+                  {/* Scanning Laser Line */}
+                  <div className="absolute inset-x-0 h-[2px] bg-blue-400/50 shadow-[0_0_20px_rgba(96,165,250,0.8)] z-30" style={{ animation: activeIndex === 2 ? 'scanline 3s linear infinite' : 'none' }}>
+                    <div className="absolute inset-0 bg-gradient-to-b from-blue-400/20 to-transparent h-32 -translate-y-full"></div>
+                  </div>
+
+                  {/* Target Box (Error) */}
+                  <div className="absolute top-[35%] left-[45%] w-32 h-32 z-20" style={{ animation: activeIndex === 2 ? 'popIn 0.3s ease-out 1.5s both' : 'none' }}>
+                    {/* Corner Brackets */}
+                    <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-red-500"></div>
+                    <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-red-500"></div>
+                    <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-red-500"></div>
+                    <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-red-500"></div>
+                    <div className="w-full h-full bg-red-500/10 backdrop-blur-[1px] flex items-center justify-center animate-pulse">
+                      <div className="bg-red-500 text-white text-[9px] font-black uppercase tracking-wider px-2 py-1 rounded shadow-lg">Deviated 45mm</div>
+                    </div>
                   </div>
                 </div>
-                <div className="mt-4 bg-red-500/10 border border-red-500/20 rounded-xl p-4 flex gap-4 items-center">
-                  <div className="w-2 h-2 rounded-full bg-red-500 animate-ping"></div>
+                
+                {/* Alert Card */}
+                <div className="mt-4 bg-red-500/10 border border-red-500/20 rounded-xl p-4 flex gap-4 items-center backdrop-blur-md" style={{ animation: activeIndex === 2 ? 'popIn 0.4s ease-out 1.8s both' : 'none' }}>
+                  <ShieldAlert className="text-red-400" size={20} />
                   <div>
                     <div className="text-red-400 font-bold text-sm">Column C4 Misaligned</div>
-                    <div className="text-gray-500 text-xs mt-1">Check against structural drawing REV-03</div>
+                    <div className="text-gray-400 text-xs mt-1">Cross-checked against structural REV-03</div>
                   </div>
                 </div>
               </div>
 
-              {/* VISUAL 4: CONTENT AGENT */}
-              <div className={`absolute inset-0 p-8 transition-opacity duration-700 flex flex-col justify-center ${activeIndex === 3 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}>
-                <div className="max-w-sm mx-auto w-full">
-                  <div className="flex justify-center mb-6">
-                    <div className="px-4 py-2 bg-[#FFF200] rounded-full text-black text-xs font-black uppercase tracking-widest animate-bounce">
-                      Generating PDF Deck...
-                    </div>
+              {/* VISUAL 4: CONTENT AGENT (PDF Construction) */}
+              <div className={`absolute inset-0 p-8 transition-all duration-700 flex flex-col items-center justify-center ${activeIndex === 3 ? 'opacity-100 scale-100 z-10 delay-300' : 'opacity-0 scale-95 z-0'}`}>
+                
+                {/* Loading Pill */}
+                <div className="mb-8 bg-white/10 backdrop-blur-md border border-white/10 rounded-full px-5 py-2.5 flex items-center gap-3 shadow-xl" style={{ animation: activeIndex === 3 ? 'popIn 0.4s ease-out 0s both' : 'none' }}>
+                  <div className="w-4 h-4 border-2 border-[#FFF200] border-t-transparent rounded-full animate-spin"></div>
+                  <span className="text-white text-xs font-bold uppercase tracking-widest opacity-90">Compiling Report</span>
+                </div>
+
+                {/* The Floating PDF Document */}
+                <div className="w-64 h-80 bg-white rounded-lg shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col p-6 relative overflow-hidden transition-all duration-1000" style={{ animation: activeIndex === 3 ? 'popIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s both' : 'none', transform: 'rotate(2deg)' }}>
+                  {/* Subtle gloss line on the paper */}
+                  <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/5 to-transparent"></div>
+                  
+                  {/* Header Skeleton */}
+                  <div className="w-3/4 h-5 bg-gray-200 rounded mb-2"></div>
+                  <div className="w-1/2 h-3 bg-[#FFF200] rounded mb-8"></div>
+                  
+                  {/* Image Grid Skeleton */}
+                  <div className="flex gap-3 mb-6">
+                    <div className="flex-1 h-24 bg-gray-100 rounded border border-gray-200" style={{ animation: activeIndex === 3 ? 'popIn 0.4s ease-out 1s both' : 'none' }}></div>
+                    <div className="flex-1 h-24 bg-gray-100 rounded border border-gray-200" style={{ animation: activeIndex === 3 ? 'popIn 0.4s ease-out 1.2s both' : 'none' }}></div>
                   </div>
-                  {/* Skeleton loader of a PDF page */}
-                  <div className="bg-white rounded-lg p-6 shadow-2xl transform rotate-3 transition-transform hover:rotate-0 duration-500">
-                    <div className="w-1/2 h-6 bg-gray-200 rounded mb-6"></div>
-                    <div className="flex gap-4 mb-6">
-                      <div className="w-1/2 h-32 bg-gray-100 rounded-lg border border-gray-200"></div>
-                      <div className="w-1/2 h-32 bg-gray-100 rounded-lg border border-gray-200"></div>
-                    </div>
-                    <div className="space-y-2">
-                      <div className="w-full h-3 bg-gray-100 rounded"></div>
-                      <div className="w-[80%] h-3 bg-gray-100 rounded"></div>
-                      <div className="w-[90%] h-3 bg-gray-100 rounded"></div>
-                    </div>
+                  
+                  {/* Text lines Skeleton */}
+                  <div className="space-y-3 flex-1">
+                    <div className="w-full h-2.5 bg-gray-200 rounded" style={{ animation: activeIndex === 3 ? 'popIn 0.3s ease-out 1.4s both' : 'none' }}></div>
+                    <div className="w-[85%] h-2.5 bg-gray-200 rounded" style={{ animation: activeIndex === 3 ? 'popIn 0.3s ease-out 1.5s both' : 'none' }}></div>
+                    <div className="w-[90%] h-2.5 bg-gray-200 rounded" style={{ animation: activeIndex === 3 ? 'popIn 0.3s ease-out 1.6s both' : 'none' }}></div>
+                    <div className="w-[60%] h-2.5 bg-gray-200 rounded" style={{ animation: activeIndex === 3 ? 'popIn 0.3s ease-out 1.7s both' : 'none' }}></div>
+                  </div>
+
+                  {/* Footer Logo area */}
+                  <div className="mt-auto pt-4 border-t border-gray-100 flex justify-between">
+                     <div className="w-8 h-2 bg-gray-300 rounded"></div>
+                     <div className="w-4 h-2 bg-gray-200 rounded"></div>
                   </div>
                 </div>
               </div>
