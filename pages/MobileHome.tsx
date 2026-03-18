@@ -64,7 +64,7 @@ const LifecycleLinePill = ({ title, start, end, imageUrl, description, link = "#
 };
 
 // ─── HOME COMPONENT ─────────────────────────────────────────────────────────────
-export const Home: React.FC = () => {
+export const MobileHome: React.FC = () => { 
   const [activeTestimonial, setActiveTestimonial] = useState(0);
 
   return (
