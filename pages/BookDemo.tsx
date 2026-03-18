@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Check, ArrowRight, Loader2, CheckCircle2 } from 'lucide-react';
 
 export const BookDemo: React.FC = () => {
-  // 1. Form State Management
+  // 1. Form State Management (Added 'city')
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -10,6 +10,7 @@ export const BookDemo: React.FC = () => {
     phone: '',
     jobTitle: '',
     company: '',
+    city: '', 
     country: '',
     message: '',
     source: ''
@@ -32,10 +33,8 @@ export const BookDemo: React.FC = () => {
     setError('');
 
     try {
-      // ⚠️ IMPORTANT: PASTE YOUR GOOGLE APPS SCRIPT URL HERE
       const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwN2H10TqPr-uj-uiQcIO9znvd-xdAySF6CXJh0fLblVkX5KXyM-MGmQj-rUiqTSCeV0A/exec'; 
       
-      // We use mode: 'no-cors' so the browser doesn't block the request to Google
       await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors', 
@@ -45,7 +44,6 @@ export const BookDemo: React.FC = () => {
         body: JSON.stringify(formData)
       });
 
-      // With no-cors, we can't read the exact response, so if it didn't throw a network error, we assume success!
       setIsSuccess(true);
       
     } catch (err) {
@@ -106,8 +104,6 @@ export const BookDemo: React.FC = () => {
             {/* ─── RIGHT SIDE: THE FULL FORM ─── */}
             <div className="bg-[#0A0A0A] rounded-[40px] p-8 lg:p-12 shadow-[0_40px_120px_rgba(0,0,0,0.3)] border border-white/5 relative overflow-hidden group min-h-[700px] flex flex-col justify-center">
               
-              
-              {/* ─── SUCCESS STATE UI ─── */}
               {isSuccess ? (
                 <div className="relative z-10 flex flex-col items-center justify-center text-center animate-in fade-in zoom-in duration-500">
                   <div className="w-20 h-20 bg-[#FFF200] rounded-full flex items-center justify-center mb-6 shadow-[0_0_40px_rgba(255,242,0,0.3)]">
@@ -120,12 +116,10 @@ export const BookDemo: React.FC = () => {
                 </div>
               ) : (
 
-                /* ─── FORM UI ─── */
                 <form className="relative z-10 space-y-5" onSubmit={handleSubmit}>
                   
                   <h3 className="text-white font-black text-2xl tracking-tight mb-6">Contact Sales</h3>
 
-                  {/* Error Message Display */}
                   {error && <div className="p-4 bg-red-500/10 border border-red-500/50 rounded-xl text-red-500 text-sm font-medium">{error}</div>}
 
                   {/* ROW 1: Names */}
@@ -164,20 +158,26 @@ export const BookDemo: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* ROW 4: Country */}
-                  <div className="space-y-1.5">
-                    <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Country *</label>
-                    <div className="relative">
-                      <select required name="country" value={formData.country} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium appearance-none">
-                        <option value="" disabled className="text-gray-800">Select Country...</option>
-                        <option value="IN" className="text-black">India</option>
-                        <option value="UAE" className="text-black">UAE</option>
-                        <option value="US" className="text-black">United States</option>
-                        <option value="UK" className="text-black">United Kingdom</option>
-                        <option value="OTHER" className="text-black">Other</option>
-                      </select>
-                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                  {/* ROW 4: City & Country (Grid) */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">City *</label>
+                      <input required name="city" value={formData.city} onChange={handleChange} placeholder="Mumbai" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Country *</label>
+                      <div className="relative">
+                        <select required name="country" value={formData.country} onChange={handleChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium appearance-none">
+                          <option value="" disabled className="text-gray-800">Select Country...</option>
+                          <option value="IN" className="text-black">India</option>
+                          <option value="UAE" className="text-black">UAE</option>
+                          <option value="US" className="text-black">United States</option>
+                          <option value="UK" className="text-black">United Kingdom</option>
+                          <option value="OTHER" className="text-black">Other</option>
+                        </select>
+                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        </div>
                       </div>
                     </div>
                   </div>

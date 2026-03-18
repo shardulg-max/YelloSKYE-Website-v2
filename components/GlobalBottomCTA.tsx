@@ -61,7 +61,9 @@ export default function GlobalBottomCTA() {
   return (
     <>
       {/* ====================== THE EXECUTIVE GATEWAY (FORM) ====================== */}
-      <section className="bg-white py-24 lg:py-32 relative overflow-hidden font-sans border-gray-100">
+      <section className="bg-white pt-24 pb-12 lg:pt-32 lg:pb-16 relative font-sans">
+        
+        {/* Background Grid with Fade Out at the Bottom */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
              style={{ 
                backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", 
@@ -69,6 +71,10 @@ export default function GlobalBottomCTA() {
                maskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
                WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)"
              }} />
+        
+        {/* Soft bottom gradient to blend into the Trust Band seamlessly */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none z-0"></div>
+
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10 z-10">
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
@@ -164,17 +170,30 @@ export default function GlobalBottomCTA() {
                     </div>
                   </div>
                   
-                  {/* ROW 3: Company */}
-                  <div className="space-y-1.5">
-                    <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Company *</label>
-                    <input 
-                      required 
-                      name="company"
-                      value={formData.company}
-                      onChange={handleChange}
-                      placeholder="Ex: Larsen & Toubro" 
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" 
-                    />
+                  {/* ROW 3: Company & City side-by-side */}
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Company *</label>
+                      <input 
+                        required 
+                        name="company"
+                        value={formData.company}
+                        onChange={handleChange}
+                        placeholder="Ex: L&T" 
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" 
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">City *</label>
+                      <input 
+                        required 
+                        name="city"
+                        value={formData.city}
+                        onChange={handleChange}
+                        placeholder="Mumbai" 
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-700 focus:border-[#FFF200] focus:bg-white/10 outline-none transition-all text-sm font-medium" 
+                      />
+                    </div>
                   </div>
 
                   {/* ROW 4: Compact Message Box */}

@@ -18,7 +18,7 @@ const INSPECTION_FEATURES = [
     title: 'Vertical Stack Inspection',
     desc: 'Safely inspect towering industrial chimneys and exhaust stacks for structural cracks, corrosion, and thermal anomalies.',
     gif: '/gifs/drone-facade.gif',
-    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/MME/chimney%202.png',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/MME/chimney%20final%202.png?updatedAt=1773816754317',
     placeholderBg: 'bg-gray-100'
   },
   {
@@ -36,7 +36,7 @@ const INSPECTION_FEATURES = [
     title: 'Turbine Blade Diagnostics',
     desc: 'Perform rapid, high-resolution visual & thermal sweeps of turbine blades. Detect lightning strikes, leading-edge erosion, and structural fatigue.',
     gif: '/gifs/lidar-as-built.gif', 
-    fallbackImg: 'https://images.unsplash.com/photo-1581092921461-7d6560b37081?q=80&w=2000&auto=format&fit=crop',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/MME/windmill.png',
     placeholderBg: 'bg-gray-100'
   },
   {
