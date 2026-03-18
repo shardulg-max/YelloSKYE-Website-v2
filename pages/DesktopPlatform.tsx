@@ -306,7 +306,7 @@ export const Platform: React.FC = () => {
 
       {/* The Image Element */}
       <img 
-        src="https://ik.imagekit.io/saxybrgkp/MME/dexpagehero.png"
+        src="https://ik.imagekit.io/saxybrgkp/MME/Dex%20hero.png?updatedAt=1773812383573"
         alt="DEX Aerial Survey Snippet" 
         className="absolute inset-0 w-full h-full object-cover scale-[1.02] group-hover:scale-105 transition-transform duration-[15s] ease-out z-10 opacity-90"
       />
@@ -501,10 +501,11 @@ export const Platform: React.FC = () => {
           </div>
           
           <h2 className="text-4xl md:text-5xl lg:text-[56px] font-black tracking-tight text-[#0A0A0A] leading-[1.15] mb-6">
-            Ground Truth to the
-            <span className="relative inline-block">
-                <span className="absolute inset-y-1 -inset-x-2 bg-[#FFF200] rounded-lg shadow-sm"></span>
-                <span className="relative px-1 text-black">Desktop.</span>
+            Ground Truth{" "}
+            <span className="relative inline-block whitespace-nowrap mt-2 sm:mt-0">
+              {/* Expanded highlight box (-inset-y makes it grow taller) */}
+              <span className="absolute -inset-y-1 md:-inset-y-2 -inset-x-3 bg-[#FFF200] rounded-xl shadow-sm"></span>
+              <span className="relative z-10 text-black">to the Desktop.</span>
             </span>
           </h2>
           
@@ -529,8 +530,8 @@ export const Platform: React.FC = () => {
               </p>
             </div>
             
-            {/* Expanded Visual Area */}
-            <div className="w-full h-56 rounded-2xl bg-gray-100 overflow-hidden relative border border-gray-200 mt-auto">
+            {/* Expanded Visual Area (h-72) */}
+            <div className="w-full h-72 rounded-2xl bg-gray-100 overflow-hidden relative border border-gray-200 mt-auto">
                <img src="https://ik.imagekit.io/saxybrgkp/MME/234.png" alt="Site Map" className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
             </div>
           </div>
@@ -547,10 +548,10 @@ export const Platform: React.FC = () => {
               </p>
             </div>
             
-            {/* Expanded Visual Area */}
-            <div className="w-full h-56 rounded-2xl bg-gray-100 overflow-hidden relative border border-gray-200 mt-auto">
+            {/* Expanded Visual Area (h-72) */}
+            <div className="w-full h-72 rounded-2xl bg-gray-100 overflow-hidden relative border border-gray-200 mt-auto">
                <img src="https://ik.imagekit.io/saxybrgkp/MME/Website%20Visuals%20Overlay%20(1).png" className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt="BIM Overlay" />
-               <div className="absolute bottom-3 right-3 bg-black text-[#FFF200] text-[10px] font-black px-3 py-1.5 rounded-md uppercase tracking-widest shadow-lg">
+               <div className="absolute bottom-4 right-4 bg-black text-[#FFF200] text-[10px] font-black px-3 py-1.5 rounded-md uppercase tracking-widest shadow-lg">
                  Clash Detected
                </div>
             </div>
@@ -568,9 +569,9 @@ export const Platform: React.FC = () => {
               </p>
             </div>
             
-            {/* Expanded Visual Area - Matching UI Animation */}
-            <div className="w-full h-56 rounded-2xl bg-gray-50 border border-gray-200 mt-auto p-6 flex flex-col justify-center gap-4 group-hover:bg-gray-100/50 transition-colors">
-              <div className="bg-white px-5 py-4 rounded-xl border border-gray-100 shadow-sm flex items-center justify-between transform group-hover:-translate-y-1 transition-transform duration-300">
+            {/* Expanded Visual Area (h-72) - Matching UI Animation */}
+            <div className="w-full h-72 rounded-2xl bg-gray-50 border border-gray-200 mt-auto p-6 flex flex-col justify-center gap-4 group-hover:bg-gray-100/50 transition-colors">
+              <div className="bg-white px-5 py-5 rounded-xl border border-gray-100 shadow-sm flex items-center justify-between transform group-hover:-translate-y-1 transition-transform duration-300">
                 <div>
                   <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Earthwork Volume</div>
                   <div className="text-xl font-black text-black">12,450 m³</div>
@@ -579,7 +580,7 @@ export const Platform: React.FC = () => {
                   <ChevronRight size={16} className="text-gray-500" />
                 </div>
               </div>
-              <div className="bg-white px-5 py-4 rounded-xl border border-gray-100 shadow-sm flex items-center justify-between transform group-hover:-translate-y-1 transition-transform duration-300 delay-75">
+              <div className="bg-white px-5 py-5 rounded-xl border border-gray-100 shadow-sm flex items-center justify-between transform group-hover:-translate-y-1 transition-transform duration-300 delay-75">
                 <div>
                   <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Material Consumption</div>
                   <div className="text-xl font-black text-black">On Track</div>
@@ -603,21 +604,21 @@ export const Platform: React.FC = () => {
               </p>
             </div>
             
-            {/* Expanded Visual Area - Matching UI Animation */}
-            <div className="w-full h-56 rounded-2xl bg-gray-50 border border-gray-200 mt-auto flex items-center justify-center p-6 group-hover:bg-gray-100/50 transition-colors relative overflow-hidden">
+            {/* Expanded Visual Area (h-72) - Matching UI Animation */}
+            <div className="w-full h-72 rounded-2xl bg-gray-50 border border-gray-200 mt-auto flex items-center justify-center p-6 group-hover:bg-gray-100/50 transition-colors relative overflow-hidden">
                {/* Decorative background target rings */}
                <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
-                 <div className="w-32 h-32 border border-red-300 rounded-full"></div>
-                 <div className="w-48 h-48 border border-red-200 rounded-full absolute"></div>
+                 <div className="w-40 h-40 border border-red-300 rounded-full"></div>
+                 <div className="w-56 h-56 border border-red-200 rounded-full absolute"></div>
                </div>
                
                {/* Alert Card */}
-               <div className="relative z-10 bg-white border border-gray-100 rounded-xl p-4 flex gap-4 items-center shadow-lg transform group-hover:scale-105 transition-transform duration-300 w-full max-w-sm">
-                 <div className="w-12 h-12 rounded-lg bg-red-50 border border-red-100 flex-shrink-0 flex items-center justify-center relative">
-                   <div className="absolute inset-1 border-2 border-red-400 rounded-sm opacity-60"></div>
+               <div className="relative z-10 bg-white border border-gray-100 rounded-xl p-5 flex gap-4 items-center shadow-lg transform group-hover:scale-105 transition-transform duration-300 w-full max-w-sm">
+                 <div className="w-14 h-14 rounded-lg bg-red-50 border border-red-100 flex-shrink-0 flex items-center justify-center relative">
+                   <div className="absolute inset-1.5 border-2 border-red-400 rounded-sm opacity-60"></div>
                  </div>
                  <div>
-                   <div className="text-[10px] font-black text-red-500 uppercase tracking-widest mb-1">Zone C • Open Snag</div>
+                   <div className="text-[10px] font-black text-red-500 uppercase tracking-widest mb-1.5">Zone C • Open Snag</div>
                    <div className="text-sm font-bold text-gray-900 leading-tight">Rebar spacing deviation flagged.</div>
                  </div>
                </div>
