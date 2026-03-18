@@ -47,7 +47,8 @@ export default function AutonomousAgents() {
         });
       },
       {
-        rootMargin: '-30% 0px -30% 0px' 
+        // Triggers perfectly when the text hits the middle of the screen
+        rootMargin: '-40% 0px -40% 0px' 
       }
     );
 
@@ -59,8 +60,7 @@ export default function AutonomousAgents() {
   }, []);
 
   return (
-    // FIX: Removed overflow-hidden so the sticky scroll works perfectly again
-    <section className="bg-white relative font-sans border-gray-100 py-16 lg:py-24">
+    <section className="bg-white relative font-sans border-t border-gray-100 pt-16 lg:pt-24 pb-0">
       
       {/* 1. THE AESTHETIC GRID BACKGROUND */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0 overflow-hidden">
@@ -73,7 +73,7 @@ export default function AutonomousAgents() {
              }} />
       </div>
 
-      {/* Premium Custom Animations Injected */}
+      {/* Premium Custom Animations */}
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes scanline {
           0% { transform: translateY(-100%); opacity: 0; }
@@ -96,8 +96,8 @@ export default function AutonomousAgents() {
         }
       `}} />
 
-      {/* HEADER (Tighter margins) */}
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 mb-12 text-center relative z-10">
+      {/* HEADER */}
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 text-center relative z-10">
         <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-black leading-[1.1]">
           A new era of construction,<br />
           with <span className="bg-[#FFF200] px-2 leading-tight inline-block transform -skew-x-2 shadow-sm">Autonomous Agents.</span>
@@ -111,7 +111,8 @@ export default function AutonomousAgents() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative flex flex-col lg:flex-row items-start z-10">
         
         {/* LEFT SIDE: The Scrolling Text Track */}
-        <div className="w-full lg:w-5/12 pb-[20vh] relative z-20">
+        {/* Padding added so the first and last text block can reach the middle of the screen */}
+        <div className="w-full lg:w-5/12 pt-[15vh] pb-[35vh] relative z-20">
           {AGENTS.map((agent, index) => {
             const isActive = activeIndex === index;
             const Icon = agent.icon;
@@ -120,7 +121,6 @@ export default function AutonomousAgents() {
               <div 
                 key={agent.id}
                 ref={(el) => (sectionRefs.current[index] = el)}
-                // TIGHTER HEIGHT: 60vh instead of h-screen
                 className={`h-[60vh] flex flex-col justify-center transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                   isActive ? 'opacity-100 translate-y-0 scale-100' : 'opacity-20 translate-y-8 scale-95'
                 }`}
@@ -145,9 +145,9 @@ export default function AutonomousAgents() {
           })}
         </div>
 
-        {/* RIGHT SIDE: The Locked Sticky Box */}
-        {/* Top-24 keeps it nicely framed below the header */}
-        <div className="w-full lg:w-7/12 sticky top-24 h-[calc(100vh-8rem)] max-h-[650px] flex items-center justify-center hidden md:flex pointer-events-none z-10 pl-12">
+        {/* RIGHT SIDE: THE DEAD-CENTER LOCK */}
+        {/* sticky top-0 h-screen ensures it locks exactly to the monitor view, and items-center keeps the box perfectly in the middle */}
+        <div className="w-full lg:w-7/12 sticky top-0 h-screen flex items-center justify-center hidden md:flex pointer-events-none z-10 pl-12">
           
           {/* THE TERMINAL / DEVICE */}
           <div className="w-full max-w-[650px] h-[500px] lg:h-[550px] bg-[#0A0A0A] rounded-[32px] shadow-[0_40px_100px_rgba(0,0,0,0.25)] border border-white/10 overflow-hidden relative transition-all duration-700 hover:shadow-[0_50px_120px_rgba(255,242,0,0.1)] group">
@@ -166,7 +166,6 @@ export default function AutonomousAgents() {
             {/* Inner Screen Area */}
             <div className="w-full h-[calc(100%-48px)] bg-[#0A0A0A] relative overflow-hidden">
               
-              {/* Ambient Glow */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-[radial-gradient(circle,rgba(255,242,0,0.03)_0%,transparent_50%)] pointer-events-none transition-opacity duration-1000"></div>
               
               {/* VISUAL 1: PROGRESS AGENT */}
@@ -249,10 +248,9 @@ export default function AutonomousAgents() {
                 </div>
               </div>
 
-              {/* VISUAL 4: CONTENT AGENT (Positive "Done" Animation) */}
+              {/* VISUAL 4: CONTENT AGENT */}
               <div className={`absolute inset-0 p-8 transition-all duration-700 flex flex-col items-center justify-center ${activeIndex === 3 ? 'opacity-100 scale-100 z-10 delay-200' : 'opacity-0 scale-95 z-0'}`}>
                 
-                {/* Instant Success Badge */}
                 <div className="mb-6 z-20" style={{ animation: activeIndex === 3 ? 'dropIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.8s both' : 'none' }}>
                   <div className="bg-green-500/10 border border-green-500/20 backdrop-blur-md text-green-400 text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-full flex items-center gap-2 shadow-[0_0_30px_rgba(34,197,94,0.15)]">
                     <CheckCircle2 size={16} className="text-green-500" />
@@ -260,39 +258,23 @@ export default function AutonomousAgents() {
                   </div>
                 </div>
 
-                {/* Stack of generated reports */}
                 <div className="relative w-56 h-72 perspective-1000">
-                  
-                  {/* Background Paper 2 */}
                   <div className="absolute inset-0 bg-white/40 rounded-lg shadow-lg border border-white/20 transform -rotate-6 translate-x-2 translate-y-2 origin-bottom-right" style={{ animation: activeIndex === 3 ? 'popIn 0.6s ease-out 0.2s both' : 'none' }}></div>
-                  
-                  {/* Background Paper 1 */}
                   <div className="absolute inset-0 bg-white/70 rounded-lg shadow-xl border border-white/40 transform -rotate-3 translate-x-1 translate-y-1 origin-bottom-right" style={{ animation: activeIndex === 3 ? 'popIn 0.6s ease-out 0.4s both' : 'none' }}></div>
-                  
-                  {/* Foreground Hero PDF */}
                   <div className="absolute inset-0 bg-white rounded-lg shadow-[0_20px_50px_rgba(0,0,0,0.4)] flex flex-col p-5 relative overflow-hidden" style={{ animation: activeIndex === 3 ? 'dropIn 0.6s ease-out 0.6s both' : 'none' }}>
                     <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-black/5 to-transparent"></div>
-                    
-                    {/* Content inside the PDF */}
                     <div className="w-3/4 h-4 bg-gray-200 rounded mb-2"></div>
                     <div className="w-1/2 h-2.5 bg-[#FFF200] rounded mb-6"></div>
-                    
                     <div className="flex gap-2 mb-4">
-                      <div className="flex-1 h-20 bg-gray-100 rounded border border-gray-200 relative overflow-hidden">
-                        <div className="absolute inset-0 bg-blue-500/10"></div>
-                      </div>
-                      <div className="flex-1 h-20 bg-gray-100 rounded border border-gray-200 relative overflow-hidden">
-                        <div className="absolute inset-0 bg-green-500/10"></div>
-                      </div>
+                      <div className="flex-1 h-20 bg-gray-100 rounded border border-gray-200 relative overflow-hidden"><div className="absolute inset-0 bg-blue-500/10"></div></div>
+                      <div className="flex-1 h-20 bg-gray-100 rounded border border-gray-200 relative overflow-hidden"><div className="absolute inset-0 bg-green-500/10"></div></div>
                     </div>
-                    
                     <div className="space-y-2.5 flex-1">
                       <div className="w-full h-2 bg-gray-200 rounded"></div>
                       <div className="w-[85%] h-2 bg-gray-200 rounded"></div>
                       <div className="w-[90%] h-2 bg-gray-200 rounded"></div>
                       <div className="w-[60%] h-2 bg-gray-200 rounded"></div>
                     </div>
-
                     <div className="mt-auto pt-3 border-t border-gray-100 flex justify-between items-center">
                        <div className="w-6 h-1.5 bg-gray-300 rounded"></div>
                        <div className="w-12 h-1.5 bg-gray-200 rounded"></div>
