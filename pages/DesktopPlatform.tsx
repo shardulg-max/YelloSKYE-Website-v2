@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   Play, 
-  Layers, 
+  Layers, MonitorPlay,
   Clock, 
   Zap, 
   Shield, 
@@ -477,148 +477,129 @@ export const Platform: React.FC = () => {
         </div>
       </section>
 
-    {/* ====================== DEX CORE CAPABILITIES (4-BENTO GRID) ====================== */}
-    <section className="relative w-full bg-[#FAFAFA] py-24 lg:py-32 font-sans overflow-hidden border-gray-100">
+    {/* ====================== DEX CORE CAPABILITIES (UNIFIED BENTO GRID) ====================== */}
+    <section className="relative w-full bg-[#FAFAFA] py-24 lg:py-32 font-sans overflow-hidden">
       
       {/* Subtle Background Grid */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+      <div className="absolute inset-0 opacity-[0.04] pointer-events-none" 
             style={{ 
               backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", 
-              backgroundSize: "64px 64px",
-              maskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
-              WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)"
+              backgroundSize: "48px 48px",
+              maskImage: "radial-gradient(ellipse at center, black 50%, transparent 90%)",
+              WebkitMaskImage: "radial-gradient(ellipse at center, black 50%, transparent 90%)"
             }} 
       />
 
       <div className="relative z-10 max-w-[1450px] mx-auto px-6 lg:px-8">
         
-        {/* Section Header (Revised for Accuracy based on DEX Platform) */}
-        <div className="flex flex-col items-center text-center mb-16 lg:mb-24">
-          <h2 className="text-[clamp(40px,5vw,64px)] font-black tracking-tighter text-[#0A0A0A] leading-[1.05] mb-6">
-            One platform. <br className="hidden sm:block" />
-            <span className="relative inline-block mt-2">
-              <span className="absolute inset-y-1 lg:inset-y-2 -inset-x-3 bg-[#FFF200] rounded-xl shadow-sm"></span>
-              <span className="relative px-2 text-black">Absolute command.</span>
+        {/* Section Header: The Core Value Prop */}
+        <div className="flex flex-col items-center text-center mb-16 lg:mb-20">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/5 border border-black/10 text-sm font-bold tracking-wide text-black mb-6">
+            <span className="w-2 h-2 rounded-full bg-[#FFF200]"></span>
+            THE DEX PLATFORM
+          </div>
+          
+          <h2 className="text-[clamp(36px,5vw,56px)] font-black tracking-tighter text-[#0A0A0A] leading-[1.1] mb-6">
+            Ground truth to the <span className="relative inline-block">
+              <span className="absolute inset-y-1 lg:inset-y-2 -inset-x-2 bg-[#FFF200] rounded-xl -z-10"></span>
+              <span className="relative z-10">desktop.</span>
             </span>
           </h2>
           
-          <p className="text-[18px] md:text-[22px] text-gray-500 font-medium leading-relaxed max-w-3xl">
-            DEX is YelloSKYE's cloud-based platform that centralizes sensor data, analytics, and project visuals. [cite: 590] It enables smarter decisions, faster collaboration, and seamless reporting across the construction lifecycle. [cite: 590]
+          <p className="text-lg md:text-xl text-gray-600 font-medium leading-relaxed max-w-2xl">
+            Centralize sensor data, AI analytics, and project visuals in one cloud platform. Make smarter decisions, collaborate faster, and eliminate blind spots.
           </p>
         </div>
 
-        {/* 4-Box Bento Grid */}
+        {/* 4-Box Bento Grid - Unified Clean Aesthetic */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           
-          {/* CARD 1: Progress Tracking & Timelapse */}
-          <div className="relative bg-[#0A0A0A] rounded-3xl lg:rounded-[40px] p-8 lg:p-12 overflow-hidden group shadow-[0_20px_40px_rgba(0,0,0,0.08)] ring-1 ring-black/5 flex flex-col justify-between min-h-[450px]">
-            {/* Background Map Placeholder */}
-            <div className="absolute inset-0 opacity-40 group-hover:opacity-50 transition-opacity duration-700">
-              <img src="https://ik.imagekit.io/saxybrgkp/MME/234.png" alt="Site Map" className="w-full h-full object-cover grayscale" />
-            </div>
-            
+          {/* CARD 1: Visual Intelligence */}
+          <div className="relative bg-white rounded-3xl p-8 lg:p-10 group shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200 hover:border-[#FFF200] transition-all duration-300 flex flex-col justify-between min-h-[400px]">
             <div className="relative z-10 max-w-md">
-              <div className="w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center text-white mb-6 border border-white/10">
-                <History size={24} />
+              <div className="w-12 h-12 bg-[#0A0A0A] rounded-xl flex items-center justify-center text-[#FFF200] mb-6 shadow-md group-hover:scale-110 transition-transform">
+                <MonitorPlay size={24} strokeWidth={2.5} />
               </div>
-              <h3 className="text-3xl font-black text-white mb-4 tracking-tight">Progress Tracking & Timelapse</h3>
-              <p className="text-gray-400 font-medium text-lg leading-relaxed">
-                Compress months of construction into minutes. [cite: 498] Capture consistent photo logs for construction progress, disputes, and compliance. [cite: 328]
+              <h3 className="text-2xl lg:text-3xl font-black text-black mb-3 tracking-tight">Visual Intelligence</h3>
+              <p className="text-gray-500 font-medium text-base leading-relaxed">
+                View high-res imagery, 3D maps, immersive FPV tours, and timelapse videos—all in one place.
               </p>
+            </div>
+            {/* Visual element placeholder */}
+            <div className="mt-8 w-full h-32 rounded-xl bg-gray-100 overflow-hidden relative border border-gray-200">
+               <img src="https://ik.imagekit.io/saxybrgkp/MME/234.png" alt="Site Map" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
             </div>
           </div>
 
-          {/* CARD 2: BIM Integration & Design vs. Reality */}
-          <div className="relative bg-white rounded-3xl lg:rounded-[40px] p-8 lg:p-12 overflow-hidden group shadow-[0_20px_40px_rgba(0,0,0,0.04)] ring-1 ring-gray-200 flex flex-col justify-between min-h-[450px]">
-            <div className="relative z-10 max-w-md mb-8">
-              <div className="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center text-black mb-6 border border-gray-100 group-hover:bg-[#FFF200] transition-colors">
-                <Layers size={24} />
+          {/* CARD 2: BIM Integration */}
+          <div className="relative bg-white rounded-3xl p-8 lg:p-10 group shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200 hover:border-[#FFF200] transition-all duration-300 flex flex-col justify-between min-h-[400px]">
+            <div className="relative z-10 max-w-md">
+              <div className="w-12 h-12 bg-[#0A0A0A] rounded-xl flex items-center justify-center text-[#FFF200] mb-6 shadow-md group-hover:scale-110 transition-transform">
+                <Layers size={24} strokeWidth={2.5} />
               </div>
-              <h3 className="text-3xl font-black text-black mb-3 tracking-tight">BIM Integration</h3>
-              <p className="text-gray-500 font-medium text-lg leading-relaxed">
-                Overlay CAD and BIM models on actual terrain for design validation. [cite: 613, 621] Automatically flag mismatches between planned and existing site conditions. [cite: 202, 203]
+              <h3 className="text-2xl lg:text-3xl font-black text-black mb-3 tracking-tight">BIM Integration</h3>
+              <p className="text-gray-500 font-medium text-base leading-relaxed">
+                Overlay CAD and BIM models directly onto actual terrain for instant design validation and clash detection.
               </p>
             </div>
-
-            {/* Single Image Area */}
-            <div className="relative w-full h-48 lg:h-56 rounded-2xl overflow-hidden border border-gray-200 shadow-inner group-hover:-translate-y-2 transition-transform duration-500">
-               <img src="https://ik.imagekit.io/saxybrgkp/MME/Website%20Visuals%20Overlay%20(1).png" className="w-full h-full object-cover" alt="BIM Overlay" />
-               <div className="absolute bottom-3 right-3 bg-black/80 backdrop-blur-md text-[#FFF200] text-[10px] font-black px-3 py-1.5 rounded-lg uppercase tracking-widest border border-white/10 shadow-lg">
-                 Clash Detection Active
+            {/* Visual element placeholder */}
+            <div className="mt-8 w-full h-32 rounded-xl bg-gray-100 overflow-hidden relative border border-gray-200">
+               <img src="https://ik.imagekit.io/saxybrgkp/MME/Website%20Visuals%20Overlay%20(1).png" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+               <div className="absolute bottom-2 right-2 bg-black text-[#FFF200] text-[10px] font-black px-2 py-1 rounded uppercase tracking-wider">
+                 Clash Detected
                </div>
             </div>
           </div>
 
-          {/* CARD 3: Volume Estimations */}
-          <div className="relative bg-white rounded-3xl lg:rounded-[40px] p-8 lg:p-12 overflow-hidden group shadow-[0_20px_40px_rgba(0,0,0,0.04)] ring-1 ring-gray-200 flex flex-col justify-between min-h-[450px]">
+          {/* CARD 3: Smart Analytics */}
+          <div className="relative bg-white rounded-3xl p-8 lg:p-10 group shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200 hover:border-[#FFF200] transition-all duration-300 flex flex-col justify-between min-h-[400px]">
             <div className="relative z-10">
-              <div className="flex items-start justify-between mb-6">
-                <div className="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center text-black border border-gray-100 group-hover:bg-[#FFF200] transition-colors">
-                  <Calculator size={24} />
-                </div>
+              <div className="w-12 h-12 bg-[#0A0A0A] rounded-xl flex items-center justify-center text-[#FFF200] mb-6 shadow-md group-hover:scale-110 transition-transform">
+                <BarChart3 size={24} strokeWidth={2.5} />
               </div>
-              <h3 className="text-3xl font-black text-black mb-3 tracking-tight">Volume Estimations</h3>
-              <p className="text-gray-500 font-medium text-lg leading-relaxed">
-                Analyze and optimize earthwork to balance excavation and filling. [cite: 233] Prevent budget overruns with precise volume calculations. [cite: 240]
+              <h3 className="text-2xl lg:text-3xl font-black text-black mb-3 tracking-tight">Smart Analytics</h3>
+              <p className="text-gray-500 font-medium text-base leading-relaxed">
+                Automate your reporting. Track exact earthwork volumes, material consumption, and project progress instantly.
               </p>
             </div>
-
-            {/* Mock UI: Extraction Metrics */}
-            <div className="mt-12 flex flex-col gap-4">
-              <div className="bg-gray-50 p-5 rounded-2xl border border-gray-100 flex items-center justify-between group-hover:-translate-y-1 transition-transform duration-500">
+            {/* Visual element: Simplified Metrics */}
+            <div className="mt-8 flex flex-col gap-3">
+              <div className="bg-gray-50 px-4 py-3 rounded-xl border border-gray-100 flex items-center justify-between">
                 <div>
-                  <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Executed Cut/Fill</div>
-                  <div className="text-xl font-black text-black">Balanced: 84.2%</div>
+                  <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Earthwork Volume</div>
+                  <div className="text-lg font-black text-black">12,450 m³</div>
                 </div>
-                <div className="w-12 h-12 rounded-full border-4 border-gray-200 border-t-green-500 border-r-green-500 flex items-center justify-center transform -rotate-45"></div>
-              </div>
-              <div className="bg-gray-50 p-5 rounded-2xl border border-gray-100 flex items-center justify-between group-hover:-translate-y-1 transition-transform duration-500 delay-75">
-                <div>
-                  <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Excavation Volume</div>
-                  <div className="text-xl font-black text-black">12,450 m³</div>
-                </div>
-                <div className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center shadow-sm">
-                  <ChevronRight size={16} className="text-gray-400" />
+                <div className="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center">
+                  <ChevronRight size={14} className="text-black" />
                 </div>
               </div>
             </div>
           </div>
 
-          {/* CARD 4: Issue Tracking & Safety Analytics */}
-          <div className="relative bg-gradient-to-br from-[#0A0A0A] to-[#1A1A1A] rounded-3xl lg:rounded-[40px] p-8 lg:p-12 overflow-hidden group shadow-[0_20px_40px_rgba(0,0,0,0.15)] ring-1 ring-white/5 flex flex-col justify-between min-h-[450px]">
-            {/* Abstract Tech Background */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-red-500/10 blur-[80px] rounded-full group-hover:bg-red-500/20 transition-colors duration-700 pointer-events-none"></div>
-
+          {/* CARD 4: Issue Tracking */}
+          <div className="relative bg-white rounded-3xl p-8 lg:p-10 group shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200 hover:border-[#FFF200] transition-all duration-300 flex flex-col justify-between min-h-[400px]">
             <div className="relative z-10 max-w-md">
-              <div className="flex items-start justify-between mb-6">
-                <div className="w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center text-white border border-white/10 group-hover:border-red-500/50 transition-colors">
-                  <ShieldAlert size={24} className="text-red-400" />
-                </div>
-                <div className="flex items-center gap-1.5 bg-red-500/20 text-red-400 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border border-red-500/30">
-                  <AlertTriangle size={12} /> Priority Alert
-                </div>
+              <div className="w-12 h-12 bg-[#0A0A0A] rounded-xl flex items-center justify-center text-[#FFF200] mb-6 shadow-md group-hover:scale-110 transition-transform">
+                <ShieldCheck size={24} strokeWidth={2.5} />
               </div>
-              <h3 className="text-3xl font-black text-white mb-3 tracking-tight">Issue & Safety Tracking</h3>
-              <p className="text-gray-400 font-medium text-lg leading-relaxed">
-                Track site issues with geo-tagged observations for faster resolution. [cite: 441] Identify potential hazards before they cause accidents. [cite: 448]
+              <h3 className="text-2xl lg:text-3xl font-black text-black mb-3 tracking-tight">Issue & Snag Tracking</h3>
+              <p className="text-gray-500 font-medium text-base leading-relaxed">
+                Streamline defect identification. Tag hazards and track snag resolution directly on the digital twin.
               </p>
             </div>
-
-            {/* Mock UI: Alert Card */}
-            <div className="relative z-10 mt-12 bg-black/60 backdrop-blur-xl border border-red-500/20 rounded-2xl p-5 shadow-2xl transform group-hover:-translate-y-2 transition-transform duration-500 flex gap-4 items-center">
-               <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-white/10 relative">
-                 {/* Bounding Box Simulation */}
-                 <div className="absolute inset-2 border-2 border-red-500 rounded-sm"></div>
+            {/* Visual element: Alert Card */}
+            <div className="mt-8 bg-gray-50 border border-gray-200 rounded-xl p-4 flex gap-3 items-center">
+               <div className="w-12 h-12 rounded-lg bg-red-100 border border-red-200 flex-shrink-0 relative">
+                 <div className="absolute inset-1 border-2 border-red-500 rounded-sm opacity-50"></div>
                </div>
                <div>
-                 <div className="text-[10px] font-black text-red-400 uppercase tracking-widest mb-1">Snag Resolution • Zone C</div>
-                 <div className="text-sm font-bold text-white leading-tight">Safety compliance hazard detected. Requires inspection.</div>
+                 <div className="text-[10px] font-black text-red-500 uppercase tracking-widest">Zone C • Open Snag</div>
+                 <div className="text-sm font-bold text-gray-800 leading-tight">Rebar spacing deviation flagged.</div>
                </div>
             </div>
           </div>
 
         </div>
-
       </div>
     </section>
 
