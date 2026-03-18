@@ -47,8 +47,8 @@ export default function AutonomousAgents() {
         });
       },
       {
-        // Triggers perfectly when the text hits the middle of the screen
-        rootMargin: '-40% 0px -40% 0px' 
+        // Tighter trigger margin since the blocks are shorter now
+        rootMargin: '-35% 0px -35% 0px' 
       }
     );
 
@@ -60,7 +60,7 @@ export default function AutonomousAgents() {
   }, []);
 
   return (
-    <section className="bg-white relative font-sans border-t border-gray-100 pt-16 lg:pt-24 pb-0">
+    <section className="bg-white relative font-sans border-gray-100 py-16 lg:py-20">
       
       {/* 1. THE AESTHETIC GRID BACKGROUND */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0 overflow-hidden">
@@ -96,8 +96,8 @@ export default function AutonomousAgents() {
         }
       `}} />
 
-      {/* HEADER */}
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 text-center relative z-10">
+      {/* HEADER (Tightened spacing) */}
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 mb-8 md:mb-16 text-center relative z-10">
         <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-black leading-[1.1]">
           A new era of construction,<br />
           with <span className="bg-[#FFF200] px-2 leading-tight inline-block transform -skew-x-2 shadow-sm">Autonomous Agents.</span>
@@ -111,8 +111,8 @@ export default function AutonomousAgents() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative flex flex-col lg:flex-row items-start z-10">
         
         {/* LEFT SIDE: The Scrolling Text Track */}
-        {/* Padding added so the first and last text block can reach the middle of the screen */}
-        <div className="w-full lg:w-5/12 pt-[15vh] pb-[35vh] relative z-20">
+        {/* pb-32 added at the bottom just so the final item can scroll up slightly */}
+        <div className="w-full lg:w-5/12 pb-32 relative z-20 pt-4">
           {AGENTS.map((agent, index) => {
             const isActive = activeIndex === index;
             const Icon = agent.icon;
@@ -121,11 +121,12 @@ export default function AutonomousAgents() {
               <div 
                 key={agent.id}
                 ref={(el) => (sectionRefs.current[index] = el)}
-                className={`h-[60vh] flex flex-col justify-center transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                // TIGHTER HEIGHT: 45vh instead of 60vh or h-screen
+                className={`min-h-[45vh] flex flex-col justify-center transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] py-8 ${
                   isActive ? 'opacity-100 translate-y-0 scale-100' : 'opacity-20 translate-y-8 scale-95'
                 }`}
               >
-                <div className="flex items-center gap-3 mb-5">
+                <div className="flex items-center gap-3 mb-4">
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-lg transition-colors duration-700 ${isActive ? 'bg-[#FFF200] text-black shadow-[#FFF200]/30' : 'bg-gray-100 text-gray-400'}`}>
                     <Icon strokeWidth={2.5} size={20} />
                   </div>
@@ -134,10 +135,10 @@ export default function AutonomousAgents() {
                   </span>
                 </div>
                 
-                <h3 className="text-3xl md:text-4xl font-black tracking-tighter text-black mb-4 leading-tight">
+                <h3 className="text-3xl md:text-4xl font-black tracking-tighter text-black mb-3 leading-tight">
                   {agent.name}
                 </h3>
-                <p className="text-base md:text-lg text-gray-500 font-medium leading-relaxed max-w-md">
+                <p className="text-base md:text-lg text-gray-500 font-medium leading-relaxed max-w-sm">
                   {agent.description}
                 </p>
               </div>
@@ -145,9 +146,9 @@ export default function AutonomousAgents() {
           })}
         </div>
 
-        {/* RIGHT SIDE: THE DEAD-CENTER LOCK */}
-        {/* sticky top-0 h-screen ensures it locks exactly to the monitor view, and items-center keeps the box perfectly in the middle */}
-        <div className="w-full lg:w-7/12 sticky top-0 h-screen flex items-center justify-center hidden md:flex pointer-events-none z-10 pl-12">
+        {/* RIGHT SIDE: THE TOP-LOCKED STICKY BOX */}
+        {/* 'sticky top-32' locks it exactly beneath the header/nav area instead of centering it on the screen */}
+        <div className="w-full lg:w-7/12 sticky top-32 hidden md:block pointer-events-none z-10 pl-4 lg:pl-16">
           
           {/* THE TERMINAL / DEVICE */}
           <div className="w-full max-w-[650px] h-[500px] lg:h-[550px] bg-[#0A0A0A] rounded-[32px] shadow-[0_40px_100px_rgba(0,0,0,0.25)] border border-white/10 overflow-hidden relative transition-all duration-700 hover:shadow-[0_50px_120px_rgba(255,242,0,0.1)] group">
@@ -254,7 +255,7 @@ export default function AutonomousAgents() {
                 <div className="mb-6 z-20" style={{ animation: activeIndex === 3 ? 'dropIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.8s both' : 'none' }}>
                   <div className="bg-green-500/10 border border-green-500/20 backdrop-blur-md text-green-400 text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-full flex items-center gap-2 shadow-[0_0_30px_rgba(34,197,94,0.15)]">
                     <CheckCircle2 size={16} className="text-green-500" />
-                    Stakeholder Deck Ready
+                    Progress Report Ready
                   </div>
                 </div>
 
