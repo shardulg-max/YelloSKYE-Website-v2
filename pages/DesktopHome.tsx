@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import AutonomousAgents from '../components/AutonomousAgents';
 import { 
   FileCheck, Radar, Check, Scan, History, Video, Zap, MessageSquare, CheckCircle2, BrainCircuit, ScanSearch, FileWarning,
   Rotate3D, Satellite, Layers, BarChart3, Twitter, Linkedin, Youtube, Play, Search, Bell, Plus, LayoutDashboard, Map, Box, AlertTriangle, 
@@ -399,6 +400,9 @@ export const Home: React.FC = () => {
     </div>
   </div>
 </section>
+
+{/* 2. PLUG IN YOUR NEW AGENTS SECTION HERE 👇 */}
+      <AutonomousAgents />
 
       {/* ====================== CAPABILITIES / SENSORS (WHITE/LIGHT MODE) ====================== */}
       {/* We use bg-gray-50 here so it stands out beautifully from the pure white section above it */}
