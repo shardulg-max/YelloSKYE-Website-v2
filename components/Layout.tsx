@@ -56,7 +56,8 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             px-5 sm:px-6 md:px-8 lg:px-10
             {/* 2. Increased vertical padding (py-4 md:py-5) to make the navbar taller and balanced */}
             ${isScrolled ? "py-3 scale-[0.98] md:scale-[0.97]" : "py-4 md:py-5"}
-            rounded-[24px] md:rounded-[32px]
+            {/* FIX: Increased the corner rounding here to perfectly match the black box */}
+            rounded-[24px] lg:rounded-[40px]
             bg-white/95 md:bg-white/90
             backdrop-blur-xl
             border border-gray-200/50
