@@ -582,3 +582,128 @@ export const About: React.FC = () => {
 
 
 
+--------------
+Old kumar section:
+{/* ====================== AGENTS / INTELLIGENCE (YELLOW MODE) ====================== */}
+    <section className="relative bg-white pt-32 pb-0 overflow-hidden font-sans border-gray-100">
+      
+      {/* 1. CENTERED HEADER */}
+      <div className="relative z-20 max-w-4xl mx-auto px-6 text-center mb-16">
+        <h2 className="text-[clamp(40px,6vw,64px)] font-black tracking-tighter text-[#0A0A0A] leading-[1.05] mb-6">
+          A new era of construction,<br/>
+          with
+          <span className="relative inline-block">
+            <span className="absolute inset-y-1 -inset-x-2 bg-[#FFF200] rounded-xl shadow-sm transform -skew-x-2"></span>
+            <span className="relative px-2 text-black">Autonomous Agents.</span>
+          </span>
+        </h2>
+        
+        <p className="text-xl text-gray-600 font-medium leading-relaxed max-w-2xl mx-auto mb-8">
+          Meet Kumar. He's a team of four specialized AI agents that continuously turn your raw site data into reports, statuses, and next steps.
+        </p>
+        
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button className="px-8 py-3.5 rounded-full bg-[#0A0A0A] text-white font-bold text-[15px] transition-transform hover:-translate-y-0.5 shadow-lg flex items-center gap-2">
+            Deploy your agents <ArrowRight size={16} />
+          </button>
+        </div>
+      </div>
+
+      {/* 2. THE MASSIVE GRADIENT & AGENTS GRID */}
+      <div className="relative w-full max-w-[1400px] mx-auto px-6 z-10">
+        
+        <div className="relative w-full rounded-t-[48px] overflow-hidden bg-gradient-to-b from-yellow-50 via-orange-100/40 to-orange-200/40 border-t border-x border-white/50 shadow-[0_-20px_80px_rgba(255,200,0,0.07)] pt-12 lg:pt-24 px-6 lg:px-12">
+          
+          {/* Subtle noise texture */}
+          <div className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')" }}></div>
+
+          <div className="grid lg:grid-cols-12 gap-8 items-end relative z-10">
+            
+            {/* LEFT COLUMN: Operations Agents */}
+            <div className="lg:col-span-4 flex flex-col gap-6 pb-12">
+              
+              {/* Progress Agent */}
+              <div className="bg-white/80 backdrop-blur-xl border border-white rounded-[24px] p-6 shadow-xl transform transition-transform hover:-translate-y-1">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-100">
+                    <Activity size={20} />
+                  </div>
+                  <h3 className="text-lg font-black text-black">Progress Agent</h3>
+                </div>
+                <p className="text-sm font-medium text-gray-600 leading-relaxed">
+                  Tracks how each site is moving versus plan and keeps every project in red/amber/green status at a glance.
+                </p>
+              </div>
+
+              {/* Quality Agent */}
+              <div className="bg-white/80 backdrop-blur-xl border border-white rounded-[24px] p-6 shadow-xl transform transition-transform hover:-translate-y-1">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center border border-red-100">
+                    <ShieldCheck size={20} />
+                  </div>
+                  <h3 className="text-lg font-black text-black">Quality Agent</h3>
+                </div>
+                <p className="text-sm font-medium text-gray-600 leading-relaxed">
+                  Checks built work against drawings and standards, flagging likely non-compliance or missed items early.
+                </p>
+              </div>
+
+            </div>
+
+            {/* CENTER COLUMN: Kumar Portrait */}
+            <div className="lg:col-span-4 flex justify-center relative h-[400px] lg:h-[500px]">
+               <img 
+                 src="https://i.ibb.co/q3b02GKc/Kumar.png" 
+                 alt="Kumar - AI Agent" 
+                 className="absolute bottom-0 w-[120%] max-w-[500px] object-cover object-bottom transition-transform duration-1000 hover:scale-105"
+                 style={{
+                   WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)',
+                   maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)'
+                 }}
+               />
+               
+               {/* Live Status Badge overlaying the image */}
+               <div className="absolute bottom-10 bg-black/80 backdrop-blur-md border border-white/10 rounded-full px-5 py-2.5 flex items-center gap-3 shadow-2xl">
+                 <div className="relative flex h-2.5 w-2.5">
+                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                 </div>
+                 <span className="text-[10px] font-mono text-white uppercase tracking-widest">4 Agents Active</span>
+               </div>
+            </div>
+
+            {/* RIGHT COLUMN: Output Agents */}
+            <div className="lg:col-span-4 flex flex-col gap-6 pb-12">
+              
+              {/* Billing Agent */}
+              <div className="bg-white/80 backdrop-blur-xl border border-white rounded-[24px] p-6 shadow-xl transform transition-transform hover:-translate-y-1">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-yellow-50 text-yellow-600 flex items-center justify-center border border-yellow-100">
+                    <FileText size={20} />
+                  </div>
+                  <h3 className="text-lg font-black text-black">Billing Agent</h3>
+                </div>
+                <p className="text-sm font-medium text-gray-600 leading-relaxed">
+                  Automatically creates clear, audit-ready progress and billing reports from site data exactly on schedule.
+                </p>
+              </div>
+
+              {/* Content Agent */}
+              <div className="bg-white/80 backdrop-blur-xl border border-white rounded-[24px] p-6 shadow-xl transform transition-transform hover:-translate-y-1">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center border border-purple-100">
+                    <ImageIcon size={20} />
+                  </div>
+                  <h3 className="text-lg font-black text-black">Content Agent</h3>
+                </div>
+                <p className="text-sm font-medium text-gray-600 leading-relaxed">
+                  Pulls the right images and numbers into ready-to-send update decks and emails for project stakeholders.
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
