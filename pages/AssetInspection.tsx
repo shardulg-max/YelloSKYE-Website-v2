@@ -690,7 +690,7 @@ export const AssetInspection: React.FC = () => {
               Remote Inspections <br className="sm:hidden" />
               <span className="relative inline-block mt-1 sm:mt-2 mx-1">
                 <span className="absolute inset-y-0 -inset-x-2 bg-[#FFF200] rounded-lg shadow-sm"></span>
-                <span className="relative text-black px-1">Without Site Access.</span>
+                <span className="relative text-black px-1">Without Site Visits.</span>
               </span>
             </h2>
             <p className="text-[15px] lg:text-base text-gray-500 font-medium leading-relaxed max-w-2xl mx-auto">
