@@ -223,24 +223,26 @@ export const Home: React.FC = () => {
        }} />
 
   {/* 1. TOP: MAXIMIZED VIDEO WINDOW */}
-  <div className="w-full max-w-[1691px] mx-auto px-6 md:px-10 relative z-10 animate-in fade-in zoom-in-95 duration-1000 flex-1 min-h-0 flex flex-col justify-center">
+<div className="w-full max-w-[1691px] mx-auto px-6 md:px-10 relative z-10 animate-in fade-in zoom-in-95 duration-1000 flex-1 min-h-0 flex flex-col justify-center">
+  
+  {/* Container: Removed background color to stop the 'leak' */}
+  <div className="relative w-full h-full mx-auto rounded-[24px] lg:rounded-[28px] shadow-[0_30px_60px_-12px_rgba(0,0,0,0.15)] overflow-hidden group border border-white/10">
+    <video 
+      autoPlay 
+      loop 
+      muted 
+      playsInline
+      /* Added -m-[1px] and calc width/height to force video past the rounding artifact */
+      className="absolute -inset-[1px] w-[calc(100%+2px)] h-[calc(100%+2px)] object-cover transition-transform duration-[10s] group-hover:scale-[1.02] opacity-95"
+      poster="https://ik.imagekit.io/your-placeholder-image.jpg" 
+    >
+      <source src="https://ik.imagekit.io/saxybrgkp/MME/Website%20Placeholder%20Video%20v2.mp4?updatedAt=1773996601484" type="video/mp4" />
+    </video>
     
-    <div className="relative w-full h-full mx-auto bg-[#080808] rounded-[24px] lg:rounded-[28px] shadow-[0_30px_60px_-12px_rgba(0,0,0,0.15)] overflow-hidden group border border-white/10">
-      <video 
-        autoPlay 
-        loop 
-        muted 
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-[10s] group-hover:scale-[1.02] opacity-95"
-        poster="https://ik.imagekit.io/your-placeholder-image.jpg" 
-      >
-        <source src="https://ik.imagekit.io/saxybrgkp/MME/Website%20Placeholder%20Video%20v2.mp4?updatedAt=1773996601484" type="video/mp4" />
-      </video>
-      
-      {/* Premium Glass Glare Overlay */}
-      <div className="absolute inset-0 rounded-[24px] lg:rounded-[28px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1)] pointer-events-none"></div>
-    </div>
+    {/* Premium Glass Glare Overlay */}
+    <div className="absolute inset-0 rounded-[24px] lg:rounded-[28px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1)] pointer-events-none"></div>
   </div>
+</div>
 
   {/* 2. BOTTOM: COPY & CTA DOCK */}
   <div className="w-full max-w-[1691px] mx-auto px-6 md:px-10 pt-4 lg:pt-5 shrink-0 relative z-20">    
