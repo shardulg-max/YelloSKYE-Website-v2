@@ -264,7 +264,7 @@ export const Platform: React.FC = () => {
       </h1>
       
       <p className="text-[16px] md:text-[18px] font-medium leading-relaxed text-gray-500 tracking-tight max-w-2xl mx-auto">
-        Turn scattered data into a live digital twin. One platform for complete project visibility and indisputable certainty.
+        One platform for complete project visibility and indisputable certainty.
       </p>
     </div>
 
@@ -381,20 +381,24 @@ export const Platform: React.FC = () => {
           }} 
         />
 
-        <div className="max-w-[1400px] mx-auto px-6 relative z-10">
-          <div className="text-center mb-20">
-            <h2 className="text-[clamp(32px,5vw,56px)] font-black tracking-tighter leading-[1.1] text-black mb-6">
-              Stop managing projects from the rearview mirror. <br />
-              <span className="text-black">See the absolute truth  </span>
-              <span className="relative inline-block">
-                <span className="absolute inset-y-1 -inset-x-2 bg-[#FFF200] rounded-lg"></span>
-                <span className="relative px-2">with DEX.</span>
-              </span>
-            </h2>
-            <p className="text-xl text-gray-500 font-medium max-w-2xl mx-auto">
-              DEX gives you an AI-powered unified visual record, turning fragmented site updates into indisputable proof for faster, zero-guesswork decisions.
-            </p>
-          </div>
+       <div className="max-w-[1400px] mx-auto px-6 relative z-10">
+  <div className="text-center mb-16 lg:mb-20">
+    {/* Heading: Scale reduced from 48px to 42px for better proportion */}
+    <h2 className="text-[clamp(26px,3.5vw,42px)] font-black tracking-tighter leading-[1.15] text-black mb-6">
+      Stop managing projects from the rearview mirror. <br />
+      <span className="text-black">Deploy </span>
+      <span className="relative inline-block mx-1">
+        {/* Adjusted inset-x to avoid overlapping adjacent words */}
+        <span className="absolute inset-y-1 lg:inset-y-1.5 -inset-x-1.5 bg-[#FFF200] rounded-lg"></span>
+        <span className="relative px-1">AI-automated</span>
+      </span>
+      <span className="text-black"> site truth.</span>
+    </h2>
+    
+    <p className="text-[16px] md:text-lg text-gray-400 font-medium max-w-2xl mx-auto leading-relaxed">
+      DEX leverages AI-powered reality capture to transform fragmented site data into an autonomous visual record—providing the indisputable proof needed for faster, AI-driven decisions.
+    </p>
+  </div>
 
           <div className="grid lg:grid-cols-2 gap-8 items-stretch">
             
