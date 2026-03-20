@@ -10,16 +10,16 @@ const DETAILED_SOLUTIONS = [
   {
     id: "scan-to-bim",
     tag: "01. Scan to BIM",
-    title: "Accurate",
-    highlight: "Digital As-Builts.",
-    description: "Replace outdated blueprints with high-fidelity 3D models. We convert raw laser and drone data into intelligent BIM assets that provide a reliable baseline for every project phase.",
-    features: ["Automated point cloud processing", "LOD 300+ intelligent objects", "Direct integration with Revit & AutoCAD"],
+    title: "Document",
+    highlight: "the ground truth.",
+    description: "Start every project with 100% certainty. We convert raw site data into millimeter-accurate 3D models, ensuring your project baseline is based on fact, not outdated drawings.",
+    features: ["Eliminate site-survey errors", "High-fidelity digital foundations", "Instant Revit & AutoCAD readiness"],
     visual: (
       <div className="relative w-full h-full bg-[#080808] flex items-center justify-center p-8 overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#FFF200_1px,transparent_1px)] [background-size:15px_15px]" />
         <div className="relative z-10 text-center">
            <div className="text-[#FFF200] font-mono text-[10px] tracking-[0.3em] mb-4 opacity-70 uppercase">Processing Reality Data</div>
-           <div className="w-64 h-40 border-2 border-[#FFF200]/30 border-dashed bg-[#FFF200]/5 rounded-xl relative overflow-hidden">
+           <div className="w-64 h-40 border-2 border-[#FFF200]/30 border-dashed bg-[#FFF200]/5 rounded-2xl relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1 bg-[#FFF200] shadow-[0_0_15px_#FFF200] animate-[scan-sweep_3s_ease-in-out_infinite]" />
            </div>
         </div>
@@ -29,16 +29,16 @@ const DETAILED_SOLUTIONS = [
   {
     id: "design-to-bim",
     tag: "02. Design to BIM",
-    title: "Optimized",
-    highlight: "System Coordination.",
-    description: "Ensure your design intent translates perfectly into construction. We transform 2D plans into coordinated 3D systems, identifying spatial logic and flow before mobilization.",
-    features: ["2D to 3D architectural mapping", "Multi-discipline system alignment", "Construction-ready logic verification"],
+    title: "Build it digitally",
+    highlight: "before you mobilize.",
+    description: "Eliminate guesswork before the first brick is laid. We convert 2D plans into smart 3D systems to ensure architecture and engineering work in perfect harmony.",
+    features: ["Verify design feasibility", "Align all engineering disciplines", "Construction-ready logic"],
     visual: (
       <div className="relative w-full h-full bg-[#050505] flex items-center justify-center p-8 overflow-hidden">
         <div className="absolute inset-0 opacity-5 [background-image:linear-gradient(#fff_1px,transparent_1px),linear-gradient(90deg,#fff_1px,transparent_1px)] [background-size:30px_30px]" />
         <div className="relative z-10 space-y-4">
-          <div className="w-56 h-1 bg-blue-500/40 rounded-full" />
-          <div className="w-48 h-1 bg-[#FFF200]/60 rounded-full" />
+          <div className="w-56 h-1 bg-blue-500/40 rounded-full animate-pulse" />
+          <div className="w-48 h-1 bg-[#FFF200]/60 rounded-full animate-pulse delay-75" />
           <div className="w-64 h-1 bg-white/10 rounded-full" />
         </div>
       </div>
@@ -47,10 +47,10 @@ const DETAILED_SOLUTIONS = [
   {
     id: "bim-on-reality",
     tag: "03. BIM on Reality",
-    title: "Proactive",
-    highlight: "Field Validation.",
-    description: "Maintain project integrity by verifying site progress against your BIM model. Detect structural deviations early to ensure execution stays within specified tolerances.",
-    features: ["Automated deviation reporting", "Live site-to-model overlays", "High-precision tolerance checks"],
+    title: "Verify execution",
+    highlight: "in real-time.",
+    description: "Stop rework before it happens. By overlaying your design onto live site captures, we flag structural deviations instantly so they can be corrected immediately.",
+    features: ["Real-time drift detection", "Zero-guesswork inspections", "Visual proof of progress"],
     visual: (
       <div className="relative w-full h-full bg-[#080808] flex items-center justify-center overflow-hidden">
          <div className="absolute inset-0 bg-[url('https://ik.imagekit.io/saxybrgkp/MME/dex%20tablet.png')] bg-cover bg-center opacity-40 grayscale" />
@@ -64,15 +64,15 @@ const DETAILED_SOLUTIONS = [
   {
     id: "clash-detection",
     tag: "04. Clash Detection",
-    title: "Automated",
-    highlight: "Conflict Resolution.",
-    description: "Reduce field RFIs and rework by identifying inter-discipline clashes in the digital twin. Resolve system overlaps in the office to streamline field installation.",
-    features: ["MEP & Structural interference checks", "Automated clash reporting", "Significant reduction in field rework costs"],
+    title: "Zero conflicts.",
+    highlight: "Zero rework.",
+    description: "Identify and resolve system collisions in the office—not on the job site. We find every pipe and beam conflict digitally to protect your project margins.",
+    features: ["MEP & Structural de-risking", "Automated conflict resolution", "Drastic reduction in field RFIs"],
     visual: (
       <div className="relative w-full h-full bg-black flex flex-col items-center justify-center">
         <div className="w-40 h-40 border-2 border-white/5 rounded-full flex items-center justify-center relative">
           <div className="absolute inset-0 border-t-2 border-[#FFF200] rounded-full animate-spin [animation-duration:4s]" />
-          <div className="text-center">
+          <div className="text-center px-4">
              <div className="text-red-500 font-black text-4xl mb-1">!</div>
              <div className="text-white/40 font-mono text-[9px] uppercase tracking-widest">Conflicts Found</div>
           </div>
