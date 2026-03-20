@@ -8,49 +8,38 @@ import {
 } from "lucide-react";
 
 // ─── DATA: INTERACTIVE VIEWER ──────────────────────────────────────────────────
-
 const MONITORING_FEATURES = [
   {
     id: 'aerial',
     label: 'Aerial Progress',
     title: 'Drone-Based Progress Tracking',
-    desc: 'Regular automated drone flights capture site progress. Compare actual execution against planned schedules with transparent work-done reconciliation.',
-    gif: '/gifs/aerial-progress.gif',
-    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/MME/aerieal%20progress.png',
-    placeholderBg: 'bg-blue-50'
+    desc: 'Automated drone flights provide transparent work-done reconciliation by comparing actual execution against planned schedules.',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/MME/aerieal%20progress.png'
   },
   {
     id: 'interior',
     label: 'Interior 360°',
     title: 'Digital Twins of Interiors',
-    desc: 'Walk through interiors remotely. Tag problem areas, compare changes across dates, and track MEP installations without leaving the office.',
-    gif: '/gifs/interior-360.gif',
-    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/Construction%20Monitoring/Website%20Images%20La2nd%20Survey.png?updatedAt=1773640609383',
-    placeholderBg: 'bg-orange-50'
+    desc: 'Remotely walk through interiors to tag problem areas, track MEP installations, and compare changes across dates.',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/Construction%20Monitoring/Website%20Images%20La2nd%20Survey.png?updatedAt=1773640609383'
   },
   {
     id: 'fixed-cam',
     label: 'Fixed Cameras',
     title: 'Always-On Site Monitoring',
-    desc: 'Continuously analyze progress, crew patterns, and material flow. Generate high-resolution timelapses and track workforce presence effortlessly.',
-    gif: '/gifs/fixed-cam.gif', 
-    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/MME/website/Land%20Survey%20Website%20Image%20(1).png',
-    placeholderBg: 'bg-green-50'
+    desc: 'Continuously analyze crew patterns and material flow with high-resolution timelapses and workforce presence tracking.',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/MME/website/Land%20Survey%20Website%20Image%20(1).png'
   },
   {
     id: 'portfolio',
     label: 'Portfolio Dashboard',
     title: 'Unified Executive Analytics',
-    desc: 'Monitor all sites in one centralized data hub. Customizable insights, stage-wise completion rates, and real-time lag calculations across your portfolio.',
-    gif: '/gifs/portfolio.gif',
-    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/Construction%20Monitoring/4.png?updatedAt=1773640609542',
-    placeholderBg: 'bg-purple-50'
+    desc: 'Monitor stage-wise completion and real-time lag calculations across your entire portfolio in one centralized data hub.',
+    fallbackImg: 'https://ik.imagekit.io/saxybrgkp/Construction%20Monitoring/4.png?updatedAt=1773640609542'
   }
 ];
 
-// ─── SUB-COMPONENT: INTERACTIVE DASHBOARD ─────────────────────────────────────
-
-const MonitoringRepresentationSection = () => {
+export const ConstructionMonitoringHero: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -63,63 +52,68 @@ const MonitoringRepresentationSection = () => {
   }, [activeIndex, isHovered]);
 
   return (
-    <section className="relative bg-white pt-4 lg:pt-8 pb-12 lg:pb-16 overflow-hidden font-sans">
+    <section className="pt-24 lg:pt-32 pb-10 bg-white relative overflow-hidden font-sans">
       
       <style>{`
-        @keyframes interactive-progress {
+        @keyframes hero-progress {
           from { width: 0%; }
           to { width: 100%; }
         }
       `}</style>
 
-      {/* Aesthetic Seamless Grid Fade */}
-      <div 
-        className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-        style={{ 
-          backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", 
-          backgroundSize: "80px 80px",
-          maskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
-          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)"
-        }} 
-      />
-
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-8 relative z-10">
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+           style={{ 
+             backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", 
+             backgroundSize: "80px 80px",
+             maskImage: "linear-gradient(to bottom, black 85%, transparent 100%)"
+           }} />
+           
+      {/* 1600px Max-Width Container */}
+      <div className="max-w-[1600px] mx-auto px-6 md:px-10 relative z-10">
         
-        {/* Section Header */}
-        <div className="text-center max-w-4xl mx-auto mb-8 lg:mb-10">
-          <h2 className="text-[clamp(32px,4vw,48px)] font-black tracking-tighter leading-[1.2] text-black mb-4">
-            One continuous <span className="relative inline-block mx-1">
-              <span className="absolute inset-y-0 -inset-x-2 bg-[#FFF200] rounded-xl"></span>
-              <span className="relative text-black">visual timeline.</span>
-            </span>
-            <br />
-            Not scattered snapshots.
-          </h2>
-          
-          <p className="text-base lg:text-lg text-gray-500 font-medium leading-relaxed max-w-4xl mx-auto">
-            YelloSKYE replaces manual site visits with automated aerial and ground-level reality capture. <br className="hidden md:block" />
-            Every update stays in sequence. Every view stays consistent—from site engineers to leadership.
-          </p>
+        {/* SHIFTED HEADER: mt-8 pushes text down, mb-4 pulls viewer up. Total height stays identical. */}
+        <div className="grid lg:grid-cols-12 gap-6 lg:gap-10 mt-6 lg:mt-10 mb-4 lg:mb-6 items-center">
+          <div className="lg:col-span-7 flex flex-col">
+            <h1 className="text-[clamp(36px,4.5vw,56px)] font-black leading-[1] tracking-tighter text-black mb-4">
+              Know what's really <br/>
+              <span className="relative inline-block mt-1">
+                <span className="absolute inset-y-1 -inset-x-2 bg-[#FFF200] rounded-[12px] transform -skew-x-2"></span>
+                <span className="relative text-black">happening on site.</span>
+              </span>
+            </h1>
+
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] lg:text-[13px] font-bold text-gray-500 uppercase tracking-wider">
+               <span className="flex items-center gap-1.5"><Check size={16} strokeWidth={4} className="text-[#FFF200]"/> 360° Walkthroughs</span>
+               <span className="flex items-center gap-1.5"><Check size={16} strokeWidth={4} className="text-[#FFF200]"/> Progress Tracking</span>
+               <span className="flex items-center gap-1.5"><Check size={16} strokeWidth={4} className="text-[#FFF200]"/> Executive Dashboards</span>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5 flex flex-col lg:pl-10">
+            <h2 className="text-xl lg:text-2xl font-medium leading-[1.3] text-gray-800 tracking-tight">
+              Replace manual site visits with an automated visual record across your entire project lifecycle.
+            </h2>
+          </div>
         </div>
 
-        {/* Interactive Viewer Component */}
+        {/* TIGHTER PREMIUM INTERACTIVE VIEWER */}
         <div 
-          className="bg-white rounded-[24px] lg:rounded-[32px] border border-gray-200 shadow-[0_20px_60px_rgba(0,0,0,0.08)] p-3 lg:p-4"
+          className="bg-white rounded-[24px] lg:rounded-[36px] border border-gray-200 shadow-[0_30px_80px_-15px_rgba(0,0,0,0.1)] p-3 lg:p-4"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          {/* Top Navigation Tabs */}
-          <div className="flex gap-2 overflow-x-auto hide-scrollbar scroll-smooth mb-3 pb-1 px-1">
+          {/* Navigation Tabs */}
+          <div className="flex gap-2 overflow-x-auto hide-scrollbar scroll-smooth mb-4 px-1">
             {MONITORING_FEATURES.map((feature, index) => {
               const isActive = activeIndex === index;
               return (
                 <button
                   key={feature.id}
                   onClick={() => setActiveIndex(index)}
-                  className={`whitespace-nowrap px-5 py-2 text-[10px] font-black uppercase tracking-widest transition-all duration-300 rounded-full border
+                  className={`whitespace-nowrap px-6 py-2.5 text-[11px] font-black uppercase tracking-widest transition-all duration-300 rounded-full border
                     ${isActive 
-                      ? 'bg-black border-black text-[#FFF200] shadow-md' 
-                      : 'bg-transparent border-gray-200 text-gray-500 hover:border-gray-400 hover:text-black'
+                      ? 'bg-black border-black text-[#FFF200] shadow-md scale-105' 
+                      : 'bg-transparent border-gray-100 text-gray-400 hover:border-gray-300 hover:text-black'
                     }`}
                 >
                   {feature.label}
@@ -129,51 +123,48 @@ const MonitoringRepresentationSection = () => {
           </div>
 
           {/* Viewer Area */}
-          <div className="relative w-full aspect-[16/9] lg:aspect-[2.5/1] bg-black overflow-hidden rounded-[20px] group mb-3">
+          <div className="relative w-full aspect-[16/9] lg:aspect-[2.6/1] bg-black overflow-hidden rounded-[16px] lg:rounded-[24px] group mb-4">
             {MONITORING_FEATURES.map((feature, index) => (
               <div 
                 key={feature.id}
-                className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${feature.placeholderBg}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out
                   ${activeIndex === index ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}
                 `}
               >
                 <img 
                   src={feature.fallbackImg} 
                   alt={feature.title}
-                  className="w-full h-full object-cover object-left-top"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = feature.fallbackImg;
-                  }}
+                  className="w-full h-full object-cover transition-transform duration-[20s] ease-linear group-hover:scale-105"
                 />
-                <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.4)] pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
               </div>
             ))}
             
-            <div className="absolute bottom-0 left-0 w-full h-[6px] bg-white/20 z-20">
+            <div className="absolute bottom-0 left-0 w-full h-[6px] bg-white/10 z-20 overflow-hidden">
                <div 
                  key={activeIndex} 
-                 className="h-full bg-[#FFF200]"
+                 className="h-full bg-[#FFF200] shadow-[0_0_10px_#FFF200]"
                  style={{ 
-                   animation: 'interactive-progress 4.5s linear forwards',
+                   animation: 'hero-progress 4.5s linear forwards',
                    animationPlayState: isHovered ? 'paused' : 'running'
                  }}
                />
             </div>
           </div>
 
-          {/* Dynamic Content Bar */}
-          <div className="bg-gray-50 rounded-[20px] p-5 lg:p-6 flex flex-col md:flex-row gap-4 justify-between items-start md:items-center border border-gray-100">
-             <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 mb-2 rounded bg-[#FFF200]/20 text-black text-[10px] font-black uppercase tracking-widest border border-[#FFF200]/50">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#FFF200] shadow-[0_0_5px_#FFF200]"></span>
-                  {MONITORING_FEATURES[activeIndex].label}
+          {/* Dynamic Caption Bar */}
+          <div className="bg-gray-50 rounded-[20px] p-5 lg:p-6 flex flex-col md:flex-row gap-6 justify-between items-start md:items-center border border-gray-100">
+             <div className="max-w-2xl">
+                <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-md bg-black text-[#FFF200] text-[10px] font-black uppercase tracking-widest">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#FFF200] animate-pulse"></span>
+                  {MONITORING_FEATURES[activeIndex].label} Active
                 </div>
-                <h3 className="text-xl lg:text-2xl font-black text-black leading-tight tracking-tight">
+                <h3 className="text-2xl lg:text-3xl font-black text-black leading-none tracking-tighter">
                   {MONITORING_FEATURES[activeIndex].title}
                 </h3>
              </div>
-             <div className="md:max-w-md md:text-right">
-                <p className="text-sm lg:text-base text-gray-500 font-medium leading-relaxed">
+             <div className="md:max-w-md lg:max-w-lg md:text-right">
+                <p className="text-base lg:text-lg text-gray-500 font-medium leading-relaxed">
                   {MONITORING_FEATURES[activeIndex].desc}
                 </p>
              </div>
@@ -192,72 +183,9 @@ export const ConstructionMonitoring: React.FC = () => {
     <div className="bg-white text-black font-sans selection:bg-[#FFF200] selection:text-black">
 
 {/* ════════════════════════════════════════
-          HERO - CONSTRUCTION MONITORING
+          INTERACTIVE TABS: CAPTURE METHODS
       ════════════════════════════════════════ */}
-      <section className="pt-24 md:pt-32 lg:pt-44 pb-12 lg:pb-20 bg-white relative overflow-hidden">
-        {/* FIX 1: The Grid is moved out of the max-w container to span 100% width */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-             style={{ 
-               backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", 
-               backgroundSize: "80px 80px",
-               maskImage: "linear-gradient(to bottom, black 85%, transparent 100%)",
-               WebkitMaskImage: "linear-gradient(to bottom, black 85%, transparent 100%)"
-             }} />
-             
-        {/* FIX 2: Content is wrapped in the max-w container with z-10 to stay above grid */}
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 mb-10 lg:mb-14 items-center">
-            
-            <div className="lg:col-span-7 flex flex-col">
-              <h1 className="text-[6vw] md:text-[54px] lg:text-[72px] font-black leading-[0.95] tracking-tighter text-black mb-6">
-  Know what's really happening on site.
-</h1>
-
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[12px] lg:text-[14px] font-bold text-gray-500 tracking-wide">
-                <span className="flex items-center gap-1.5"><Check size={16} strokeWidth={4} className="text-[#FFF200]"/> Automated Tracking</span>
-                <span className="w-1.5 h-1.5 bg-gray-300 rounded-full hidden sm:block"></span>
-                <span className="flex items-center gap-1.5"><Check size={16} strokeWidth={4} className="text-[#FFF200]"/> Progress vs. Plan</span>
-                <span className="w-1.5 h-1.5 bg-gray-300 rounded-full hidden md:block"></span>
-                <span className="flex items-center gap-1.5"><Check size={16} strokeWidth={4} className="text-[#FFF200]"/> Unified Dashboard</span>
-              </div>
-            </div>
-
-            <div className="lg:col-span-5 flex flex-col">
-              <h2 className="text-2xl lg:text-[28px] font-medium leading-[1.3] text-gray-800 tracking-tight">
-                Replace delayed reports with absolute visual truth across your entire portfolio.
-              </h2>
-            </div>
-
-          </div>
-
-          <div className="w-full aspect-[4/3] md:aspect-[2.2/1] rounded-[32px] lg:rounded-[40px] overflow-hidden bg-gray-100 relative shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-gray-200 group">
-            <img 
-              src="https://ik.imagekit.io/saxybrgkp/Construction%20Monitoring/Website%20Images%20Land%20Survey%20new.png?updatedAt=1773640755116"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[20s] ease-out"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10"></div>
-
-            <div className="absolute top-6 left-6 lg:top-8 lg:left-8 bg-white/80 backdrop-blur-2xl px-5 py-3 rounded-2xl flex items-center gap-3 shadow-lg border border-white/50">
-               <div className="flex gap-1">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_#22C55E]"></div>
-               </div>
-               <span className="text-[10px] font-black uppercase tracking-widest text-black mt-0.5">Live Timeline Active</span>
-            </div>
-
-            <div className="absolute bottom-6 right-6 lg:bottom-8 lg:right-8 bg-black/80 backdrop-blur-2xl px-6 py-4 rounded-2xl border border-white/20 flex items-center gap-6 shadow-2xl">
-               <div className="text-right">
-                  <div className="text-[9px] text-gray-400 font-bold uppercase tracking-widest mb-1">Status</div>
-                  <div className="text-green-400 font-mono text-base font-bold">On Track</div>
-               </div>
-               <div className="w-[1px] h-8 bg-white/20"></div>
-               <div className="text-right">
-                  <div className="text-[9px] text-gray-400 font-bold uppercase tracking-widest mb-1">Completion</div>
-                  <div className="text-[#FFF200] font-mono text-base font-bold">87.8%</div>
-               </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ConstructionMonitoringHero />
 
       {/* ════════════════════════════════════════
           THE TRUST BAR
@@ -357,11 +285,6 @@ export const ConstructionMonitoring: React.FC = () => {
           
         </div>
       </section>
-
-      {/* ════════════════════════════════════════
-          INTERACTIVE TABS: CAPTURE METHODS
-      ════════════════════════════════════════ */}
-      <MonitoringRepresentationSection />
 
       {/* ════════════════════════════════════════
           FEATURE GRID: TRACK WHAT MATTERS

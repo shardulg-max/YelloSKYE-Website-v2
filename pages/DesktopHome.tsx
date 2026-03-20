@@ -5,7 +5,7 @@ import {
   FileCheck, Radar, Check, Scan, History, Video, Zap, MessageSquare, CheckCircle2, BrainCircuit, ScanSearch, FileWarning,
   Rotate3D, Satellite, Layers, BarChart3, Twitter, Linkedin, Youtube, Play, Search, Bell, Plus, LayoutDashboard, Map, Box, AlertTriangle, 
   FileText, Settings, Users, ChevronDown, ArrowRight, Activity, ShieldCheck, Image as ImageIcon,
-  Instagram, MapPin, Mail, Globe, Sparkles, Clock,
+  Instagram, MapPin, Mail, Globe, Sparkles, Clock, Building2, Pickaxe, Cpu,
 } from "lucide-react";
 
 // ─── SECTION OBSERVER ────────────────────────────────────────────────────────
@@ -114,6 +114,69 @@ const LifecycleLinePill = ({ title, start, end, imageUrl, description, link = "#
   );
 };
 
+// ─── DATA: 5 CORE SOLUTIONS ────────────────────────────────────────────────
+const SOLUTIONS = [
+  {
+    id: 'land-survey',
+    title: 'Land Survey',
+    desc: 'Automated topographic mapping and volumetric analytics in one digital twin.',
+    icon: Map,
+    colSpan: 'lg:col-span-2',
+    bgStyle: 'bg-[#0A0A0A] text-white shadow-xl',
+    textStyle: 'text-gray-400',
+    iconContainer: 'bg-white/10 text-[#FFF200] border border-white/10',
+    arrowStyle: 'text-[#FFF200]',
+    link: '/solutions/land-survey' // <-- Added Link
+  },
+  {
+    id: 'construction',
+    title: 'Construction Monitoring',
+    desc: 'Verify daily progress and track schedule compliance against your BIM.',
+    icon: Activity,
+    colSpan: 'col-span-1',
+    bgStyle: 'bg-white text-black border border-gray-200/80 shadow-sm hover:border-gray-300',
+    textStyle: 'text-gray-500',
+    iconContainer: 'bg-[#0A0A0A] text-[#FFF200]',
+    arrowStyle: 'text-black',
+    link: '/solutions/construction-monitoring' // <-- Added Link
+  },
+  {
+    id: 'inspection',
+    title: 'Asset Inspection',
+    desc: 'Automated defect detection for complete structural health and safety.',
+    icon: ScanSearch,
+    colSpan: 'col-span-1',
+    bgStyle: 'bg-white text-black border border-gray-200/80 shadow-sm hover:border-gray-300',
+    textStyle: 'text-gray-500',
+    iconContainer: 'bg-[#0A0A0A] text-[#FFF200]',
+    arrowStyle: 'text-black',
+    link: '/solutions/asset-inspection' // <-- Added Link
+  },
+  {
+    id: 'marketing',
+    title: 'Media & Marketing',
+    desc: 'Kinematic drone films and interactive 360° tours to sell your project.',
+    icon: Play,
+    colSpan: 'col-span-1',
+    bgStyle: 'bg-white text-black border border-gray-200/80 shadow-sm hover:border-gray-300',
+    textStyle: 'text-gray-500',
+    iconContainer: 'bg-[#0A0A0A] text-[#FFF200]',
+    arrowStyle: 'text-black',
+    link: '/solutions/media-and-marketing' // <-- Added Link
+  },
+  {
+    id: 'scan-to-bim',
+    title: 'Scan to BIM',
+    desc: 'Convert physical site reality into accurate geometric BIM models.',
+    icon: Layers,
+    colSpan: 'col-span-1',
+    bgStyle: 'bg-white text-black border border-gray-200/80 shadow-sm hover:border-gray-300',
+    textStyle: 'text-gray-500',
+    iconContainer: 'bg-[#0A0A0A] text-[#FFF200]',
+    arrowStyle: 'text-black',
+    link: '/solutions/scan-to-bim' // <-- Added Link
+  }
+];
 
 // ─── HOME COMPONENT ─────────────────────────────────────────────────────────────
 export const Home: React.FC = () => {
@@ -148,53 +211,51 @@ export const Home: React.FC = () => {
       <SectionObserver />
 
 {/* ====================== HERO SECTION ====================== */}
-<section className="relative w-full h-[100dvh] min-h-[750px] pt-[120px] lg:pt-[140px] pb-6 lg:pb-10 bg-white flex flex-col overflow-hidden font-sans border-gray-100">
+<section className="relative w-full pt-[110px] lg:pt-[124px] pb-4 lg:pb-6 bg-white flex flex-col items-center overflow-hidden font-sans h-[100dvh] justify-between">
+  
   {/* Subtle Background Grid */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-             style={{ 
-               backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", 
-               backgroundSize: "80px 80px",
-               maskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
-               WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)"
-             }} />
-  {/* 1. TOP: MAXIMIZED VIDEO WINDOW (RESTORED TO 1500px WIDTH) */}
-  {/* The max-w and px values here now strictly match your original container width */}
-  <div className="flex-1 w-full max-w-[1691px] mx-auto px-6 md:px-10 flex flex-col relative z-10 animate-in fade-in zoom-in-95 duration-1000">
+  <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+       style={{ 
+         backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", 
+         backgroundSize: "80px 80px",
+         maskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
+         WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)"
+       }} />
+
+  {/* 1. TOP: MAXIMIZED VIDEO WINDOW */}
+  <div className="w-full max-w-[1691px] mx-auto px-6 md:px-10 relative z-10 animate-in fade-in zoom-in-95 duration-1000 flex-1 min-h-0 flex flex-col justify-center">
     
-    <div className="relative w-full h-full min-h-[350px] bg-[#080808] rounded-[24px] lg:rounded-[28px] shadow-[0_20px_50px_rgba(0,0,0,0.1)] overflow-hidden group">
+    <div className="relative w-full h-full mx-auto bg-[#080808] rounded-[24px] lg:rounded-[28px] shadow-[0_30px_60px_-12px_rgba(0,0,0,0.15)] overflow-hidden group border border-white/10">
       <video 
         autoPlay 
         loop 
         muted 
         playsInline
-        className="absolute inset-0 w-full h-full object-cover scale-[1.01] transition-transform duration-[10s] group-hover:scale-105 opacity-90"
-        poster="" 
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-[10s] group-hover:scale-[1.02] opacity-95"
+        poster="https://ik.imagekit.io/your-placeholder-image.jpg" 
       >
-        {/* <source src="/your-cinematic-site-flyover.mp4" type="video/mp4" /> */}
+        <source src="https://ik.imagekit.io/saxybrgkp/MME/Website%20Placeholder%20Video%20v2.mp4?updatedAt=1773996601484" type="video/mp4" />
       </video>
       
       {/* Premium Glass Glare Overlay */}
-      <div className="absolute inset-0 rounded-[24px] lg:rounded-[28px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.15)] pointer-events-none"></div>
+      <div className="absolute inset-0 rounded-[24px] lg:rounded-[28px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1)] pointer-events-none"></div>
     </div>
-
   </div>
 
-  {/* 2. BOTTOM: COPY & CTA DOCK (RESTORED TO 1500px WIDTH) */}
-  {/* These exact same width constraints ensure the text perfectly aligns with the video edges */}
-  <div className="w-full max-w-[1691px] mx-auto px-6 md:px-10 pt-8 lg:pt-10 shrink-0 relative z-20">
-    
-    <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-8">
+  {/* 2. BOTTOM: COPY & CTA DOCK */}
+  <div className="w-full max-w-[1691px] mx-auto px-6 md:px-10 pt-4 lg:pt-5 shrink-0 relative z-20">    
+    <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-6 lg:gap-10">
       
       {/* LEFT SIDE: Copy */}
-      <div className="flex flex-col gap-3 lg:gap-4 overflow-hidden">
-        <h1 className="text-[clamp(44px,5vw,84px)] font-black tracking-tighter text-[#0A0A0A] leading-none flex items-center gap-3 lg:gap-4 whitespace-nowrap animate-in fade-in slide-in-from-bottom-6 duration-1000">
+      <div className="flex flex-col gap-1 overflow-hidden mb-4 lg:mb-3">
+        <h1 className="text-[clamp(40px,4.5vw,72px)] font-black tracking-tighter text-[#0A0A0A] leading-none flex items-center gap-3 lg:gap-4 whitespace-nowrap animate-in fade-in slide-in-from-bottom-6 duration-1000">
           Your site,
-          <span className="bg-[#FFF200] px-5 py-1.5 rounded-[16px] lg:rounded-[20px] text-black shadow-sm">
+          <span className="bg-[#FFF200] px-5 py-2 lg:px-6 lg:py-2.5 rounded-[10px] lg:rounded-[12px] text-black shadow-sm">
             in sight.
           </span>
         </h1>
         
-        <p className="text-[18px] md:text-[22px] text-gray-600 font-medium tracking-tight whitespace-nowrap animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
+        <p className="text-[18px] md:text-[20px] text-gray-600 font-medium tracking-tight whitespace-nowrap animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200 mt-1">
           Know exactly what's happening on your site with AI-powered reality capture.
         </p>
       </div>
@@ -202,42 +263,40 @@ export const Home: React.FC = () => {
       {/* RIGHT SIDE: 3 Pillars + CTA Dock */}
       <div className="flex flex-col items-start xl:items-end animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
         
-        {/* PREMIUM 3-PILLARS */}
-        <div className="flex items-center gap-5 lg:gap-6 mb-5 mr-2 xl:mr-4">
-          {[
-            { label: "Clarity" },
-            { label: "Consistency" },
-            { label: "Accuracy" }
-          ].map((item, index) => (
-            <div key={item.label} className="flex items-center gap-2.5">
-              <div className="w-1.5 h-1.5 bg-[#FFF200] shadow-[0_0_8px_rgba(255,242,0,0.8)]"></div>
-              <span className="text-[10px] lg:text-[11px] font-bold text-gray-400 uppercase tracking-[0.25em]">
-                {item.label}
-              </span>
-            </div>
-          ))}
+        <div className="flex flex-col w-full md:w-fit">
+          
+          {/* PREMIUM 3-PILLARS */}
+          <div className="flex items-center justify-between w-full px-5 mt-4 mb-4">
+            {[
+              { label: "Clarity" },
+              { label: "Consistency" },
+              { label: "Accuracy" }
+            ].map((item) => (
+              <div key={item.label} className="flex items-center gap-2.5 lg:gap-2.5">
+                <div className="w-2 h-2 bg-[#FFF200] shadow-[0_0_8px_rgba(255,242,0,0.8)]"></div>
+                <span className="text-[14px] lg:text-[14px] font-black text-black uppercase tracking-[0.2em]">
+                  {item.label}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* 4. UPSCALED CTA DOCK */}
+          <div className="flex items-center p-2.5 lg:p-3 bg-gray-50/90 backdrop-blur-2xl border border-gray-200/80 rounded-full shadow-[0_15px_40px_rgb(0,0,0,0.06)] w-full md:w-fit">
+            <Link to="/book-demo" className="group flex items-center justify-center gap-4 pl-8 pr-3 py-3 rounded-full bg-[#0A0A0A] text-white font-black text-[16px] lg:text-[18px] transition-all duration-300 hover:shadow-[0_15px_30px_rgba(0,0,0,0.25)] hover:-translate-y-0.5 whitespace-nowrap cursor-pointer">
+              Book a demo
+              <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-[#FFF200] flex items-center justify-center text-black shadow-[0_0_15px_rgba(255,242,0,0.4)] group-hover:scale-105 transition-transform duration-300">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-0.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </div>
+            </Link>
+            
+            <Link to="/platform" className="flex items-center justify-center px-8 py-3 rounded-full text-gray-500 hover:text-[#0A0A0A] font-bold text-[16px] lg:text-[18px] transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap bg-transparent cursor-pointer">
+              Explore platform
+            </Link>
+          </div>
+
         </div>
-
-        {/* Frosted Glass Dock */}
-<div className="flex items-center p-2.5 bg-gray-50/90 backdrop-blur-2xl border border-gray-200/80 rounded-full shadow-[0_15px_40px_rgb(0,0,0,0.06)] w-fit">
-  
-  {/* Primary CTA (Upgraded to React Router Link for instant navigation) */}
-  <Link to="/book-demo" className="group flex items-center justify-center gap-4 pl-8 pr-2.5 py-2.5 rounded-full bg-[#0A0A0A] text-white font-black text-[16px] transition-all duration-300 hover:shadow-[0_15px_30px_rgba(0,0,0,0.25)] hover:-translate-y-0.5 whitespace-nowrap cursor-pointer">
-    Book a demo
-    <div className="w-10 h-10 rounded-full bg-[#FFF200] flex items-center justify-center text-black shadow-[0_0_15px_rgba(255,242,0,0.4)] group-hover:scale-105 transition-transform duration-300">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-0.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-    </div>
-  </Link>
-  
-  {/* Secondary CTA */}
-<Link to="/platform" className="flex items-center justify-center px-8 py-4 rounded-full text-gray-500 hover:text-[#0A0A0A] font-bold text-[16px] transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap bg-transparent cursor-pointer">
-  Explore platform
-</Link>
-  
-</div>
-
       </div>
-
     </div>
   </div>
 </section>
@@ -402,60 +461,81 @@ export const Home: React.FC = () => {
   </div>
 </section>
 
-      {/* ====================== CAPABILITIES / SENSORS (WHITE/LIGHT MODE) ====================== */}
-      {/* We use bg-gray-50 here so it stands out beautifully from the pure white section above it */}
-      <section className="relative bg-white pt-24 lg:pt-32 pb-24 lg:pb-32 flex items-center overflow-hidden font-sans border-gray-200">
-         {/* Subtle Background Grid */}
+{/* ====================== PLATFORM SOLUTIONS BENTO GRID ====================== */}
+      <section className="relative py-24 lg:py-32 bg-white overflow-hidden font-sans border-gray-100">
+        
+        {/* Subtle Background Grid */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
              style={{ 
                backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", 
                backgroundSize: "80px 80px",
                maskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
                WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)"
-             }} />
-        {/* Very subtle background texture */}
-        <div className="absolute inset-0 opacity-[0.4]" style={{ backgroundImage: "radial-gradient(#d1d5db 1px, transparent 1px)", backgroundSize: "32px 32px", maskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)" }}></div>
+             }} 
+        />
 
-        <div className="w-full max-w-[1450px] mx-auto px-6 lg:px-8 relative z-10">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
           
-          <div className="text-center max-w-4xl mx-auto mb-16 lg:mb-20">
-            {/* New, highly targeted copy */}
-            <h2 className="text-[clamp(36px,5vw,60px)] font-black tracking-tighter mb-6 text-black leading-[1.05]">
-              Multi-sensor data meets <br className="hidden md:block" />
-              <span className="relative inline-block mt-2">
-                <span className="absolute inset-y-1 -inset-x-3 bg-[#FFF200] rounded-xl shadow-sm transform -skew-x-2"></span>
-                <span className="relative px-2 text-black">AI-powered intelligence.</span>
-              </span>
-            </h2>
-            
-            <p className="text-lg lg:text-xl text-gray-500 font-medium leading-relaxed max-w-3xl mx-auto">
-              All your site data in one live digital twin. AI-powered progress tracking and instant deviation alerts to keep your projects on schedule.
-            </p>
+          {/* Section Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 lg:mb-20">
+            <div className="max-w-2xl">
+              <h2 className="text-[36px] md:text-[48px] lg:text-[56px] font-black tracking-tighter leading-[1.05] text-black">
+                AI-driven solutions across <br className="hidden sm:block"/>
+                <span className="relative inline-block mt-1">
+                  <span className="absolute inset-y-1 lg:inset-y-1.5 -inset-x-3 bg-[#FFF200] rounded-xl shadow-sm"></span>
+                  <span className="relative text-black px-1"> the lifecyle of your asset.</span>
+                </span>
+              </h2>
+            </div>
+            <div className="max-w-md pb-2">
+              <p className="text-base lg:text-[17px] text-gray-500 font-medium leading-relaxed">
+                We transform raw site data into clear actions and indisputable certainty for your project.
+              </p>
+            </div>
           </div>
 
-          {/* Premium Floating Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {[
-              { icon: <Radar size={24} strokeWidth={2.5} className="text-[#FFF200]" />,            title:"Drone Survey",   desc:"Millimeter-accurate photogrammetry and point clouds captured from the sky." },
-              { icon: <LayoutDashboard size={24} strokeWidth={2.5} className="text-[#FFF200]" />, title:"Interior 360°",  desc:"Walk through the site remotely and compare exact builds against your BIM/CAD." },
-              { icon: <FileCheck size={24} strokeWidth={2.5} className="text-[#FFF200]" />,       title:"Facade Imaging", desc:"High-resolution vertical scans to inspect exterior envelope quality and progress." },
-              { icon: <Users size={24} strokeWidth={2.5} className="text-[#FFF200]" />,           title:"Fixed Camera",   desc:"24/7 continuous visual feeds integrated directly into your timeline." },
-            ].map((feature, i) => (
-              <div key={i} className="bg-white p-8 lg:p-10 rounded-[32px] border border-gray-100 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-300 flex flex-col group">
+          {/* Premium Interlocking Bento Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+            {SOLUTIONS.map((solution) => (
+              <Link 
+                key={solution.id} 
+                to={solution.link}
+                className={`
+                  group relative rounded-[24px] lg:rounded-[32px] p-8 lg:p-10 flex flex-col
+                  transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] cursor-pointer block focus:outline-none
+                  ${solution.colSpan} ${solution.bgStyle}
+                `}
+              >
                 
-                {/* Premium Black Icon Box to anchor the white card */}
-                <div className="w-14 h-14 rounded-2xl bg-[#0A0A0A] flex items-center justify-center mb-8 shrink-0 shadow-md group-hover:scale-110 transition-transform duration-300">
-                  {feature.icon}
+                {/* Header: Icon */}
+                <div className={`w-14 h-14 rounded-[16px] flex items-center justify-center mb-10 shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-110 ${solution.iconContainer}`}>
+                  <solution.icon size={26} strokeWidth={2.5} />
                 </div>
-                
-                <h3 className="text-[20px] font-black mb-3 text-black tracking-tight">{feature.title}</h3>
-                <p className="text-[14px] text-gray-500 font-medium leading-relaxed">{feature.desc}</p>
-              </div>
+
+                {/* Content */}
+                <div className="mt-auto">
+                  <h3 className="text-2xl font-black tracking-tight mb-3">
+                    {solution.title}
+                  </h3>
+                  <p className={`text-[15px] leading-relaxed font-medium mb-8 ${solution.textStyle}`}>
+                    {solution.desc}
+                  </p>
+                </div>
+
+                {/* Arrow Link */}
+                <div className={`flex items-center gap-2 text-[12px] font-black uppercase tracking-widest mt-auto pt-5 border-t border-current/10 w-full transition-colors ${solution.arrowStyle}`}>
+                  Explore Solution 
+                  <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
+                </div>
+
+              </Link>
             ))}
           </div>
-          
+
+
         </div>
       </section>
+
 {/* 2. PLUG IN YOUR NEW AGENTS SECTION HERE 👇 */}
       <AutonomousAgents />
 

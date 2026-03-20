@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { 
@@ -91,16 +92,21 @@ const UseCaseSection = () => {
         </div>
 
         {/* Global Footer Callout */}
-        <div className="mt-24 p-10 lg:p-16 rounded-[40px] bg-[#0A0A0A] text-white flex flex-col md:flex-row items-center justify-between gap-8 border border-white/5 shadow-2xl relative overflow-hidden group">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFF200]/10 blur-[100px] group-hover:bg-[#FFF200]/20 transition-all duration-700" />
-          <div className="relative z-10 max-w-xl">
-             <h3 className="text-3xl lg:text-4xl font-black tracking-tight mb-4">Don't see your use case?</h3>
-             <p className="text-gray-400 text-lg font-medium">Our technology stack is highly modular. We customize our aerial data delivery for bespoke real estate and infrastructure needs.</p>
-          </div>
-          <button className="relative z-10 px-8 py-4 bg-[#FFF200] text-black font-black uppercase text-xs tracking-widest rounded-xl hover:bg-white transition-all shadow-[0_15px_30px_rgba(255,242,0,0.2)]">
-            Custom Project Request
-          </button>
-        </div>
+<div className="mt-24 p-10 lg:p-16 rounded-[40px] bg-[#0A0A0A] text-white flex flex-col md:flex-row items-center justify-between gap-8 border border-white/5 shadow-2xl relative overflow-hidden group">
+  <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFF200]/10 blur-[100px] group-hover:bg-[#FFF200]/20 transition-all duration-700" />
+  <div className="relative z-10 max-w-xl">
+     <h3 className="text-3xl lg:text-4xl font-black tracking-tight mb-4">Don't see your use case?</h3>
+     <p className="text-gray-400 text-lg font-medium">Our technology stack is highly modular. We customize our aerial data delivery for bespoke real estate and infrastructure needs.</p>
+  </div>
+  
+  {/* Changed button to Link and added the href path */}
+  <Link 
+    to="/pages/book-demo" 
+    className="relative z-10 px-8 py-4 bg-[#FFF200] text-black font-black uppercase text-xs tracking-widest rounded-xl hover:bg-white transition-all shadow-[0_15px_30px_rgba(255,242,0,0.2)] whitespace-nowrap"
+  >
+    Custom Project Request
+  </Link>
+</div>
 
       </div>
     </section>
@@ -260,8 +266,8 @@ const SHOWCASE_OFFERINGS = [
   { title: "Cinematic Aerial Videos", label: "Professional Editing", desc: "Professionally color-graded 4K aerial shots that showcase site scale and grandeur.", img: "https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey3.png?updatedAt=1773643277664" },
   { title: "Progress Timelapses", label: "Construction Evolution", desc: "Compress months of construction grit into seconds of glory for investor updates.", img: "https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey34.png" },
   { title: "360° Virtual Tours", label: "Remote Walkthroughs", desc: "Let buyers explore units remotely from anywhere, on any device, with immersive tours.", img: "https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey4.png?updatedAt=1773643277655" },
-  { title: "FPV Flythrough Videos", label: "Immersive Drone Racing", desc: "Heart-pounding POV drone racing through tight interior structures for high-impact marketing.", img: "https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey2.png?updatedAt=1773643277686" },
-  { title: "High-Resolution Photography", label: "Marketing Ready", desc: "Professional-grade imagery for brochures, websites, and advertising capturing the golden hour.", img: "https://ik.imagekit.io/saxybrgkp/MME/Website%20Images%20Land%20Survey6.png?updatedAt=1773643277564" }
+  { title: "FPV Flythrough Videos", label: "Immersive Drone Racing", desc: "Heart-pounding POV drone racing through tight interior structures for high-impact marketing.", img: "https://ik.imagekit.io/saxybrgkp/MME/Screenshot%202026-03-20%20at%2010.24.36.png" },
+  { title: "High-Resolution Photography", label: "Marketing Ready", desc: "Professional-grade imagery for brochures, websites, and advertising capturing the golden hour.", img: "https://ik.imagekit.io/saxybrgkp/Website%20Images%20Land%20Survey6.png?updatedAt=1773637747328" }
 ];
 
 // ─── SUB-COMPONENT: EDITORIAL SHOWCASE ───────────────────────────────

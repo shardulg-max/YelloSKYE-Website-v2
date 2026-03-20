@@ -8,7 +8,8 @@ import {
   ArrowUpRight, Sun, Factory, Building,
 } from "lucide-react";
 
-// ─── DATA: INTERACTIVE INSPECTION VIEWER ───────────────────────────────────────
+// ─── DATA & NEW HERO COMPONENT ──────────────────────────────────────────────────
+
 const INSPECTION_FEATURES = [
   {
     id: 'chimneys',
@@ -40,8 +41,7 @@ const INSPECTION_FEATURES = [
   }
 ];
 
-// ─── SUB-COMPONENT: INTERACTIVE VIEWER ─────────────────────────────────────
-const InspectionViewerSection = () => {
+export const InspectionHero: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -49,50 +49,75 @@ const InspectionViewerSection = () => {
     if (isHovered) return;
     const timer = setTimeout(() => {
       setActiveIndex((prev) => (prev + 1) % INSPECTION_FEATURES.length);
-    }, 5000); // Increased slightly to 5s so users can read the new copy
+    }, 4500);
     return () => clearTimeout(timer);
   }, [activeIndex, isHovered]);
 
   return (
-    <section className="relative bg-white pt-16 lg:pt-32 pb-16 lg:pb-32 overflow-hidden font-sans border-b border-gray-50">
-      <style>{`
-        @keyframes interactive-progress { from { width: 0%; } to { width: 100%; } }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-      `}</style>
+    // 1. TIGHTENED TOP/BOTTOM PADDING
+    <section className="pt-24 lg:pt-24 pb-8 bg-white relative overflow-hidden font-sans border-b border-gray-50">
       
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-        style={{ backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", backgroundSize: "40px 40px", maskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)" }} 
-      />
+      <style>{`
+        @keyframes hero-progress {
+          from { width: 0%; }
+          to { width: 100%; }
+        }
+      `}</style>
 
-      <div className="max-w-[1400px] mx-auto px-5 lg:px-8 relative z-10">
-        <div className="text-center max-w-4xl mx-auto mb-10 lg:mb-16">
-          <h2 className="text-[34px] sm:text-[44px] lg:text-[56px] font-black tracking-tighter leading-[1.05] text-black mb-4 lg:mb-6">
-            Visual record of <br className="hidden sm:block"/>
-            <span className="relative inline-block mt-1 sm:mt-2">
-              <span className="absolute inset-y-1 lg:inset-y-2 -inset-x-2 bg-[#FFF200] rounded-xl shadow-sm transform -skew-x-2"></span>
-              <span className="relative text-black px-1">every surface.</span>
-            </span>
-          </h2>
-          <p className="text-[15px] lg:text-xl text-gray-500 font-medium leading-relaxed max-w-3xl mx-auto">
-            We use aerial capture technology to document your asset with survey-grade precision. 
-            Quality teams review issues remotely and tag defects in place.
-          </p>
+      {/* Grid Background */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+           style={{ 
+             backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", 
+             backgroundSize: "80px 80px",
+             maskImage: "linear-gradient(to bottom, black 85%, transparent 100%)"
+           }} />
+           
+      <div className="max-w-[1600px] mx-auto px-6 md:px-10 relative z-10">
+        
+        {/* 2. TIGHTENED HEADER MARGINS */}
+        <div className="grid lg:grid-cols-12 gap-4 lg:gap-8 mt-4 lg:mt-6 mb-4 items-center">
+          <div className="lg:col-span-7 flex flex-col">
+            <h1 className="text-[clamp(36px,4.5vw,56px)] font-black leading-[1] tracking-tighter text-black mb-3 lg:mb-4">
+              Visual record of <br/>
+              <span className="relative inline-block mt-1">
+                <span className="absolute inset-y-1 -inset-x-2 bg-[#FFF200] rounded-[12px] transform -skew-x-2"></span>
+                <span className="relative text-black">every surface.</span>
+              </span>
+            </h1>
+
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] lg:text-[13px] font-bold text-gray-500 uppercase tracking-wider">
+               <span className="flex items-center gap-1.5"><Check size={16} strokeWidth={4} className="text-[#FFF200]"/> Thermal Anomalies</span>
+               <span className="flex items-center gap-1.5"><Check size={16} strokeWidth={4} className="text-[#FFF200]"/> Survey-Grade Precision</span>
+               <span className="flex items-center gap-1.5"><Check size={16} strokeWidth={4} className="text-[#FFF200]"/> Remote Defect Tagging</span>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5 flex flex-col lg:pl-10">
+            <h2 className="text-lg lg:text-xl font-medium leading-[1.3] text-gray-800 tracking-tight">
+              We use aerial capture technology to document your asset. Quality teams review issues remotely and tag defects in place.
+            </h2>
+          </div>
         </div>
 
+        {/* TIGHTER PREMIUM INTERACTIVE VIEWER */}
         <div 
-          className="relative max-w-[1200px] mx-auto bg-white rounded-[24px] lg:rounded-[40px] border border-gray-200 shadow-xl lg:shadow-[0_30px_80px_rgba(0,0,0,0.06)] p-3 lg:p-6" 
-          onMouseEnter={() => setIsHovered(true)} 
+          className="bg-white rounded-[24px] lg:rounded-[36px] border border-gray-200 shadow-[0_30px_80px_-15px_rgba(0,0,0,0.1)] p-2.5 lg:p-3"
+          onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <div className="flex gap-2 overflow-x-auto no-scrollbar scroll-smooth mb-3 pb-1 px-1 snap-x">
+          {/* Navigation Tabs - TIGHTENED MARGIN */}
+          <div className="flex gap-2 overflow-x-auto hide-scrollbar scroll-smooth mb-2.5 lg:mb-3 px-1">
             {INSPECTION_FEATURES.map((feature, index) => {
               const isActive = activeIndex === index;
               return (
-                <button 
-                  key={feature.id} 
-                  onClick={() => setActiveIndex(index)} 
-                  className={`snap-start whitespace-nowrap px-5 py-2.5 text-[10px] font-black uppercase tracking-widest transition-all duration-300 rounded-full border shrink-0
-                    ${isActive ? 'bg-black border-black text-[#FFF200] shadow-md' : 'bg-transparent border-gray-200 text-gray-500 hover:text-black hover:border-gray-400'}`}
+                <button
+                  key={feature.id}
+                  onClick={() => setActiveIndex(index)}
+                  className={`whitespace-nowrap px-6 py-2 text-[11px] font-black uppercase tracking-widest transition-all duration-300 rounded-full border
+                    ${isActive 
+                      ? 'bg-black border-black text-[#FFF200] shadow-md scale-105' 
+                      : 'bg-transparent border-gray-100 text-gray-400 hover:border-gray-300 hover:text-black'
+                    }`}
                 >
                   {feature.label}
                 </button>
@@ -100,39 +125,62 @@ const InspectionViewerSection = () => {
             })}
           </div>
 
-          <div className="relative w-full aspect-[4/3] sm:aspect-video lg:aspect-[16/9] bg-gray-100 overflow-hidden rounded-[20px] lg:rounded-[32px] group border border-gray-200/50">
+          {/* 3. INCREASED VIEWER HEIGHT: Changed lg:aspect-[2.6/1] to lg:aspect-[2.2/1] */}
+          <div className="relative w-full aspect-[16/9] lg:aspect-[2.2/1] bg-black overflow-hidden rounded-[16px] lg:rounded-[24px] group mb-2.5 lg:mb-3">
             {INSPECTION_FEATURES.map((feature, index) => (
-              <div key={feature.id} className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${activeIndex === index ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                <img src={feature.fallbackImg} alt={feature.title} className="w-full h-full object-cover scale-[1.01]" />
+              <div 
+                key={feature.id}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out
+                  ${activeIndex === index ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}
+                `}
+              >
+                <img 
+                  src={feature.fallbackImg} 
+                  alt={feature.title}
+                  className="w-full h-full object-cover transition-transform duration-[20s] ease-linear group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
               </div>
             ))}
-            <div className="absolute bottom-0 left-0 w-full h-[4px] lg:h-[6px] bg-black/20 z-20">
-               <div key={activeIndex} className="h-full bg-[#FFF200]" style={{ animation: 'interactive-progress 5s linear forwards', animationPlayState: isHovered ? 'paused' : 'running' }} />
+            
+            <div className="absolute bottom-0 left-0 w-full h-[6px] bg-white/10 z-20 overflow-hidden">
+               <div 
+                 key={activeIndex} 
+                 className="h-full bg-[#FFF200] shadow-[0_0_10px_#FFF200]"
+                 style={{ 
+                   animation: 'hero-progress 4.5s linear forwards',
+                   animationPlayState: isHovered ? 'paused' : 'running'
+                 }}
+               />
             </div>
           </div>
 
-          <div className="px-4 py-6 lg:px-8 lg:py-8 flex flex-col md:flex-row gap-4 lg:gap-6 justify-between items-start md:items-center">
-             <div className="md:w-1/2">
-                <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 lg:mb-4 rounded-md bg-[#FFF200]/20 text-black text-[9px] lg:text-[10px] font-black uppercase tracking-widest border border-[#FFF200]/50">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#FFF200] shadow-[0_0_5px_#FFF200]"></span>
-                  {INSPECTION_FEATURES[activeIndex].label}
+          {/* Dynamic Caption Bar - TIGHTENED PADDING */}
+          <div className="bg-gray-50 rounded-[16px] lg:rounded-[20px] p-4 lg:p-5 flex flex-col md:flex-row gap-4 lg:gap-6 justify-between items-start md:items-center border border-gray-100">
+             <div className="max-w-2xl">
+                <div className="inline-flex items-center gap-2 px-3 py-1 mb-2 rounded-md bg-black text-[#FFF200] text-[10px] font-black uppercase tracking-widest">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#FFF200] animate-pulse"></span>
+                  {INSPECTION_FEATURES[activeIndex].label} Active
                 </div>
-                <h3 className="text-xl lg:text-3xl font-black text-black leading-tight tracking-tight">
+                <h3 className="text-xl lg:text-2xl font-black text-black leading-none tracking-tighter">
                   {INSPECTION_FEATURES[activeIndex].title}
                 </h3>
              </div>
-             
-             <div className="md:w-1/2 md:text-right">
-                <p className="text-[13px] lg:text-[16px] text-gray-500 font-medium leading-relaxed max-w-md ml-auto">
+             <div className="md:max-w-md lg:max-w-lg md:text-right">
+                <p className="text-sm lg:text-base text-gray-500 font-medium leading-relaxed">
                   {INSPECTION_FEATURES[activeIndex].desc}
                 </p>
              </div>
           </div>
+
         </div>
       </div>
     </section>
   );
 };
+
+
+// ─── ASSET USE CASES ──────────────────────────────────────────────────────────
 
 export const AssetUseCases = () => {
   const USE_CASES = [
@@ -257,68 +305,14 @@ export const AssetInspection: React.FC = () => {
     <div className="bg-white text-black font-sans selection:bg-[#FFF200] selection:text-black overflow-x-hidden">
       
       {/* ════════════════════════════════════════
-          HERO - ASSET & QUALITY INSPECTION
+          NEW INTERACTIVE HERO SECTION
       ════════════════════════════════════════ */}
-      <section className="relative pt-[100px] lg:pt-44 pb-10 lg:pb-20 bg-white overflow-hidden border-gray-50">
-        
-        {/* Subtle Background Grid (Updated) */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-             style={{ 
-               backgroundImage: "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)", 
-               backgroundSize: "80px 80px",
-               maskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
-               WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)"
-             }} 
-        />
-             
-        <div className="max-w-[1400px] mx-auto px-5 lg:px-8 relative z-10">
-          
-          <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-12 mb-8 lg:mb-14">
-            <div className="flex-1 flex flex-col">
-              <h1 className="text-[48px] sm:text-[60px] lg:text-[85px] font-black leading-[0.95] tracking-tighter text-black mb-4 lg:mb-8">
-                Asset Inspection
-              </h1>
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] sm:text-[12px] lg:text-[14px] font-bold text-gray-500 tracking-wide">
-                <span className="flex items-center gap-1.5"><Check size={14} strokeWidth={4} className="text-[#FFF200]"/> Geo-Tagged Defect Detection</span>
-                <span className="w-1 h-1 bg-gray-300 rounded-full hidden sm:block"></span>
-                <span className="flex items-center gap-1.5"><Check size={14} strokeWidth={4} className="text-[#FFF200]"/> Structural Integrity Scans</span>
-                <span className="w-1 h-1 bg-gray-300 rounded-full hidden md:block"></span>
-                <span className="flex items-center gap-1.5"><Check size={14} strokeWidth={4} className="text-[#FFF200]"/> Compliance Reporting</span>
-              </div>
-            </div>
-            
-            <div className="flex-1 lg:max-w-md flex flex-col pt-2 lg:pt-0">
-              <h2 className="text-[17px] lg:text-[28px] font-medium leading-relaxed text-gray-800 tracking-tight">
-                Inspect the Unreachable with <br/> drone-based aerial documentation.
-              </h2>
-            </div>
-          </div>
-      
-          <div className="w-full aspect-[4/5] sm:aspect-[4/3] md:aspect-[2.2/1] rounded-[24px] lg:rounded-[40px] overflow-hidden bg-[#0A0A0A] relative shadow-2xl lg:shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-gray-200 group">
-            <img src="https://ik.imagekit.io/saxybrgkp/MME/Land%20Survey%20Website%20Image.png" alt="Asset Inspection Interface" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[20s] ease-out opacity-90" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10"></div>
-            
-            {/* Scaled overlays for mobile */}
-            <div className="absolute bottom-4 right-4 lg:bottom-8 lg:right-8 bg-white/90 backdrop-blur-2xl px-4 py-3 lg:px-6 lg:py-4 rounded-xl lg:rounded-2xl border border-white/50 flex items-center gap-4 lg:gap-6 shadow-2xl text-black">
-               <div className="text-right">
-                  <div className="text-[7px] lg:text-[9px] text-gray-500 font-bold uppercase tracking-widest mb-0.5">Coverage</div>
-                  <div className="text-black font-mono text-sm lg:text-base font-black">100%</div>
-               </div>
-               <div className="w-[1px] h-6 lg:h-8 bg-gray-300"></div>
-               <div className="text-right">
-                  <div className="text-[7px] lg:text-[9px] text-gray-500 font-bold uppercase tracking-widest mb-0.5">Status</div>
-                  <div className="text-red-600 font-mono text-sm lg:text-base font-bold">12 Flagged</div>
-               </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
+      <InspectionHero />
 
       {/* ════════════════════════════════════════
           INSPECTION STATS ROW (MOBILE GRID)
       ════════════════════════════════════════ */}
-      <section className="bg-white py-10 lg:py-16 border-gray-50">
+      <section className="bg-white py-10 lg:py-16 border-gray-50 border-b">
         <div className="max-w-[1400px] mx-auto px-5 lg:px-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-y-8 md:gap-y-0 md:divide-x divide-gray-100">
             
@@ -358,17 +352,14 @@ export const AssetInspection: React.FC = () => {
 
         <div className="max-w-[1400px] mx-auto px-5 lg:px-8 relative z-10">
           
-          {/* Changed items-start to items-center to perfectly align left and right columns */}
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-24 items-center">
             
             {/* LEFT COLUMN: Context & Copy */}
-            {/* Removed sticky positioning to ensure it centers naturally with the right side */}
             <div className="lg:col-span-5 flex flex-col justify-center">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 bg-gray-50 text-[10px] lg:text-[11px] font-black uppercase tracking-[0.2em] text-gray-500 mb-6 shadow-sm w-fit">
                 <ShieldCheck size={14} className="text-black" /> Intelligent Inspections
               </div>
               
-              {/* Scaled up headline for bigger impact */}
               <h2 className="text-[40px] sm:text-[52px] lg:text-[64px] font-black tracking-tighter leading-[1.05] text-[#0A0A0A] mb-6 lg:mb-8">
                 Safer inspections. <br className="hidden sm:block"/>
                 <span className="relative inline-block mt-2">
@@ -377,7 +368,6 @@ export const AssetInspection: React.FC = () => {
                 </span>
               </h2>
               
-              {/* Scaled up body copy and made it outcome-focused */}
               <p className="text-[16px] lg:text-[20px] text-gray-500 font-medium leading-relaxed max-w-md">
                 Transform how you monitor critical infrastructure. Replace hazardous manual checks and costly shutdowns with survey-grade aerial intelligence and verifiable digital twins.
               </p>
@@ -408,7 +398,7 @@ export const AssetInspection: React.FC = () => {
               ].map((row, i) => (
                 <div key={i} className="relative flex flex-col md:flex-row w-full rounded-[28px] lg:rounded-[32px] overflow-hidden border border-gray-200 shadow-sm group hover:shadow-lg transition-all duration-300">
                   
-                  {/* Central overlapping arrow (Desktop) - Scaled up */}
+                  {/* Central overlapping arrow (Desktop) */}
                   <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 hidden md:flex w-12 h-12 bg-white rounded-full border border-gray-100 shadow-md items-center justify-center transition-transform group-hover:scale-110">
                     <ArrowRight size={20} className="text-gray-400" strokeWidth={2.5} />
                   </div>
@@ -419,7 +409,6 @@ export const AssetInspection: React.FC = () => {
                   </div>
 
                   {/* LEFT HALF: The Problem (Muted, Gray/Red) */}
-                  {/* Increased padding (p-8 lg:p-10) for a bigger footprint */}
                   <div className="w-full md:w-1/2 bg-white p-8 lg:p-10 md:pr-12 flex flex-col justify-center border-b md:border-b-0 md:border-r border-gray-100">
                     <div className="flex items-start gap-4">
                       <div className="w-7 h-7 rounded bg-red-50 flex items-center justify-center shrink-0 mt-0.5">
@@ -435,7 +424,6 @@ export const AssetInspection: React.FC = () => {
                   </div>
 
                   {/* RIGHT HALF: The Solution (Premium Dark/Yellow) */}
-                  {/* Increased padding (p-8 lg:p-10) for a bigger footprint */}
                   <div className="w-full md:w-1/2 bg-[#0A0A0A] p-8 lg:p-10 md:pl-14 flex flex-col justify-center relative overflow-hidden">
                     {/* Subtle glow */}
                     <div className="absolute top-0 right-0 w-40 h-40 bg-[#FFF200] blur-[80px] opacity-10 pointer-events-none group-hover:opacity-20 transition-opacity"></div>
@@ -462,17 +450,12 @@ export const AssetInspection: React.FC = () => {
         </div>
       </section>
 
-<AssetUseCases />
-
-{/* ════════════════════════════════════════
-          INTERACTIVE VIEWER & USE CASES
-      ════════════════════════════════════════ */}
-      <InspectionViewerSection />
+      <AssetUseCases />
       
       {/* ════════════════════════════════════════
           Tangible benefits
       ════════════════════════════════════════ */}
-    <section className="relative bg-white py-20 lg:py-36 overflow-hidden font-sans border-b border-gray-50">
+    <section className="relative bg-white py-20 lg:py-36 overflow-hidden font-sans border-b border-gray-50 border-t">
       
       {/* Subtle Background Grid */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
@@ -632,7 +615,6 @@ export const AssetInspection: React.FC = () => {
       </div>
     </section>
 
-
       {/* ════════════════════════════════════════
           BENTO FEATURE GRID
       ════════════════════════════════════════ */}
@@ -671,7 +653,7 @@ export const AssetInspection: React.FC = () => {
       {/* ════════════════════════════════════════
           HUB & SPOKE: REMOTE INSPECTION MAP
       ════════════════════════════════════════ */}
-      <section className="bg-white py-16 lg:py-24 relative overflow-hidden font-sans">
+      <section className="bg-white py-16 lg:py-24 relative overflow-hidden font-sans border-t border-gray-50">
         <style>{`
           @keyframes hub-glow { 0%, 100% { opacity: 0.15; transform: scale(1); } 50% { opacity: 0.25; transform: scale(1.05); } }
         `}</style>
